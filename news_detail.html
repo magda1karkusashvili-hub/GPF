@@ -1,68 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<title>{{ news.title }}</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>News Details | Georgian Paragliding Federation</title>
+
 
 <style>
+
 body {
+
     margin:0;
-    font-family: Arial;
-    background: url("/static/images/para1.jpg") center/cover fixed;
+    font-family:Arial, sans-serif;
+    background:url("para1.jpg") center/cover fixed;
     color:white;
+
 }
 
+
 body::before {
+
     content:"";
     position:fixed;
     inset:0;
     background:rgba(0,0,0,0.6);
     z-index:-1;
+
 }
 
+
+
 .container {
+
     max-width:800px;
     margin:60px auto;
     padding:20px;
+
     background:rgba(255,255,255,0.06);
+
     border-radius:14px;
+
 }
 
+
+
 img {
+
     width:100%;
     border-radius:12px;
     margin-bottom:20px;
+
 }
+
+
 
 h1 {
+
     color:#00c2ff;
+
 }
 
-.tag {
-    display:inline-block;
-    margin-top:10px;
-    padding:5px 12px;
-    background:rgba(0,194,255,0.2);
-    color:#00c2ff;
-    border-radius:20px;
+
+
+p {
+
+    color:#ddd;
+    line-height:1.6;
+
 }
+
+
+
+.tag {
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:5px 12px;
+
+    background:rgba(0,194,255,0.2);
+
+    color:#00c2ff;
+
+    border-radius:20px;
+
+}
+
+
+
+.back {
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    color:#00c2ff;
+
+    text-decoration:none;
+
+}
+
+
 </style>
+
 
 </head>
 
+
+
 <body>
+
+
 
 <div class="container">
 
-    <img src="/static/images/{{ news.image }}">
 
-    <h1>{{ news.title }}</h1>
+<img src="para22.jpg">
 
-    <p>{{ news.content }}</p>
 
-    <span class="tag">{{ news.category }}</span>
+
+<h1>
+FAI Membership Achievement
+</h1>
+
+
+
+<p>
+
+Georgian Paragliding Federation became Associate Member of FAI — 
+a historic milestone for Georgian aviation.
+
+</p>
+
+
+
+<span class="tag">
+Events
+</span>
+
+
+
+<br>
+
+
+
+<a href="news.html" class="back">
+
+← Back to News
+
+</a>
+
+
 
 </div>
 
+
+
 </body>
+
+
 </html>
