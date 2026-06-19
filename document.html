@@ -1,83 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Documents | Georgian Paragliding Federation</title>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+
+
+.document-section{
+
+max-width:1000px;
+margin:50px auto;
+padding:20px;
+text-align:center;
+
+}
+
+
+
+.document-section h1{
+
+color:#00c2ff;
+font-size:36px;
+
+}
+
+
+
+.subtext{
+
+color:#ccc;
+margin:15px;
+
+}
+
+
+
+.docs-list{
+
+list-style:none;
+padding:0;
+margin-top:40px;
+
+}
+
+
+
+.doc-item{
+
+background:rgba(255,255,255,.06);
+margin:15px;
+padding:18px;
+border-radius:12px;
+
+}
+
+
+
+.doc-item a{
+
+text-decoration:none;
+font-size:18px;
+
+}
+
+
+
+.red{
+
+color:#ff6b6b;
+
+}
+
+
+
+.blue{
+
+color:#00c2ff;
+
+}
+
+
+
+.green{
+
+color:#4ade80;
+
+}
+
+
+
+/* HEADER */
+
+
+header{
+
+background:rgba(0,0,0,.85);
+padding:10px 0;
+position:sticky;
+top:0;
+
+}
+
+
+
+.container{
+
+max-width:1200px;
+margin:auto;
+padding:0 15px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+}
+
+
+
+.logo{
+
+display:flex;
+align-items:center;
+gap:10px;
+
+text-decoration:none;
+color:white;
+
+}
+
+
+
+.logo img{
+
+width:42px;
+height:42px;
+border-radius:50%;
+
+}
+
+
+
+.menu{
+
+display:flex;
+gap:18px;
+
+}
+
+
+
+.menu a{
+
+color:white;
+text-decoration:none;
+
+}
+
+
+
+.menu a:hover{
+
+color:#00c2ff;
+
+}
+
+
+
+</style>
+
+
 </head>
+
+
 
 <body>
 
-<!-- ================= HEADER ================= -->
+
+
+
 <header>
-    <div class="container">
 
-        <a href="/" class="logo">
-            <img src="{{ url_for('static', filename='images/logo.jpg') }}">
-            <span>Georgian Paragliding Federation</span>
-        </a>
+<div class="container">
 
-        <!-- HAMBURGER -->
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-        <nav class="menu" id="menu">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/gallery">Gallery</a>
-            <a href="/document">Documents</a>
-            <a href="/contact">Contact</a>
-            <a href="/BookYourFlight">Book Your Flight</a>
-            <a href="/news">News</a>
-            <a href="/dashboard">Dashboard</a>
-        </nav>
+<a href="index.html" class="logo">
 
-    </div>
+
+<img src="logo.jpg">
+
+
+<span>
+Georgian Paragliding Federation
+</span>
+
+
+</a>
+
+
+
+
+<nav class="menu">
+
+
+<a href="index.html">
+Home
+</a>
+
+
+<a href="about.html">
+About Us
+</a>
+
+
+<a href="gallery.html">
+Gallery
+</a>
+
+
+<a href="document.html">
+Documents
+</a>
+
+
+<a href="contact.html">
+Contact
+</a>
+
+
+<a href="BookYourFlight.html">
+Book Your Flight
+</a>
+
+
+<a href="news.html">
+News
+</a>
+
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
+
+
+</nav>
+
+
+</div>
+
 </header>
 
 
-<!-- ================= DOCUMENTS ================= -->
+
+
+
+
+
 <main class="document-section">
 
-    <h1>Documents</h1>
 
-    <p class="subtext">
-        Access official paragliding regulations, safety guidelines and federation documents.
-    </p>
 
-    <ul class="docs-list">
+<h1>
+Documents
+</h1>
 
-        <li class="doc-item">
-            <a class="red" href="{{ url_for('static', filename='docs/para1.pdf') }}" target="_blank">
-                📄 Pilot Competency Categories Register
-            </a>
-        </li>
 
-        <li class="doc-item">
-            <a class="blue" href="{{ url_for('static', filename='docs/para2.pdf') }}" target="_blank">
-                📄 Operator Certification Register
-            </a>
-        </li>
 
-        <li class="doc-item">
-            <a class="green" href="{{ url_for('static', filename='docs/para3.pdf') }}" target="_blank">
-                📄 Equipment Airworthiness Register
-            </a>
-        </li>
+<p class="subtext">
 
-    </ul>
+Access official paragliding regulations, safety guidelines and federation documents.
+
+</p>
+
+
+
+
+
+<ul class="docs-list">
+
+
+
+<li class="doc-item">
+
+<a class="red"
+href="para1.pdf"
+target="_blank">
+
+📄 Pilot Competency Categories Register
+
+</a>
+
+</li>
+
+
+
+
+
+<li class="doc-item">
+
+<a class="blue"
+href="para2.pdf"
+target="_blank">
+
+📄 Operator Certification Register
+
+</a>
+
+</li>
+
+
+
+
+
+
+<li class="doc-item">
+
+<a class="green"
+href="para3.pdf"
+target="_blank">
+
+📄 Equipment Airworthiness Register
+
+</a>
+
+</li>
+
+
+
+
+
+</ul>
+
+
 
 </main>
 
 
-<!-- ================= MENU SCRIPT ================= -->
+
+
+
+
 <script>
-function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
+
+
+function toggleMenu(){
+
+document.getElementById("menu")
+.classList.toggle("active");
+
 }
+
+
 </script>
 
+
+
+
 </body>
+
 </html>
