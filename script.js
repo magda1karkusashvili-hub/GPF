@@ -1,65 +1,69 @@
 /* =========================
-   SAFE HELPERS
+   HELPERS
 ========================= */
 
 const qs = (s) => document.querySelector(s);
 const qsa = (s) => document.querySelectorAll(s);
 
 
+
 /* =========================
    DOM READY
 ========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-
+document.addEventListener("DOMContentLoaded",()=>{
 
 
 /* =========================
-   MOBILE MENU
+   MOBILE MENU FIX
 ========================= */
 
 
-const menu = qs(".menu");
-const toggle = qs(".menu-toggle");
+const menu = document.getElementById("menu");
+const toggle = document.querySelector(".menu-toggle");
 
 
 if(menu && toggle){
 
 
-toggle.addEventListener("click", (e)=>{
+    toggle.addEventListener("click",(e)=>{
 
-e.stopPropagation();
+        e.stopPropagation();
 
-menu.classList.toggle("active");
+        menu.classList.toggle("active");
 
-});
-
-
-document.addEventListener("click",(e)=>{
-
-
-if(!menu.contains(e.target) &&
-!toggle.contains(e.target)){
-
-menu.classList.remove("active");
-
-}
-
-
-});
+    });
 
 
 
-menu.querySelectorAll("a").forEach(link=>{
-
-link.addEventListener("click",()=>{
-
-menu.classList.remove("active");
-
-});
+    document.addEventListener("click",(e)=>{
 
 
-});
+        if(
+            !menu.contains(e.target) &&
+            !toggle.contains(e.target)
+        ){
+
+            menu.classList.remove("active");
+
+        }
+
+
+    });
+
+
+
+    menu.querySelectorAll("a").forEach(link=>{
+
+
+        link.addEventListener("click",()=>{
+
+            menu.classList.remove("active");
+
+        });
+
+
+    });
 
 
 }
@@ -78,27 +82,28 @@ let currentSlide = 0;
 const slides = qsa(".hero .slide");
 
 
-
 function showSlide(index){
 
 
-if(!slides.length) return;
+    if(!slides.length)
+        return;
 
 
-currentSlide =
-(index + slides.length) % slides.length;
+    currentSlide =
+    (index + slides.length) % slides.length;
 
 
 
-slides.forEach(slide=>{
+    slides.forEach(slide=>{
 
-slide.classList.remove("active");
+        slide.classList.remove("active");
 
-});
+    });
 
 
-slides[currentSlide]
-.classList.add("active");
+
+    slides[currentSlide]
+    .classList.add("active");
 
 
 }
@@ -110,8 +115,7 @@ if(slides.length > 1){
 
 setInterval(()=>{
 
-
-showSlide(currentSlide + 1);
+showSlide(currentSlide+1);
 
 
 },3500);
@@ -124,29 +128,28 @@ showSlide(currentSlide + 1);
 
 
 /* =========================
-   SCROLL REVEAL
+   SCROLL ANIMATION
 ========================= */
 
 
-function revealOnScroll(){
+function reveal(){
 
 
-qsa(".reveal")
-.forEach(el=>{
+qsa(".reveal").forEach(el=>{
 
 
-const top =
+const position =
 el.getBoundingClientRect().top;
 
 
-
-if(top < window.innerHeight - 100){
+if(position < window.innerHeight-100){
 
 
 el.classList.add("active");
 
 
 }
+
 
 
 });
@@ -158,11 +161,11 @@ el.classList.add("active");
 
 window.addEventListener(
 "scroll",
-revealOnScroll
+reveal
 );
 
 
-revealOnScroll();
+reveal();
 
 
 
@@ -170,12 +173,11 @@ revealOnScroll();
 
 
 /* =========================
-   GALLERY AUTO SLIDER
+   GALLERY SLIDER
 ========================= */
 
 
-qsa(".gallery-card")
-.forEach(card=>{
+qsa(".gallery-card").forEach(card=>{
 
 
 const imgs =
@@ -183,20 +185,20 @@ card.querySelectorAll("img");
 
 
 
-if(imgs.length <= 1)
+if(imgs.length<=1)
 return;
 
 
 
-let i = 0;
+let index=0;
 
 
 
-imgs.forEach((img,index)=>{
+imgs.forEach((img,i)=>{
 
 
 img.style.display =
-index === 0 ? "block" : "none";
+i===0 ? "block":"none";
 
 
 });
@@ -206,13 +208,15 @@ index === 0 ? "block" : "none";
 setInterval(()=>{
 
 
-imgs[i].style.display="none";
+imgs[index].style.display="none";
 
 
-i = (i+1)%imgs.length;
+index =
+(index+1)%imgs.length;
 
 
-imgs[i].style.display="block";
+
+imgs[index].style.display="block";
 
 
 },3000);
@@ -224,53 +228,6 @@ imgs[i].style.display="block";
 
 
 
-
-/* =========================
-   ACTIVITY SLIDER
-========================= */
-
-
-qsa(".activity-slider")
-.forEach(slider=>{
-
-
-const slides =
-slider.querySelectorAll(".slide");
-
-
-
-if(slides.length<=1)
-return;
-
-
-
-let i=0;
-
-
-
-setInterval(()=>{
-
-
-slides[i]
-.classList.remove("active");
-
-
-i=(i+1)%slides.length;
-
-
-slides[i]
-.classList.add("active");
-
-
-
-},3000);
-
-
-
-});
-
-
-
 });
 
 
@@ -278,7 +235,7 @@ slides[i]
 
 
 /* =========================
-   MODAL SYSTEM
+   MODAL
 ========================= */
 
 
@@ -286,19 +243,16 @@ function openModal(type){
 
 
 const modal = qs("#modal");
-
 const title = qs("#modal-title");
-
 const text = qs("#modal-text");
 
 
-
-if(!modal || !title || !text)
+if(!modal)
 return;
 
 
 
-const data = {
+const data={
 
 
 mission:{
@@ -309,7 +263,7 @@ text:"To develop safe and professional paragliding experiences in Georgia."
 
 safety:{
 title:"🛡 Safety",
-text:"We follow strict international aviation safety standards."
+text:"We follow international aviation safety standards."
 },
 
 
@@ -321,7 +275,7 @@ text:"We train pilots and support aviation growth."
 
 vision:{
 title:"🌍 Vision",
-text:"To make Georgia a world paragliding hub."
+text:"Georgia as a world paragliding destination."
 }
 
 
@@ -348,11 +302,10 @@ modal.style.display="flex";
 
 
 
-
 function closeModal(){
 
 
-const modal=qs("#modal");
+const modal = qs("#modal");
 
 
 if(modal)
@@ -365,7 +318,6 @@ modal.style.display="none";
 
 
 
-
 /* =========================
    PASSWORD MODAL
 ========================= */
@@ -374,7 +326,8 @@ modal.style.display="none";
 function openPasswordModal(){
 
 
-const modal=qs("#passwordModal");
+const modal =
+qs("#passwordModal");
 
 
 if(modal)
@@ -389,7 +342,8 @@ modal.style.display="flex";
 function closePasswordModal(){
 
 
-const modal=qs("#passwordModal");
+const modal =
+qs("#passwordModal");
 
 
 if(modal)
@@ -402,7 +356,6 @@ modal.style.display="none";
 
 
 
-
 /* =========================
    LIGHTBOX
 ========================= */
@@ -411,9 +364,12 @@ modal.style.display="none";
 function openLightbox(img){
 
 
-const box=qs("#lightbox");
+const box =
+qs("#lightbox");
 
-const image=qs("#lightbox-img");
+
+const image =
+qs("#lightbox-img");
 
 
 
@@ -424,8 +380,8 @@ return;
 
 box.style.display="flex";
 
-image.src=img.src;
 
+image.src=img.src;
 
 
 }
@@ -435,35 +391,13 @@ image.src=img.src;
 function closeLightbox(){
 
 
-const box=qs("#lightbox");
+const box =
+qs("#lightbox");
 
 
 if(box)
 
 box.style.display="none";
-
-
-}
-
-
-
-
-
-/* =========================
-   MENU FUNCTION
-========================= */
-
-
-function toggleMenu(){
-
-
-const menu =
-document.getElementById("menu");
-
-
-if(menu)
-
-menu.classList.toggle("active");
 
 
 }
