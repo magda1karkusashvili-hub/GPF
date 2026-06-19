@@ -1,24 +1,18 @@
-/* ================= RESET ================= */
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 
-/* ================= GLOBAL ================= */
-
 body{
 
-    background:url("images/para1.jpg") center/cover fixed no-repeat;
+background:url("images/para1.jpg") center/cover fixed no-repeat;
 
-    color:white;
+color:white;
 
-    min-height:100vh;
-
-    position:relative;
+min-height:100vh;
 
 }
 
@@ -26,35 +20,31 @@ body{
 
 body::before{
 
-    content:"";
+content:"";
 
-    position:fixed;
+position:fixed;
 
-    inset:0;
+inset:0;
 
-    background:rgba(0,0,0,.6);
+background:rgba(0,0,0,.6);
 
-    z-index:-1;
+z-index:-1;
 
 }
 
 
-/* ================= HEADER ================= */
-
 
 header{
 
-    background:rgba(0,0,0,.85);
+background:rgba(0,0,0,.85);
 
-    backdrop-filter:blur(10px);
+padding:12px 0;
 
-    padding:12px 0;
+position:sticky;
 
-    position:sticky;
+top:0;
 
-    top:0;
-
-    z-index:1000;
+z-index:1000;
 
 }
 
@@ -62,37 +52,35 @@ header{
 
 .container{
 
-    max-width:1200px;
+max-width:1200px;
 
-    margin:auto;
+margin:auto;
 
-    padding:0 20px;
+padding:0 20px;
 
-    display:flex;
+display:flex;
 
-    justify-content:space-between;
+justify-content:space-between;
 
-    align-items:center;
+align-items:center;
 
 }
 
 
-/* ================= LOGO ================= */
-
 
 .logo{
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    gap:10px;
+gap:10px;
 
-    color:white;
+color:white;
 
-    text-decoration:none;
+text-decoration:none;
 
-    font-weight:bold;
+font-weight:bold;
 
 }
 
@@ -100,25 +88,23 @@ header{
 
 .logo img{
 
-    width:45px;
+width:45px;
 
-    height:45px;
+height:45px;
 
-    border-radius:50%;
+border-radius:50%;
 
-    object-fit:cover;
+object-fit:cover;
 
 }
 
 
-/* ================= MENU ================= */
-
 
 .menu{
 
-    display:flex;
+display:flex;
 
-    gap:18px;
+gap:18px;
 
 }
 
@@ -126,11 +112,9 @@ header{
 
 .menu a{
 
-    color:white;
+color:white;
 
-    text-decoration:none;
-
-    transition:.3s;
+text-decoration:none;
 
 }
 
@@ -138,7 +122,7 @@ header{
 
 .menu a:hover{
 
-    color:#00c2ff;
+color:#00c2ff;
 
 }
 
@@ -146,42 +130,32 @@ header{
 
 .menu-toggle{
 
-    display:none;
+display:none;
 
-    color:white;
+color:white;
 
-    font-size:30px;
+font-size:30px;
 
-    cursor:pointer;
+cursor:pointer;
 
 }
 
 
-
-/* ================= HERO ================= */
 
 
 .hero{
 
-    min-height:90vh;
+min-height:90vh;
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
+justify-content:center;
 
-    align-items:center;
+align-items:center;
 
-    text-align:center;
+text-align:center;
 
-    padding:20px;
-
-}
-
-
-
-.hero-overlay{
-
-    max-width:800px;
+padding:20px;
 
 }
 
@@ -189,9 +163,9 @@ header{
 
 .hero h1{
 
-    font-size:48px;
+font-size:48px;
 
-    color:#00c2ff;
+color:#00c2ff;
 
 }
 
@@ -199,173 +173,95 @@ header{
 
 .hero p{
 
-    font-size:18px;
+max-width:700px;
 
-    line-height:1.6;
+margin:20px auto;
 
-    margin:20px auto;
+line-height:1.6;
 
-    color:#ddd;
+color:#ddd;
 
 }
 
 
-/* ================= BUTTON ================= */
 
 
 .btn{
 
-    display:inline-block;
+display:inline-block;
 
-    padding:12px 25px;
+padding:12px 25px;
 
-    background:#00c2ff;
+background:#00c2ff;
 
-    color:black;
+color:black;
 
-    border-radius:10px;
+border-radius:10px;
 
-    text-decoration:none;
+text-decoration:none;
 
-    font-weight:bold;
-
-}
-
-
-
-.btn:hover{
-
-    background:white;
+font-weight:bold;
 
 }
 
 
-
-/* ================= COMMON CARDS ================= */
 
 
 .card,
-.info-box,
-.value-card,
 .news-card,
-.contact-box,
-.document-section,
-.booking-form{
+.booking-form,
+.contact-box{
 
+background:rgba(255,255,255,.08);
 
-    background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
 
-    border:1px solid rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
 
-    backdrop-filter:blur(10px);
-
-    border-radius:15px;
+border-radius:15px;
 
 }
 
 
 
-/* ================= ABOUT ================= */
 
+.page-title{
 
-.about-hero{
+text-align:center;
 
-    text-align:center;
-
-    padding:80px 20px 40px;
+margin:50px 20px;
 
 }
 
 
 
-.about-hero h1{
+.page-title h1{
 
-    color:#00c2ff;
+color:#00c2ff;
 
-    font-size:46px;
-
-}
-
-
-
-.about-hero p{
-
-    max-width:750px;
-
-    margin:auto;
-
-    color:#ddd;
-
-    line-height:1.6;
+font-size:38px;
 
 }
 
 
 
-.about-grid{
+.page-title p{
 
-    max-width:1100px;
-
-    margin:auto;
-
-    padding:40px 20px;
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:20px;
+color:#ddd;
 
 }
 
 
 
-.info-box{
-
-    padding:25px;
-
-    text-align:center;
-
-    cursor:pointer;
-
-}
-
-
-
-.info-box h3{
-
-    color:#00c2ff;
-
-}
-
-
-
-.more{
-
-    display:none;
-
-}
-
-
-
-.info-box.active .more{
-
-    display:block;
-
-}
-
-
-
-/* ================= BOOKING ================= */
 
 
 .booking-section{
 
-    max-width:760px;
+max-width:760px;
 
-    margin:auto;
+margin:auto;
 
-    padding:70px 20px;
+padding:70px 20px;
 
 }
 
@@ -373,143 +269,96 @@ header{
 
 .booking-title{
 
-    text-align:center;
+color:#00c2ff;
 
-    color:#00c2ff;
-
-    font-size:38px;
+text-align:center;
 
 }
 
-
-
-.subtext{
-
-    text-align:center;
-
-    color:#ddd;
-
-    margin:20px;
-
-}
 
 
 
 .booking-form{
 
-    padding:35px;
+padding:35px;
 
-    display:flex;
+display:flex;
 
-    flex-direction:column;
+flex-direction:column;
 
-    gap:12px;
-
-}
-
-
-
-.booking-form label{
-
-    color:#00c2ff;
+gap:12px;
 
 }
+
 
 
 
 .booking-form input,
 .booking-form select{
 
-    padding:13px;
+padding:13px;
 
-    background:#111;
+background:#111;
 
-    color:white;
+color:white;
 
-    border-radius:10px;
-
-    border:1px solid #555;
+border-radius:10px;
 
 }
 
 
 
-.booking-form button{
-
-    padding:14px;
-
-    background:#00c2ff;
-
-    border:none;
-
-    border-radius:10px;
-
-    font-weight:bold;
-
-}
 
 
-/* ================= GALLERY ================= */
+.gallery-cards{
 
+max-width:1100px;
 
-.gallery-cards,
-.gallery{
+margin:50px auto;
 
-    max-width:1100px;
+padding:20px;
 
-    margin:50px auto;
+display:grid;
 
-    display:grid;
+grid-template-columns:repeat(3,1fr);
 
-    grid-template-columns:repeat(3,1fr);
-
-    gap:20px;
+gap:20px;
 
 }
 
 
 
-.gallery-card img,
-.gallery-item img{
+.gallery-card img{
 
-    width:100%;
+width:100%;
 
-    height:250px;
+height:250px;
 
-    object-fit:cover;
+object-fit:cover;
 
-    border-radius:15px;
-
-}
-
-
-
-.gallery-card img:hover{
-
-    transform:scale(1.05);
+border-radius:15px;
 
 }
 
 
 
-/* ================= LIGHTBOX ================= */
 
 
 .lightbox{
 
-    display:none;
+display:none;
 
-    position:fixed;
+position:fixed;
 
-    inset:0;
+inset:0;
 
-    background:rgba(0,0,0,.9);
+background:rgba(0,0,0,.9);
 
-    justify-content:center;
+justify-content:center;
 
-    align-items:center;
+align-items:center;
 
-    z-index:9999;
+z-index:9999;
 
 }
 
@@ -517,28 +366,31 @@ header{
 
 .lightbox img{
 
-    max-width:90%;
+max-width:90%;
 
-    max-height:90%;
+max-height:90%;
 
 }
 
 
 
-/* ================= NEWS ================= */
 
+
+/* NEWS */
 
 .news-grid{
 
-    max-width:1100px;
+max-width:1100px;
 
-    margin:auto;
+margin:50px auto;
 
-    display:grid;
+padding:20px;
 
-    grid-template-columns:repeat(3,1fr);
+display:grid;
 
-    gap:20px;
+grid-template-columns:repeat(3,1fr);
+
+gap:20px;
 
 }
 
@@ -546,7 +398,7 @@ header{
 
 .news-card{
 
-    overflow:hidden;
+overflow:hidden;
 
 }
 
@@ -554,11 +406,13 @@ header{
 
 .news-card img{
 
-    width:100%;
+width:100%;
 
-    height:200px;
+height:220px;
 
-    object-fit:cover;
+object-fit:cover;
+
+display:block;
 
 }
 
@@ -566,7 +420,7 @@ header{
 
 .news-content{
 
-    padding:20px;
+padding:20px;
 
 }
 
@@ -574,26 +428,101 @@ header{
 
 .news-content h3{
 
-    color:#00c2ff;
+color:#00c2ff;
+
+margin-bottom:10px;
 
 }
 
 
 
-/* ================= DASHBOARD ================= */
+.news-content p{
+
+color:#ddd;
+
+line-height:1.5;
+
+}
+
+
+
+.tag{
+
+display:block;
+
+color:#00c2ff;
+
+margin:10px 0;
+
+}
+
+
+
+.news-btn{
+
+display:inline-block;
+
+padding:8px 15px;
+
+border:1px solid #00c2ff;
+
+border-radius:20px;
+
+color:#00c2ff;
+
+text-decoration:none;
+
+}
+
+
+
+
+
+.tabs{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+margin:30px;
+
+}
+
+
+
+.tab-btn{
+
+padding:10px 20px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,.1);
+
+color:white;
+
+border:1px solid #00c2ff;
+
+cursor:pointer;
+
+}
+
+
+
 
 
 .cards{
 
-    max-width:1100px;
+max-width:1100px;
 
-    margin:40px auto;
+margin:40px auto;
 
-    display:grid;
+display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(4,1fr);
 
-    gap:20px;
+gap:20px;
 
 }
 
@@ -601,9 +530,9 @@ header{
 
 .card{
 
-    padding:25px;
+padding:25px;
 
-    text-align:center;
+text-align:center;
 
 }
 
@@ -612,23 +541,22 @@ header{
 .card h2,
 .card p{
 
-    color:#00c2ff;
-
-    font-size:28px;
+color:#00c2ff;
 
 }
 
 
 
+
 table{
 
-    width:90%;
+width:90%;
 
-    margin:30px auto;
+margin:30px auto;
 
-    border-collapse:collapse;
+border-collapse:collapse;
 
-    background:rgba(0,0,0,.5);
+background:rgba(0,0,0,.5);
 
 }
 
@@ -636,11 +564,11 @@ table{
 
 th{
 
-    background:#00c2ff;
+background:#00c2ff;
 
-    color:black;
+color:black;
 
-    padding:12px;
+padding:12px;
 
 }
 
@@ -648,15 +576,14 @@ th{
 
 td{
 
-    padding:12px;
+padding:12px;
 
-    text-align:center;
+text-align:center;
 
 }
 
 
 
-/* ================= MOBILE ================= */
 
 
 @media(max-width:768px){
@@ -664,7 +591,7 @@ td{
 
 .menu-toggle{
 
-    display:block;
+display:block;
 
 }
 
@@ -672,23 +599,23 @@ td{
 
 .menu{
 
-    position:fixed;
+position:fixed;
 
-    top:0;
+top:0;
 
-    right:-100%;
+right:-100%;
 
-    width:75%;
+width:75%;
 
-    height:100vh;
+height:100vh;
 
-    background:#000;
+background:#000;
 
-    flex-direction:column;
+flex-direction:column;
 
-    padding:90px 30px;
+padding:90px 30px;
 
-    transition:.3s;
+transition:.3s;
 
 }
 
@@ -696,19 +623,18 @@ td{
 
 .menu.active{
 
-    right:0;
+right:0;
 
 }
 
 
 
-.about-grid,
-.gallery,
+
 .gallery-cards,
 .news-grid,
 .cards{
 
-    grid-template-columns:1fr;
+grid-template-columns:1fr;
 
 }
 
@@ -716,15 +642,7 @@ td{
 
 .hero h1{
 
-    font-size:32px;
-
-}
-
-
-
-.container{
-
-    padding:0 15px;
+font-size:32px;
 
 }
 
