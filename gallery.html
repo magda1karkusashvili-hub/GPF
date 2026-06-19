@@ -1,256 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Gallery | Georgian Paragliding Federation</title>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet" href="style.css">
+
 
 <style>
 
-/* ================= PAGE ================= */
-.gallery-page {
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 20px;
-    text-align: center;
+
+.gallery-page{
+
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+text-align:center;
+
 }
 
-.gallery-page h1 {
-    color: #00c2ff;
-    margin-bottom: 10px;
+
+
+.gallery-page h1{
+
+color:#00c2ff;
+margin-bottom:10px;
+
 }
 
-/* typing text */
-.typing-text {
-    color: #ccc;
-    margin-bottom: 30px;
-    min-height: 40px;
+
+
+.typing-text{
+
+color:#ccc;
+margin-bottom:30px;
+min-height:40px;
+
 }
 
-/* ================= GRID ================= */
-.gallery-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+
+
+.gallery-cards{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+
 }
 
-.gallery-card {
-    overflow: hidden;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
+
+
+.gallery-card{
+
+overflow:hidden;
+border-radius:12px;
+cursor:pointer;
+
 }
 
-.gallery-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-    transition: 0.4s;
+
+
+.gallery-card img{
+
+width:100%;
+height:250px;
+object-fit:cover;
+transition:.4s;
+
 }
 
-.gallery-card:hover img {
-    transform: scale(1.1);
+
+
+.gallery-card:hover img{
+
+transform:scale(1.1);
+
 }
 
-/* ================= LIGHTBOX ================= */
-.lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+
+
+/* HEADER */
+
+
+header{
+
+background:rgba(0,0,0,.85);
+padding:10px 0;
+position:sticky;
+top:0;
+z-index:1000;
+
 }
 
-.lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
+
+
+.container{
+
+max-width:1200px;
+margin:auto;
+padding:0 15px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
 }
 
-/* ================= HEADER ================= */
-header {
-    background: rgba(0,0,0,0.85);
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+
+
+.logo{
+
+display:flex;
+align-items:center;
+gap:10px;
+
+color:white;
+text-decoration:none;
+
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+
+.logo img{
+
+width:40px;
+height:40px;
+border-radius:50%;
+
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: white;
+
+
+.menu{
+
+display:flex;
+gap:15px;
+
 }
 
-.logo img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+
+
+.menu a{
+
+color:white;
+text-decoration:none;
+
 }
 
-.menu {
-    display: flex;
-    gap: 15px;
+
+
+.menu a:hover{
+
+color:#00c2ff;
+
 }
 
-.menu a {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
+
+
+
+/* LIGHTBOX */
+
+
+.lightbox{
+
+display:none;
+position:fixed;
+inset:0;
+
+background:rgba(0,0,0,.9);
+
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+
 }
 
-.menu a:hover {
-    color: #00c2ff;
+
+
+.lightbox img{
+
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+
 }
 
-/* MOBILE */
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: white;
+
+
+
+@media(max-width:768px){
+
+
+.gallery-cards{
+
+grid-template-columns:1fr;
+
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
 
-    .gallery-cards {
-        grid-template-columns: 1fr;
-    }
+.menu{
 
-    .menu {
-        display: none;
-        flex-direction: column;
-        background: black;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 20px;
-    }
+display:none;
 
-    .menu.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
 }
+
+}
+
+
 
 </style>
 
+
 </head>
+
+
 
 <body>
 
-<!-- ================= HEADER ================= -->
+
+
+
 <header>
-    <div class="container">
 
-        <a href="/" class="logo">
-            <img src="{{ url_for('static', filename='images/logo.jpg') }}">
-            <span>Georgian Paragliding Federation</span>
-        </a>
+<div class="container">
 
-        <!-- HAMBURGER -->
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-        <nav class="menu" id="menu">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/gallery">Gallery</a>
-            <a href="/document">Documents</a>
-            <a href="/contact">Contact</a>
-            <a href="/BookYourFlight">Book Your Flight</a>
-            <a href="/news">News</a>
-            <a href="/dashboard">Dashboard</a>
-        </nav>
+<a href="index.html" class="logo">
 
-    </div>
+
+<img src="logo.jpg">
+
+
+<span>
+Georgian Paragliding Federation
+</span>
+
+
+</a>
+
+
+
+<nav class="menu">
+
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About Us</a>
+
+<a href="gallery.html">Gallery</a>
+
+<a href="document.html">Documents</a>
+
+<a href="contact.html">Contact</a>
+
+<a href="BookYourFlight.html">Book Your Flight</a>
+
+<a href="news.html">News</a>
+
+<a href="dashboard.html">Dashboard</a>
+
+
+</nav>
+
+
+</div>
+
 </header>
 
-<!-- ================= GALLERY ================= -->
+
+
+
+
+
 <section class="gallery-page">
 
-    <h1>Gallery</h1>
 
-    <p class="typing-text"></p>
+<h1>
+Gallery
+</h1>
 
-    <div class="gallery-cards">
 
-        {% for i in range(1, 10) %}
-        <div class="gallery-card">
-            <img src="{{ url_for('static', filename='images/para' ~ i ~ '.jpg') }}"
-                 onclick="openLightbox(this)">
-        </div>
-        {% endfor %}
 
-        <div class="gallery-card">
-            <img src="{{ url_for('static', filename='images/para18.jpg') }}" onclick="openLightbox(this)">
-        </div>
+<p class="typing-text"></p>
 
-        <div class="gallery-card">
-            <img src="{{ url_for('static', filename='images/para19.jpg') }}" onclick="openLightbox(this)">
-        </div>
 
-        <div class="gallery-card">
-            <img src="{{ url_for('static', filename='images/para20.jpg') }}" onclick="openLightbox(this)">
-        </div>
 
-    </div>
+
+
+<div class="gallery-cards">
+
+
+
+<div class="gallery-card">
+<img src="para1.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para2.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para3.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para4.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para5.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para6.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para7.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para8.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para9.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para18.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para19.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para20.jpg" onclick="openLightbox(this)">
+</div>
+
+
+
+</div>
+
+
 
 </section>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img">
+
+
+
+
+
+<div id="lightbox"
+class="lightbox"
+onclick="closeLightbox()">
+
+
+
+<img id="lightbox-img">
+
+
 </div>
 
+
+
+
+
+
+
 <script>
-function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
+
+
+
+function openLightbox(img){
+
+
+document.getElementById("lightbox").style.display="flex";
+
+
+document.getElementById("lightbox-img").src=img.src;
+
+
 }
 
-function openLightbox(img) {
-    document.getElementById("lightbox").style.display = "flex";
-    document.getElementById("lightbox-img").src = img.src;
+
+
+function closeLightbox(){
+
+
+document.getElementById("lightbox").style.display="none";
+
+
 }
 
-function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
+
+
+
+const text = 
+"Moments captured during paragliding adventures across Georgia, showcasing the country's stunning mountains, valleys, and skies through unforgettable flights filled with excitement and discovery.";
+
+
+let i=0;
+
+
+function typeEffect(){
+
+
+if(i<text.length){
+
+
+document.querySelector(".typing-text").innerHTML += text.charAt(i);
+
+
+i++;
+
+
+setTimeout(typeEffect,40);
+
+
 }
 
-/* typing */
-const text = "Moments captured during paragliding adventures across Georgia, showcasing the country’s stunning mountains, valleys, and skies through unforgettable flights filled with excitement and discovery.";
-let i = 0;
 
-function typeEffect() {
-    if (i < text.length) {
-        document.querySelector(".typing-text").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeEffect, 40);
-    }
 }
+
+
 typeEffect();
+
+
+
 </script>
 
+
+
+
 </body>
+
 </html>
