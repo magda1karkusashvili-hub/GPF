@@ -1,262 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Book Your Flight | Georgian Paragliding Federation</title>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="css/style.css">
+
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+
+
+/* ================= BOOKING ================= */
+
+
+.booking-section{
+
+max-width:720px;
+
+margin:auto;
+
+padding:60px 20px;
+
 }
 
-body {
-    background: url("{{ url_for('static', filename='images/para1.jpg') }}") center/cover no-repeat fixed;
-    color: white;
-    min-height: 100vh;
-    position: relative;
+
+
+.booking-title h1{
+
+text-align:center;
+
+color:#00c2ff;
+
+font-size:36px;
+
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: -1;
+
+
+.subtext{
+
+text-align:center;
+
+color:#ccc;
+
+margin:15px 0 30px;
+
 }
 
-/* HEADER */
-header {
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+
+
+/* FORM */
+
+
+.booking-form{
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+padding:30px;
+
+
+background:rgba(255,255,255,0.08);
+
+
+border-radius:16px;
+
+
+border:1px solid rgba(255,255,255,0.15);
+
+
+backdrop-filter:blur(12px);
+
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
+
+
+.booking-form label{
+
+color:#00c2ff;
+
+font-weight:bold;
+
+font-size:14px;
+
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: white;
-}
 
-.logo img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.menu {
-    display: flex;
-    gap: 15px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: white;
-}
-
-.menu a:hover {
-    color: #00c2ff;
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: rgba(0,0,0,0.95);
-        padding: 15px;
-    }
-
-    .menu.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
-/* BOOKING */
-.booking-section {
-    max-width: 720px;
-    margin: auto;
-    padding: 60px 20px;
-}
-
-.booking-title h1 {
-    text-align: center;
-    color: #00c2ff;
-    font-size: 36px;
-}
-
-.subtext {
-    text-align: center;
-    color: #b9c2d0;
-    margin-bottom: 30px;
-}
-
-.booking-form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 30px;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    backdrop-filter: blur(14px);
-}
-
-.booking-form label {
-    color: #00c2ff;
-    font-weight: 600;
-    font-size: 13px;
-}
 
 .booking-form input,
-.booking-form select {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(0,0,0,0.4);
-    color: white;
+.booking-form select{
+
+
+padding:12px;
+
+border-radius:10px;
+
+border:none;
+
+
+background:#111827;
+
+color:white;
+
 }
 
-.booking-form button {
-    padding: 13px;
-    background: linear-gradient(135deg, #00c2ff, #0095c9);
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
+
+
+.booking-form button{
+
+
+padding:14px;
+
+
+background:#00c2ff;
+
+
+border:none;
+
+
+border-radius:10px;
+
+
+font-weight:bold;
+
+
+cursor:pointer;
+
+
+transition:.3s;
+
+
 }
 
-.warning-box {
-    padding: 12px;
-    background: rgba(255,165,0,0.08);
-    border-left: 4px solid orange;
-    color: #ffcc66;
+
+
+.booking-form button:hover{
+
+
+background:white;
+
+
 }
 
-/* ERROR FLASH (optional but useful) */
-.flash {
-    text-align: center;
-    margin-bottom: 15px;
-    color: #ff6b6b;
+
+
+/* WARNING */
+
+
+.warning-box{
+
+
+padding:12px;
+
+
+background:rgba(255,165,0,0.1);
+
+
+border-left:4px solid orange;
+
+
+color:#ffcc66;
+
+
+border-radius:8px;
+
+
 }
+
+
+
 </style>
+
 
 </head>
 
+
+
 <body>
 
+
+
 <header>
-    <div class="container">
 
-        <a href="/" class="logo">
-            <img src="{{ url_for('static', filename='images/logo.jpg') }}">
-            <span>Georgian Paragliding Federation</span>
-        </a>
 
-        <!-- HAMBURGER -->
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="container">
 
-        <nav class="menu" id="menu">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/gallery">Gallery</a>
-            <a href="/document">Documents</a>
-            <a href="/contact">Contact</a>
-            <a href="/BookYourFlight">Book Your Flight</a>
-            <a href="/news">News</a>
-            <a href="/dashboard">Dashboard</a>
-        </nav>
 
-    </div>
+
+<a href="index.html" class="logo">
+
+
+<img src="images/logo.jpg">
+
+
+<span>
+Georgian Paragliding Federation
+</span>
+
+
+</a>
+
+
+
+<div class="menu-toggle" onclick="toggleMenu()">
+
+☰
+
+</div>
+
+
+
+<nav class="menu" id="menu">
+
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About Us</a>
+
+<a href="gallery.html">Gallery</a>
+
+<a href="documents.html">Documents</a>
+
+<a href="contact.html">Contact</a>
+
+<a href="booking.html">Book Your Flight</a>
+
+<a href="news.html">News</a>
+
+<a href="dashboard.html">Dashboard</a>
+
+
+</nav>
+
+
+</div>
+
+
 </header>
+
+
+
 
 <section class="booking-section">
 
+
+
 <div class="booking-title">
-    <h1>Book Your Paragliding Adventure</h1>
+
+
+<h1>
+Book Your Paragliding Adventure
+</h1>
+
+
 </div>
 
+
+
 <p class="subtext">
-    Choose your location and we will contact you shortly.
+
+Choose your location and we will contact you shortly.
+
 </p>
 
-<!-- FLASH MESSAGES -->
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for category, message in messages %}
-      <div class="flash">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 
-<form class="booking-form"
-      action="{{ url_for('book') }}"
-      method="POST">
 
-    <label>Location</label>
-    <select name="location" required>
-        <option value="">Select Location</option>
-        <option value="gudauri">Gudauri</option>
-        <option value="ananuri">Ananuri</option>
-    </select>
 
-    <label>Date</label>
-    <input type="date" name="date" required min="{{ today }}">
 
-    <label>Full Name</label>
-    <input type="text" name="name" required>
+<form class="booking-form">
 
-    <label>Email</label>
-    <input type="email" name="email" required>
 
-    <label>Phone</label>
-    <input type="tel" name="phone" required>
 
-    <div class="warning-box">
-        ⚠️ Flights depend on weather conditions.
-    </div>
+<label>
+Location
+</label>
 
-    <button type="submit">Confirm Booking</button>
+
+<select required>
+
+
+<option>
+Select Location
+</option>
+
+
+<option>
+Gudauri
+</option>
+
+
+<option>
+Ananuri
+</option>
+
+
+<option>
+Mestia
+</option>
+
+
+<option>
+Tbilisi Sea
+</option>
+
+
+
+</select>
+
+
+
+
+<label>
+Date
+</label>
+
+
+<input type="date" required>
+
+
+
+
+
+<label>
+Full Name
+</label>
+
+
+<input type="text" placeholder="Your name" required>
+
+
+
+
+
+<label>
+Email
+</label>
+
+
+<input type="email" placeholder="Email" required>
+
+
+
+
+
+<label>
+Phone
+</label>
+
+
+<input type="tel" placeholder="Phone number" required>
+
+
+
+
+
+<div class="warning-box">
+
+
+⚠️ Flights depend on weather conditions and safety approval.
+
+
+
+</div>
+
+
+
+
+
+<button type="submit">
+
+Confirm Booking
+
+</button>
+
+
 
 </form>
 
+
+
 </section>
 
+
+
+
+
+
 <script>
-function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
+
+
+function toggleMenu(){
+
+
+document
+.getElementById("menu")
+.classList
+.toggle("active");
+
+
 }
+
+
 </script>
 
+
+
 </body>
+
+
 </html>
