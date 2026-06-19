@@ -4,295 +4,16 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Dashboard | Paragliding Admin</title>
+<title>
+Dashboard | Georgian Paragliding Federation
+</title>
 
 
-<style>
-
-
-body{
-
-margin:0;
-font-family:Arial;
-background:#0f172a;
-color:white;
-
-}
-
-
-
-header{
-
-background:#111827;
-padding:15px 25px;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-border-bottom:1px solid #1f2937;
-
-}
-
-
-
-header h2{
-
-margin:0;
-
-}
-
-
-
-.admin-badge{
-
-font-size:12px;
-background:#22c55e;
-
-padding:3px 8px;
-
-border-radius:6px;
-
-}
-
-
-
-.btn{
-
-padding:8px 14px;
-
-border-radius:8px;
-
-background:#2563eb;
-
-color:white;
-
-text-decoration:none;
-
-margin-left:6px;
-
-font-size:14px;
-
-}
-
-
-
-.logout{
-
-background:#dc2626;
-
-}
-
-
-
-
-.cards{
-
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:18px;
-
-padding:25px;
-
-}
-
-
-
-.card{
-
-background:#1f2937;
-
-padding:25px;
-
-border-radius:14px;
-
-text-align:center;
-
-}
-
-
-
-.card h3{
-
-color:#9ca3af;
-
-}
-
-
-
-.card h2{
-
-font-size:28px;
-
-}
-
-
-
-
-.filter{
-
-padding:0 25px 20px;
-
-display:flex;
-
-gap:10px;
-
-}
-
-
-
-input,select{
-
-padding:10px;
-
-background:#1f2937;
-
-color:white;
-
-border:none;
-
-border-radius:8px;
-
-}
-
-
-
-
-.table-container{
-
-padding:25px;
-
-}
-
-
-
-table{
-
-width:100%;
-
-border-collapse:collapse;
-
-background:#111827;
-
-}
-
-
-
-th{
-
-background:#2563eb;
-
-padding:12px;
-
-}
-
-
-
-td{
-
-padding:12px;
-
-text-align:center;
-
-border-bottom:1px solid #1f2937;
-
-}
-
-
-
-.NEW{
-
-color:#facc15;
-
-font-weight:bold;
-
-}
-
-
-.CONFIRMED{
-
-color:#4ade80;
-
-font-weight:bold;
-
-}
-
-
-.CANCELLED{
-
-color:#f87171;
-
-font-weight:bold;
-
-}
-
-
-
-.action-btn{
-
-padding:6px 10px;
-
-border-radius:6px;
-
-text-decoration:none;
-
-margin:2px;
-
-}
-
-
-
-.confirm{
-
-background:#16a34a;
-color:white;
-
-}
-
-
-.cancel{
-
-background:#dc2626;
-color:white;
-
-}
-
-
-.delete{
-
-background:black;
-color:white;
-
-}
-
-
-
-@media(max-width:900px){
-
-.cards{
-
-grid-template-columns:1fr;
-
-}
-
-
-table{
-
-font-size:12px;
-
-}
-
-
-}
-
-
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 
 </head>
@@ -307,34 +28,60 @@ font-size:12px;
 <header>
 
 
-<h2>
+<div class="container">
 
-Admin Dashboard
 
-<span class="admin-badge">
-ADMIN
+
+<a href="index.html" class="logo">
+
+
+<img src="images/logo.jpg">
+
+
+<span>
+Georgian Paragliding Federation
 </span>
 
 
-</h2>
-
-
-
-<div>
-
-<a class="btn" href="#">
-CSV
 </a>
 
 
-<a class="btn" href="#">
-Excel
-</a>
 
 
-<a class="btn logout" href="login.html">
-Logout
-</a>
+
+<div class="menu-toggle">
+
+☰
+
+</div>
+
+
+
+
+
+
+<nav class="menu" id="menu">
+
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About Us</a>
+
+<a href="gallery.html">Gallery</a>
+
+<a href="document.html">Documents</a>
+
+<a href="contact.html">Contact</a>
+
+<a href="BookYourFlight.html">Book Your Flight</a>
+
+<a href="news.html">News</a>
+
+<a href="dashboard.html">Dashboard</a>
+
+
+</nav>
+
 
 
 </div>
@@ -348,25 +95,65 @@ Logout
 
 
 
+
+
+<section class="page-title">
+
+
+<h1>
+📊 Dashboard
+</h1>
+
+
+<p>
+Paragliding Booking Management System
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+
 <div class="cards">
+
+
+
 
 
 <div class="card">
 
 <h3>Total</h3>
 
-<h2>12</h2>
+<h2>
+12
+</h2>
 
 </div>
+
+
+
+
 
 
 <div class="card">
 
 <h3>New</h3>
 
-<h2>5</h2>
+<h2>
+5
+</h2>
 
 </div>
+
+
+
+
 
 
 
@@ -374,9 +161,16 @@ Logout
 
 <h3>Confirmed</h3>
 
-<h2>6</h2>
+<h2>
+6
+</h2>
 
 </div>
+
+
+
+
+
 
 
 
@@ -384,11 +178,17 @@ Logout
 
 <h3>Cancelled</h3>
 
-<h2>1</h2>
+<h2>
+1
+</h2>
 
 </div>
 
 
+
+
+
+
 </div>
 
 
@@ -397,16 +197,31 @@ Logout
 
 
 
-<div class="filter">
 
 
-<input placeholder="Location">
+<div style="padding:20px;text-align:center;">
 
 
-<input type="date">
+
+<input 
+placeholder="Location"
+style="padding:10px;border-radius:8px;">
 
 
-<select>
+
+
+
+<input 
+type="date"
+style="padding:10px;border-radius:8px;">
+
+
+
+
+
+
+<select style="padding:10px;border-radius:8px;">
+
 
 <option>
 All
@@ -428,13 +243,12 @@ CANCELLED
 </option>
 
 
+
 </select>
 
 
 
-<button class="btn">
-Filter
-</button>
+
 
 
 </div>
@@ -446,13 +260,13 @@ Filter
 
 
 
-<div class="table-container">
-
 
 <table>
 
 
+
 <tr>
+
 
 <th>ID</th>
 
@@ -468,10 +282,9 @@ Filter
 
 <th>Status</th>
 
-<th>Action</th>
-
 
 </tr>
+
 
 
 
@@ -480,46 +293,44 @@ Filter
 <tr>
 
 
-<td>1</td>
-
-<td>Gudauri</td>
-
-<td>2026-06-20</td>
-
-<td>Giorgi</td>
-
-<td>example@mail.com</td>
-
-<td>555000000</td>
+<td>
+1
+</td>
 
 
-<td class="CONFIRMED">
+<td>
+Gudauri
+</td>
+
+
+<td>
+2026-06-20
+</td>
+
+
+<td>
+Giorgi
+</td>
+
+
+<td>
+example@mail.com
+</td>
+
+
+<td>
+555000000
+</td>
+
+
+<td>
 CONFIRMED
 </td>
 
 
-<td>
-
-
-<a class="action-btn confirm">
-✔
-</a>
-
-
-<a class="action-btn cancel">
-✖
-</a>
-
-
-<a class="action-btn delete">
-🗑
-</a>
-
-
-</td>
-
 
 </tr>
+
 
 
 
@@ -529,46 +340,44 @@ CONFIRMED
 <tr>
 
 
-<td>2</td>
-
-<td>Manavi</td>
-
-<td>2026-06-22</td>
-
-<td>Anna</td>
-
-<td>anna@mail.com</td>
-
-<td>555111111</td>
-
-
-<td class="NEW">
-NEW
+<td>
+2
 </td>
 
 
 <td>
-
-
-<a class="action-btn confirm">
-✔
-</a>
-
-
-<a class="action-btn cancel">
-✖
-</a>
-
-
-<a class="action-btn delete">
-🗑
-</a>
-
-
+Manavi
 </td>
 
 
+<td>
+2026-06-25
+</td>
+
+
+<td>
+Nino
+</td>
+
+
+<td>
+nino@mail.com
+</td>
+
+
+<td>
+555111111
+</td>
+
+
+<td>
+NEW
+</td>
+
+
+
 </tr>
+
 
 
 
@@ -578,13 +387,16 @@ NEW
 
 
 
-</div>
 
 
 
 
+
+
+<script src="script.js"></script>
 
 
 </body>
+
 
 </html>
