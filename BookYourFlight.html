@@ -10,12 +10,13 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-
 </head>
 
 
 <body>
 
+
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -32,29 +33,55 @@
 
 
 
-<div class="menu-toggle" onclick="toggleMenu()">
+<div class="menu-toggle">
 ☰
 </div>
 
 
 
+
 <nav class="menu" id="menu">
 
-<a href="index.html">Home</a>
 
-<a href="about.html">About Us</a>
+<a href="index.html">
+Home
+</a>
 
-<a href="gallery.html">Gallery</a>
 
-<a href="document.html">Documents</a>
+<a href="about.html">
+About Us
+</a>
 
-<a href="contact.html">Contact</a>
 
-<a href="BookYourFlight.html">Book Your Flight</a>
+<a href="gallery.html">
+Gallery
+</a>
 
-<a href="news.html">News</a>
 
-<a href="dashboard.html">Dashboard</a>
+<a href="document.html">
+Documents
+</a>
+
+
+<a href="contact.html">
+Contact
+</a>
+
+
+<a href="BookYourFlight.html">
+Book Your Flight
+</a>
+
+
+<a href="news.html">
+News
+</a>
+
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
 
 
 </nav>
@@ -62,23 +89,34 @@
 
 </div>
 
-
 </header>
 
 
 
 
+
+
+<!-- ================= BOOKING ================= -->
+
+
 <section class="booking-section">
 
 
+
 <h1 class="booking-title">
+
 Book Your Paragliding Adventure
+
 </h1>
 
 
+
 <p class="subtext">
+
 Choose your location and we will contact you shortly.
+
 </p>
+
 
 
 
@@ -86,31 +124,39 @@ Choose your location and we will contact you shortly.
 <form class="booking-form">
 
 
+
 <label>
 Location
 </label>
 
 
+
 <select required>
+
 
 <option>
 Select Location
 </option>
 
+
 <option>
 Gudauri
 </option>
 
+
 <option>
 Ananuri
 </option>
+
 
 <option>
 Mestia
 </option>
 
 
+
 </select>
+
 
 
 
@@ -120,7 +166,10 @@ Date
 </label>
 
 
-<input type="date" required>
+<input 
+type="date"
+required>
+
 
 
 
@@ -130,7 +179,11 @@ Full Name
 </label>
 
 
-<input type="text" placeholder="Your name" required>
+<input 
+type="text"
+placeholder="Your name"
+required>
+
 
 
 
@@ -140,7 +193,11 @@ Email
 </label>
 
 
-<input type="email" placeholder="Email" required>
+<input
+type="email"
+placeholder="Email"
+required>
+
 
 
 
@@ -150,7 +207,12 @@ Phone
 </label>
 
 
-<input type="tel" placeholder="Phone number" required>
+<input
+type="tel"
+placeholder="Phone number"
+required>
+
+
 
 
 
@@ -158,9 +220,14 @@ Phone
 
 <div class="warning-box">
 
+
 ⚠️ Flights depend on weather conditions.
 
+
 </div>
+
+
+
 
 
 
@@ -184,19 +251,8 @@ Confirm Booking
 
 
 
-<script>
 
-function toggleMenu(){
-
-document
-.getElementById("menu")
-.classList.toggle("active");
-
-}
-
-
-</script>
-
+<script src="script.js"></script>
 
 
 </body>
