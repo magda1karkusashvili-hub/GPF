@@ -8,15 +8,13 @@
 
 <title>Book Your Flight | Georgian Paragliding Federation</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 
 <body>
 
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -32,61 +30,29 @@
 </a>
 
 
-
-<!-- MOBILE MENU BUTTON -->
-
 <div class="menu-toggle" onclick="toggleMenu()">
-
 ☰
-
 </div>
-
-
-
 
 
 <nav class="menu" id="menu">
 
 
-<a href="index.html">
-Home
-</a>
+<a href="index.html">Home</a>
 
+<a href="about.html">About Us</a>
 
-<a href="about.html">
-About Us
-</a>
+<a href="gallery.html">Gallery</a>
 
+<a href="document.html">Documents</a>
 
-<a href="gallery.html">
-Gallery
-</a>
+<a href="contact.html">Contact</a>
 
+<a href="BookYourFlight.html">Book Your Flight</a>
 
-<a href="document.html">
-Documents
-</a>
+<a href="news.html">News</a>
 
-
-<a href="contact.html">
-Contact
-</a>
-
-
-<a href="BookYourFlight.html">
-Book Your Flight
-</a>
-
-
-<a href="news.html">
-News
-</a>
-
-
-<a href="dashboard.html">
-Dashboard
-</a>
-
+<a href="dashboard.html">Dashboard</a>
 
 
 </nav>
@@ -98,155 +64,57 @@ Dashboard
 
 
 
-
-
-<!-- ================= BOOKING SECTION ================= -->
-
-
 <section class="booking-section">
 
 
 <h1 class="booking-title">
-
 Book Your Paragliding Adventure
-
 </h1>
 
 
-
 <p class="subtext">
-
 Choose your location and we will contact you shortly.
-
 </p>
-
-
-
 
 
 
 <form class="booking-form">
 
 
-
-
-
-<label>
-
-Location
-
-</label>
-
-
+<label>Location</label>
 
 <select required>
 
-
-<option value="">
-
-Select Location
-
-</option>
-
-
-<option>
-
-Gudauri
-
-</option>
-
-
-<option>
-
-Ananuri
-
-</option>
-
-
-<option>
-
-Mestia
-
-</option>
-
-
+<option>Select Location</option>
+<option>Gudauri</option>
+<option>Ananuri</option>
+<option>Mestia</option>
 
 </select>
 
 
 
+<label>Date</label>
+
+<input type="date" required>
 
 
 
-<label>
+<label>Full Name</label>
 
-Date
-
-</label>
-
-
-<input 
-type="date"
-required>
+<input type="text" placeholder="Your name" required>
 
 
 
+<label>Email</label>
+
+<input type="email" placeholder="Email" required>
 
 
 
+<label>Phone</label>
 
-<label>
-
-Full Name
-
-</label>
-
-
-<input
-type="text"
-placeholder="Your name"
-required>
-
-
-
-
-
-
-
-
-<label>
-
-Email
-
-</label>
-
-
-<input
-type="email"
-placeholder="Email"
-required>
-
-
-
-
-
-
-
-<label>
-
-Phone
-
-</label>
-
-
-<input
-type="tel"
-placeholder="Phone number"
-required>
-
-
-
-
+<input type="tel" placeholder="Phone number" required>
 
 
 
@@ -258,10 +126,6 @@ required>
 
 
 
-
-
-
-
 <button type="submit">
 
 Confirm Booking
@@ -269,53 +133,24 @@ Confirm Booking
 </button>
 
 
-
-
-
-
 </form>
-
-
 
 
 </section>
 
 
 
-
-
-
-
-<!-- ================= SCRIPT ================= -->
-
-
-<script src="script.js"></script>
-
-
 <script>
-
 
 function toggleMenu(){
 
-
-    const menu = document.getElementById("menu");
-
-
-    if(menu){
-
-        menu.classList.toggle("active");
-
-    }
-
+document
+.getElementById("menu")
+.classList.toggle("active");
 
 }
 
-
-
 </script>
-
-
-
 
 
 </body>
