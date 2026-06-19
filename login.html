@@ -1,162 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
+
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Login</title>
 
-<style>
+<title>
+Admin Login | Georgian Paragliding Federation
+</title>
 
-body {
-    margin: 0;
-    font-family: Arial;
-    background: radial-gradient(circle at top, #0f172a, #020617);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 15px;
-}
 
-.login-box {
-    background: rgba(17, 24, 39, 0.92);
-    padding: 40px 35px;
-    border-radius: 16px;
-    width: 100%;
-    max-width: 380px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.06);
-    backdrop-filter: blur(12px);
-}
 
-.lock-icon {
-    font-size: 38px;
-    margin-bottom: 8px;
-}
+<link rel="stylesheet" href="style.css">
 
-h2 {
-    margin-bottom: 8px;
-    font-size: 22px;
-}
-
-.security-title {
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: #fbbf24;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-}
-
-.access-warning {
-    background: rgba(251,191,36,0.10);
-    color:#fbbf24;
-    padding:10px;
-    border-radius:10px;
-    margin-bottom:18px;
-    font-size:12px;
-}
-
-input {
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border:none;
-    border-radius:10px;
-    background:#1f2937;
-    color:white;
-    font-size:14px;
-}
-
-button {
-    width:100%;
-    padding:12px;
-    background:#2563eb;
-    border:none;
-    border-radius:10px;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    margin-top:8px;
-}
-
-button:hover {
-    opacity:.9;
-}
-
-.warning {
-    font-size:11px;
-    color:#9ca3af;
-    margin-top:14px;
-}
-
-.small-note {
-    font-size:11px;
-    color:#6b7280;
-    margin-top:10px;
-}
-
-</style>
 
 </head>
+
+
 
 <body>
 
 
-<div class="login-box">
-
-    <div class="lock-icon">🔐</div>
 
 
-    <div class="security-title">
-        Secure Admin Access
-    </div>
+<div class="container"
+style="min-height:100vh;display:flex;justify-content:center;align-items:center;">
 
 
-    <div class="access-warning">
-        Restricted Area • Authorized Personnel Only
-    </div>
 
 
-    <h2>Admin Login</h2>
+
+<div class="card"
+style="max-width:380px;width:100%;text-align:center;padding:40px;">
 
 
-    <form action="admin.html">
-
-        <input 
-        type="text" 
-        placeholder="Username"
-        required>
 
 
-        <input 
-        type="password" 
-        placeholder="Password"
-        required>
 
 
-        <button type="submit">
-            Login
-        </button>
+<div style="font-size:40px;">
+🔐
+</div>
 
 
-    </form>
 
 
-    <div class="warning">
-        ⚠️ All login attempts are monitored and logged for security purposes.
-    </div>
+
+<h2 style="color:#00c2ff;margin:15px;">
+Admin Login
+</h2>
 
 
-    <div class="small-note">
-        Paragliding Admin System v3.0
-    </div>
+
+
+
+<p style="color:#fbbf24;margin-bottom:15px;">
+
+Secure Admin Access
+
+</p>
+
+
+
+
+
+
+
+<div class="warning-box">
+
+⚠️ Restricted Area • Authorized Personnel Only
+
+</div>
+
+
+
+
+
+
+
+
+
+<form action="dashboard.html">
+
+
+
+
+
+
+<input
+type="text"
+placeholder="Username"
+required
+style="width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;background:#111;color:white;">
+
+
+
+
+
+
+
+<input
+type="password"
+placeholder="Password"
+required
+style="width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;background:#111;color:white;">
+
+
+
+
+
+
+
+
+<button
+class="btn"
+type="submit"
+style="width:100%;border:none;cursor:pointer;">
+
+Login
+
+</button>
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+<p style="color:#aaa;font-size:12px;margin-top:20px;">
+
+
+⚠️ All login attempts are monitored and logged.
+
+</p>
+
+
+
+
+
+
+
+<p style="color:#666;font-size:11px;">
+
+
+Paragliding Admin System v3.0
+
+
+</p>
+
+
+
+
+
 
 
 </div>
 
 
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
 </body>
+
+
 </html>
