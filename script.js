@@ -11,124 +11,77 @@ const qsa = (s) => document.querySelectorAll(s);
    DOM READY
 ========================= */
 
+
 document.addEventListener("DOMContentLoaded",()=>{
 
 
+
 /* =========================
-   MOBILE MENU FIX
+   MOBILE MENU
 ========================= */
 
 
 const menu = document.getElementById("menu");
+
 const toggle = document.querySelector(".menu-toggle");
+
 
 
 if(menu && toggle){
 
 
-    toggle.addEventListener("click",(e)=>{
+toggle.addEventListener("click",(e)=>{
 
-        e.stopPropagation();
+e.stopPropagation();
 
-        menu.classList.toggle("active");
-
-    });
+menu.classList.toggle("active");
 
 
-
-    document.addEventListener("click",(e)=>{
-
-
-        if(
-            !menu.contains(e.target) &&
-            !toggle.contains(e.target)
-        ){
-
-            menu.classList.remove("active");
-
-        }
-
-
-    });
+});
 
 
 
-    menu.querySelectorAll("a").forEach(link=>{
+
+document.addEventListener("click",(e)=>{
 
 
-        link.addEventListener("click",()=>{
+if(
+!menu.contains(e.target) &&
+!toggle.contains(e.target)
 
-            menu.classList.remove("active");
+){
 
-        });
-
-
-    });
-
+menu.classList.remove("active");
 
 }
 
+
+});
+
+
+
+
+menu.querySelectorAll("a").forEach(link=>{
+
+
+link.addEventListener("click",()=>{
+
+menu.classList.remove("active");
+
+
+});
+
+
+});
+
+
+}
 
 
 
 
 /* =========================
-   HERO SLIDER
-========================= */
-
-
-let currentSlide = 0;
-
-const slides = qsa(".hero .slide");
-
-
-function showSlide(index){
-
-
-    if(!slides.length)
-        return;
-
-
-    currentSlide =
-    (index + slides.length) % slides.length;
-
-
-
-    slides.forEach(slide=>{
-
-        slide.classList.remove("active");
-
-    });
-
-
-
-    slides[currentSlide]
-    .classList.add("active");
-
-
-}
-
-
-
-if(slides.length > 1){
-
-
-setInterval(()=>{
-
-showSlide(currentSlide+1);
-
-
-},3500);
-
-
-}
-
-
-
-
-
-/* =========================
-   SCROLL ANIMATION
+   SCROLL REVEAL
 ========================= */
 
 
@@ -138,8 +91,9 @@ function reveal(){
 qsa(".reveal").forEach(el=>{
 
 
-const position =
+let position =
 el.getBoundingClientRect().top;
+
 
 
 if(position < window.innerHeight-100){
@@ -149,7 +103,6 @@ el.classList.add("active");
 
 
 }
-
 
 
 });
@@ -171,21 +124,81 @@ reveal();
 
 
 
+/* =========================
+   HERO SLIDER
+========================= */
+
+
+let slideIndex=0;
+
+
+const slides =
+qsa(".hero .slide");
+
+
+
+function showSlide(i){
+
+
+if(!slides.length)
+return;
+
+
+
+slides.forEach(s=>{
+
+s.classList.remove("active");
+
+});
+
+
+
+slideIndex =
+(i+slides.length)%slides.length;
+
+
+
+slides[slideIndex]
+.classList.add("active");
+
+
+}
+
+
+
+
+if(slides.length>1){
+
+
+setInterval(()=>{
+
+
+showSlide(slideIndex+1);
+
+
+},3500);
+
+
+}
+
+
+
+
 
 /* =========================
-   GALLERY SLIDER
+   GALLERY AUTO SLIDER
 ========================= */
 
 
 qsa(".gallery-card").forEach(card=>{
 
 
-const imgs =
+let images =
 card.querySelectorAll("img");
 
 
 
-if(imgs.length<=1)
+if(images.length<=1)
 return;
 
 
@@ -194,7 +207,7 @@ let index=0;
 
 
 
-imgs.forEach((img,i)=>{
+images.forEach((img,i)=>{
 
 
 img.style.display =
@@ -205,18 +218,23 @@ i===0 ? "block":"none";
 
 
 
+
 setInterval(()=>{
 
 
-imgs[index].style.display="none";
+images[index]
+.style.display="none";
+
 
 
 index =
-(index+1)%imgs.length;
+(index+1)%images.length;
 
 
 
-imgs[index].style.display="block";
+images[index]
+.style.display="block";
+
 
 
 },3000);
@@ -227,131 +245,28 @@ imgs[index].style.display="block";
 
 
 
-
 });
 
 
 
 
 
-/* =========================
-   MODAL
-========================= */
-
-
-function openModal(type){
-
-
-const modal = qs("#modal");
-const title = qs("#modal-title");
-const text = qs("#modal-text");
-
-
-if(!modal)
-return;
-
-
-
-const data={
-
-
-mission:{
-title:"🎯 Mission",
-text:"To develop safe and professional paragliding experiences in Georgia."
-},
-
-
-safety:{
-title:"🛡 Safety",
-text:"We follow international aviation safety standards."
-},
-
-
-development:{
-title:"🎓 Development",
-text:"We train pilots and support aviation growth."
-},
-
-
-vision:{
-title:"🌍 Vision",
-text:"Georgia as a world paragliding destination."
-}
-
-
-
-};
-
-
-
-if(!data[type])
-return;
-
-
-
-title.innerText=data[type].title;
-
-text.innerText=data[type].text;
-
-
-modal.style.display="flex";
-
-
-}
-
-
-
-
-function closeModal(){
-
-
-const modal = qs("#modal");
-
-
-if(modal)
-
-modal.style.display="none";
-
-
-}
-
-
 
 
 /* =========================
-   PASSWORD MODAL
+   ABOUT BOX
 ========================= */
 
 
-function openPasswordModal(){
+function toggleBox(el){
 
 
-const modal =
-qs("#passwordModal");
-
-
-if(modal)
-
-modal.style.display="flex";
+el.classList.toggle("active");
 
 
 }
 
 
-
-function closePasswordModal(){
-
-
-const modal =
-qs("#passwordModal");
-
-
-if(modal)
-
-modal.style.display="none";
-
-
-}
 
 
 
@@ -362,6 +277,7 @@ modal.style.display="none";
 
 
 function openLightbox(img){
+
 
 
 const box =
@@ -384,7 +300,9 @@ box.style.display="flex";
 image.src=img.src;
 
 
+
 }
+
 
 
 
@@ -398,6 +316,175 @@ qs("#lightbox");
 if(box)
 
 box.style.display="none";
+
+
+}
+
+
+
+
+
+/* =========================
+   MODAL
+========================= */
+
+
+function openModal(type){
+
+
+const modal =
+qs("#modal");
+
+const title =
+qs("#modal-title");
+
+const text =
+qs("#modal-text");
+
+
+
+if(!modal)
+return;
+
+
+
+
+const data={
+
+
+mission:{
+
+title:"🎯 Mission",
+
+text:
+"Develop safe and professional paragliding experiences in Georgia."
+
+},
+
+
+
+safety:{
+
+title:"🛡 Safety",
+
+text:
+"We follow international aviation safety principles."
+
+},
+
+
+
+development:{
+
+title:"🎓 Development",
+
+text:
+"We train pilots and support aviation growth."
+
+}
+
+
+};
+
+
+
+
+if(!data[type])
+return;
+
+
+
+title.innerText =
+data[type].title;
+
+
+
+text.innerText =
+data[type].text;
+
+
+
+modal.style.display="flex";
+
+
+}
+
+
+
+
+function closeModal(){
+
+
+const modal =
+qs("#modal");
+
+
+if(modal)
+
+modal.style.display="none";
+
+
+}
+
+
+
+
+
+/* =========================
+   NEWS FILTER
+========================= */
+
+
+function filterNews(category,event){
+
+
+
+document
+.querySelectorAll(".tab-btn")
+.forEach(btn=>{
+
+
+btn.classList.remove("active");
+
+
+});
+
+
+
+event.target.classList.add("active");
+
+
+
+
+document
+.querySelectorAll(".news-card")
+.forEach(card=>{
+
+
+if(
+category==="all" ||
+card.dataset.category===category
+
+){
+
+
+card.style.display="block";
+
+
+}
+
+else{
+
+
+card.style.display="none";
+
+
+}
+
+
+
+});
+
 
 
 }
