@@ -19,15 +19,24 @@ Admin Dashboard | Georgian Paragliding Federation
 </head>
 
 
-
 <body>
+
+
+<script>
+
+if(localStorage.getItem("adminLogin")!=="true"){
+
+window.location.href="login.html";
+
+}
+
+</script>
 
 
 
 
 
 <header>
-
 
 <div class="container">
 
@@ -50,7 +59,6 @@ Georgian Paragliding Federation
 
 
 
-
 <div class="menu-toggle">
 
 ☰
@@ -61,27 +69,51 @@ Georgian Paragliding Federation
 
 
 
-
-
 <nav class="menu" id="menu">
 
 
+<a href="index.html">
+Home
+</a>
 
-<a href="index.html">Home</a>
 
-<a href="about.html">About Us</a>
+<a href="about.html">
+About Us
+</a>
 
-<a href="gallery.html">Gallery</a>
 
-<a href="document.html">Documents</a>
+<a href="gallery.html">
+Gallery
+</a>
 
-<a href="contact.html">Contact</a>
 
-<a href="BookYourFlight.html">Book Your Flight</a>
+<a href="document.html">
+Documents
+</a>
 
-<a href="news.html">News</a>
 
-<a href="dashboard.html">Dashboard</a>
+<a href="contact.html">
+Contact
+</a>
+
+
+<a href="BookYourFlight.html">
+Book Your Flight
+</a>
+
+
+<a href="news.html">
+News
+</a>
+
+
+
+<a href="#" onclick="logout()">
+
+Logout
+
+</a>
+
 
 
 </nav>
@@ -99,22 +131,16 @@ Georgian Paragliding Federation
 
 
 
-
-
 <section class="page-title">
 
 
 <h1>
-
 Admin Dashboard
-
 </h1>
 
 
 <p>
-
 Booking Management System
-
 </p>
 
 
@@ -126,12 +152,7 @@ Booking Management System
 
 
 
-
-
 <div class="cards">
-
-
-
 
 
 <div class="card">
@@ -143,9 +164,6 @@ Booking Management System
 </h2>
 
 </div>
-
-
-
 
 
 
@@ -161,9 +179,6 @@ Booking Management System
 
 
 
-
-
-
 <div class="card">
 
 <h3>Confirmed</h3>
@@ -173,9 +188,6 @@ Booking Management System
 </h2>
 
 </div>
-
-
-
 
 
 
@@ -190,12 +202,7 @@ Booking Management System
 </div>
 
 
-
-
-
 </div>
-
-
 
 
 
@@ -206,23 +213,13 @@ Booking Management System
 <div style="text-align:center;padding:20px;">
 
 
-
-<input placeholder="Location"
-style="padding:10px;border-radius:8px;">
+<input placeholder="Location">
 
 
+<input type="date">
 
 
-
-<input type="date"
-style="padding:10px;border-radius:8px;">
-
-
-
-
-
-<select style="padding:10px;border-radius:8px;">
-
+<select>
 
 <option>
 All
@@ -265,28 +262,18 @@ Filter
 
 
 
-
 <table>
-
 
 
 <tr>
 
-
 <th>ID</th>
-
 <th>Location</th>
-
 <th>Date</th>
-
 <th>Name</th>
-
 <th>Email</th>
-
 <th>Phone</th>
-
 <th>Status</th>
-
 <th>Action</th>
 
 
@@ -296,45 +283,25 @@ Filter
 
 
 
-
-
-
-
 <tr>
 
+<td>1</td>
 
-<td>
-1
-</td>
+<td>Gudauri</td>
 
+<td>2026-06-20</td>
 
-<td>
-Gudauri
-</td>
+<td>Giorgi</td>
 
+<td>example@mail.com</td>
 
-<td>
-2026-06-20
-</td>
+<td>555000000</td>
 
 
-<td>
-Giorgi
-</td>
+<td style="color:#4ade80;font-weight:bold">
 
-
-<td>
-example@mail.com
-</td>
-
-
-<td>
-555000000
-</td>
-
-
-<td style="color:#4ade80;font-weight:bold;">
 CONFIRMED
+
 </td>
 
 
@@ -347,14 +314,19 @@ CONFIRMED
 
 
 <button class="btn"
-style="background:#dc2626;">
+style="background:#dc2626">
+
 ✖
+
 </button>
 
 
+
 <button class="btn"
-style="background:black;">
+style="background:black">
+
 🗑
+
 </button>
 
 
@@ -362,10 +334,6 @@ style="background:black;">
 
 
 </tr>
-
-
-
-
 
 
 
@@ -374,38 +342,24 @@ style="background:black;">
 <tr>
 
 
-<td>
-2
-</td>
+<td>2</td>
+
+<td>Manavi</td>
+
+<td>2026-06-25</td>
+
+<td>Anna</td>
+
+<td>anna@mail.com</td>
+
+<td>555111111</td>
 
 
-<td>
-Manavi
-</td>
 
+<td style="color:#facc15;font-weight:bold">
 
-<td>
-2026-06-25
-</td>
-
-
-<td>
-Anna
-</td>
-
-
-<td>
-anna@mail.com
-</td>
-
-
-<td>
-555111111
-</td>
-
-
-<td style="color:#facc15;font-weight:bold;">
 NEW
+
 </td>
 
 
@@ -418,14 +372,18 @@ NEW
 
 
 <button class="btn"
-style="background:#dc2626;">
+style="background:#dc2626">
+
 ✖
+
 </button>
 
 
 <button class="btn"
-style="background:black;">
+style="background:black">
+
 🗑
+
 </button>
 
 
@@ -433,11 +391,6 @@ style="background:black;">
 
 
 </tr>
-
-
-
-
-
 
 
 
@@ -450,12 +403,28 @@ style="background:black;">
 
 
 
-
 <script src="script.js"></script>
+
+
+<script>
+
+
+function logout(){
+
+
+localStorage.removeItem("adminLogin");
+
+
+window.location.href="login.html";
+
+
+}
+
+
+</script>
 
 
 
 </body>
-
 
 </html>
