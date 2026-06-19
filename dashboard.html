@@ -8,9 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>
-Dashboard | Georgian Paragliding Federation
-</title>
+<title>Dashboard | Paragliding Admin</title>
 
 
 <link rel="stylesheet" href="style.css">
@@ -19,69 +17,50 @@ Dashboard | Georgian Paragliding Federation
 </head>
 
 
-
 <body>
 
+
+<script>
+
+if(localStorage.getItem("admin")!=="true"){
+
+window.location="login.html";
+
+}
+
+</script>
 
 
 
 <header>
 
-
 <div class="container">
 
 
+<h2>
 
-<a href="index.html" class="logo">
+Admin Dashboard
 
-
-<img src="images/logo.jpg">
-
-
-<span>
-Georgian Paragliding Federation
+<span class="admin-badge">
+ADMIN
 </span>
 
-
-</a>
-
+</h2>
 
 
 
+<div>
 
-<div class="menu-toggle">
 
-☰
+<button class="btn"
+onclick="logout()">
+
+Logout
+
+</button>
+
 
 </div>
-
-
-
-
-
-
-<nav class="menu" id="menu">
-
-
-<a href="index.html">Home</a>
-
-<a href="about.html">About Us</a>
-
-<a href="gallery.html">Gallery</a>
-
-<a href="document.html">Documents</a>
-
-<a href="contact.html">Contact</a>
-
-<a href="BookYourFlight.html">Book Your Flight</a>
-
-<a href="news.html">News</a>
-
-<a href="dashboard.html">Dashboard</a>
-
-
-</nav>
-
 
 
 </div>
@@ -93,169 +72,46 @@ Georgian Paragliding Federation
 
 
 
-
-
-
-
-<section class="page-title">
-
-
-<h1>
-📊 Dashboard
-</h1>
-
-
-<p>
-Paragliding Booking Management System
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-
-
 <div class="cards">
-
-
-
 
 
 <div class="card">
 
 <h3>Total</h3>
 
-<h2>
-12
-</h2>
+<h2>12</h2>
 
 </div>
-
-
-
-
 
 
 <div class="card">
 
 <h3>New</h3>
 
-<h2>
-5
-</h2>
+<h2>5</h2>
 
 </div>
-
-
-
-
-
 
 
 <div class="card">
 
 <h3>Confirmed</h3>
 
-<h2>
-6
-</h2>
+<h2>6</h2>
 
 </div>
-
-
-
-
-
-
 
 
 <div class="card">
 
 <h3>Cancelled</h3>
 
-<h2>
-1
-</h2>
+<h2>1</h2>
 
 </div>
 
 
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-<div style="padding:20px;text-align:center;">
-
-
-
-<input 
-placeholder="Location"
-style="padding:10px;border-radius:8px;">
-
-
-
-
-
-<input 
-type="date"
-style="padding:10px;border-radius:8px;">
-
-
-
-
-
-
-<select style="padding:10px;border-radius:8px;">
-
-
-<option>
-All
-</option>
-
-
-<option>
-NEW
-</option>
-
-
-<option>
-CONFIRMED
-</option>
-
-
-<option>
-CANCELLED
-</option>
-
-
-
-</select>
-
-
-
-
-
-
-</div>
-
-
-
-
 
 
 
@@ -264,22 +120,14 @@ CANCELLED
 <table>
 
 
-
 <tr>
 
-
 <th>ID</th>
-
 <th>Location</th>
-
 <th>Date</th>
-
 <th>Name</th>
-
 <th>Email</th>
-
 <th>Phone</th>
-
 <th>Status</th>
 
 
@@ -287,46 +135,15 @@ CANCELLED
 
 
 
-
-
-
 <tr>
 
-
-<td>
-1
-</td>
-
-
-<td>
-Gudauri
-</td>
-
-
-<td>
-2026-06-20
-</td>
-
-
-<td>
-Giorgi
-</td>
-
-
-<td>
-example@mail.com
-</td>
-
-
-<td>
-555000000
-</td>
-
-
-<td>
-CONFIRMED
-</td>
-
+<td>1</td>
+<td>Gudauri</td>
+<td>2026-06-20</td>
+<td>Giorgi</td>
+<td>example@mail.com</td>
+<td>555000000</td>
+<td class="CONFIRMED">CONFIRMED</td>
 
 
 </tr>
@@ -334,69 +151,37 @@ CONFIRMED
 
 
 
-
-
-
 <tr>
 
-
-<td>
-2
-</td>
-
-
-<td>
-Manavi
-</td>
-
-
-<td>
-2026-06-25
-</td>
-
-
-<td>
-Nino
-</td>
-
-
-<td>
-nino@mail.com
-</td>
-
-
-<td>
-555111111
-</td>
-
-
-<td>
-NEW
-</td>
-
+<td>2</td>
+<td>Manavi</td>
+<td>2026-06-25</td>
+<td>Anna</td>
+<td>anna@mail.com</td>
+<td>555111111</td>
+<td class="NEW">NEW</td>
 
 
 </tr>
-
-
-
-
 
 
 </table>
 
 
 
+<script>
 
+function logout(){
 
+localStorage.removeItem("admin");
 
+window.location="login.html";
 
+}
 
+</script>
 
-<script src="script.js"></script>
 
 
 </body>
-
-
 </html>
