@@ -8,578 +8,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>About Us | Georgian Paragliding Federation</title>
+<title>
+About Us | Georgian Paragliding Federation
+</title>
 
 
-
-<style>
-
-
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-font-family:Arial,sans-serif;
-
-}
-
-
-
-body{
-
-background:url("para1.jpg") center/cover no-repeat fixed;
-
-color:white;
-
-min-height:100vh;
-
-}
-
-
-
-body::before{
-
-content:"";
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.6);
-
-z-index:-1;
-
-}
-
-
-
-
-/* HEADER */
-
-
-header{
-
-background:rgba(0,0,0,.85);
-
-padding:12px 0;
-
-position:sticky;
-
-top:0;
-
-z-index:1000;
-
-}
-
-
-
-.container{
-
-max-width:1200px;
-
-margin:auto;
-
-padding:0 15px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-}
-
-
-
-.logo{
-
-display:flex;
-
-align-items:center;
-
-gap:10px;
-
-color:white;
-
-text-decoration:none;
-
-}
-
-
-
-.logo img{
-
-width:44px;
-
-height:44px;
-
-border-radius:50%;
-
-}
-
-
-
-
-.menu{
-
-display:flex;
-
-gap:18px;
-
-}
-
-
-
-.menu a{
-
-color:white;
-
-text-decoration:none;
-
-}
-
-
-
-.menu a:hover{
-
-color:#00c2ff;
-
-}
-
-
-
-.menu-toggle{
-
-display:none;
-
-font-size:30px;
-
-cursor:pointer;
-
-}
-
-
-
-@media(max-width:768px){
-
-
-.menu-toggle{
-
-display:block;
-
-}
-
-
-
-.menu{
-
-display:none;
-
-flex-direction:column;
-
-position:absolute;
-
-top:70px;
-
-left:0;
-
-width:100%;
-
-background:#000;
-
-padding:20px;
-
-}
-
-
-
-.menu.active{
-
-display:flex;
-
-}
-
-
-}
-
-
-
-
-
-
-/* HERO */
-
-
-.about-hero{
-
-text-align:center;
-
-padding:80px 20px 40px;
-
-}
-
-
-
-.about-hero h1{
-
-font-size:46px;
-
-color:#00c2ff;
-
-margin-bottom:15px;
-
-}
-
-
-
-.about-hero p{
-
-max-width:750px;
-
-margin:auto;
-
-font-size:18px;
-
-line-height:1.6;
-
-color:#ddd;
-
-}
-
-
-
-
-
-
-/* INFO BOXES */
-
-
-.about-grid{
-
-max-width:1100px;
-
-margin:auto;
-
-padding:40px 20px;
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:18px;
-
-}
-
-
-
-.info-box{
-
-
-background:rgba(255,255,255,.06);
-
-border:1px solid rgba(255,255,255,.1);
-
-border-radius:14px;
-
-padding:22px;
-
-text-align:center;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-
-
-.info-box:hover{
-
-transform:translateY(-5px);
-
-border-color:#00c2ff;
-
-}
-
-
-
-.icon{
-
-font-size:30px;
-
-}
-
-
-
-.info-box h3{
-
-margin:10px;
-
-color:#00c2ff;
-
-}
-
-
-
-.short{
-
-color:#bbb;
-
-font-size:14px;
-
-}
-
-
-
-.more{
-
-display:none;
-
-margin-top:15px;
-
-color:#ddd;
-
-line-height:1.5;
-
-font-size:14px;
-
-}
-
-
-
-.info-box.active .more{
-
-display:block;
-
-}
-
-
-
-
-
-/* VALUES */
-
-
-.values{
-
-text-align:center;
-
-padding:50px 20px;
-
-}
-
-
-
-.values h2{
-
-color:#00c2ff;
-
-margin-bottom:25px;
-
-}
-
-
-
-.values-grid{
-
-max-width:900px;
-
-margin:auto;
-
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:15px;
-
-}
-
-
-
-.value-card{
-
-background:rgba(255,255,255,.05);
-
-padding:20px;
-
-border-radius:12px;
-
-}
-
-
-
-
-
-
-/* GALLERY */
-
-
-.gallery{
-
-max-width:1100px;
-
-margin:50px auto;
-
-padding:20px;
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:15px;
-
-}
-
-
-
-.gallery-item{
-
-height:240px;
-
-overflow:hidden;
-
-border-radius:14px;
-
-cursor:pointer;
-
-position:relative;
-
-}
-
-
-
-.gallery-item img{
-
-width:100%;
-
-height:100%;
-
-object-fit:cover;
-
-transition:.5s;
-
-}
-
-
-
-.gallery-item:hover img{
-
-transform:scale(1.1);
-
-}
-
-
-
-.caption{
-
-position:absolute;
-
-bottom:0;
-
-width:100%;
-
-background:rgba(0,0,0,.6);
-
-padding:10px;
-
-text-align:center;
-
-}
-
-
-
-
-
-/* LIGHTBOX */
-
-
-.lightbox{
-
-display:none;
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.9);
-
-justify-content:center;
-
-align-items:center;
-
-z-index:9999;
-
-}
-
-
-
-.lightbox img{
-
-max-width:90%;
-
-max-height:90%;
-
-border-radius:12px;
-
-}
-
-
-
-.close{
-
-position:absolute;
-
-top:20px;
-
-right:30px;
-
-font-size:40px;
-
-cursor:pointer;
-
-}
-
-
-
-@media(max-width:900px){
-
-
-.about-grid,
-
-.gallery,
-
-.values-grid{
-
-grid-template-columns:1fr;
-
-}
-
-
-.about-hero h1{
-
-font-size:32px;
-
-}
-
-
-}
-
-
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 
 </head>
 
 
 
-
 <body>
-
 
 
 
@@ -594,7 +35,7 @@ font-size:32px;
 <a href="index.html" class="logo">
 
 
-<img src="logo.jpg">
+<img src="images/logo.jpg">
 
 
 <span>
@@ -608,7 +49,7 @@ Georgian Paragliding Federation
 
 
 
-<div class="menu-toggle" onclick="toggleMenu()">
+<div class="menu-toggle">
 
 ☰
 
@@ -618,24 +59,48 @@ Georgian Paragliding Federation
 
 
 
+
 <nav class="menu" id="menu">
 
 
-<a href="index.html">Home</a>
+<a href="index.html">
+Home
+</a>
 
-<a href="about.html">About Us</a>
 
-<a href="gallery.html">Gallery</a>
+<a href="about.html">
+About Us
+</a>
 
-<a href="document.html">Documents</a>
 
-<a href="contact.html">Contact</a>
+<a href="gallery.html">
+Gallery
+</a>
 
-<a href="BookYourFlight.html">Book Your Flight</a>
 
-<a href="news.html">News</a>
+<a href="document.html">
+Documents
+</a>
 
-<a href="dashboard.html">Dashboard</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+
+<a href="BookYourFlight.html">
+Book Your Flight
+</a>
+
+
+<a href="news.html">
+News
+</a>
+
+
+<a href="dashboard.html">
+Dashboard
+</a>
 
 
 </nav>
@@ -654,18 +119,21 @@ Georgian Paragliding Federation
 
 
 
-<section class="about-hero">
+
+<section class="page-title">
 
 
 <h1>
+
 About Our Federation
+
 </h1>
 
 
 <p>
 
 Georgian Paragliding Federation develops safe aviation culture,
-professional pilot training and world-class paragliding standards.
+professional pilot training and international paragliding standards.
 
 </p>
 
@@ -679,21 +147,22 @@ professional pilot training and world-class paragliding standards.
 
 
 
-<section class="about-grid">
+
+<div class="card-container">
 
 
 
 
 
-<div class="info-box" onclick="toggleBox(this)">
+<div class="card">
 
 
-<div class="icon">🎯</div>
+<h2>
+🎯 Mission
+</h2>
 
-<h3>Mission</h3>
 
-
-<p class="short">
+<p>
 
 Developing paragliding in Georgia as a safe and internationally recognized aviation sport.
 
@@ -701,14 +170,6 @@ Developing paragliding in Georgia as a safe and internationally recognized aviat
 
 
 
-<div class="more">
-
-We provide structured training, safe flight operations,
-professional pilot development and international cooperation.
-
-</div>
-
-
 </div>
 
 
@@ -717,31 +178,24 @@ professional pilot development and international cooperation.
 
 
 
-<div class="info-box" onclick="toggleBox(this)">
+
+<div class="card">
 
 
-<div class="icon">🛡</div>
+<h2>
+🛡 Safety
+</h2>
 
 
-<h3>Safety</h3>
-
-
-<p class="short">
+<p>
 
 Safety is the core principle of every flight.
+We follow aviation safety principles, weather assessment and pilot responsibility.
 
 </p>
 
 
 
-<div class="more">
-
-All operations follow aviation safety principles,
-weather assessment, equipment checks and pilot responsibility.
-
-</div>
-
-
 </div>
 
 
@@ -750,35 +204,49 @@ weather assessment, equipment checks and pilot responsibility.
 
 
 
-<div class="info-box" onclick="toggleBox(this)">
+
+<div class="card">
 
 
-<div class="icon">🎓</div>
+<h2>
+🎓 Development
+</h2>
 
 
-<h3>Development</h3>
+<p>
 
-
-<p class="short">
-
-Supporting future pilots and paragliding growth in Georgia.
+Supporting future pilots, training programs and international aviation standards.
 
 </p>
 
 
 
-<div class="more">
-
-We support education, training programs,
-international standards and aviation culture development.
-
-</div>
-
-
 </div>
 
 
 
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<section class="page-title">
+
+
+<h1>
+
+Core Values
+
+</h1>
 
 
 </section>
@@ -790,75 +258,31 @@ international standards and aviation culture development.
 
 
 
-<section class="values">
+
+<div class="card-container">
 
 
-<h2>
-Core Values
-</h2>
 
-
-<div class="values-grid">
-
-
-<div class="value-card">
+<div class="card">
 Safety
 </div>
 
 
-<div class="value-card">
+<div class="card">
 Professionalism
 </div>
 
 
-<div class="value-card">
+<div class="card">
 Innovation
 </div>
 
 
-<div class="value-card">
+<div class="card">
 Growth
 </div>
 
 
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section class="gallery">
-
-
-
-<div class="gallery-item" onclick="openLightbox(this)">
-
-<img src="para10.jpg">
-
-<div class="caption">
-Gudauri
-</div>
-
-</div>
-
-
-
-
-
-<div class="gallery-item" onclick="openLightbox(this)">
-
-<img src="para15.jpg">
-
-<div class="caption">
-Mestia
-</div>
 
 </div>
 
@@ -867,20 +291,45 @@ Mestia
 
 
 
-<div class="gallery-item" onclick="openLightbox(this)">
 
-<img src="para19.jpg">
 
-<div class="caption">
-Ananuri
+
+<div class="gallery-cards">
+
+
+
+<div class="gallery-card">
+
+<img src="images/para10.jpg"
+onclick="openLightbox(this)">
+
 </div>
 
+
+
+
+
+<div class="gallery-card">
+
+<img src="images/para15.jpg"
+onclick="openLightbox(this)">
+
 </div>
 
 
 
 
-</section>
+
+<div class="gallery-card">
+
+<img src="images/para19.jpg"
+onclick="openLightbox(this)">
+
+</div>
+
+
+
+</div>
 
 
 
@@ -889,17 +338,17 @@ Ananuri
 
 
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
 
+<div id="lightbox"
+class="lightbox"
+onclick="closeLightbox()">
 
-<span class="close">
-×
-</span>
 
 
 <img id="lightbox-img">
 
 
+
 </div>
 
 
@@ -908,54 +357,13 @@ Ananuri
 
 
 
-<script>
 
 
-function toggleMenu(){
-
-document.getElementById("menu")
-.classList.toggle("active");
-
-}
-
-
-
-function toggleBox(el){
-
-el.classList.toggle("active");
-
-}
-
-
-
-function openLightbox(el){
-
-document.getElementById("lightbox-img").src =
-el.querySelector("img").src;
-
-
-document.getElementById("lightbox")
-.style.display="flex";
-
-
-}
-
-
-
-
-function closeLightbox(){
-
-document.getElementById("lightbox")
-.style.display="none";
-
-}
-
-
-</script>
-
+<script src="script.js"></script>
 
 
 
 </body>
+
 
 </html>
