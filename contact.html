@@ -8,304 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Contact | Georgian Paragliding Federation</title>
+<title>
+Contact | Georgian Paragliding Federation
+</title>
 
 
-<style>
-
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-
-
-body{
-
-background:url("para1.jpg") center/cover no-repeat fixed;
-
-color:white;
-
-min-height:100vh;
-
-}
-
-
-
-body::before{
-
-content:"";
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.55);
-
-z-index:-1;
-
-}
-
-
-
-
-header{
-
-background:rgba(0,0,0,.85);
-
-padding:10px 0;
-
-position:sticky;
-
-top:0;
-
-z-index:1000;
-
-}
-
-
-
-
-.container{
-
-max-width:1200px;
-
-margin:auto;
-
-padding:0 15px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-}
-
-
-
-.logo{
-
-display:flex;
-
-align-items:center;
-
-gap:10px;
-
-color:white;
-
-text-decoration:none;
-
-}
-
-
-
-.logo img{
-
-width:42px;
-
-height:42px;
-
-border-radius:50%;
-
-}
-
-
-
-.menu{
-
-display:flex;
-
-gap:18px;
-
-}
-
-
-
-.menu a{
-
-color:white;
-
-text-decoration:none;
-
-}
-
-
-
-.menu a:hover{
-
-color:#00c2ff;
-
-}
-
-
-
-
-.contact-box{
-
-
-max-width:520px;
-
-margin:80px auto;
-
-padding:35px;
-
-
-background:rgba(255,255,255,.06);
-
-
-border-radius:18px;
-
-
-text-align:center;
-
-
-}
-
-
-
-
-.contact-box h1{
-
-
-color:#00c2ff;
-
-margin-bottom:30px;
-
-font-size:34px;
-
-
-}
-
-
-
-
-.contact-item{
-
-
-padding:18px;
-
-margin-bottom:18px;
-
-
-border-radius:12px;
-
-
-background:rgba(255,255,255,.04);
-
-
-transition:.3s;
-
-
-}
-
-
-
-.contact-item:hover{
-
-
-background:rgba(0,194,255,.12);
-
-transform:translateY(-3px);
-
-
-}
-
-
-
-
-.contact-item span{
-
-
-display:block;
-
-color:#00c2ff;
-
-margin-bottom:8px;
-
-font-weight:bold;
-
-
-}
-
-
-
-.contact-item a{
-
-
-color:white;
-
-font-size:18px;
-
-text-decoration:none;
-
-}
-
-
-
-.contact-item a:hover{
-
-
-color:#00c2ff;
-
-
-}
-
-
-
-
-
-@media(max-width:768px){
-
-
-.menu{
-
-display:none;
-
-flex-direction:column;
-
-background:black;
-
-position:absolute;
-
-top:60px;
-
-left:0;
-
-width:100%;
-
-padding:20px;
-
-}
-
-
-.menu.active{
-
-display:flex;
-
-}
-
-
-.menu-toggle{
-
-display:block;
-
-font-size:28px;
-
-cursor:pointer;
-
-}
-
-
-}
-
-
-
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 
 </head>
@@ -313,6 +21,7 @@ cursor:pointer;
 
 
 <body>
+
 
 
 
@@ -327,7 +36,7 @@ cursor:pointer;
 <a href="index.html" class="logo">
 
 
-<img src="logo.jpg">
+<img src="images/logo.jpg">
 
 
 <span>
@@ -340,7 +49,9 @@ Georgian Paragliding Federation
 
 
 
-<div class="menu-toggle" onclick="toggleMenu()">
+
+
+<div class="menu-toggle">
 
 ☰
 
@@ -350,7 +61,10 @@ Georgian Paragliding Federation
 
 
 
+
+
 <nav class="menu" id="menu">
+
 
 
 <a href="index.html">
@@ -358,9 +72,11 @@ Home
 </a>
 
 
+
 <a href="about.html">
 About Us
 </a>
+
 
 
 <a href="gallery.html">
@@ -368,9 +84,11 @@ Gallery
 </a>
 
 
+
 <a href="document.html">
 Documents
 </a>
+
 
 
 <a href="contact.html">
@@ -378,14 +96,17 @@ Contact
 </a>
 
 
+
 <a href="BookYourFlight.html">
 Book Your Flight
 </a>
 
 
+
 <a href="news.html">
 News
 </a>
+
 
 
 <a href="dashboard.html">
@@ -395,6 +116,7 @@ Dashboard
 
 
 </nav>
+
 
 
 
@@ -409,35 +131,55 @@ Dashboard
 
 
 
-<section class="contact-box">
+
+
+<section class="contact-box"
+style="max-width:520px;margin:80px auto;padding:35px;text-align:center;">
 
 
 
-<h1>
+
+
+<h1 style="color:#00c2ff;margin-bottom:30px;">
+
 Contact Us
+
 </h1>
 
 
 
 
 
-<div class="contact-item">
 
 
-<span>
+
+
+<div class="card"
+style="margin-bottom:15px;">
+
+
+
+<h3 style="color:#00c2ff;">
 📍 LOCATION
-</span>
+</h3>
+
 
 
 
 <a href="https://www.google.com/maps?q=David+Agmashenebeli+Alley+172g,+Tbilisi,+Georgia"
-target="_blank">
+target="_blank"
+style="color:white;text-decoration:none;">
 
 
-David Agmashenebeli Alley 172g, Tbilisi, Georgia
+
+David Agmashenebeli Alley 172g,
+Tbilisi, Georgia
+
 
 
 </a>
+
+
 
 
 </div>
@@ -447,19 +189,30 @@ David Agmashenebeli Alley 172g, Tbilisi, Georgia
 
 
 
-<div class="contact-item">
 
 
-<span>
+
+<div class="card"
+style="margin-bottom:15px;">
+
+
+
+<h3 style="color:#00c2ff;">
 📞 PHONE
-</span>
+</h3>
 
 
-<a href="tel:+995593466744">
+
+
+<a href="tel:+995593466744"
+style="color:white;text-decoration:none;">
+
 
 +995 593 46 67 44
 
+
 </a>
+
 
 
 </div>
@@ -469,15 +222,23 @@ David Agmashenebeli Alley 172g, Tbilisi, Georgia
 
 
 
-<div class="contact-item">
 
 
-<span>
+
+<div class="card">
+
+
+
+<h3 style="color:#00c2ff;">
 📧 EMAIL
-</span>
+</h3>
 
 
-<a href="mailto:info@paragliding.ge">
+
+
+
+<a href="mailto:info@paragliding.ge"
+style="color:white;text-decoration:none;">
 
 
 info@paragliding.ge
@@ -486,7 +247,12 @@ info@paragliding.ge
 </a>
 
 
+
 </div>
+
+
+
+
 
 
 
@@ -500,21 +266,12 @@ info@paragliding.ge
 
 
 
-<script>
 
-
-function toggleMenu(){
-
-document.getElementById("menu")
-.classList.toggle("active");
-
-}
-
-
-</script>
+<script src="script.js"></script>
 
 
 
 </body>
+
 
 </html>
