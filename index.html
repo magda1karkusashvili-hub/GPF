@@ -6,7 +6,7 @@
 
     <title>Georgian Paragliding Federation</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -15,8 +15,8 @@
 <header>
     <div class="container">
 
-        <a href="/" class="logo">
-            <img src="{{ url_for('static', filename='images/logo.jpg') }}">
+        <a href="index.html" class="logo">
+            <img src="logo.jpg">
             <span>Georgian Paragliding Federation</span>
         </a>
 
@@ -24,40 +24,23 @@
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
         <nav class="menu" id="menu">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/gallery">Gallery</a>
-            <a href="/document">Documents</a>
-            <a href="/contact">Contact</a>
-            <a href="/BookYourFlight">Book Your Flight</a>
-            <a href="/news">News</a>
-            <a href="/dashboard">Dashboard</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="document.html">Documents</a>
+            <a href="contact.html">Contact</a>
+            <a href="BookYourFlight.html">Book Your Flight</a>
+            <a href="news.html">News</a>
+            <a href="dashboard.html">Dashboard</a>
         </nav>
 
     </div>
 </header>
 
-<!-- ================= FLASH ================= -->
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    <div class="flash-container">
-      {% for category, message in messages %}
-        <div class="flash {{ category }}">
-            {{ message }}
-        </div>
-      {% endfor %}
-    </div>
-
-    <script>
-        setTimeout(() => {
-            document.querySelectorAll('.flash').forEach(el => el.remove());
-        }, 3000);
-    </script>
-  {% endif %}
-{% endwith %}
 
 <!-- ================= HERO ================= -->
 <section class="hero">
+
     <div class="hero-overlay">
 
         <h1>Welcome to Paragliding Georgia</h1>
@@ -67,20 +50,30 @@
             Experience freedom, adrenaline, and unforgettable views with certified pilots.
         </p>
 
-        <a href="/BookYourFlight" class="btn">Book Your Flight</a>
+        <a href="BookYourFlight.html" class="btn">
+            Book Your Flight
+        </a>
 
     </div>
+
 </section>
+
 
 <!-- ================= MENU SCRIPT ================= -->
 <script>
 function toggleMenu() {
+
     const menu = document.getElementById("menu");
+
     if (menu) {
         menu.classList.toggle("active");
     }
+
 }
 </script>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
