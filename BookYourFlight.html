@@ -33,9 +33,14 @@
 
 
 
-<div class="menu-toggle">
+<!-- MOBILE MENU BUTTON -->
+
+<div class="menu-toggle" onclick="toggleMenu()">
+
 ☰
+
 </div>
+
 
 
 
@@ -95,12 +100,10 @@ Dashboard
 
 
 
-
-<!-- ================= BOOKING ================= -->
+<!-- ================= BOOKING SECTION ================= -->
 
 
 <section class="booking-section">
-
 
 
 <h1 class="booking-title">
@@ -121,12 +124,17 @@ Choose your location and we will contact you shortly.
 
 
 
+
 <form class="booking-form">
 
 
 
+
+
 <label>
+
 Location
+
 </label>
 
 
@@ -134,23 +142,31 @@ Location
 <select required>
 
 
-<option>
+<option value="">
+
 Select Location
+
 </option>
 
 
 <option>
+
 Gudauri
+
 </option>
 
 
 <option>
+
 Ananuri
+
 </option>
 
 
 <option>
+
 Mestia
+
 </option>
 
 
@@ -161,8 +177,11 @@ Mestia
 
 
 
+
 <label>
+
 Date
+
 </label>
 
 
@@ -174,12 +193,16 @@ required>
 
 
 
+
+
 <label>
+
 Full Name
+
 </label>
 
 
-<input 
+<input
 type="text"
 placeholder="Your name"
 required>
@@ -188,8 +211,13 @@ required>
 
 
 
+
+
+
 <label>
+
 Email
+
 </label>
 
 
@@ -202,8 +230,12 @@ required>
 
 
 
+
+
 <label>
+
 Phone
+
 </label>
 
 
@@ -220,9 +252,7 @@ required>
 
 <div class="warning-box">
 
-
 ⚠️ Flights depend on weather conditions.
-
 
 </div>
 
@@ -240,7 +270,11 @@ Confirm Booking
 
 
 
+
+
+
 </form>
+
 
 
 
@@ -252,7 +286,36 @@ Confirm Booking
 
 
 
+<!-- ================= SCRIPT ================= -->
+
+
 <script src="script.js"></script>
+
+
+<script>
+
+
+function toggleMenu(){
+
+
+    const menu = document.getElementById("menu");
+
+
+    if(menu){
+
+        menu.classList.toggle("active");
+
+    }
+
+
+}
+
+
+
+</script>
+
+
+
 
 
 </body>
