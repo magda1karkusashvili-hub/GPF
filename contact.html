@@ -1,242 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Contact</title>
+
+<title>Contact | Georgian Paragliding Federation</title>
+
 
 <style>
 
-/* =========================
-   RESET
-========================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
-body {
-    background: url("/static/images/para1.jpg") center/cover no-repeat fixed;
-    color: white;
-    min-height: 100vh;
-    position: relative;
+
+
+body{
+
+background:url("para1.jpg") center/cover no-repeat fixed;
+
+color:white;
+
+min-height:100vh;
+
 }
 
-/* DARK OVERLAY */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: -1;
+
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.55);
+
+z-index:-1;
+
 }
 
-/* ================= HEADER ================= */
-header {
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(10px);
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+
+
+
+header{
+
+background:rgba(0,0,0,.85);
+
+padding:10px 0;
+
+position:sticky;
+
+top:0;
+
+z-index:1000;
+
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:0 15px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: white;
+
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+color:white;
+
+text-decoration:none;
+
 }
 
-.logo img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
+
+
+.logo img{
+
+width:42px;
+
+height:42px;
+
+border-radius:50%;
+
 }
 
-/* NAV */
-.menu {
-    display: flex;
-    gap: 18px;
+
+
+.menu{
+
+display:flex;
+
+gap:18px;
+
 }
 
-.menu a {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
+
+
+.menu a{
+
+color:white;
+
+text-decoration:none;
+
 }
 
-.menu a:hover {
-    color: #00c2ff;
+
+
+.menu a:hover{
+
+color:#00c2ff;
+
 }
 
-/* MOBILE */
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
+
+
+
+.contact-box{
+
+
+max-width:520px;
+
+margin:80px auto;
+
+padding:35px;
+
+
+background:rgba(255,255,255,.06);
+
+
+border-radius:18px;
+
+
+text-align:center;
+
+
 }
 
-/* ================= CONTACT BOX ================= */
 
-.contact-box {
-    max-width: 520px;
-    margin: 80px auto;
-    padding: 35px;
 
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
 
-    border-radius: 18px;
-    backdrop-filter: blur(12px);
+.contact-box h1{
 
-    text-align: center;
 
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+color:#00c2ff;
+
+margin-bottom:30px;
+
+font-size:34px;
+
+
 }
 
-.contact-box h1 {
-    color: #00c2ff;
-    margin-bottom: 30px;
-    font-size: 34px;
+
+
+
+.contact-item{
+
+
+padding:18px;
+
+margin-bottom:18px;
+
+
+border-radius:12px;
+
+
+background:rgba(255,255,255,.04);
+
+
+transition:.3s;
+
+
 }
 
-.contact-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-    padding: 18px;
-    margin-bottom: 18px;
 
-    border-radius: 12px;
+.contact-item:hover{
 
-    background: rgba(255,255,255,0.04);
 
-    transition: 0.3s;
+background:rgba(0,194,255,.12);
+
+transform:translateY(-3px);
+
+
 }
 
-.contact-item:hover {
-    background: rgba(0,194,255,0.12);
-    transform: translateY(-3px);
+
+
+
+.contact-item span{
+
+
+display:block;
+
+color:#00c2ff;
+
+margin-bottom:8px;
+
+font-weight:bold;
+
+
 }
 
-.contact-item span {
-    font-size: 13px;
-    letter-spacing: 1px;
-    color: #00c2ff;
-    margin-bottom: 6px;
-    font-weight: bold;
+
+
+.contact-item a{
+
+
+color:white;
+
+font-size:18px;
+
+text-decoration:none;
+
 }
 
-.contact-item p,
-.contact-item a {
-    font-size: 18px;
-    color: white;
-    text-decoration: none;
-    line-height: 1.5;
+
+
+.contact-item a:hover{
+
+
+color:#00c2ff;
+
+
 }
 
-.contact-item a:hover {
-    color: #00c2ff;
+
+
+
+
+@media(max-width:768px){
+
+
+.menu{
+
+display:none;
+
+flex-direction:column;
+
+background:black;
+
+position:absolute;
+
+top:60px;
+
+left:0;
+
+width:100%;
+
+padding:20px;
+
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
 
-    .menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(0,0,0,0.95);
-        padding: 20px;
-    }
+.menu.active{
 
-    .menu.active {
-        display: flex;
-    }
+display:flex;
 
-    .menu-toggle {
-        display: block;
-    }
 }
+
+
+.menu-toggle{
+
+display:block;
+
+font-size:28px;
+
+cursor:pointer;
+
+}
+
+
+}
+
+
+
 
 </style>
+
+
 </head>
+
+
 
 <body>
 
-<!-- ================= HEADER ================= -->
+
+
+
 <header>
-    <div class="container">
 
-        <a href="/" class="logo">
-            <img src="{{ url_for('static', filename='images/logo.jpg') }}">
-            <span>Georgian Paragliding Federation</span>
-        </a>
 
-        <!-- HAMBURGER -->
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="container">
 
-        <nav class="menu" id="menu">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/gallery">Gallery</a>
-            <a href="/document">Documents</a>
-            <a href="/contact">Contact</a>
-            <a href="/BookYourFlight">Book Your Flight</a>
-            <a href="/news">News</a>
-            <a href="/dashboard">Dashboard</a>
-        </nav>
 
-    </div>
-</header>
 
-<!-- ================= CONTACT ================= -->
-<section class="contact-box">
+<a href="index.html" class="logo">
 
-    <h1>Contact Us</h1>
-        <div class="contact-item">
-            <span>📍 LOCATION</span>
-            <a href="https://www.google.com/maps?q=David+Agmashenebeli+Alley+172g,+Tbilisi,+Georgia"
-             target="_blank">
-        David Agmashenebeli Alley 172g, Tbilisi, Georgia
-    </a>
+
+<img src="logo.jpg">
+
+
+<span>
+Georgian Paragliding Federation
+</span>
+
+
+</a>
+
+
+
+
+<div class="menu-toggle" onclick="toggleMenu()">
+
+☰
+
 </div>
 
-    <div class="contact-item">
-        <span>📞 PHONE</span>
-        <a href="tel:+995593466744">+995 593 46 67 44</a>
-    </div>
 
-    <div class="contact-item">
-        <span>📧 EMAIL</span>
-        <a href="mailto:info@paragliding.ge">info@paragliding.ge</a>
-    </div>
+
+
+
+<nav class="menu" id="menu">
+
+
+<a href="index.html">
+Home
+</a>
+
+
+<a href="about.html">
+About Us
+</a>
+
+
+<a href="gallery.html">
+Gallery
+</a>
+
+
+<a href="document.html">
+Documents
+</a>
+
+
+<a href="contact.html">
+Contact
+</a>
+
+
+<a href="BookYourFlight.html">
+Book Your Flight
+</a>
+
+
+<a href="news.html">
+News
+</a>
+
+
+<a href="dashboard.html">
+Dashboard
+</a>
+
+
+
+</nav>
+
+
+
+</div>
+
+
+</header>
+
+
+
+
+
+
+
+<section class="contact-box">
+
+
+
+<h1>
+Contact Us
+</h1>
+
+
+
+
+
+<div class="contact-item">
+
+
+<span>
+📍 LOCATION
+</span>
+
+
+
+<a href="https://www.google.com/maps?q=David+Agmashenebeli+Alley+172g,+Tbilisi,+Georgia"
+target="_blank">
+
+
+David Agmashenebeli Alley 172g, Tbilisi, Georgia
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<div class="contact-item">
+
+
+<span>
+📞 PHONE
+</span>
+
+
+<a href="tel:+995593466744">
+
++995 593 46 67 44
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<div class="contact-item">
+
+
+<span>
+📧 EMAIL
+</span>
+
+
+<a href="mailto:info@paragliding.ge">
+
+
+info@paragliding.ge
+
+
+</a>
+
+
+</div>
+
+
+
+
 
 </section>
 
+
+
+
+
+
+
 <script>
-function toggleMenu() {
-    document.getElementById("menu").classList.toggle("active");
+
+
+function toggleMenu(){
+
+document.getElementById("menu")
+.classList.toggle("active");
+
 }
+
+
 </script>
 
+
+
 </body>
+
 </html>
