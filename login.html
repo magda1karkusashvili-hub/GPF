@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-
 
 <meta charset="UTF-8">
 
@@ -15,58 +13,44 @@ Admin Login | Georgian Paragliding Federation
 </title>
 
 
-
 <link rel="stylesheet" href="style.css">
 
 
 </head>
 
 
-
 <body>
 
 
-
-
 <div class="container"
-style="min-height:100vh;display:flex;justify-content:center;align-items:center;">
-
-
+style="min-height:100vh;justify-content:center;">
 
 
 
 <div class="card"
-style="max-width:380px;width:100%;text-align:center;padding:40px;">
+style="max-width:400px;width:100%;padding:40px;text-align:center;">
 
 
 
-
-
-
-<div style="font-size:40px;">
+<div style="font-size:45px;">
 🔐
 </div>
 
 
 
+<h2 style="color:#00c2ff;margin:15px 0;">
 
-
-<h2 style="color:#00c2ff;margin:15px;">
 Admin Login
+
 </h2>
 
 
 
-
-
-<p style="color:#fbbf24;margin-bottom:15px;">
+<p style="color:#fbbf24;">
 
 Secure Admin Access
 
 </p>
-
-
-
 
 
 
@@ -82,35 +66,27 @@ Secure Admin Access
 
 
 
-
-
-
-<form action="dashboard.html">
-
-
-
+<form id="loginForm">
 
 
 
 <input
+id="username"
 type="text"
 placeholder="Username"
 required
-style="width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;background:#111;color:white;">
-
-
+style="width:100%;padding:12px;margin:10px 0;border-radius:10px;">
 
 
 
 
 
 <input
+id="password"
 type="password"
 placeholder="Password"
 required
-style="width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;background:#111;color:white;">
-
-
+style="width:100%;padding:12px;margin:10px 0;border-radius:10px;">
 
 
 
@@ -119,8 +95,8 @@ style="width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;back
 
 <button
 class="btn"
-type="submit"
-style="width:100%;border:none;cursor:pointer;">
+style="width:100%;border:none;cursor:pointer;"
+type="submit">
 
 Login
 
@@ -128,7 +104,12 @@ Login
 
 
 
+<p id="error"
+style="color:#ff6b6b;margin-top:15px;display:none;">
 
+Wrong username or password
+
+</p>
 
 
 
@@ -140,43 +121,27 @@ Login
 
 
 
-
 <p style="color:#aaa;font-size:12px;margin-top:20px;">
 
-
-⚠️ All login attempts are monitored and logged.
+⚠️ All login attempts are monitored
 
 </p>
-
-
-
-
 
 
 
 <p style="color:#666;font-size:11px;">
 
-
 Paragliding Admin System v3.0
-
 
 </p>
 
 
 
 
-
-
-
 </div>
 
 
-
-
 </div>
-
-
-
 
 
 
@@ -187,7 +152,73 @@ Paragliding Admin System v3.0
 <script src="script.js"></script>
 
 
-</body>
+<script>
 
+
+document
+.getElementById("loginForm")
+.addEventListener("submit",function(e){
+
+
+
+e.preventDefault();
+
+
+
+const user =
+document.getElementById("username").value;
+
+
+
+const pass =
+document.getElementById("password").value;
+
+
+
+
+
+if(
+user==="admin" &&
+pass==="12345"
+
+){
+
+
+
+localStorage.setItem(
+"adminLogin",
+"true"
+);
+
+
+
+window.location.href="admin.html";
+
+
+
+}
+
+else{
+
+
+document
+.getElementById("error")
+.style.display="block";
+
+
+}
+
+
+
+});
+
+
+
+</script>
+
+
+
+
+</body>
 
 </html>
