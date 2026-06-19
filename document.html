@@ -7,176 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Documents | Georgian Paragliding Federation</title>
+
+<title>
+Documents | Georgian Paragliding Federation
+</title>
 
 
 <link rel="stylesheet" href="style.css">
-
-
-<style>
-
-
-.document-section{
-
-max-width:1000px;
-margin:50px auto;
-padding:20px;
-text-align:center;
-
-}
-
-
-
-.document-section h1{
-
-color:#00c2ff;
-font-size:36px;
-
-}
-
-
-
-.subtext{
-
-color:#ccc;
-margin:15px;
-
-}
-
-
-
-.docs-list{
-
-list-style:none;
-padding:0;
-margin-top:40px;
-
-}
-
-
-
-.doc-item{
-
-background:rgba(255,255,255,.06);
-margin:15px;
-padding:18px;
-border-radius:12px;
-
-}
-
-
-
-.doc-item a{
-
-text-decoration:none;
-font-size:18px;
-
-}
-
-
-
-.red{
-
-color:#ff6b6b;
-
-}
-
-
-
-.blue{
-
-color:#00c2ff;
-
-}
-
-
-
-.green{
-
-color:#4ade80;
-
-}
-
-
-
-/* HEADER */
-
-
-header{
-
-background:rgba(0,0,0,.85);
-padding:10px 0;
-position:sticky;
-top:0;
-
-}
-
-
-
-.container{
-
-max-width:1200px;
-margin:auto;
-padding:0 15px;
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-}
-
-
-
-.logo{
-
-display:flex;
-align-items:center;
-gap:10px;
-
-text-decoration:none;
-color:white;
-
-}
-
-
-
-.logo img{
-
-width:42px;
-height:42px;
-border-radius:50%;
-
-}
-
-
-
-.menu{
-
-display:flex;
-gap:18px;
-
-}
-
-
-
-.menu a{
-
-color:white;
-text-decoration:none;
-
-}
-
-
-
-.menu a:hover{
-
-color:#00c2ff;
-
-}
-
-
-
-</style>
 
 
 </head>
@@ -188,15 +25,18 @@ color:#00c2ff;
 
 
 
+
 <header>
 
+
 <div class="container">
+
 
 
 <a href="index.html" class="logo">
 
 
-<img src="logo.jpg">
+<img src="images/logo.jpg">
 
 
 <span>
@@ -209,7 +49,20 @@ Georgian Paragliding Federation
 
 
 
-<nav class="menu">
+
+
+<div class="menu-toggle">
+
+☰
+
+</div>
+
+
+
+
+
+
+<nav class="menu" id="menu">
 
 
 <a href="index.html">
@@ -256,7 +109,10 @@ Dashboard
 </nav>
 
 
+
+
 </div>
+
 
 </header>
 
@@ -266,13 +122,23 @@ Dashboard
 
 
 
-<main class="document-section">
+
+
+<section class="document-section"
+style="max-width:1000px;margin:60px auto;padding:20px;text-align:center;">
 
 
 
-<h1>
+
+
+<h1 style="color:#00c2ff;font-size:38px;">
+
 Documents
+
 </h1>
+
+
+
 
 
 
@@ -286,19 +152,37 @@ Access official paragliding regulations, safety guidelines and federation docume
 
 
 
-<ul class="docs-list">
 
 
 
-<li class="doc-item">
 
-<a class="red"
-href="para1.pdf"
-target="_blank">
+<ul style="list-style:none;padding:0;margin-top:40px;">
+
+
+
+
+
+
+
+
+<li class="card"
+style="margin:15px;padding:20px;">
+
+
+
+<a href="para1.pdf"
+target="_blank"
+style="color:#ff6b6b;text-decoration:none;font-size:18px;">
+
+
 
 📄 Pilot Competency Categories Register
 
+
+
 </a>
+
+
 
 </li>
 
@@ -306,15 +190,28 @@ target="_blank">
 
 
 
-<li class="doc-item">
 
-<a class="blue"
-href="para2.pdf"
-target="_blank">
+
+
+
+<li class="card"
+style="margin:15px;padding:20px;">
+
+
+
+<a href="para2.pdf"
+target="_blank"
+style="color:#00c2ff;text-decoration:none;font-size:18px;">
+
+
 
 📄 Operator Certification Register
 
+
+
 </a>
+
+
 
 </li>
 
@@ -323,17 +220,33 @@ target="_blank">
 
 
 
-<li class="doc-item">
 
-<a class="green"
-href="para3.pdf"
-target="_blank">
+
+
+<li class="card"
+style="margin:15px;padding:20px;">
+
+
+
+<a href="para3.pdf"
+target="_blank"
+style="color:#4ade80;text-decoration:none;font-size:18px;">
+
+
 
 📄 Equipment Airworthiness Register
 
+
+
 </a>
 
+
+
 </li>
+
+
+
+
 
 
 
@@ -343,29 +256,25 @@ target="_blank">
 
 
 
-</main>
+
+
+
+
+</section>
 
 
 
 
 
 
-<script>
 
 
-function toggleMenu(){
 
-document.getElementById("menu")
-.classList.toggle("active");
-
-}
-
-
-</script>
-
+<script src="script.js"></script>
 
 
 
 </body>
+
 
 </html>
