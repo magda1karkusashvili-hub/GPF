@@ -4,17 +4,11 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<title>
-Admin Login | Georgian Paragliding Federation
-</title>
-
+<title>Admin Login</title>
 
 <link rel="stylesheet" href="style.css">
-
 
 </head>
 
@@ -22,36 +16,25 @@ Admin Login | Georgian Paragliding Federation
 <body>
 
 
-<div class="container"
-style="min-height:100vh;justify-content:center;">
+<div class="container" style="min-height:100vh;display:flex;justify-content:center;align-items:center;">
 
 
-
-<div class="card"
-style="max-width:400px;width:100%;padding:40px;text-align:center;">
+<div class="card" style="max-width:380px;width:100%;padding:40px;text-align:center;">
 
 
-
-<div style="font-size:45px;">
+<div style="font-size:40px">
 🔐
 </div>
 
 
-
-<h2 style="color:#00c2ff;margin:15px 0;">
-
+<h2 style="color:#00c2ff">
 Admin Login
-
 </h2>
 
 
-
-<p style="color:#fbbf24;">
-
+<p style="color:#fbbf24">
 Secure Admin Access
-
 </p>
-
 
 
 
@@ -63,137 +46,64 @@ Secure Admin Access
 
 
 
+<form onsubmit="login(event)">
 
 
-
-<form id="loginForm">
-
-
-
-<input
-id="username"
+<input id="username"
 type="text"
 placeholder="Username"
 required
-style="width:100%;padding:12px;margin:10px 0;border-radius:10px;">
+style="width:100%;padding:12px;margin:10px 0;background:#111;color:white;border-radius:10px;">
 
 
 
-
-
-<input
-id="password"
+<input id="password"
 type="password"
 placeholder="Password"
 required
-style="width:100%;padding:12px;margin:10px 0;border-radius:10px;">
+style="width:100%;padding:12px;margin:10px 0;background:#111;color:white;border-radius:10px;">
 
 
 
-
-
-
-<button
-class="btn"
-style="width:100%;border:none;cursor:pointer;"
-type="submit">
+<button class="btn"
+style="width:100%;border:none;cursor:pointer;">
 
 Login
 
 </button>
 
 
-
-<p id="error"
-style="color:#ff6b6b;margin-top:15px;display:none;">
-
-Wrong username or password
-
-</p>
-
-
-
 </form>
 
 
 
-
-
-
-
-<p style="color:#aaa;font-size:12px;margin-top:20px;">
-
-⚠️ All login attempts are monitored
-
-</p>
-
-
-
-<p style="color:#666;font-size:11px;">
-
-Paragliding Admin System v3.0
-
-</p>
-
-
-
-
 </div>
 
 
 </div>
 
-
-
-
-
-
-
-<script src="script.js"></script>
 
 
 <script>
 
-
-document
-.getElementById("loginForm")
-.addEventListener("submit",function(e){
-
-
+function login(e){
 
 e.preventDefault();
 
 
+let user=document.getElementById("username").value;
 
-const user =
-document.getElementById("username").value;
-
-
-
-const pass =
-document.getElementById("password").value;
+let pass=document.getElementById("password").value;
 
 
 
+if(user==="admin" && pass==="1234"){
 
 
-if(
-user==="admin" &&
-pass==="12345"
-
-){
+localStorage.setItem("admin","true");
 
 
-
-localStorage.setItem(
-"adminLogin",
-"true"
-);
-
-
-
-window.location.href="admin.html";
-
+window.location="dashboard.html";
 
 
 }
@@ -201,16 +111,13 @@ window.location.href="admin.html";
 else{
 
 
-document
-.getElementById("error")
-.style.display="block";
+alert("Incorrect username or password");
 
 
 }
 
 
-
-});
+}
 
 
 
@@ -218,7 +125,5 @@ document
 
 
 
-
 </body>
-
 </html>
