@@ -11,215 +11,34 @@
 <link rel="stylesheet" href="css/style.css">
 
 
-<style>
-
-
-/* ================= BOOKING ================= */
-
-
-.booking-section{
-
-max-width:720px;
-
-margin:auto;
-
-padding:60px 20px;
-
-}
-
-
-
-.booking-title h1{
-
-text-align:center;
-
-color:#00c2ff;
-
-font-size:36px;
-
-}
-
-
-
-.subtext{
-
-text-align:center;
-
-color:#ccc;
-
-margin:15px 0 30px;
-
-}
-
-
-
-/* FORM */
-
-
-.booking-form{
-
-
-display:flex;
-
-flex-direction:column;
-
-gap:14px;
-
-padding:30px;
-
-
-background:rgba(255,255,255,0.08);
-
-
-border-radius:16px;
-
-
-border:1px solid rgba(255,255,255,0.15);
-
-
-backdrop-filter:blur(12px);
-
-}
-
-
-
-.booking-form label{
-
-color:#00c2ff;
-
-font-weight:bold;
-
-font-size:14px;
-
-}
-
-
-
-.booking-form input,
-.booking-form select{
-
-
-padding:12px;
-
-border-radius:10px;
-
-border:none;
-
-
-background:#111827;
-
-color:white;
-
-}
-
-
-
-.booking-form button{
-
-
-padding:14px;
-
-
-background:#00c2ff;
-
-
-border:none;
-
-
-border-radius:10px;
-
-
-font-weight:bold;
-
-
-cursor:pointer;
-
-
-transition:.3s;
-
-
-}
-
-
-
-.booking-form button:hover{
-
-
-background:white;
-
-
-}
-
-
-
-/* WARNING */
-
-
-.warning-box{
-
-
-padding:12px;
-
-
-background:rgba(255,165,0,0.1);
-
-
-border-left:4px solid orange;
-
-
-color:#ffcc66;
-
-
-border-radius:8px;
-
-
-}
-
-
-
-</style>
-
-
 </head>
-
 
 
 <body>
 
 
-
 <header>
-
 
 <div class="container">
 
 
-
 <a href="index.html" class="logo">
-
 
 <img src="images/logo.jpg">
 
-
-<span>
-Georgian Paragliding Federation
-</span>
-
+<span>Georgian Paragliding Federation</span>
 
 </a>
 
 
 
 <div class="menu-toggle" onclick="toggleMenu()">
-
 ☰
-
 </div>
 
 
 
 <nav class="menu" id="menu">
-
 
 <a href="index.html">Home</a>
 
@@ -227,11 +46,11 @@ Georgian Paragliding Federation
 
 <a href="gallery.html">Gallery</a>
 
-<a href="documents.html">Documents</a>
+<a href="document.html">Documents</a>
 
 <a href="contact.html">Contact</a>
 
-<a href="booking.html">Book Your Flight</a>
+<a href="BookYourFlight.html">Book Your Flight</a>
 
 <a href="news.html">News</a>
 
@@ -252,31 +71,19 @@ Georgian Paragliding Federation
 <section class="booking-section">
 
 
-
-<div class="booking-title">
-
-
-<h1>
+<h1 class="booking-title">
 Book Your Paragliding Adventure
 </h1>
 
 
-</div>
-
-
-
 <p class="subtext">
-
 Choose your location and we will contact you shortly.
-
 </p>
 
 
 
 
-
 <form class="booking-form">
-
 
 
 <label>
@@ -286,31 +93,21 @@ Location
 
 <select required>
 
-
 <option>
 Select Location
 </option>
-
 
 <option>
 Gudauri
 </option>
 
-
 <option>
 Ananuri
 </option>
 
-
 <option>
 Mestia
 </option>
-
-
-<option>
-Tbilisi Sea
-</option>
-
 
 
 </select>
@@ -328,7 +125,6 @@ Date
 
 
 
-
 <label>
 Full Name
 </label>
@@ -339,14 +135,12 @@ Full Name
 
 
 
-
 <label>
 Email
 </label>
 
 
 <input type="email" placeholder="Email" required>
-
 
 
 
@@ -364,13 +158,9 @@ Phone
 
 <div class="warning-box">
 
-
-⚠️ Flights depend on weather conditions and safety approval.
-
-
+⚠️ Flights depend on weather conditions.
 
 </div>
-
 
 
 
@@ -396,15 +186,11 @@ Confirm Booking
 
 <script>
 
-
 function toggleMenu(){
-
 
 document
 .getElementById("menu")
-.classList
-.toggle("active");
-
+.classList.toggle("active");
 
 }
 
@@ -414,6 +200,5 @@ document
 
 
 </body>
-
 
 </html>
