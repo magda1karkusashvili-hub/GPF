@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard | Paragliding Admin</title>
+
+<style>
+
+/* ================= BASE ================= */
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+}
+
+/* ================= HEADER ================= */
+header {
+    background: #111827;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1f2937;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.admin-badge {
+    font-size: 12px;
+    background: #22c55e;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    margin-left: 6px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover { background: #1d4ed8; }
+
+.logout { background: #dc2626; }
+.logout:hover { background: #b91c1c; }
+
+/* ================= CARDS ================= */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    padding: 25px;
+}
+
+.card {
+    background: linear-gradient(145deg, #1f2937, #111827);
+    padding: 25px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.card h3 { color: #9ca3af; margin-bottom: 8px; }
+.card h2 { margin: 0; font-size: 26px; }
+
+/* ================= FILTER ================= */
+.filter {
+    padding: 0 25px;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #1f2937;
+    color: white;
+}
+
+/* ================= TABLE ================= */
+.table-container {
+    padding: 0 25px 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #111827;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th {
+    background: #2563eb;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #1f2937;
+    text-align: center;
+}
+
+tr:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+/* STATUS */
+.NEW { color: #facc15; font-weight: bold; }
+.CONFIRMED { color: #4ade80; font-weight: bold; }
+.CANCELLED { color: #f87171; font-weight: bold; }
+
+/* ACTION BUTTONS */
+.action-btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin: 2px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.confirm { background: #16a34a; color: white; }
+.cancel { background: #dc2626; color: white; }
+.delete { background: #000; color: white; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div>
+        <h2>
+            Admin Dashboard
+            <span class="admin-badge">ADMIN</span>
+        </h2>
+    </div>
+
+    <div>
+        <a class="btn" href="{{ url_for('export_csv') }}">CSV</a>
+        <a class="btn" href="{{ url_for('export_excel') }}">Excel</a>
+        <a class="btn logout" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</header>
+
+<!-- ================= CONTENT ================= -->
+
+<div class="cards">
+    <div class="card">
+        <h3>Total</h3>
+        <h2>{{ total }}</h2>
+    </div>
+
+    <div class="card">
+        <h3>New</h3>
+        <h2>{{ new_count }}</h2>
+    </div>
+
+    <div class="card">
+        <h3>Confirmed</h3>
+        <h2>{{ confirmed }}</h2>
+    </div>
+
+    <div class="card">
+        <h3>Cancelled</h3>
+        <h2>{{ cancelled }}</h2>
+    </div>
+</div>
+
+<!-- FILTER -->
+<form class="filter" method="GET">
+    <input name="location" placeholder="Location">
+    <input name="date" type="date">
+
+    <select name="status">
+        <option value="">All</option>
+        <option value="NEW">NEW</option>
+        <option value="CONFIRMED">CONFIRMED</option>
+        <option value="CANCELLED">CANCELLED</option>
+    </select>
+
+    <button class="btn" type="submit">Filter</button>
+</form>
+
+<!-- TABLE -->
+<div class="table-container">
+<table>
+
+<tr>
+    <th>ID</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for b in bookings %}
+<tr>
+    <td>{{ b[0] }}</td>
+    <td>{{ b[1] }}</td>
+    <td>{{ b[2] }}</td>
+    <td>{{ b[3] }}</td>
+    <td>{{ b[4] }}</td>
+    <td>{{ b[5] }}</td>
+
+    <td class="{{ b[6] }}">{{ b[6] }}</td>
+
+    <td>
+        <a class="action-btn confirm" href="{{ url_for('update_status', id=b[0], status='CONFIRMED') }}">✔</a>
+        <a class="action-btn cancel" href="{{ url_for('update_status', id=b[0], status='CANCELLED') }}">✖</a>
+        <a class="action-btn delete" href="{{ url_for('delete_booking', id=b[0]) }}">🗑</a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | Georgian Paragliding Federation</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: url("/static/images/para1.jpg") center/cover no-repeat fixed;
+    color: white;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+/* ================= HEADER ================= */
+header {
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+/* NAV */
+.menu {
+    display: flex;
+    gap: 18px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #00c2ff;
+}
+
+/* MOBILE */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.95);
+        padding: 15px;
+    }
+
+    .menu.active { display: flex; }
+}
+
+/* ================= HERO ================= */
+.about-hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.about-hero h1 {
+    font-size: 46px;
+    color: #00c2ff;
+    margin-bottom: 10px;
+}
+
+.about-hero p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+/* ================= ACCORDION ================= */
+.about-grid {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.info-box {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 22px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    border-color: #00c2ff;
+    background: rgba(0,194,255,0.08);
+}
+
+.short {
+    font-size: 14px;
+    color: #bbb;
+}
+
+.more {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.info-box.active .more {
+    display: block;
+}
+
+/* ================= VALUES ================= */
+.values {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.values h2 {
+    font-size: 28px;
+    color: #00c2ff;
+    margin-bottom: 20px;
+}
+
+.values-grid {
+    max-width: 900px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.value-card {
+    background: rgba(255,255,255,0.05);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ================= GALLERY ================= */
+.gallery {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery-item {
+    height: 240px;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0,0,0,0.6);
+    text-align: center;
+}
+
+/* ================= LIGHTBOX (NEW) ================= */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 2fr 2fr; }
+    .gallery { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .about-hero h1 { font-size: 32px; }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+    <div class="container">
+
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}">
+            <span>Georgian Paragliding Federation</span>
+        </a>
+
+        <!-- HAMBURGER -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <nav class="menu" id="menu">
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/document">Documents</a>
+            <a href="/contact">Contact</a>
+            <a href="/BookYourFlight">Book Your Flight</a>
+            <a href="/news">News</a>
+            <a href="/dashboard">Dashboard</a>
+        </nav>
+
+    </div>
+</header>
+
+<!-- HERO -->
+<!-- ================= HERO ================= -->
+<section class="about-hero">
+    <div class="hero-content">
+
+        <h1>About Our Federation</h1>
+
+        <p>
+            Georgian Paragliding Federation develops safe aviation culture,
+            professional pilot training and world-class paragliding standards.
+        </p>
+
+    </div>
+</section>
+
+<!-- ================= INFO CARDS ================= -->
+<section class="about-grid">
+
+    <!-- MISSION -->
+    <div class="info-box" onclick="toggleBox(this)">
+
+        <div class="icon">🎯</div>
+
+        <h3>Mission</h3>
+
+        <p class="short">
+    The mission of the Georgian Paragliding Federation is to develop paragliding in Georgia as a safe, structured and internationally recognized aviation sport.
+        </p>
+
+        <div class="more">
+            <p>
+             The mission of the Georgian Paragliding Federation is to develop paragliding in Georgia as  a safe, structured and internationally recognized aviation sport. We aim to provide unforgettable tandem flight experiences while maintaining the highest levels of safety, pilot professionalism, and operational discipline. Our goal is to make every flight not just an adventure, but a fully controlled and trusted aviation experience for both local and international guests.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- SAFETY -->
+    <div class="info-box" onclick="toggleBox(this)">
+
+        <div class="icon">🛡</div>
+
+        <h3>Safety</h3>
+
+        <p class="short">
+            Safety is the core principle of every flight operation.
+        </p>
+
+        <div class="more">
+            <p>
+                Safety is the core principle of our organization. We strictly follow international aviation standards and operational procedures aligned with FAI guidelines. All pilots are certified, regularly trained, and continuously assessed. Equipment is inspected before and after every flight, and flights are conducted only under suitable meteorological conditions. Risk management, pre-flight briefing, and emergency preparedness are mandatory parts of every operation, ensuring maximum protection for passengers and pilots.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- DEVELOPMENT -->
+    <div class="info-box" onclick="toggleBox(this)">
+
+        <div class="icon">🎓</div>
+
+        <h3>Development</h3>
+
+        <p class="short">
+            Supporting pilot education and the future of paragliding in Georgia.
+        </p>
+
+        <div class="more">
+            <p>
+                We actively contribute to the development of paragliding as a professional sport in Georgia. This includes pilot training programs, safety workshops, instructor development, and cooperation with international aviation organizations. We also support young pilots and new talents by providing structured learning environments and real flight experience. Our long-term goal is to build a strong aviation community that meets global standards and continuously evolves.
+            </p>
+        </div>
+
+    </div>
+
+   
+
+</section>
+
+
+
+
+
+
+
+<!-- VALUES -->
+<section class="values">
+<h2>Core Values</h2>
+
+<div class="values-grid">
+<div class="value-card">Safety</div>
+<div class="value-card">Professionalism</div>
+<div class="value-card">Innovation</div>
+<div class="value-card">Growth</div>
+</div>
+
+</section>
+
+<!-- GALLERY (CLICKABLE) -->
+<section class="gallery">
+
+<div class="gallery-item" onclick="openLightbox(this)">
+<img src="{{ url_for('static', filename='images/para10.jpg') }}">
+<div class="caption">Gudauri</div>
+</div>
+
+<div class="gallery-item" onclick="openLightbox(this)">
+<img src="{{ url_for('static', filename='images/para15.jpg') }}">
+<div class="caption">Mestia</div>
+</div>
+
+<div class="gallery-item" onclick="openLightbox(this)">
+<img src="{{ url_for('static', filename='images/para19.jpg') }}">
+<div class="caption">Ananuri</div>
+</div>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<span class="close">&times;</span>
+<img id="lightbox-img">
+</div>
+
+<script>
+
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
+function toggleBox(el) {
+    el.classList.toggle("active");
+}
+
+/* LIGHTBOX */
+function openLightbox(el) {
+    let img = el.querySelector("img").src;
+    document.getElementById("lightbox-img").src = img;
+    document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>

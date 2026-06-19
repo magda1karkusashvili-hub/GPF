@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard</title>
+
+<style>
+body {
+    background: #0f1115;
+    color: white;
+    font-family: Arial;
+    padding: 30px;
+}
+
+/* ================= HEADER ================= */
+header {
+    background: #111;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.menu {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+/* LOGOUT */
+.logout-link{
+    background:#dc2626;
+    padding:8px 14px;
+    border-radius:8px;
+    color:white;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.logout-link:hover{
+    background:#b91c1c;
+}
+
+/* MOBILE */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* ================= DASHBOARD ================= */
+h1 {
+    text-align: center;
+    color: #00c2ff;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: #161a22;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.card p {
+    font-size: 26px;
+    color: #00c2ff;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #161a22;
+}
+
+th {
+    background: #00c2ff;
+    color: black;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #2a2f3a;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+    <div class="container">
+
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}">
+            <span>Georgian Paragliding Federation</span>
+        </a>
+
+        <!-- HAMBURGER -->
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+        <nav class="menu" id="menu">
+            <a href="/">Home</a>
+            <a href="/about">About Us</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/document">Documents</a>
+            <a href="/contact">Contact</a>
+            <a href="/BookYourFlight">Book Your Flight</a>
+            <a href="/news">News</a>
+            <a href="/dashboard">Dashboard</a>
+        </nav>
+
+    </div>
+</header>
+
+<h1>📊 DASHBOARD WORKING</h1>
+
+<!-- CARDS -->
+<div class="cards">
+    <div class="card"><h3>Total</h3><p>{{ total }}</p></div>
+    <div class="card"><h3>New</h3><p>{{ new_count }}</p></div>
+    <div class="card"><h3>Confirmed</h3><p>{{ confirmed }}</p></div>
+    <div class="card"><h3>Cancelled</h3><p>{{ cancelled }}</p></div>
+</div>
+
+<!-- TABLE -->
+<table>
+<tr>
+    <th>ID</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Status</th>
+</tr>
+
+{% for b in bookings %}
+<tr>
+    <td>{{ b[0] }}</td>
+    <td>{{ b[1] }}</td>
+    <td>{{ b[2] }}</td>
+    <td>{{ b[3] }}</td>
+    <td>{{ b[4] }}</td>
+    <td>{{ b[5] }}</td>
+    <td>{{ b[6] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
