@@ -1,274 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>News | Georgian Paragliding Federation</title>
 
+
 <link rel="stylesheet" href="style.css">
-
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-
-body{
-
-background:url("para1.jpg") center/cover no-repeat fixed;
-color:white;
-min-height:100vh;
-
-}
-
-
-body::before{
-
-content:"";
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.6);
-z-index:-1;
-
-}
-
-
-header{
-
-background:rgba(0,0,0,.85);
-padding:10px 0;
-position:sticky;
-top:0;
-z-index:1000;
-
-}
-
-
-
-.container{
-
-max-width:1200px;
-margin:auto;
-padding:0 15px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-}
-
-
-
-.logo{
-
-display:flex;
-align-items:center;
-gap:10px;
-text-decoration:none;
-color:white;
-
-}
-
-
-
-.logo img{
-
-width:42px;
-height:42px;
-border-radius:50%;
-
-}
-
-
-
-.menu{
-
-display:flex;
-gap:18px;
-
-}
-
-
-.menu a{
-
-color:white;
-text-decoration:none;
-
-}
-
-
-.menu a:hover{
-
-color:#00c2ff;
-
-}
-
-
-
-.page-title{
-
-text-align:center;
-margin:40px 20px;
-
-}
-
-
-
-.page-title h1{
-
-color:#00c2ff;
-font-size:34px;
-
-}
-
-
-.page-title p{
-
-color:#ccc;
-
-}
-
-
-
-.tabs{
-
-display:flex;
-justify-content:center;
-gap:12px;
-margin:30px;
-flex-wrap:wrap;
-
-}
-
-
-.tab-btn{
-
-padding:10px 18px;
-border-radius:25px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.2);
-color:white;
-cursor:pointer;
-
-}
-
-
-.tab-btn.active{
-
-background:#00c2ff;
-color:black;
-
-}
-
-
-
-.news-container{
-
-max-width:1100px;
-margin:auto;
-padding:20px;
-
-}
-
-
-
-.news-grid{
-
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-
-}
-
-
-
-.news-card{
-
-background:rgba(255,255,255,.06);
-border-radius:14px;
-overflow:hidden;
-
-}
-
-
-
-.news-card img{
-
-width:100%;
-height:200px;
-object-fit:cover;
-
-}
-
-
-
-.news-content{
-
-padding:15px;
-
-}
-
-
-
-.news-content h3{
-
-color:#00c2ff;
-
-}
-
-
-
-.news-content p{
-
-color:#ddd;
-line-height:1.5;
-
-}
-
-
-
-.tag{
-
-display:inline-block;
-margin-top:10px;
-color:#00c2ff;
-
-}
-
-
-
-.news-btn{
-
-display:inline-block;
-margin-top:10px;
-padding:8px 14px;
-border-radius:20px;
-border:1px solid #00c2ff;
-color:#00c2ff;
-text-decoration:none;
-
-}
-
-
-@media(max-width:900px){
-
-.news-grid{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-
-</style>
-
 
 </head>
 
@@ -285,17 +27,26 @@ grid-template-columns:1fr;
 
 <a href="index.html" class="logo">
 
-<img src="logo.jpg">
+<img src="images/logo.jpg">
 
 <span>
 Georgian Paragliding Federation
 </span>
 
+
 </a>
 
 
 
-<nav class="menu">
+
+<div class="menu-toggle">
+☰
+</div>
+
+
+
+<nav class="menu" id="menu">
+
 
 <a href="index.html">Home</a>
 
@@ -307,7 +58,9 @@ Georgian Paragliding Federation
 
 <a href="contact.html">Contact</a>
 
-<a href="BookYourFlight.html">Book Your Flight</a>
+<a href="BookYourFlight.html">
+Book Your Flight
+</a>
 
 <a href="news.html">News</a>
 
@@ -325,16 +78,24 @@ Georgian Paragliding Federation
 
 
 
-<div class="page-title">
 
-<h1>Latest News</h1>
+<section class="page-title">
+
+
+<h1>
+Latest News
+</h1>
+
 
 <p>
 Events, Training updates and Safety information
 </p>
 
 
-</div>
+</section>
+
+
+
 
 
 
@@ -343,24 +104,42 @@ Events, Training updates and Safety information
 <div class="tabs">
 
 
-<button class="tab-btn active" onclick="filterNews('all',event)">
+<button class="tab-btn active"
+onclick="filterNews('all',event)">
+
 All
+
 </button>
 
 
-<button class="tab-btn" onclick="filterNews('events',event)">
+
+<button class="tab-btn"
+onclick="filterNews('events',event)">
+
 Events
+
 </button>
 
 
-<button class="tab-btn" onclick="filterNews('training',event)">
+
+
+<button class="tab-btn"
+onclick="filterNews('training',event)">
+
 Training
+
 </button>
 
 
-<button class="tab-btn" onclick="filterNews('safety',event)">
+
+
+<button class="tab-btn"
+onclick="filterNews('safety',event)">
+
 Safety
+
 </button>
+
 
 
 </div>
@@ -370,15 +149,24 @@ Safety
 
 
 
+
+
+
 <div class="news-container">
+
 
 <div class="news-grid">
 
 
 
-<div class="news-card" data-category="events">
 
-<img src="para22.jpg">
+
+<div class="news-card"
+data-category="events">
+
+
+<img src="images/para22.jpg">
+
 
 
 <div class="news-content">
@@ -389,9 +177,13 @@ FAI Membership Achievement
 </h3>
 
 
+
 <p>
+
 Georgian Paragliding Federation became Associate Member of FAI — a historic milestone for Georgian aviation.
+
 </p>
+
 
 
 <span class="tag">
@@ -399,28 +191,40 @@ Events
 </span>
 
 
-<a href="https://www.fai.org/node/208114"
-target="_blank"
-class="news-btn">
+
+<br>
+
+
+
+<a class="news-btn"
+href="https://www.fai.org/node/208114"
+target="_blank">
 
 Official FAI Page
 
 </a>
 
 
-</div>
 
 </div>
 
 
+</div>
 
 
 
 
-<div class="news-card" data-category="training">
 
 
-<img src="para15.jpg">
+
+
+
+<div class="news-card"
+data-category="training">
+
+
+<img src="images/para15.jpg">
+
 
 
 <div class="news-content">
@@ -431,14 +235,23 @@ Advanced Pilot Training
 </h3>
 
 
+
 <p>
+
 New advanced training program launched focusing on thermals, XC navigation and safety procedures.
+
 </p>
+
 
 
 <span class="tag">
 Training
 </span>
+
+
+
+<br>
+
 
 
 <a href="contact.html"
@@ -449,20 +262,26 @@ Contact for Training
 </a>
 
 
-</div>
-
 
 </div>
 
 
+</div>
 
 
 
 
-<div class="news-card" data-category="safety">
 
 
-<img src="para19.jpg">
+
+
+
+<div class="news-card"
+data-category="safety">
+
+
+<img src="images/para19.jpg">
+
 
 
 <div class="news-content">
@@ -473,14 +292,23 @@ Safety & Weather Update
 </h3>
 
 
+
 <p>
+
 Strong winds expected. All pilots must check NOTAM and weather conditions before flights.
+
 </p>
+
 
 
 <span class="tag">
 Safety
 </span>
+
+
+
+<br>
+
 
 
 <a href="https://ais.airnav.ge/en/notam"
@@ -492,6 +320,8 @@ NOTAM
 </a>
 
 
+
+
 <a href="https://www.meteoblue.com"
 target="_blank"
 class="news-btn">
@@ -501,16 +331,9 @@ Weather
 </a>
 
 
-</div>
-
 
 </div>
 
-
-
-
-
-</div>
 
 </div>
 
@@ -518,36 +341,19 @@ Weather
 
 
 
-<script>
 
+</div>
 
-function filterNews(category,e){
-
-
-document.querySelectorAll(".tab-btn")
-.forEach(btn=>btn.classList.remove("active"));
-
-
-e.target.classList.add("active");
+</div>
 
 
 
-document.querySelectorAll(".news-card")
-.forEach(card=>{
 
 
-card.style.display =
-(category==="all" || card.dataset.category===category)
-?"block":"none";
 
 
-});
 
-
-}
-
-
-</script>
+<script src="script.js"></script>
 
 
 
