@@ -788,3 +788,160 @@ header{
 
 
 }
+
+/* ================= BOOK YOUR FLIGHT FIX ================= */
+
+
+.booking-section{
+
+    max-width:760px;
+
+    margin:auto;
+
+    padding:80px 20px;
+
+}
+
+
+
+.booking-title{
+
+    text-align:center;
+
+    color:#00c2ff;
+
+    font-size:38px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.subtext{
+
+    text-align:center;
+
+    color:#ddd;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.booking-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    padding:35px;
+
+
+    background:rgba(255,255,255,0.08);
+
+    border-radius:15px;
+
+
+    border:1px solid rgba(255,255,255,.2);
+
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+
+.booking-form label{
+
+    color:#00c2ff;
+
+    font-weight:bold;
+
+}
+
+
+
+.booking-form input,
+.booking-form select{
+
+
+    width:100%;
+
+    padding:13px;
+
+
+    background:rgba(0,0,0,.6);
+
+    color:white;
+
+
+    border-radius:10px;
+
+    border:1px solid #555;
+
+
+}
+
+
+
+.booking-form button{
+
+
+    margin-top:10px;
+
+
+    padding:14px;
+
+
+    background:#00c2ff;
+
+
+    border:none;
+
+
+    border-radius:10px;
+
+
+    font-weight:bold;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+.booking-form button:hover{
+
+
+    background:white;
+
+
+}
+
+
+
+.warning-box{
+
+
+    padding:15px;
+
+
+    background:rgba(255,165,0,.15);
+
+
+    border-left:4px solid orange;
+
+
+    color:#ffd27a;
+
+
+    border-radius:8px;
+
+
+}
