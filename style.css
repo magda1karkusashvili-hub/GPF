@@ -8,20 +8,11 @@
 }
 
 
-/* ================= GLOBAL BACKGROUND ================= */
+/* ================= GLOBAL ================= */
 
 body{
 
-    background-image:url("images/para1.jpg");
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-repeat:no-repeat;
-
-    background-attachment:fixed;
-
+    background:url("images/para1.jpg") center/cover fixed no-repeat;
 
     color:white;
 
@@ -41,14 +32,11 @@ body::before{
 
     inset:0;
 
-
-    background:rgba(0,0,0,0.6);
-
+    background:rgba(0,0,0,.6);
 
     z-index:-1;
 
 }
-
 
 
 /* ================= HEADER ================= */
@@ -56,7 +44,7 @@ body::before{
 
 header{
 
-    background:rgba(0,0,0,0.85);
+    background:rgba(0,0,0,.85);
 
     backdrop-filter:blur(10px);
 
@@ -80,7 +68,6 @@ header{
 
     padding:0 20px;
 
-
     display:flex;
 
     justify-content:space-between;
@@ -88,7 +75,6 @@ header{
     align-items:center;
 
 }
-
 
 
 /* ================= LOGO ================= */
@@ -101,7 +87,6 @@ header{
     align-items:center;
 
     gap:10px;
-
 
     color:white;
 
@@ -126,15 +111,12 @@ header{
 }
 
 
-
 /* ================= MENU ================= */
 
 
 .menu{
 
     display:flex;
-
-    align-items:center;
 
     gap:18px;
 
@@ -162,18 +144,15 @@ header{
 
 
 
-/* ================= MOBILE BUTTON ================= */
-
-
 .menu-toggle{
 
     display:none;
 
+    color:white;
+
     font-size:30px;
 
     cursor:pointer;
-
-    color:white;
 
 }
 
@@ -220,16 +199,15 @@ header{
 
 .hero p{
 
-    max-width:700px;
-
-    margin:20px auto;
-
     font-size:18px;
 
     line-height:1.6;
 
-}
+    margin:20px auto;
 
+    color:#ddd;
+
+}
 
 
 /* ================= BUTTON ================= */
@@ -251,8 +229,6 @@ header{
 
     font-weight:bold;
 
-    transition:.3s;
-
 }
 
 
@@ -265,16 +241,74 @@ header{
 
 
 
-/* ================= CARDS ================= */
+/* ================= COMMON CARDS ================= */
 
 
-.card-container{
+.card,
+.info-box,
+.value-card,
+.news-card,
+.contact-box,
+.document-section,
+.booking-form{
+
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:15px;
+
+}
+
+
+
+/* ================= ABOUT ================= */
+
+
+.about-hero{
+
+    text-align:center;
+
+    padding:80px 20px 40px;
+
+}
+
+
+
+.about-hero h1{
+
+    color:#00c2ff;
+
+    font-size:46px;
+
+}
+
+
+
+.about-hero p{
+
+    max-width:750px;
+
+    margin:auto;
+
+    color:#ddd;
+
+    line-height:1.6;
+
+}
+
+
+
+.about-grid{
 
     max-width:1100px;
 
-    margin:50px auto;
+    margin:auto;
 
-    padding:20px;
+    padding:40px 20px;
 
     display:grid;
 
@@ -286,23 +320,19 @@ header{
 
 
 
-.card{
-
-    background:rgba(255,255,255,.08);
+.info-box{
 
     padding:25px;
 
-    border-radius:15px;
+    text-align:center;
 
-    border:1px solid rgba(255,255,255,.15);
-
-    backdrop-filter:blur(10px);
+    cursor:pointer;
 
 }
 
 
 
-.card h2{
+.info-box h3{
 
     color:#00c2ff;
 
@@ -310,7 +340,23 @@ header{
 
 
 
-/* ================= BOOK YOUR FLIGHT ================= */
+.more{
+
+    display:none;
+
+}
+
+
+
+.info-box.active .more{
+
+    display:block;
+
+}
+
+
+
+/* ================= BOOKING ================= */
 
 
 .booking-section{
@@ -319,7 +365,7 @@ header{
 
     margin:auto;
 
-    padding:80px 20px;
+    padding:70px 20px;
 
 }
 
@@ -333,8 +379,6 @@ header{
 
     font-size:38px;
 
-    margin-bottom:15px;
-
 }
 
 
@@ -345,7 +389,7 @@ header{
 
     color:#ddd;
 
-    margin-bottom:30px;
+    margin:20px;
 
 }
 
@@ -353,24 +397,13 @@ header{
 
 .booking-form{
 
+    padding:35px;
+
     display:flex;
 
     flex-direction:column;
 
     gap:12px;
-
-    padding:35px;
-
-
-    background:rgba(255,255,255,.08);
-
-    border-radius:15px;
-
-
-    border:1px solid rgba(255,255,255,.15);
-
-
-    backdrop-filter:blur(10px);
 
 }
 
@@ -380,8 +413,6 @@ header{
 
     color:#00c2ff;
 
-    font-weight:bold;
-
 }
 
 
@@ -389,23 +420,15 @@ header{
 .booking-form input,
 .booking-form select{
 
-
-    width:100%;
-
     padding:13px;
 
-
-    background:rgba(0,0,0,.6);
-
+    background:#111;
 
     color:white;
 
-
     border-radius:10px;
 
-
     border:1px solid #555;
-
 
 }
 
@@ -413,61 +436,24 @@ header{
 
 .booking-form button{
 
-
     padding:14px;
-
 
     background:#00c2ff;
 
-
     border:none;
-
 
     border-radius:10px;
 
-
     font-weight:bold;
 
-
-    cursor:pointer;
-
-
 }
-
-
-
-.booking-form button:hover{
-
-    background:white;
-
-}
-
-
-
-.warning-box{
-
-    padding:15px;
-
-
-    background:rgba(255,165,0,.15);
-
-
-    border-left:4px solid orange;
-
-
-    color:#ffd27a;
-
-
-    border-radius:8px;
-
-}
-
 
 
 /* ================= GALLERY ================= */
 
 
-.gallery-cards{
+.gallery-cards,
+.gallery{
 
     max-width:1100px;
 
@@ -483,7 +469,8 @@ header{
 
 
 
-.gallery-card img{
+.gallery-card img,
+.gallery-item img{
 
     width:100%;
 
@@ -492,6 +479,47 @@ header{
     object-fit:cover;
 
     border-radius:15px;
+
+}
+
+
+
+.gallery-card img:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+/* ================= LIGHTBOX ================= */
+
+
+.lightbox{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.9);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+
+
+.lightbox img{
+
+    max-width:90%;
+
+    max-height:90%;
 
 }
 
@@ -517,10 +545,6 @@ header{
 
 
 .news-card{
-
-    background:rgba(255,255,255,.08);
-
-    border-radius:15px;
 
     overflow:hidden;
 
@@ -548,6 +572,90 @@ header{
 
 
 
+.news-content h3{
+
+    color:#00c2ff;
+
+}
+
+
+
+/* ================= DASHBOARD ================= */
+
+
+.cards{
+
+    max-width:1100px;
+
+    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+
+
+.card{
+
+    padding:25px;
+
+    text-align:center;
+
+}
+
+
+
+.card h2,
+.card p{
+
+    color:#00c2ff;
+
+    font-size:28px;
+
+}
+
+
+
+table{
+
+    width:90%;
+
+    margin:30px auto;
+
+    border-collapse:collapse;
+
+    background:rgba(0,0,0,.5);
+
+}
+
+
+
+th{
+
+    background:#00c2ff;
+
+    color:black;
+
+    padding:12px;
+
+}
+
+
+
+td{
+
+    padding:12px;
+
+    text-align:center;
+
+}
+
+
+
 /* ================= MOBILE ================= */
 
 
@@ -570,23 +678,17 @@ header{
 
     right:-100%;
 
-
     width:75%;
 
     height:100vh;
 
-
-    background:rgba(0,0,0,.97);
-
+    background:#000;
 
     flex-direction:column;
 
-
     padding:90px 30px;
 
-
-    transition:.35s;
-
+    transition:.3s;
 
 }
 
@@ -600,9 +702,11 @@ header{
 
 
 
-.card-container,
+.about-grid,
+.gallery,
 .gallery-cards,
-.news-grid{
+.news-grid,
+.cards{
 
     grid-template-columns:1fr;
 
@@ -618,9 +722,9 @@ header{
 
 
 
-.hero p{
+.container{
 
-    font-size:16px;
+    padding:0 15px;
 
 }
 
