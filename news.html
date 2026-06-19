@@ -7,10 +7,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>News | Georgian Paragliding Federation</title>
+
+<title>
+News | Georgian Paragliding Federation
+</title>
 
 
 <link rel="stylesheet" href="style.css">
+
 
 </head>
 
@@ -33,15 +37,16 @@
 Georgian Paragliding Federation
 </span>
 
-
 </a>
 
 
 
-
 <div class="menu-toggle">
+
 ☰
+
 </div>
+
 
 
 
@@ -58,9 +63,7 @@ Georgian Paragliding Federation
 
 <a href="contact.html">Contact</a>
 
-<a href="BookYourFlight.html">
-Book Your Flight
-</a>
+<a href="BookYourFlight.html">Book Your Flight</a>
 
 <a href="news.html">News</a>
 
@@ -73,6 +76,7 @@ Book Your Flight
 </div>
 
 </header>
+
 
 
 
@@ -106,40 +110,26 @@ Events, Training updates and Safety information
 
 <button class="tab-btn active"
 onclick="filterNews('all',event)">
-
 All
-
 </button>
-
 
 
 <button class="tab-btn"
 onclick="filterNews('events',event)">
-
 Events
-
 </button>
-
-
 
 
 <button class="tab-btn"
 onclick="filterNews('training',event)">
-
 Training
-
 </button>
-
-
 
 
 <button class="tab-btn"
 onclick="filterNews('safety',event)">
-
 Safety
-
 </button>
-
 
 
 </div>
@@ -149,10 +139,6 @@ Safety
 
 
 
-
-
-
-<div class="news-container">
 
 
 <div class="news-grid">
@@ -168,14 +154,12 @@ data-category="events">
 <img src="images/para22.jpg">
 
 
-
 <div class="news-content">
 
 
 <h3>
 FAI Membership Achievement
 </h3>
-
 
 
 <p>
@@ -185,22 +169,15 @@ Georgian Paragliding Federation became Associate Member of FAI — a historic mi
 </p>
 
 
-
 <span class="tag">
 Events
 </span>
 
 
-
-<br>
-
-
-
 <a class="news-btn"
-href="https://www.fai.org/node/208114"
-target="_blank">
+href="news-detail.html">
 
-Official FAI Page
+Read More
 
 </a>
 
@@ -226,7 +203,6 @@ data-category="training">
 <img src="images/para15.jpg">
 
 
-
 <div class="news-content">
 
 
@@ -235,13 +211,11 @@ Advanced Pilot Training
 </h3>
 
 
-
 <p>
 
-New advanced training program launched focusing on thermals, XC navigation and safety procedures.
+New advanced training program focusing on thermals, XC navigation and safety procedures.
 
 </p>
-
 
 
 <span class="tag">
@@ -249,15 +223,10 @@ Training
 </span>
 
 
+<a class="news-btn"
+href="contact.html">
 
-<br>
-
-
-
-<a href="contact.html"
-class="news-btn">
-
-Contact for Training
+Contact
 
 </a>
 
@@ -283,7 +252,6 @@ data-category="safety">
 <img src="images/para19.jpg">
 
 
-
 <div class="news-content">
 
 
@@ -292,13 +260,11 @@ Safety & Weather Update
 </h3>
 
 
-
 <p>
 
-Strong winds expected. All pilots must check NOTAM and weather conditions before flights.
+Pilots must check weather conditions and NOTAM before every flight.
 
 </p>
-
 
 
 <span class="tag">
@@ -306,14 +272,9 @@ Safety
 </span>
 
 
-
-<br>
-
-
-
-<a href="https://ais.airnav.ge/en/notam"
-target="_blank"
-class="news-btn">
+<a class="news-btn"
+href="https://ais.airnav.ge/en/notam"
+target="_blank">
 
 NOTAM
 
@@ -321,17 +282,6 @@ NOTAM
 
 
 
-
-<a href="https://www.meteoblue.com"
-target="_blank"
-class="news-btn">
-
-Weather
-
-</a>
-
-
-
 </div>
 
 
@@ -342,9 +292,9 @@ Weather
 
 
 
-</div>
 
 </div>
+
 
 
 
@@ -356,7 +306,48 @@ Weather
 <script src="script.js"></script>
 
 
+<script>
+
+
+function filterNews(category,e){
+
+
+document.querySelectorAll(".tab-btn")
+.forEach(btn=>btn.classList.remove("active"));
+
+
+e.target.classList.add("active");
+
+
+
+document.querySelectorAll(".news-card")
+.forEach(card=>{
+
+
+if(category==="all" || card.dataset.category===category){
+
+card.style.display="block";
+
+}
+
+else{
+
+card.style.display="none";
+
+}
+
+
+});
+
+
+}
+
+
+</script>
+
+
 
 </body>
+
 
 </html>
