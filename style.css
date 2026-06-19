@@ -8,11 +8,11 @@
 }
 
 
-/* ================= BODY ================= */
+/* ================= GLOBAL BACKGROUND ================= */
 
 body{
 
-    background-image:url("../images/para1.jpg");
+    background-image:url("images/para1.jpg");
 
     background-size:cover;
 
@@ -41,7 +41,9 @@ body::before{
 
     inset:0;
 
+
     background:rgba(0,0,0,0.6);
+
 
     z-index:-1;
 
@@ -125,7 +127,6 @@ header{
 
 
 
-
 /* ================= MENU ================= */
 
 
@@ -161,8 +162,7 @@ header{
 
 
 
-
-/* ================= MOBILE MENU BUTTON ================= */
+/* ================= MOBILE BUTTON ================= */
 
 
 .menu-toggle{
@@ -179,8 +179,6 @@ header{
 
 
 
-
-
 /* ================= HERO ================= */
 
 
@@ -188,16 +186,13 @@ header{
 
     min-height:90vh;
 
-
     display:flex;
 
     justify-content:center;
 
     align-items:center;
 
-
     text-align:center;
-
 
     padding:20px;
 
@@ -244,24 +239,17 @@ header{
 
     display:inline-block;
 
-
     padding:12px 25px;
-
 
     background:#00c2ff;
 
-
     color:black;
-
 
     border-radius:10px;
 
-
     text-decoration:none;
 
-
     font-weight:bold;
-
 
     transition:.3s;
 
@@ -277,8 +265,6 @@ header{
 
 
 
-
-
 /* ================= CARDS ================= */
 
 
@@ -286,18 +272,13 @@ header{
 
     max-width:1100px;
 
-
     margin:50px auto;
-
 
     padding:20px;
 
-
     display:grid;
 
-
     grid-template-columns:repeat(3,1fr);
-
 
     gap:20px;
 
@@ -305,24 +286,17 @@ header{
 
 
 
-
 .card{
-
 
     background:rgba(255,255,255,.08);
 
-
     padding:25px;
-
 
     border-radius:15px;
 
-
     border:1px solid rgba(255,255,255,.15);
 
-
-    backdrop-filter:blur(5px);
-
+    backdrop-filter:blur(10px);
 
 }
 
@@ -332,464 +306,11 @@ header{
 
     color:#00c2ff;
 
-    margin-bottom:10px;
-
 }
-
-
 
 
 
 /* ================= BOOK YOUR FLIGHT ================= */
-
-
-.booking-section{
-
-
-    max-width:760px;
-
-
-    margin:auto;
-
-
-    padding:70px 20px;
-
-
-}
-
-
-
-.booking-title{
-
-
-    text-align:center;
-
-
-    color:#00c2ff;
-
-
-    font-size:38px;
-
-
-    margin-bottom:15px;
-
-
-}
-
-
-
-.subtext{
-
-
-    text-align:center;
-
-
-    color:#b9c2d0;
-
-
-    margin-bottom:30px;
-
-
-}
-
-
-
-
-.booking-form{
-
-
-    max-width:600px;
-
-
-    margin:40px auto;
-
-
-    padding:30px;
-
-
-    background:rgba(255,255,255,.08);
-
-
-    border-radius:15px;
-
-
-    border:1px solid rgba(255,255,255,.15);
-
-
-    backdrop-filter:blur(10px);
-
-
-}
-
-
-
-.booking-form label{
-
-
-    display:block;
-
-
-    color:#00c2ff;
-
-
-    font-weight:bold;
-
-
-    margin-top:10px;
-
-
-}
-
-
-
-.booking-form input,
-
-.booking-form select{
-
-
-    width:100%;
-
-
-    padding:12px;
-
-
-    margin:8px 0;
-
-
-    background:rgba(0,0,0,.5);
-
-
-    color:white;
-
-
-    border-radius:8px;
-
-
-    border:1px solid #555;
-
-
-}
-
-
-
-.booking-form button{
-
-
-    width:100%;
-
-
-    padding:12px;
-
-
-    background:#00c2ff;
-
-
-    border:0;
-
-
-    border-radius:10px;
-
-
-    font-weight:bold;
-
-
-    cursor:pointer;
-
-
-    transition:.3s;
-
-
-}
-
-
-
-.booking-form button:hover{
-
-
-    background:white;
-
-
-}
-
-
-
-.warning-box{
-
-
-    margin-top:15px;
-
-
-    padding:15px;
-
-
-    background:rgba(255,165,0,.12);
-
-
-    border-left:4px solid orange;
-
-
-    border-radius:8px;
-
-
-    color:#ffd27a;
-
-
-}
-
-
-
-
-
-/* ================= GALLERY ================= */
-
-
-.gallery-cards{
-
-
-    max-width:1100px;
-
-
-    margin:50px auto;
-
-
-    display:grid;
-
-
-    grid-template-columns:repeat(3,1fr);
-
-
-    gap:20px;
-
-
-}
-
-
-
-
-.gallery-card img{
-
-
-    width:100%;
-
-
-    height:250px;
-
-
-    object-fit:cover;
-
-
-    border-radius:15px;
-
-
-    transition:.4s;
-
-
-}
-
-
-
-
-.gallery-card img:hover{
-
-
-    transform:scale(1.05);
-
-
-}
-
-
-
-
-
-
-
-/* ================= NEWS ================= */
-
-
-.news-grid{
-
-
-    max-width:1100px;
-
-
-    margin:auto;
-
-
-    display:grid;
-
-
-    grid-template-columns:repeat(3,1fr);
-
-
-    gap:20px;
-
-
-}
-
-
-
-.news-card{
-
-
-    background:rgba(255,255,255,.08);
-
-
-    border-radius:15px;
-
-
-    overflow:hidden;
-
-
-}
-
-
-
-.news-card img{
-
-
-    width:100%;
-
-
-    height:200px;
-
-
-    object-fit:cover;
-
-
-}
-
-
-
-.news-content{
-
-
-    padding:20px;
-
-
-}
-
-
-
-
-
-/* ================= MOBILE ================= */
-
-
-@media(max-width:768px){
-
-
-
-.menu-toggle{
-
-    display:block;
-
-}
-
-
-
-
-
-.menu{
-
-
-    position:fixed;
-
-
-    top:0;
-
-
-    right:-100%;
-
-
-    width:75%;
-
-
-    height:100vh;
-
-
-    background:rgba(0,0,0,.97);
-
-
-    flex-direction:column;
-
-
-    align-items:flex-start;
-
-
-    padding:90px 30px;
-
-
-    transition:.35s;
-
-
-    z-index:2000;
-
-
-}
-
-
-
-.menu.active{
-
-
-    right:0;
-
-
-}
-
-
-
-.menu a{
-
-
-    font-size:18px;
-
-
-}
-
-
-
-
-
-.card-container,
-
-.gallery-cards,
-
-.news-grid{
-
-
-    grid-template-columns:1fr;
-
-
-}
-
-
-
-
-
-.hero h1{
-
-
-    font-size:32px;
-
-
-}
-
-
-
-
-.hero p{
-
-
-    font-size:16px;
-
-
-}
-
-
-}
-
-/* ================= BOOK YOUR FLIGHT FIX ================= */
 
 
 .booking-section{
@@ -841,12 +362,12 @@ header{
     padding:35px;
 
 
-    background:rgba(255,255,255,0.08);
+    background:rgba(255,255,255,.08);
 
     border-radius:15px;
 
 
-    border:1px solid rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.15);
 
 
     backdrop-filter:blur(10px);
@@ -876,10 +397,12 @@ header{
 
     background:rgba(0,0,0,.6);
 
+
     color:white;
 
 
     border-radius:10px;
+
 
     border:1px solid #555;
 
@@ -889,9 +412,6 @@ header{
 
 
 .booking-form button{
-
-
-    margin-top:10px;
 
 
     padding:14px;
@@ -918,16 +438,13 @@ header{
 
 .booking-form button:hover{
 
-
     background:white;
-
 
 }
 
 
 
 .warning-box{
-
 
     padding:15px;
 
@@ -942,6 +459,170 @@ header{
 
 
     border-radius:8px;
+
+}
+
+
+
+/* ================= GALLERY ================= */
+
+
+.gallery-cards{
+
+    max-width:1100px;
+
+    margin:50px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+
+
+.gallery-card img{
+
+    width:100%;
+
+    height:250px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+}
+
+
+
+/* ================= NEWS ================= */
+
+
+.news-grid{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+
+
+.news-card{
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+}
+
+
+
+.news-card img{
+
+    width:100%;
+
+    height:200px;
+
+    object-fit:cover;
+
+}
+
+
+
+.news-content{
+
+    padding:20px;
+
+}
+
+
+
+/* ================= MOBILE ================= */
+
+
+@media(max-width:768px){
+
+
+.menu-toggle{
+
+    display:block;
+
+}
+
+
+
+.menu{
+
+    position:fixed;
+
+    top:0;
+
+    right:-100%;
+
+
+    width:75%;
+
+    height:100vh;
+
+
+    background:rgba(0,0,0,.97);
+
+
+    flex-direction:column;
+
+
+    padding:90px 30px;
+
+
+    transition:.35s;
+
+
+}
+
+
+
+.menu.active{
+
+    right:0;
+
+}
+
+
+
+.card-container,
+.gallery-cards,
+.news-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.hero h1{
+
+    font-size:32px;
+
+}
+
+
+
+.hero p{
+
+    font-size:16px;
+
+}
 
 
 }
