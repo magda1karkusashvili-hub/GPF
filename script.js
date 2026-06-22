@@ -1,35 +1,22 @@
-/* =========================
- MOBILE MENU
-========================= */
+
+document.addEventListener("DOMContentLoaded",()=>{
 
 
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+// MOBILE MENU
 
+const toggle=document.querySelector(".menu-toggle");
 
-const toggle =
-document.querySelector(".menu-toggle");
-
-
-const menu =
-document.querySelector(".menu");
-
+const menu=document.querySelector(".menu");
 
 
 if(toggle && menu){
 
 
-toggle.addEventListener(
-"click",
-()=>{
-
+toggle.onclick=()=>{
 
 menu.classList.toggle("active");
 
-
-});
-
+};
 
 
 }
@@ -37,61 +24,65 @@ menu.classList.toggle("active");
 
 
 
+
+// CLOSE MENU
+
+document.querySelectorAll(".menu a").forEach(link=>{
+
+
+link.onclick=()=>{
+
+menu.classList.remove("active");
+
+};
+
+
 });
 
 
 
 
 
+});
 
-/* =========================
- GALLERY LIGHTBOX
-========================= */
+
+
+
+
+// GALLERY LIGHTBOX
 
 
 function openLightbox(img){
 
 
-const box =
-document.getElementById("lightbox");
+let box=document.getElementById("lightbox");
 
-
-const image =
-document.getElementById("lightbox-img");
-
+let image=document.getElementById("lightbox-img");
 
 
 if(box && image){
 
-
 box.style.display="flex";
-
 
 image.src=img.src;
 
-
 }
 
 
-
 }
-
 
 
 
 function closeLightbox(){
 
 
-const box =
-document.getElementById("lightbox");
+let box=document.getElementById("lightbox");
 
 
 if(box){
 
-
 box.style.display="none";
 
-
 }
 
 
@@ -102,161 +93,44 @@ box.style.display="none";
 
 
 
+// NEWS FILTER
 
 
-/* =========================
- ABOUT MODAL
-========================= */
+function filterNews(category,event){
 
 
-function openModal(type){
+let cards=document.querySelectorAll(".news-card");
 
 
-
-const modal =
-document.getElementById("modal");
-
-
-const title =
-document.getElementById("modal-title");
-
-
-const text =
-document.getElementById("modal-text");
+let buttons=document.querySelectorAll(".tab-btn");
 
 
 
+buttons.forEach(btn=>{
 
-let data={
+btn.classList.remove("active");
 
-
-
-mission:{
-
-
-title:"🎯 Mission",
+});
 
 
-text:
-"Develop paragliding in Georgia as a safe and internationally recognized aviation sport."
+if(event){
 
-},
-
-
-
-safety:{
-
-
-title:"🛡 Safety",
-
-
-text:
-"Safety is the main principle of every flight operation."
-
-},
-
-
-
-development:{
-
-
-title:"🎓 Development",
-
-
-text:
-"Supporting pilot education and aviation development."
+event.target.classList.add("active");
 
 }
-
-
-
-};
-
-
-
-
-
-
-if(data[type]){
-
-
-title.innerHTML=data[type].title;
-
-
-text.innerHTML=data[type].text;
-
-
-modal.style.display="flex";
-
-
-}
-
-
-
-
-}
-
-
-
-
-
-function closeModal(){
-
-
-let modal =
-document.getElementById("modal");
-
-
-if(modal){
-
-
-modal.style.display="none";
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-/* =========================
- NEWS FILTER
-========================= */
-
-
-
-function filterNews(category){
-
-
-
-let cards =
-document.querySelectorAll(".news-card");
-
 
 
 
 cards.forEach(card=>{
 
 
-if(
-category==="all"
-||
-card.dataset.category===category
-){
+if(category==="all" || card.dataset.category===category){
 
 
 card.style.display="block";
 
 
-}
-
-else{
+}else{
 
 
 card.style.display="none";
@@ -271,3 +145,64 @@ card.style.display="none";
 
 
 }
+
+
+
+
+
+// TYPING EFFECT
+
+
+function typing(text,element){
+
+
+let i=0;
+
+
+let timer=setInterval(()=>{
+
+
+if(i<text.length){
+
+
+element.innerHTML+=text[i];
+
+i++;
+
+
+}else{
+
+
+clearInterval(timer);
+
+
+}
+
+
+},40);
+
+
+}
+
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+
+let el=document.querySelector(".typing-text");
+
+
+if(el){
+
+
+typing(
+"Moments captured during paragliding adventures across Georgia.",
+el
+);
+
+
+}
+
+
+});
