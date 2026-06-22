@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>{{ news.title }}</title>
+<title>News Detail | Georgian Paragliding Federation</title>
 
 
 <style>
@@ -27,7 +27,7 @@
 
 body {
 
-    background:url("/static/images/para1.jpg") center/cover fixed;
+    background:url("para1.jpg") center/cover fixed;
 
     color:white;
 
@@ -55,7 +55,8 @@ body::before {
 
 
 
-/* HEADER STYLE */
+
+/* HEADER */
 
 
 header {
@@ -92,6 +93,7 @@ header {
 
 
 
+
 .logo {
 
     color:white;
@@ -101,6 +103,8 @@ header {
     font-weight:bold;
 
 }
+
+
 
 
 
@@ -136,7 +140,7 @@ header {
 
 
 
-/* NEWS */
+/* NEWS DETAIL */
 
 
 .container {
@@ -151,9 +155,12 @@ header {
 
     background:rgba(255,255,255,0.06);
 
+
     border:1px solid rgba(255,255,255,0.12);
 
+
     border-radius:14px;
+
 
     backdrop-filter:blur(10px);
 
@@ -164,7 +171,9 @@ header {
 
 
 
-img {
+
+
+.news-image {
 
 
     width:100%;
@@ -178,6 +187,7 @@ img {
 
 
 
+
 h1 {
 
 
@@ -187,6 +197,7 @@ h1 {
 
 
 }
+
 
 
 
@@ -204,12 +215,14 @@ p {
 
 
 
+
 .tag {
 
 
     display:inline-block;
 
     margin-top:20px;
+
 
     padding:6px 14px;
 
@@ -229,26 +242,25 @@ p {
 
 
 
-
 @media(max-width:768px){
 
 
 .menu {
 
-    display:none;
+display:none;
 
 }
+
 
 
 .container {
 
-    margin:30px 15px;
+margin:30px 15px;
 
 }
 
 
 }
-
 
 
 
@@ -256,6 +268,7 @@ p {
 
 
 </head>
+
 
 
 
@@ -272,7 +285,8 @@ p {
 <div class="nav-container">
 
 
-<a href="/" class="logo">
+
+<a href="index.html" class="logo">
 
 Georgian Paragliding Federation
 
@@ -280,24 +294,26 @@ Georgian Paragliding Federation
 
 
 
+
+
 <nav class="menu">
 
 
-<a href="/">Home</a>
+<a href="index.html">Home</a>
 
-<a href="/about">About Us</a>
+<a href="about.html">About Us</a>
 
-<a href="/gallery">Gallery</a>
+<a href="gallery.html">Gallery</a>
 
-<a href="/document">Documents</a>
+<a href="document.html">Documents</a>
 
-<a href="/contact">Contact</a>
+<a href="contact.html">Contact</a>
 
-<a href="/BookYourFlight">Book Your Flight</a>
+<a href="BookYourFlight.html">Book Your Flight</a>
 
-<a href="/news">News</a>
+<a href="news.html">News</a>
 
-<a href="/dashboard">Dashboard</a>
+<a href="dashboard.html">Dashboard</a>
 
 
 </nav>
@@ -315,35 +331,47 @@ Georgian Paragliding Federation
 
 
 
+
 <div class="container">
 
 
 
-<img src="/static/images/{{ news.image }}">
+
+
+<img class="news-image" src="para22.jpg">
+
+
 
 
 
 <h1>
 
-{{ news.title }}
+FAI Membership Achievement
 
 </h1>
 
 
 
 
+
 <p>
 
-{{ news.content }}
+
+Georgian Paragliding Federation became Associate Member of FAI — a historic milestone for Georgian aviation.
+
+<br><br>
+
+This achievement represents an important step in the development of paragliding in Georgia and strengthens cooperation with international aviation organizations.
 
 </p>
 
 
 
 
+
 <span class="tag">
 
-{{ news.category }}
+Events
 
 </span>
 
@@ -351,7 +379,9 @@ Georgian Paragliding Federation
 
 
 
+
 </div>
+
 
 
 
