@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ news.title }}</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background: url("/static/images/para1.jpg") center/cover fixed;
+    color:white;
+}
+
+body::before {
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:-1;
+}
+
+.container {
+    max-width:800px;
+    margin:60px auto;
+    padding:20px;
+    background:rgba(255,255,255,0.06);
+    border-radius:14px;
+}
+
+img {
+    width:100%;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+h1 {
+    color:#00c2ff;
+}
+
+.tag {
+    display:inline-block;
+    margin-top:10px;
+    padding:5px 12px;
+    background:rgba(0,194,255,0.2);
+    color:#00c2ff;
+    border-radius:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <img src="/static/images/{{ news.image }}">
+
+    <h1>{{ news.title }}</h1>
+
+    <p>{{ news.content }}</p>
+
+    <span class="tag">{{ news.category }}</span>
+
+</div>
+
+</body>
+</html>
