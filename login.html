@@ -1,109 +1,106 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Login</title>
 
-<link rel="stylesheet" href="style.css">
+<title>
+Admin Login
+</title>
+
+
+<link rel="stylesheet" href="css/style.css">
+
 
 </head>
+
 
 
 <body>
 
 
-<div class="container" style="min-height:100vh;display:flex;justify-content:center;align-items:center;">
+
+<section class="login-box">
 
 
-<div class="card" style="max-width:380px;width:100%;padding:40px;text-align:center;">
-
-
-<div style="font-size:40px">
-🔐
-</div>
-
-
-<h2 style="color:#00c2ff">
+<h1>
 Admin Login
-</h2>
-
-
-<p style="color:#fbbf24">
-Secure Admin Access
-</p>
+</h1>
 
 
 
-<div class="warning-box">
-
-⚠️ Restricted Area • Authorized Personnel Only
-
-</div>
-
-
-
-<form onsubmit="login(event)">
-
-
-<input id="username"
+<input 
+id="username"
 type="text"
-placeholder="Username"
-required
-style="width:100%;padding:12px;margin:10px 0;background:#111;color:white;border-radius:10px;">
+placeholder="Username">
 
 
 
-<input id="password"
+<input 
+id="password"
 type="password"
-placeholder="Password"
-required
-style="width:100%;padding:12px;margin:10px 0;background:#111;color:white;border-radius:10px;">
+placeholder="Password">
 
 
 
-<button class="btn"
-style="width:100%;border:none;cursor:pointer;">
+
+
+<button onclick="login()">
 
 Login
 
 </button>
 
 
-</form>
 
 
 
-</div>
+<p id="error"></p>
 
 
-</div>
+
+</section>
+
+
+
+
 
 
 
 <script>
 
-function login(e){
 
-e.preventDefault();
-
-
-let user=document.getElementById("username").value;
-
-let pass=document.getElementById("password").value;
+function login(){
 
 
+let user =
+document.getElementById("username").value;
 
-if(user==="admin" && pass==="1234"){
+
+let pass =
+document.getElementById("password").value;
 
 
-localStorage.setItem("admin","true");
+
+
+if(user==="admin" && pass==="12345"){
+
+
+localStorage.setItem(
+"admin",
+"true"
+);
+
 
 
 window.location="dashboard.html";
+
 
 
 }
@@ -111,7 +108,8 @@ window.location="dashboard.html";
 else{
 
 
-alert("Incorrect username or password");
+document.getElementById("error").innerHTML=
+"Wrong username or password";
 
 
 }
@@ -125,5 +123,8 @@ alert("Incorrect username or password");
 
 
 
+
 </body>
+
+
 </html>
