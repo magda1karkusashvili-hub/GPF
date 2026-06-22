@@ -82,6 +82,7 @@ header {
 }
 
 @media (max-width: 768px) {
+
     .menu {
         display: none;
         flex-direction: column;
@@ -122,6 +123,7 @@ header {
 }
 
 .booking-form {
+
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -140,6 +142,7 @@ header {
 
 .booking-form input,
 .booking-form select {
+
     padding: 12px;
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.1);
@@ -148,6 +151,7 @@ header {
 }
 
 .booking-form button {
+
     padding: 13px;
     background: linear-gradient(135deg, #00c2ff, #0095c9);
     border: none;
@@ -157,87 +161,138 @@ header {
 }
 
 .warning-box {
+
     padding: 12px;
     background: rgba(255,165,0,0.08);
     border-left: 4px solid orange;
     color: #ffcc66;
 }
 
+</style>
 
-        <!-- HAMBURGER -->
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+</head>
 
-        <nav class="menu" id="menu">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/gallery">Gallery</a>
-            <a href="/document">Documents</a>
-            <a href="/contact">Contact</a>
-            <a href="/BookYourFlight">Book Your Flight</a>
-            <a href="/news">News</a>
-            <a href="/dashboard">Dashboard</a>
-        </nav>
+<body>
 
-    </div>
+
+<header>
+
+<div class="container">
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav class="menu" id="menu">
+
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/document">Documents</a>
+        <a href="/contact">Contact</a>
+        <a href="/BookYourFlight">Book Your Flight</a>
+        <a href="/news">News</a>
+        <a href="/dashboard">Dashboard</a>
+
+    </nav>
+
+</div>
+
 </header>
+
 
 <section class="booking-section">
 
+
 <div class="booking-title">
-    <h1>Book Your Paragliding Adventure</h1>
+
+<h1>Book Your Paragliding Adventure</h1>
+
 </div>
 
+
 <p class="subtext">
-    Choose your location and we will contact you shortly.
+
+Choose your location and we will contact you shortly.
+
 </p>
 
-<!-- FLASH MESSAGES -->
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for category, message in messages %}
-      <div class="flash">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
+
 
 <form class="booking-form"
       action="{{ url_for('book') }}"
       method="POST">
 
+
     <label>Location</label>
+
     <select name="location" required>
+
         <option value="">Select Location</option>
+
         <option value="gudauri">Gudauri</option>
+
         <option value="ananuri">Ananuri</option>
+
     </select>
 
+
+
     <label>Date</label>
+
     <input type="date" name="date" required min="{{ today }}">
 
+
+
     <label>Full Name</label>
+
     <input type="text" name="name" required>
 
+
+
     <label>Email</label>
+
     <input type="email" name="email" required>
 
+
+
     <label>Phone</label>
+
     <input type="tel" name="phone" required>
 
+
+
     <div class="warning-box">
+
         ⚠️ Flights depend on weather conditions.
+
     </div>
 
-    <button type="submit">Confirm Booking</button>
+
+
+    <button type="submit">
+
+        Confirm Booking
+
+    </button>
+
 
 </form>
 
+
 </section>
 
+
+
 <script>
+
 function toggleMenu() {
+
     document.getElementById("menu").classList.toggle("active");
+
 }
+
 </script>
 
+
 </body>
+
 </html>
