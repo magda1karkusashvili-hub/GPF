@@ -6,252 +6,268 @@ const qs = (s) => document.querySelector(s);
 const qsa = (s) => document.querySelectorAll(s);
 
 
+
 /* =========================
    DOM READY
 ========================= */
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
 
-    /* =========================
-       MOBILE MENU
-    ========================= */
 
-    const menu = qs("#menu");
-    const toggle = qs(".menu-toggle");
-    const overlay = qs("#menuOverlay");
+/* =========================
+   MOBILE MENU
+========================= */
 
 
-    if(menu && toggle){
+const menu = qs("#menu");
+const toggle = qs(".menu-toggle");
 
-        toggle.addEventListener("click",(e)=>{
 
-            e.stopPropagation();
+if(menu && toggle){
 
-            menu.classList.toggle("active");
 
-            if(overlay){
-                overlay.classList.toggle("active");
-            }
+toggle.addEventListener("click",()=>{
 
-        });
 
+menu.classList.toggle("active");
 
 
-        document.addEventListener("click",(e)=>{
+});
 
-            if(
-                !menu.contains(e.target) &&
-                !toggle.contains(e.target)
-            ){
 
-                menu.classList.remove("active");
 
-                if(overlay){
-                    overlay.classList.remove("active");
-                }
+document.addEventListener("click",(e)=>{
 
-            }
 
-        });
+if(
+!menu.contains(e.target) &&
+!toggle.contains(e.target)
+){
 
 
+menu.classList.remove("active");
 
-        menu.querySelectorAll("a").forEach(link=>{
 
-            link.addEventListener("click",()=>{
+}
 
-                menu.classList.remove("active");
 
-                if(overlay){
-                    overlay.classList.remove("active");
-                }
+});
 
-            });
 
-        });
+}
 
-    }
 
 
 
+/* =========================
+   HERO SLIDER
+========================= */
 
-    /* =========================
-       HERO SLIDER
-    ========================= */
 
+let currentSlide = 0;
 
-    let currentSlide = 0;
 
-    const slides = qsa(".hero .slide");
+const slides =
+qsa(".hero .slide");
 
 
-    function showSlide(index){
 
-        if(!slides.length) return;
+function showSlide(index){
 
 
-        currentSlide =
-        (index + slides.length) % slides.length;
+if(!slides.length) return;
 
 
-        slides.forEach(slide=>{
 
-            slide.classList.remove("active");
+currentSlide =
+(index + slides.length)
+% slides.length;
 
-        });
 
 
-        slides[currentSlide].classList.add("active");
+slides.forEach(slide=>{
 
-    }
 
+slide.classList.remove("active");
 
 
-    if(slides.length > 1){
+});
 
-        setInterval(()=>{
 
-            showSlide(currentSlide + 1);
 
-        },3500);
+slides[currentSlide]
+.classList.add("active");
 
-    }
 
+}
 
 
 
 
-    /* =========================
-       SCROLL REVEAL
-    ========================= */
+if(slides.length > 1){
 
 
-    function revealOnScroll(){
+setInterval(()=>{
 
-        qsa(".reveal").forEach(el=>{
 
+showSlide(currentSlide+1);
 
-            const position =
-            el.getBoundingClientRect().top;
 
+},3500);
 
-            if(position < window.innerHeight - 100){
 
-                el.classList.add("active");
+}
 
-            }
 
 
-        });
 
-    }
 
 
-    window.addEventListener(
-        "scroll",
-        revealOnScroll
-    );
+/* =========================
+   SCROLL REVEAL
+========================= */
 
 
-    revealOnScroll();
+function revealOnScroll(){
 
 
+qsa(".reveal")
+.forEach(el=>{
 
 
+let position =
+el.getBoundingClientRect().top;
 
 
-    /* =========================
-       GALLERY SLIDER
-    ========================= */
 
+if(position <
+window.innerHeight - 100){
 
-    qsa(".gallery-card").forEach(card=>{
 
+el.classList.add("active");
 
-        const imgs =
-        card.querySelectorAll("img");
 
+}
 
-        if(imgs.length <= 1) return;
 
+});
 
-        let index = 0;
 
+}
 
-        imgs.forEach((img,i)=>{
 
-            img.style.display =
-            i===0 ? "block":"none";
 
-        });
+window.addEventListener(
+"scroll",
+revealOnScroll
+);
 
 
 
-        setInterval(()=>{
+revealOnScroll();
 
 
-            imgs[index].style.display="none";
 
 
-            index =
-            (index + 1) % imgs.length;
 
 
-            imgs[index].style.display="block";
 
+/* =========================
+   GALLERY LIGHTBOX
+========================= */
 
-        },3000);
 
+qsa(".gallery-card img")
+.forEach(img=>{
 
 
-    });
+img.addEventListener(
+"click",
+()=>{
 
 
+openLightbox(img);
 
 
+});
 
 
-    /* =========================
-       ACTIVITY SLIDER
-    ========================= */
+});
 
 
-    qsa(".activity-slider").forEach(slider=>{
 
 
-        const slides =
-        slider.querySelectorAll(".slide");
 
 
-        if(slides.length <=1) return;
 
+/* =========================
+   GALLERY AUTO SLIDER
+========================= */
 
-        let i=0;
 
+qsa(".gallery-card")
+.forEach(card=>{
 
-        setInterval(()=>{
 
+const imgs =
+card.querySelectorAll("img");
 
-            slides[i].classList.remove("active");
 
 
-            i =
-            (i+1)%slides.length;
+if(imgs.length <=1)
+return;
 
 
-            slides[i].classList.add("active");
 
+let index=0;
 
-        },3000);
 
 
+imgs.forEach((img,i)=>{
 
-    });
+
+img.style.display =
+i===0 ? "block":"none";
+
+
+});
+
+
+
+
+setInterval(()=>{
+
+
+imgs[index]
+.style.display="none";
+
+
+
+index =
+(index+1)%imgs.length;
+
+
+
+imgs[index]
+.style.display="block";
+
+
+
+},3000);
 
 
 
 });
+
+
+
+
+
+});
+
+
 
 
 
@@ -266,71 +282,124 @@ document.addEventListener("DOMContentLoaded", () => {
 function openModal(type){
 
 
-    const modal = qs("#modal");
-    const title = qs("#modal-title");
-    const text = qs("#modal-text");
+
+const modal =
+qs("#modal");
 
 
-    if(!modal || !title || !text)
-        return;
+const title =
+qs("#modal-title");
 
 
-
-    const data={
-
-
-        mission:{
-            title:"🎯 Mission",
-            text:"To develop safe and professional paragliding experiences in Georgia."
-        },
-
-
-        safety:{
-            title:"🛡 Safety",
-            text:"We follow strict international aviation safety standards."
-        },
-
-
-        development:{
-            title:"🎓 Development",
-            text:"We train pilots and support aviation growth."
-        },
-
-
-        vision:{
-            title:"🌍 Vision",
-            text:"To make Georgia a world paragliding hub."
-        }
-
-
-    };
+const text =
+qs("#modal-text");
 
 
 
-    if(!data[type]) return;
+if(!modal)
+return;
 
 
 
-    title.innerText=data[type].title;
 
-    text.innerText=data[type].text;
+const data={
 
 
-    modal.style.display="flex";
+
+mission:{
+
+title:"🎯 Mission",
+
+text:"To develop safe and professional paragliding experiences in Georgia."
+
+},
+
+
+
+
+safety:{
+
+title:"🛡 Safety",
+
+text:"We follow international aviation safety standards and procedures."
+
+},
+
+
+
+
+
+development:{
+
+title:"🎓 Development",
+
+text:"We support pilot education, training and aviation development."
+
+},
+
+
+
+
+vision:{
+
+title:"🌍 Vision",
+
+text:"To make Georgia one of the leading paragliding destinations."
 
 }
+
+
+
+};
+
+
+
+
+
+if(!data[type])
+return;
+
+
+
+
+title.innerHTML =
+data[type].title;
+
+
+
+text.innerHTML =
+data[type].text;
+
+
+
+
+modal.style.display="flex";
+
+
+}
+
+
+
 
 
 
 function closeModal(){
 
-    const modal=qs("#modal");
 
-    if(modal)
 
-        modal.style.display="none";
+const modal =
+qs("#modal");
+
+
+
+if(modal)
+
+modal.style.display="none";
+
 
 }
+
+
 
 
 
@@ -344,48 +413,35 @@ function closeModal(){
 
 function openPasswordModal(){
 
-    const modal =
-    qs("#passwordModal");
+
+const modal =
+qs("#passwordModal");
 
 
-    if(modal)
+if(modal)
 
-        modal.style.display="flex";
+modal.style.display="flex";
+
 
 }
+
 
 
 
 function closePasswordModal(){
 
-    const modal =
-    qs("#passwordModal");
+
+const modal =
+qs("#passwordModal");
 
 
-    if(modal)
+if(modal)
 
-        modal.style.display="none";
+modal.style.display="none";
+
 
 }
 
-
-
-
-window.addEventListener("click",(e)=>{
-
-
-    const modal =
-    qs("#passwordModal");
-
-
-    if(modal && e.target===modal){
-
-        modal.style.display="none";
-
-    }
-
-
-});
 
 
 
@@ -401,23 +457,26 @@ window.addEventListener("click",(e)=>{
 function openLightbox(img){
 
 
-    const box =
-    qs("#lightbox");
+
+const box =
+qs("#lightbox");
 
 
-    const image =
-    qs("#lightbox-img");
-
-
-
-    if(!box || !image)
-        return;
+const image =
+qs("#lightbox-img");
 
 
 
-    box.style.display="flex";
+if(!box || !image)
+return;
 
-    image.src=img.src;
+
+
+box.style.display="flex";
+
+image.src =
+img.src;
+
 
 
 }
@@ -425,16 +484,18 @@ function openLightbox(img){
 
 
 
+
 function closeLightbox(){
 
 
-    const box =
-    qs("#lightbox");
+const box =
+qs("#lightbox");
 
 
-    if(box)
 
-        box.style.display="none";
+if(box)
+
+box.style.display="none";
 
 
 }
