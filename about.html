@@ -1,37 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>About Us | Georgian Paragliding Federation</title>
+
+<title>
+About Us | Georgian Paragliding Federation
+</title>
+
 
 <link rel="stylesheet" href="style.css">
 
+
+
+<style>
+
+
+/* ================= ABOUT MODERN ================= */
+
+
+
+.about-hero{
+
+
+min-height:60vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:40px 20px;
+
+
+}
+
+
+
+.about-content{
+
+
+max-width:850px;
+
+
+background:
+
+rgba(255,255,255,.08);
+
+
+padding:45px;
+
+
+border-radius:25px;
+
+
+backdrop-filter:blur(15px);
+
+
+border:
+
+1px solid rgba(255,255,255,.2);
+
+
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.4);
+
+
+
+}
+
+
+
+
+.about-content h1{
+
+
+font-size:45px;
+
+
+color:#00c2ff;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+.about-content p{
+
+
+font-size:18px;
+
+
+line-height:1.7;
+
+
+color:#ddd;
+
+
+}
+
+
+
+
+
+
+/* CARDS */
+
+
+
+.about-grid{
+
+
+max-width:1200px;
+
+
+margin:auto;
+
+
+padding:40px 20px;
+
+
+display:grid;
+
+
+grid-template-columns:repeat(3,1fr);
+
+
+gap:25px;
+
+
+
+}
+
+
+
+
+
+.info-box{
+
+
+background:
+
+
+linear-gradient(
+
+145deg,
+
+rgba(0,194,255,.18),
+
+rgba(255,255,255,.06)
+
+);
+
+
+
+border:
+
+1px solid rgba(255,255,255,.2);
+
+
+
+border-radius:22px;
+
+
+
+padding:35px;
+
+
+
+text-align:center;
+
+
+
+cursor:pointer;
+
+
+
+transition:.4s;
+
+
+
+backdrop-filter:blur(12px);
+
+
+
+}
+
+
+
+
+.info-box:hover{
+
+
+transform:
+
+translateY(-10px);
+
+
+
+border-color:#00c2ff;
+
+
+
+box-shadow:
+
+0 20px 40px rgba(0,194,255,.25);
+
+
+
+}
+
+
+
+
+.icon{
+
+
+font-size:50px;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+
+.info-box h3{
+
+
+font-size:25px;
+
+
+color:#00c2ff;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+
+.short{
+
+
+color:#ddd;
+
+
+line-height:1.6;
+
+
+}
+
+
+
+
+.more{
+
+
+display:none;
+
+
+margin-top:20px;
+
+
+color:white;
+
+
+line-height:1.7;
+
+
+}
+
+
+
+
+.info-box.open .more{
+
+
+display:block;
+
+
+animation:
+
+fade .4s;
+
+
+}
+
+
+
+
+@keyframes fade{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(10px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+
+.about-grid{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+
+.about-content h1{
+
+
+font-size:32px;
+
+
+}
+
+
+}
+
+
+
+
+</style>
+
+
+
 </head>
+
+
 
 
 <body>
 
 
-<!-- HEADER -->
+
 
 <header>
+
 
 <div class="container">
 
 
+
 <a href="index.html" class="logo">
 
-<img src="logo.jpg" alt="Logo">
+
+<img src="logo.jpg">
+
 
 <span>
+
 Georgian Paragliding Federation
+
 </span>
 
+
 </a>
+
 
 
 
@@ -46,28 +413,54 @@ Georgian Paragliding Federation
 
 
 
+
 <nav class="menu" id="menu">
 
 
-<a href="index.html">Home</a>
+<a href="index.html">
+Home
+</a>
 
-<a href="about.html">About Us</a>
 
-<a href="gallery.html">Gallery</a>
+<a href="about.html">
+About Us
+</a>
 
-<a href="document.html">Documents</a>
 
-<a href="contact.html">Contact</a>
+<a href="gallery.html">
+Gallery
+</a>
 
-<a href="BookYourFlight.html">Book Your Flight</a>
 
-<a href="news.html">News</a>
+<a href="document.html">
+Documents
+</a>
 
-<a href="dashboard.html">Dashboard</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+
+<a href="BookYourFlight.html">
+Book Your Flight
+</a>
+
+
+<a href="news.html">
+News
+</a>
+
+
+<a href="dashboard.html">
+Dashboard
+</a>
 
 
 
 </nav>
+
+
 
 
 </div>
@@ -80,17 +473,18 @@ Georgian Paragliding Federation
 
 
 
-<!-- HERO -->
+
+
 
 <section class="about-hero">
 
 
-<div class="hero-content">
+<div class="about-content">
 
 
 <h1>
 
-About Our Federation
+About Georgian Paragliding Federation
 
 </h1>
 
@@ -98,10 +492,15 @@ About Our Federation
 
 <p>
 
-Georgian Paragliding Federation develops safe aviation culture,
-professional pilot training and world-class paragliding standards.
+
+We develop safe, professional and internationally recognized paragliding culture in Georgia.
+
+
+Our mission is to combine aviation safety, pilot education and unforgettable flying experiences.
+
 
 </p>
+
 
 
 </div>
@@ -115,7 +514,6 @@ professional pilot training and world-class paragliding standards.
 
 
 
-<!-- INFO CARDS -->
 
 
 <section class="about-grid">
@@ -124,23 +522,33 @@ professional pilot training and world-class paragliding standards.
 
 
 
+
+
 <div class="info-box" onclick="toggleBox(this)">
 
 
+
 <div class="icon">
+
 🎯
+
 </div>
 
 
+
 <h3>
+
 Mission
+
 </h3>
 
 
 
 <p class="short">
 
-The mission of the Georgian Paragliding Federation is to develop paragliding in Georgia as a safe, structured and internationally recognized aviation sport.
+
+Develop paragliding as a safe and structured aviation sport.
+
 
 </p>
 
@@ -149,17 +557,16 @@ The mission of the Georgian Paragliding Federation is to develop paragliding in 
 <div class="more">
 
 
-<p>
-
-We aim to provide unforgettable tandem flight experiences while maintaining the highest levels of safety, pilot professionalism, and operational discipline. Our goal is to make every flight not just an adventure, but a fully controlled and trusted aviation experience for both local and international guests.
-
-</p>
+We create professional standards, promote safe flight operations and provide high quality tandem experiences for local and international visitors.
 
 
 </div>
 
 
+
 </div>
+
+
 
 
 
@@ -174,34 +581,35 @@ We aim to provide unforgettable tandem flight experiences while maintaining the 
 
 
 <div class="icon">
+
 🛡
+
 </div>
 
 
 
 <h3>
+
 Safety
+
 </h3>
 
 
 
 <p class="short">
 
-Safety is the core principle of every flight operation.
+
+Safety is our highest priority in every flight.
+
 
 </p>
-
 
 
 
 <div class="more">
 
 
-<p>
-
-We strictly follow international aviation standards and operational procedures aligned with FAI guidelines. All pilots are certified, regularly trained, and continuously assessed. Equipment is inspected before and after every flight.
-
-</p>
+We follow aviation safety principles, pilot qualification standards and operational procedures to ensure reliable and controlled flights.
 
 
 </div>
@@ -223,34 +631,35 @@ We strictly follow international aviation standards and operational procedures a
 
 
 <div class="icon">
+
 🎓
+
 </div>
 
 
 
 <h3>
+
 Development
+
 </h3>
 
 
 
 <p class="short">
 
-Supporting pilot education and the future of paragliding in Georgia.
+
+Building the future of Georgian paragliding.
+
 
 </p>
-
 
 
 
 <div class="more">
 
 
-<p>
-
-We actively contribute to the development of paragliding as a professional sport in Georgia. This includes pilot training programs, safety workshops, instructor development, and cooperation with international aviation organizations.
-
-</p>
+We support pilot training, instructor development, competitions and cooperation with international aviation organizations.
 
 
 </div>
@@ -258,12 +667,18 @@ We actively contribute to the development of paragliding as a professional sport
 
 
 </div>
+
+
+
 
 
 
 
 
 </section>
+
+
+
 
 
 
@@ -274,7 +689,9 @@ We actively contribute to the development of paragliding as a professional sport
 <script>
 
 
+
 function toggleMenu(){
+
 
 document
 .getElementById("menu")
@@ -286,7 +703,9 @@ document
 
 
 
+
 function toggleBox(element){
+
 
 element.classList.toggle("open");
 
