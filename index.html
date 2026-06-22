@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
+
 <meta charset="UTF-8">
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>Georgian Paragliding Federation</title>
 
-<link rel="stylesheet" href="style.css">
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
 
 </head>
+
+
 
 
 <body>
 
 
 
-<!-- ================= HEADER ================= -->
+
+
+
+<!-- HEADER -->
 
 
 <header>
@@ -27,10 +41,15 @@
 
 
 
-<a href="index.html" class="logo">
 
 
-<img src="logo.jpg" alt="Georgian Paragliding Federation">
+<a href="/" class="logo">
+
+
+
+<img src="{{ url_for('static', filename='images/logo.jpg') }}" 
+alt="Georgian Paragliding Federation">
+
 
 
 <span>
@@ -40,7 +59,11 @@ Georgian Paragliding Federation
 </span>
 
 
+
 </a>
+
+
+
 
 
 
@@ -48,9 +71,14 @@ Georgian Paragliding Federation
 
 <div class="menu-toggle" onclick="toggleMenu()">
 
+
 ☰
 
+
 </div>
+
+
+
 
 
 
@@ -59,32 +87,60 @@ Georgian Paragliding Federation
 <nav class="menu" id="menu">
 
 
-<a href="index.html">Home</a>
+
+<a href="/">
+Home
+</a>
 
 
-<a href="about.html">About Us</a>
+
+<a href="/about">
+About Us
+</a>
 
 
-<a href="gallery.html">Gallery</a>
+
+<a href="/gallery">
+Gallery
+</a>
 
 
-<a href="document.html">Documents</a>
+
+<a href="/document">
+Documents
+</a>
 
 
-<a href="contact.html">Contact</a>
+
+<a href="/contact">
+Contact
+</a>
 
 
-<a href="BookYourFlight.html">Book Your Flight</a>
+
+<a href="/BookYourFlight">
+Book Your Flight
+</a>
 
 
-<a href="news.html">News</a>
+
+<a href="/news">
+News
+</a>
 
 
-<a href="dashboard.html">Dashboard</a>
+
+<a href="/dashboard">
+Dashboard
+</a>
+
+
 
 
 
 </nav>
+
+
 
 
 
@@ -98,13 +154,23 @@ Georgian Paragliding Federation
 
 
 
-<!-- ================= HERO ================= -->
+
+
+
+<!-- HERO -->
+
 
 
 <section class="hero">
 
 
+
+
+
 <div class="hero-overlay">
+
+
+
 
 
 
@@ -118,10 +184,14 @@ Welcome to Paragliding Georgia
 
 
 
+
+
 <p>
+
 
 Fly above the breathtaking mountains, lakes, and valleys of Georgia.
 Experience freedom, adrenaline, and unforgettable views with certified pilots.
+
 
 </p>
 
@@ -130,9 +200,13 @@ Experience freedom, adrenaline, and unforgettable views with certified pilots.
 
 
 
-<a href="BookYourFlight.html" class="btn">
+
+
+<a href="/BookYourFlight" class="btn">
+
 
 Book Your Flight
+
 
 </a>
 
@@ -140,7 +214,13 @@ Book Your Flight
 
 
 
+
+
 </div>
+
+
+
+
 
 
 </section>
@@ -150,13 +230,20 @@ Book Your Flight
 
 
 
+
+
+
 <script>
+
 
 
 function toggleMenu(){
 
 
-const menu = document.getElementById("menu");
+
+const menu =
+document.getElementById("menu");
+
 
 
 if(menu){
@@ -171,11 +258,16 @@ menu.classList.toggle("active");
 }
 
 
+
 </script>
 
 
 
 
+
+
+
 </body>
+
 
 </html>
