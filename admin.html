@@ -13,70 +13,70 @@
 
 body {
 
-    background: #0f1115;
-    color: white;
-    font-family: Arial, sans-serif;
-    padding: 30px;
+    background:#0f1115;
+    color:white;
+    font-family:Arial,sans-serif;
+    padding:30px;
 
 }
 
 
-/* ================= HEADER ================= */
 
 header {
 
-    background: #111;
-    padding: 10px 0;
-    margin-bottom: 20px;
+    background:#111;
+    padding:10px 0;
+    margin-bottom:20px;
 
 }
+
 
 
 .container {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
 }
+
 
 
 .logo {
 
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: white;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:white;
 
 }
+
 
 
 .logo img {
 
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width:40px;
+    height:40px;
+    border-radius:50%;
 
 }
 
 
-
-/* NAV */
 
 .menu {
 
-    display: flex;
-    gap: 15px;
-    align-items: center;
+    display:flex;
+    gap:15px;
 
 }
+
 
 
 .menu a {
 
-    color: white;
-    text-decoration: none;
+    color:white;
+    text-decoration:none;
 
 }
 
@@ -89,8 +89,6 @@ header {
 
 
 
-/* MOBILE */
-
 .menu-toggle {
 
     display:none;
@@ -100,49 +98,49 @@ header {
 }
 
 
+
 @media(max-width:768px){
 
 
 .menu {
 
-    display:none;
-    flex-direction:column;
-    background:#111;
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    padding:15px;
+display:none;
+flex-direction:column;
+background:#111;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+padding:15px;
 
 }
+
 
 
 .menu.active {
 
-    display:flex;
+display:flex;
 
 }
+
 
 
 .menu-toggle {
 
-    display:block;
+display:block;
+
+}
 
 }
 
 
-}
 
-
-
-/* ================= DASHBOARD ================= */
 
 
 h1 {
 
-    text-align:center;
-    color:#00c2ff;
-    margin-bottom:25px;
+text-align:center;
+color:#00c2ff;
 
 }
 
@@ -151,23 +149,23 @@ h1 {
 .cards {
 
 
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
-    margin-bottom:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+margin-bottom:30px;
 
 
 }
 
 
 
+
 .card {
 
-
-    background:#161a22;
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
+background:#161a22;
+padding:20px;
+border-radius:12px;
+text-align:center;
 
 
 }
@@ -176,25 +174,22 @@ h1 {
 
 .card p {
 
-
-    font-size:26px;
-    color:#00c2ff;
-    font-weight:bold;
+font-size:26px;
+color:#00c2ff;
+font-weight:bold;
 
 
 }
 
 
 
-/* TABLE */
-
 
 table {
 
 
-    width:100%;
-    border-collapse:collapse;
-    background:#161a22;
+width:100%;
+border-collapse:collapse;
+background:#161a22;
 
 
 }
@@ -203,11 +198,9 @@ table {
 
 th {
 
-
-    background:#00c2ff;
-    color:black;
-    padding:12px;
-
+background:#00c2ff;
+color:black;
+padding:12px;
 
 }
 
@@ -215,11 +208,9 @@ th {
 
 td {
 
-
-    padding:12px;
-    text-align:center;
-    border-bottom:1px solid #2a2f3a;
-
+padding:12px;
+text-align:center;
+border-bottom:1px solid #2a2f3a;
 
 }
 
@@ -230,12 +221,9 @@ td {
 </head>
 
 
-
 <body>
 
 
-
-<!-- ================= HEADER ================= -->
 
 
 <header>
@@ -244,10 +232,11 @@ td {
 <div class="container">
 
 
-<a href="/" class="logo">
+
+<a href="index.html" class="logo">
 
 
-<img src="{{ url_for('static', filename='images/logo.jpg') }}">
+<img src="logo.jpg">
 
 
 <span>
@@ -259,6 +248,8 @@ Georgian Paragliding Federation
 
 
 
+
+
 <div class="menu-toggle" onclick="toggleMenu()">
 
 ☰
@@ -267,33 +258,38 @@ Georgian Paragliding Federation
 
 
 
+
+
 <nav class="menu" id="menu">
 
 
-<a href="/">Home</a>
+<a href="index.html">Home</a>
 
-<a href="/about">About Us</a>
+<a href="about.html">About Us</a>
 
-<a href="/gallery">Gallery</a>
+<a href="gallery.html">Gallery</a>
 
-<a href="/document">Documents</a>
+<a href="document.html">Documents</a>
 
-<a href="/contact">Contact</a>
+<a href="contact.html">Contact</a>
 
-<a href="/BookYourFlight">Book Your Flight</a>
+<a href="BookYourFlight.html">Book Your Flight</a>
 
-<a href="/news">News</a>
+<a href="news.html">News</a>
 
-<a href="/dashboard">Dashboard</a>
+<a href="dashboard.html">Dashboard</a>
 
 
 </nav>
+
 
 
 </div>
 
 
 </header>
+
+
 
 
 
@@ -309,19 +305,20 @@ Georgian Paragliding Federation
 
 
 
-<!-- CARDS -->
 
 
 <div class="cards">
+
 
 
 <div class="card">
 
 <h3>Total</h3>
 
-<p>{{ total }}</p>
+<p>0</p>
 
 </div>
+
 
 
 
@@ -329,9 +326,11 @@ Georgian Paragliding Federation
 
 <h3>New</h3>
 
-<p>{{ new_count }}</p>
+<p>0</p>
 
 </div>
+
+
 
 
 
@@ -339,9 +338,11 @@ Georgian Paragliding Federation
 
 <h3>Confirmed</h3>
 
-<p>{{ confirmed }}</p>
+<p>0</p>
 
 </div>
+
+
 
 
 
@@ -349,21 +350,23 @@ Georgian Paragliding Federation
 
 <h3>Cancelled</h3>
 
-<p>{{ cancelled }}</p>
+<p>0</p>
 
 </div>
 
 
+
 </div>
 
 
 
 
 
-<!-- TABLE -->
+
 
 
 <table>
+
 
 
 <tr>
@@ -382,37 +385,20 @@ Georgian Paragliding Federation
 
 <th>Status</th>
 
-
 </tr>
 
 
-
-
-{% for b in bookings %}
 
 
 <tr>
 
+<td colspan="7">
 
-<td>{{ b[0] }}</td>
+No bookings available
 
-<td>{{ b[1] }}</td>
-
-<td>{{ b[2] }}</td>
-
-<td>{{ b[3] }}</td>
-
-<td>{{ b[4] }}</td>
-
-<td>{{ b[5] }}</td>
-
-<td>{{ b[6] }}</td>
-
+</td>
 
 </tr>
-
-
-{% endfor %}
 
 
 
@@ -423,17 +409,24 @@ Georgian Paragliding Federation
 
 
 
+
+
+
+
 <script>
 
 
 function toggleMenu(){
 
-document.getElementById("menu").classList.toggle("active");
+document
+.getElementById("menu")
+.classList.toggle("active");
 
 }
 
 
 </script>
+
 
 
 
