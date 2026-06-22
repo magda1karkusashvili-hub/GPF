@@ -10,7 +10,7 @@
 <title>News | Georgian Paragliding Federation</title>
 
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="style.css">
 
 
 <style>
@@ -29,7 +29,7 @@ font-family:Arial,sans-serif;
 
 body {
 
-background:url("/static/images/para1.jpg") center/cover no-repeat fixed;
+background:url("para1.jpg") center/cover no-repeat fixed;
 color:white;
 min-height:100vh;
 
@@ -133,6 +133,62 @@ color:#00c2ff;
 
 
 
+.menu-toggle {
+
+display:none;
+font-size:28px;
+cursor:pointer;
+
+}
+
+
+
+
+@media(max-width:768px){
+
+
+.menu {
+
+display:none;
+flex-direction:column;
+
+position:absolute;
+
+top:70px;
+
+left:0;
+
+width:100%;
+
+background:rgba(0,0,0,.95);
+
+padding:15px;
+
+}
+
+
+
+.menu.active {
+
+display:flex;
+
+}
+
+
+
+.menu-toggle {
+
+display:block;
+
+}
+
+
+}
+
+
+
+
+
 /* TITLE */
 
 
@@ -166,6 +222,8 @@ margin-top:8px;
 
 
 
+
+
 /* TABS */
 
 
@@ -186,6 +244,7 @@ flex-wrap:wrap;
 
 
 .tab-btn {
+
 
 padding:10px 18px;
 
@@ -220,6 +279,7 @@ color:black;
 font-weight:bold;
 
 }
+
 
 
 
@@ -378,6 +438,7 @@ color:black;
 
 
 
+
 @media(max-width:900px){
 
 
@@ -400,6 +461,7 @@ grid-template-columns:1fr;
 
 
 
+
 <body>
 
 
@@ -413,10 +475,10 @@ grid-template-columns:1fr;
 
 
 
-<a href="/" class="logo">
+<a href="index.html" class="logo">
 
 
-<img src="{{ url_for('static', filename='images/logo.jpg') }}">
+<img src="logo.jpg">
 
 
 <span>
@@ -443,24 +505,25 @@ Georgian Paragliding Federation
 
 
 
+
 <nav class="menu" id="menu">
 
 
-<a href="/">Home</a>
+<a href="index.html">Home</a>
 
-<a href="/about">About Us</a>
+<a href="about.html">About Us</a>
 
-<a href="/gallery">Gallery</a>
+<a href="gallery.html">Gallery</a>
 
-<a href="/document">Documents</a>
+<a href="document.html">Documents</a>
 
-<a href="/contact">Contact</a>
+<a href="contact.html">Contact</a>
 
-<a href="/BookYourFlight">Book Your Flight</a>
+<a href="BookYourFlight.html">Book Your Flight</a>
 
-<a href="/news">News</a>
+<a href="news.html">News</a>
 
-<a href="/dashboard">Dashboard</a>
+<a href="dashboard.html">Dashboard</a>
 
 
 </nav>
@@ -471,6 +534,8 @@ Georgian Paragliding Federation
 
 
 </header>
+
+
 
 
 
@@ -503,30 +568,48 @@ Events, Training updates and Safety information
 
 
 
+
+
+
 <div class="tabs">
 
 
 <button class="tab-btn active" onclick="filterNews('all',event)">
+
 All
+
 </button>
+
 
 
 <button class="tab-btn" onclick="filterNews('events',event)">
+
 Events
+
 </button>
+
+
 
 
 <button class="tab-btn" onclick="filterNews('training',event)">
+
 Training
+
 </button>
 
 
+
+
+
 <button class="tab-btn" onclick="filterNews('safety',event)">
+
 Safety
+
 </button>
 
 
 </div>
+
 
 
 
@@ -544,10 +627,12 @@ Safety
 
 
 
+
+
 <div class="news-card" data-category="events">
 
 
-<img src="/static/images/para22.jpg">
+<img src="para22.jpg">
 
 
 <div class="news-content">
@@ -578,6 +663,7 @@ Events
 
 
 
+
 <a href="https://www.fai.org/node/208114"
 target="_blank"
 class="news-btn">
@@ -598,10 +684,12 @@ Official FAI Page
 
 
 
+
+
 <div class="news-card" data-category="training">
 
 
-<img src="/static/images/para15.jpg">
+<img src="para15.jpg">
 
 
 <div class="news-content">
@@ -627,6 +715,7 @@ For detailed information about training schedules, requirements, and participati
 
 
 
+
 <span class="tag">
 
 Training
@@ -636,7 +725,8 @@ Training
 
 
 
-<a href="/contact" class="news-btn">
+
+<a href="contact.html" class="news-btn">
 
 Contact for Training
 
@@ -660,7 +750,7 @@ Contact for Training
 <div class="news-card" data-category="safety">
 
 
-<img src="/static/images/para19.jpg">
+<img src="para19.jpg">
 
 
 <div class="news-content">
@@ -682,11 +772,13 @@ Strong winds expected. All pilots must check NOTAM and weather conditions before
 
 
 
+
 <span class="tag">
 
 Safety
 
 </span>
+
 
 
 
@@ -737,14 +829,18 @@ Weather
 
 
 
+
 <script>
 
 
 function toggleMenu(){
 
-document.getElementById("menu").classList.toggle("active");
+document
+.getElementById("menu")
+.classList.toggle("active");
 
 }
+
 
 
 
@@ -772,9 +868,13 @@ card.style.display =
 
 (category==="all" || card.dataset.category===category)
 
-?"block"
+?
 
-:"none";
+"block"
+
+:
+
+"none";
 
 
 });
@@ -785,6 +885,8 @@ card.style.display =
 
 
 </script>
+
+
 
 
 
