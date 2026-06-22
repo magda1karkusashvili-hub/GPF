@@ -1,25 +1,14 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 
 <head>
 
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-
-<title>
-About Us
-</title>
-
+<title>About Us | Georgian Paragliding Federation</title>
 
 <link rel="stylesheet" href="css/style.css">
-
 
 </head>
 
@@ -27,7 +16,7 @@ About Us
 <body>
 
 
-
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -42,63 +31,41 @@ About Us
 Georgian Paragliding Federation
 </span>
 
-
 </a>
 
 
 
+<div class="menu-toggle" onclick="toggleMenu()">
 
-<div class="menu-toggle">
 ☰
+
 </div>
 
 
 
-<nav class="menu">
+<nav class="menu" id="menu">
 
+<a href="index.html">Home</a>
 
-<a href="index.html">
-Home
-</a>
+<a href="about.html">About Us</a>
 
+<a href="gallery.html">Gallery</a>
 
-<a href="about.html">
-About
-</a>
+<a href="documents.html">Documents</a>
 
+<a href="contact.html">Contact</a>
 
-<a href="gallery.html">
-Gallery
-</a>
+<a href="book.html">Book Your Flight</a>
 
+<a href="news.html">News</a>
 
-<a href="documents.html">
-Documents
-</a>
-
-
-<a href="contact.html">
-Contact
-</a>
-
-
-<a href="book.html">
-Book Flight
-</a>
-
-
-<a href="news.html">
-News
-</a>
-
+<a href="dashboard.html">Dashboard</a>
 
 
 </nav>
 
 
-
 </div>
-
 
 </header>
 
@@ -106,45 +73,71 @@ News
 
 
 
+<!-- ================= ABOUT ================= -->
+
+
 <section class="document-section">
 
 
 <h1>
-About Our Federation
-</h1>
 
+About Our Federation
+
+</h1>
 
 
 <p class="subtext">
 
-
 Georgian Paragliding Federation develops safe aviation culture,
-professional pilot training and international paragliding standards.
-
+professional pilot training and world-class paragliding standards.
 
 </p>
 
 
 
+<!-- MISSION -->
+
+<div class="info-box" onclick="toggleBox(this)">
 
 
-<div class="info-box"
-onclick="openModal('mission')">
+<div class="icon">
+
+🎯
+
+</div>
 
 
 <h3>
-🎯 Mission
+
+Mission
+
 </h3>
+
+
+
+<p class="short">
+
+The mission of the Georgian Paragliding Federation is to develop paragliding in Georgia as a safe, structured and internationally recognized aviation sport.
+
+</p>
+
+
+
+<div class="more">
 
 
 <p>
 
+The mission of the Georgian Paragliding Federation is to develop paragliding in Georgia as a safe, structured and internationally recognized aviation sport.
 
-Develop paragliding in Georgia as a safe,
-structured and internationally recognized aviation sport.
+We aim to provide unforgettable tandem flight experiences while maintaining the highest levels of safety, pilot professionalism, and operational discipline.
 
+Our goal is to make every flight not just an adventure, but a fully controlled and trusted aviation experience for both local and international guests.
 
 </p>
+
+
+</div>
 
 
 </div>
@@ -153,44 +146,51 @@ structured and internationally recognized aviation sport.
 
 
 
-<div class="info-box"
-onclick="openModal('safety')">
+
+<!-- SAFETY -->
+
+
+<div class="info-box" onclick="toggleBox(this)">
+
+
+<div class="icon">
+
+🛡
+
+</div>
+
 
 
 <h3>
-🛡 Safety
+
+Safety
+
 </h3>
 
 
-<p>
 
+<p class="short">
 
 Safety is the core principle of every flight operation.
 
-
 </p>
 
 
-</div>
 
-
-
-
-
-<div class="info-box"
-onclick="openModal('development')">
-
-
-<h3>
-🎓 Development
-</h3>
+<div class="more">
 
 
 <p>
 
+Safety is the core principle of our organization.
 
-Supporting pilot education and future of paragliding.
+We strictly follow international aviation standards and operational procedures aligned with FAI guidelines.
 
+All pilots are certified, regularly trained, and continuously assessed.
+
+Equipment is inspected before and after every flight, and flights are conducted only under suitable meteorological conditions.
+
+Risk management, pre-flight briefing, and emergency preparedness are mandatory parts of every operation.
 
 </p>
 
@@ -198,7 +198,65 @@ Supporting pilot education and future of paragliding.
 </div>
 
 
+</div>
 
+
+
+
+
+
+
+
+<!-- DEVELOPMENT -->
+
+
+<div class="info-box" onclick="toggleBox(this)">
+
+
+<div class="icon">
+
+🎓
+
+</div>
+
+
+
+<h3>
+
+Development
+
+</h3>
+
+
+
+<p class="short">
+
+Supporting pilot education and the future of paragliding in Georgia.
+
+</p>
+
+
+
+<div class="more">
+
+
+<p>
+
+We actively contribute to the development of paragliding as a professional sport in Georgia.
+
+This includes pilot training programs, safety workshops, instructor development, and cooperation with international aviation organizations.
+
+We support young pilots and new talents by providing structured learning environments and real flight experience.
+
+Our long-term goal is to build a strong aviation community that meets global standards.
+
+</p>
+
+
+</div>
+
+
+</div>
 
 
 
@@ -209,40 +267,9 @@ Supporting pilot education and future of paragliding.
 
 
 
-<div id="modal"
-class="lightbox">
-
-
-<div class="modal-content">
-
-
-<h2 id="modal-title"></h2>
-
-
-<p id="modal-text"></p>
-
-
-<button onclick="closeModal()">
-
-Close
-
-</button>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
 <script src="js/script.js"></script>
 
 
-
 </body>
-
 
 </html>
