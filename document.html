@@ -4,11 +4,15 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>Documents | Georgian Paragliding Federation</title>
 
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 
 </head>
 
@@ -18,7 +22,9 @@
 
 
 
-<!-- ================= HEADER ================= -->
+
+
+<!-- HEADER -->
 
 
 <header>
@@ -28,10 +34,10 @@
 
 
 
-<a href="index.html" class="logo">
+<a href="/" class="logo">
 
 
-<img src="logo.jpg" alt="Logo">
+<img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
 
 
 <span>
@@ -47,6 +53,8 @@ Georgian Paragliding Federation
 
 
 
+
+
 <div class="menu-toggle" onclick="toggleMenu()">
 
 ☰
@@ -57,31 +65,52 @@ Georgian Paragliding Federation
 
 
 
+
+
+
 <nav class="menu" id="menu">
 
 
-<a href="index.html">Home</a>
+
+<a href="/">
+Home
+</a>
 
 
-<a href="about.html">About Us</a>
+<a href="/about">
+About Us
+</a>
 
 
-<a href="gallery.html">Gallery</a>
+<a href="/gallery">
+Gallery
+</a>
 
 
-<a href="document.html">Documents</a>
+<a href="/document">
+Documents
+</a>
 
 
-<a href="contact.html">Contact</a>
+<a href="/contact">
+Contact
+</a>
 
 
-<a href="BookYourFlight.html">Book Your Flight</a>
+<a href="/BookYourFlight">
+Book Your Flight
+</a>
 
 
-<a href="news.html">News</a>
+<a href="/news">
+News
+</a>
 
 
-<a href="dashboard.html">Dashboard</a>
+<a href="/dashboard">
+Dashboard
+</a>
+
 
 
 
@@ -101,10 +130,15 @@ Georgian Paragliding Federation
 
 
 
-<!-- ================= DOCUMENTS ================= -->
+
+<!-- DOCUMENT SECTION -->
+
 
 
 <main class="document-section">
+
+
+
 
 
 
@@ -113,6 +147,8 @@ Georgian Paragliding Federation
 Documents
 
 </h1>
+
+
 
 
 
@@ -133,7 +169,10 @@ Access official paragliding regulations, safety guidelines and federation docume
 
 
 
+
+
 <ul class="docs-list">
+
 
 
 
@@ -143,7 +182,9 @@ Access official paragliding regulations, safety guidelines and federation docume
 
 
 <a class="red"
-href="para1.pdf"
+
+href="{{ url_for('static', filename='documents/para1.pdf') }}"
+
 target="_blank">
 
 
@@ -161,11 +202,17 @@ target="_blank">
 
 
 
+
+
+
+
 <li class="doc-item">
 
 
 <a class="blue"
-href="para2.pdf"
+
+href="{{ url_for('static', filename='documents/para2.pdf') }}"
+
 target="_blank">
 
 
@@ -184,11 +231,14 @@ target="_blank">
 
 
 
+
 <li class="doc-item">
 
 
 <a class="green"
-href="para3.pdf"
+
+href="{{ url_for('static', filename='documents/para3.pdf') }}"
+
 target="_blank">
 
 
@@ -204,7 +254,11 @@ target="_blank">
 
 
 
+
+
+
 </ul>
+
 
 
 
@@ -226,7 +280,9 @@ target="_blank">
 function toggleMenu(){
 
 
-document.getElementById("menu").classList.toggle("active");
+document
+.getElementById("menu")
+.classList.toggle("active");
 
 
 }
