@@ -1,205 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>Admin Login</title>
+
 
 <style>
 
+
 body {
-    margin: 0;
-    font-family: Arial;
-    background: radial-gradient(circle at top, #0f172a, #020617);
-    color: white;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin:0;
+    font-family:Arial;
 
-    min-height: 100vh;
-    padding: 15px;
+    background:radial-gradient(circle at top,#0f172a,#020617);
+
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+    padding:15px;
+
 }
+
+
 
 /* LOGIN CARD */
+
 .login-box {
-    background: rgba(17, 24, 39, 0.92);
-    padding: 40px 35px;
-    border-radius: 16px;
-    width: 100%;
-    max-width: 380px;
 
-    box-shadow: 0 25px 60px rgba(0,0,0,0.7);
-    text-align: center;
+    background:rgba(17,24,39,0.92);
 
-    border: 1px solid rgba(255,255,255,0.06);
-    backdrop-filter: blur(12px);
+    padding:40px 35px;
+
+    border-radius:16px;
+
+    width:100%;
+    max-width:380px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,0.7);
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    backdrop-filter:blur(12px);
+
 }
 
-/* ICON */
+
+
+
 .lock-icon {
-    font-size: 38px;
-    margin-bottom: 8px;
+
+    font-size:38px;
+    margin-bottom:8px;
+
 }
 
-/* TITLE */
+
+
+
 h2 {
-    margin-bottom: 8px;
-    font-size: 22px;
+
+    margin-bottom:8px;
+    font-size:22px;
+
 }
 
-/* SECURITY BANNER */
+
+
+
+.security-title {
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    color:#fbbf24;
+
+    margin-bottom:12px;
+
+    text-transform:uppercase;
+
+}
+
+
+
+
 .access-warning {
-    background: rgba(251, 191, 36, 0.10);
-    color: #fbbf24;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 18px;
-    font-size: 12px;
-    border: 1px solid rgba(251, 191, 36, 0.25);
+
+    background:rgba(251,191,36,0.10);
+
+    color:#fbbf24;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    margin-bottom:18px;
+
+    font-size:12px;
+
+    border:1px solid rgba(251,191,36,0.25);
+
 }
 
-/* INPUTS */
+
+
+
+
+/* INPUT */
+
 input {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    background: #1f2937;
-    color: white;
-    font-size: 14px;
-    transition: 0.25s;
+
+
+    width:100%;
+
+    padding:12px;
+
+    margin:8px 0;
+
+    border:none;
+
+    border-radius:10px;
+
+    outline:none;
+
+    background:#1f2937;
+
+    color:white;
+
+    font-size:14px;
+
+    transition:.25s;
+
+
 }
+
+
 
 input:focus {
-    background: #111827;
-    box-shadow: 0 0 0 2px #3b82f6;
+
+
+    background:#111827;
+
+    box-shadow:0 0 0 2px #3b82f6;
+
+
 }
+
+
+
 
 /* BUTTON */
+
+
 button {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: 0.3s;
-    font-size: 14px;
+
+
+    width:100%;
+
+    padding:12px;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    border:none;
+
+    border-radius:10px;
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:8px;
+
+    transition:.3s;
+
+    font-size:14px;
+
+
 }
+
+
 
 button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+
+
+    transform:translateY(-1px);
+
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+
+
 }
 
-/* ALERTS */
-.alert {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    font-size: 13px;
-}
 
-.error {
-    background: rgba(220, 38, 38, 0.15);
-    border: 1px solid #dc2626;
-    color: #fca5a5;
-}
 
-.success {
-    background: rgba(34, 197, 94, 0.12);
-    border: 1px solid #22c55e;
-    color: #86efac;
-}
 
-/* WARNING TEXT */
+
+
 .warning {
-    font-size: 11px;
-    color: #9ca3af;
-    margin-top: 14px;
-    line-height: 1.4;
+
+
+    font-size:11px;
+
+    color:#9ca3af;
+
+    margin-top:14px;
+
+    line-height:1.4;
+
+
 }
 
-/* FOOTER NOTE */
+
+
+
+
 .small-note {
-    font-size: 11px;
-    color: #6b7280;
-    margin-top: 10px;
+
+
+    font-size:11px;
+
+    color:#6b7280;
+
+    margin-top:10px;
+
+
 }
 
-/* TITLE */
-.security-title {
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: #fbbf24;
-    margin-bottom: 12px;
-    text-transform: uppercase;
+
+
+
+
+@media(max-width:420px){
+
+
+.login-box {
+
+    padding:30px 20px;
+
 }
 
-/* MOBILE FIX */
-@media (max-width: 420px) {
-    .login-box {
-        padding: 30px 20px;
-    }
 
-    h2 {
-        font-size: 20px;
-    }
+h2 {
+
+    font-size:20px;
+
 }
+
+
+}
+
+
 
 </style>
+
+
 </head>
+
+
 
 <body>
 
+
+
 <div class="login-box">
 
-    <div class="lock-icon">🔐</div>
 
-    <div class="security-title">
-        Secure Admin Access
-    </div>
 
-    <div class="access-warning">
-        Restricted Area • Authorized Personnel Only
-    </div>
+<div class="lock-icon">
 
-    <h2>Admin Login</h2>
-
-    <!-- FLASH MESSAGES -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert {{ category }}">
-              {{ message }}
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-
-    <!-- FORM -->
-    <form method="POST">
-        <input name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
-
-    <div class="warning">
-        ⚠️ All login attempts are monitored and logged for security purposes.
-    </div>
-
-    <div class="small-note">
-        Paragliding Admin System v3.0
-    </div>
+🔐
 
 </div>
 
+
+
+
+<div class="security-title">
+
+Secure Admin Access
+
+</div>
+
+
+
+
+<div class="access-warning">
+
+Restricted Area • Authorized Personnel Only
+
+</div>
+
+
+
+
+<h2>
+
+Admin Login
+
+</h2>
+
+
+
+
+
+
+<form method="POST">
+
+
+<input 
+name="username"
+placeholder="Username"
+required>
+
+
+
+
+<input 
+type="password"
+name="password"
+placeholder="Password"
+required>
+
+
+
+
+<button type="submit">
+
+Login
+
+</button>
+
+
+
+</form>
+
+
+
+
+
+
+<div class="warning">
+
+
+⚠️ All login attempts are monitored and logged for security purposes.
+
+
+</div>
+
+
+
+
+
+<div class="small-note">
+
+
+Paragliding Admin System v3.0
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
 </body>
+
 </html>
