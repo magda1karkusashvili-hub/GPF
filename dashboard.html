@@ -4,187 +4,68 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>Dashboard | Paragliding Admin</title>
 
 
-<style>
-
-body {
-
-margin:0;
-font-family:Arial,sans-serif;
-background:#0f172a;
-color:white;
-
-}
-
-
-header {
-
-background:#111827;
-padding:15px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-}
-
-
-
-.admin-badge {
-
-font-size:12px;
-background:#22c55e;
-padding:3px 8px;
-border-radius:6px;
-
-}
-
-
-
-.btn {
-
-padding:8px 14px;
-border-radius:8px;
-background:#2563eb;
-color:white;
-text-decoration:none;
-margin-left:6px;
-
-}
-
-
-.logout {
-
-background:#dc2626;
-
-}
-
-
-
-.cards {
-
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-padding:25px;
-
-}
-
-
-
-.card {
-
-background:#1f2937;
-padding:25px;
-border-radius:14px;
-text-align:center;
-
-}
-
-
-
-.filter {
-
-padding:25px;
-display:flex;
-gap:10px;
-
-}
-
-
-
-input,select {
-
-padding:10px;
-border-radius:8px;
-border:none;
-
-}
-
-
-
-.table-container {
-
-padding:25px;
-
-}
-
-
-
-table {
-
-width:100%;
-border-collapse:collapse;
-background:#111827;
-
-}
-
-
-
-th {
-
-background:#2563eb;
-padding:12px;
-
-}
-
-
-
-td {
-
-padding:12px;
-text-align:center;
-border-bottom:1px solid #1f2937;
-
-}
-
-
-@media(max-width:900px){
-
-.cards{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 
 </head>
+
 
 
 <body>
 
 
 
+
 <header>
 
 
-<h2>
+<div class="container">
 
-Admin Dashboard
 
-<span class="admin-badge">
-ADMIN
+
+<a href="index.html" class="logo">
+
+
+<img src="logo.jpg">
+
+
+<span>
+
+Georgian Paragliding Federation
+
 </span>
 
 
-</h2>
+</a>
+
+
+
 
 
 <div>
+
+
+<span class="admin-badge">
+
+ADMIN
+
+</span>
+
+
 
 <a class="btn" href="index.html">
 
 Home
 
 </a>
+
 
 
 <a class="btn logout" href="login.html">
@@ -197,7 +78,32 @@ Logout
 </div>
 
 
+
+</div>
+
+
 </header>
+
+
+
+
+
+
+
+
+<section class="dashboard-page">
+
+
+
+
+
+<h1 class="dashboard-title">
+
+📊 Admin Dashboard
+
+</h1>
+
+
 
 
 
@@ -206,40 +112,21 @@ Logout
 <div class="cards">
 
 
-<div class="card">
 
-<h3>Total</h3>
+<div class="card glass">
 
-<h2 id="total">0</h2>
+<h3>
 
-</div>
+Total Bookings
 
-
-<div class="card">
-
-<h3>New</h3>
-
-<h2 id="new">0</h2>
-
-</div>
+</h3>
 
 
-<div class="card">
+<h2 id="total">
 
-<h3>Confirmed</h3>
+0
 
-<h2 id="confirmed">0</h2>
-
-</div>
-
-
-<div class="card">
-
-<h3>Cancelled</h3>
-
-<h2 id="cancelled">0</h2>
-
-</div>
+</h2>
 
 
 </div>
@@ -248,7 +135,93 @@ Logout
 
 
 
-<div class="filter">
+
+
+
+<div class="card glass">
+
+<h3>
+
+New
+
+</h3>
+
+
+<h2 id="new">
+
+0
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card glass">
+
+<h3>
+
+Confirmed
+
+</h3>
+
+
+<h2 id="confirmed">
+
+0
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card glass">
+
+<h3>
+
+Cancelled
+
+</h3>
+
+
+<h2 id="cancelled">
+
+0
+
+</h2>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="filter glass">
+
 
 
 <input placeholder="Location">
@@ -257,17 +230,42 @@ Logout
 <input type="date">
 
 
+
 <select>
 
-<option>All</option>
 
-<option>NEW</option>
+<option>
 
-<option>CONFIRMED</option>
+All
 
-<option>CANCELLED</option>
+</option>
+
+
+<option>
+
+NEW
+
+</option>
+
+
+<option>
+
+CONFIRMED
+
+</option>
+
+
+<option>
+
+CANCELLED
+
+</option>
+
+
 
 </select>
+
+
 
 
 <button class="btn">
@@ -277,13 +275,20 @@ Filter
 </button>
 
 
+
 </div>
 
 
 
 
 
-<div class="table-container">
+
+
+
+
+
+<div class="table-container glass">
+
 
 
 <table>
@@ -291,31 +296,77 @@ Filter
 
 <tr>
 
-<th>ID</th>
 
-<th>Location</th>
+<th>
 
-<th>Date</th>
+ID
 
-<th>Name</th>
+</th>
 
-<th>Email</th>
 
-<th>Phone</th>
+<th>
 
-<th>Status</th>
+Location
 
-<th>Action</th>
+</th>
+
+
+<th>
+
+Date
+
+</th>
+
+
+<th>
+
+Name
+
+</th>
+
+
+<th>
+
+Email
+
+</th>
+
+
+<th>
+
+Phone
+
+</th>
+
+
+<th>
+
+Status
+
+</th>
+
+
+<th>
+
+Action
+
+</th>
+
 
 </tr>
 
 
 
+
+
 <tr>
+
 
 <td colspan="8">
 
+
 No bookings available
+
 
 </td>
 
@@ -324,10 +375,48 @@ No bookings available
 
 
 
+
+
 </table>
 
 
+
+
 </div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+function toggleMenu(){
+
+
+document
+.getElementById("menu")
+.classList.toggle("active");
+
+
+}
+
+
+
+</script>
+
+
+
 
 
 
