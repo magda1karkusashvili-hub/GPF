@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 
 <head>
 
@@ -13,7 +15,7 @@ News | Georgian Paragliding Federation
 </title>
 
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 
 
 </head>
@@ -41,36 +43,54 @@ Georgian Paragliding Federation
 
 
 
+
 <div class="menu-toggle">
-
 ☰
-
 </div>
 
 
 
 
-<nav class="menu" id="menu">
+<nav class="menu">
 
 
-<a href="index.html">Home</a>
+<a href="index.html">
+Home
+</a>
 
-<a href="about.html">About Us</a>
 
-<a href="gallery.html">Gallery</a>
+<a href="about.html">
+About
+</a>
 
-<a href="document.html">Documents</a>
 
-<a href="contact.html">Contact</a>
+<a href="gallery.html">
+Gallery
+</a>
 
-<a href="BookYourFlight.html">Book Your Flight</a>
 
-<a href="news.html">News</a>
+<a href="documents.html">
+Documents
+</a>
 
-<a href="dashboard.html">Dashboard</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+
+<a href="book.html">
+Book Flight
+</a>
+
+
+<a href="news.html">
+News
+</a>
 
 
 </nav>
+
 
 
 </div>
@@ -82,8 +102,10 @@ Georgian Paragliding Federation
 
 
 
+<section class="news-container">
 
-<section class="page-title">
+
+<div class="page-title">
 
 
 <h1>
@@ -92,13 +114,13 @@ Latest News
 
 
 <p>
+
 Events, Training updates and Safety information
+
 </p>
 
 
-</section>
-
-
+</div>
 
 
 
@@ -108,27 +130,35 @@ Events, Training updates and Safety information
 <div class="tabs">
 
 
-<button class="tab-btn active"
-onclick="filterNews('all',event)">
+<button onclick="filterNews('all')"
+class="tab-btn active">
+
 All
+
 </button>
 
 
-<button class="tab-btn"
-onclick="filterNews('events',event)">
+<button onclick="filterNews('events')"
+class="tab-btn">
+
 Events
+
 </button>
 
 
-<button class="tab-btn"
-onclick="filterNews('training',event)">
+<button onclick="filterNews('training')"
+class="tab-btn">
+
 Training
+
 </button>
 
 
-<button class="tab-btn"
-onclick="filterNews('safety',event)">
+<button onclick="filterNews('safety')"
+class="tab-btn">
+
 Safety
+
 </button>
 
 
@@ -140,8 +170,8 @@ Safety
 
 
 
-
 <div class="news-grid">
+
 
 
 
@@ -164,7 +194,7 @@ FAI Membership Achievement
 
 <p>
 
-Georgian Paragliding Federation became Associate Member of FAI — a historic milestone for Georgian aviation.
+Georgian Paragliding Federation became Associate Member of FAI — historic milestone for Georgian aviation.
 
 </p>
 
@@ -175,12 +205,12 @@ Events
 
 
 <a class="news-btn"
-href="news-detail.html">
+href="https://www.fai.org/node/208114"
+target="_blank">
 
-Read More
+Official FAI Page
 
 </a>
-
 
 
 </div>
@@ -203,6 +233,7 @@ data-category="training">
 <img src="images/para15.jpg">
 
 
+
 <div class="news-content">
 
 
@@ -213,7 +244,8 @@ Advanced Pilot Training
 
 <p>
 
-New advanced training program focusing on thermals, XC navigation and safety procedures.
+New advanced training program focusing on thermals,
+XC navigation and safety procedures.
 
 </p>
 
@@ -223,13 +255,12 @@ Training
 </span>
 
 
-<a class="news-btn"
-href="contact.html">
+<a href="contact.html"
+class="news-btn">
 
 Contact
 
 </a>
-
 
 
 </div>
@@ -262,7 +293,7 @@ Safety & Weather Update
 
 <p>
 
-Pilots must check weather conditions and NOTAM before every flight.
+Pilots must check weather conditions and NOTAM before flights.
 
 </p>
 
@@ -292,10 +323,10 @@ NOTAM
 
 
 
-
 </div>
 
 
+</section>
 
 
 
@@ -303,51 +334,9 @@ NOTAM
 
 
 
-<script src="script.js"></script>
-
-
-<script>
-
-
-function filterNews(category,e){
-
-
-document.querySelectorAll(".tab-btn")
-.forEach(btn=>btn.classList.remove("active"));
-
-
-e.target.classList.add("active");
-
-
-
-document.querySelectorAll(".news-card")
-.forEach(card=>{
-
-
-if(category==="all" || card.dataset.category===category){
-
-card.style.display="block";
-
-}
-
-else{
-
-card.style.display="none";
-
-}
-
-
-});
-
-
-}
-
-
-</script>
-
+<script src="js/script.js"></script>
 
 
 </body>
-
 
 </html>
