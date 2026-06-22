@@ -1,8 +1,8 @@
 /* =========================
-   RESET
+RESET
 ========================= */
 
-* {
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -10,7 +10,7 @@
 }
 
 
-body {
+body{
 
     background-image:url("../images/para1.jpg");
     background-size:cover;
@@ -24,32 +24,31 @@ body {
 }
 
 
-/* DARK OVERLAY */
-
-body::before {
+body::before{
 
     content:"";
     position:fixed;
-
     inset:0;
 
-    background:rgba(0,0,0,0.6);
+    background:rgba(0,0,0,0.55);
 
     z-index:-1;
 
 }
 
 
-
 /* =========================
- HEADER
+HEADER
 ========================= */
 
-header {
+
+header{
 
     background:rgba(0,0,0,0.85);
 
     backdrop-filter:blur(10px);
+
+    padding:10px 0;
 
     position:sticky;
 
@@ -60,19 +59,20 @@ header {
 }
 
 
-.container {
+
+.container{
 
     max-width:1200px;
 
     margin:auto;
 
-    padding:12px 20px;
+    padding:0 15px;
 
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
+
+    justify-content:space-between;
 
 }
 
@@ -80,7 +80,8 @@ header {
 
 /* LOGO */
 
-.logo {
+
+.logo{
 
     display:flex;
 
@@ -95,7 +96,7 @@ header {
 }
 
 
-.logo img {
+.logo img{
 
     width:42px;
 
@@ -108,10 +109,11 @@ header {
 
 
 
+
 /* MENU */
 
 
-.menu {
+.menu{
 
     display:flex;
 
@@ -121,7 +123,7 @@ header {
 
 
 
-.menu a {
+.menu a{
 
     color:white;
 
@@ -132,7 +134,8 @@ header {
 }
 
 
-.menu a:hover {
+
+.menu a:hover{
 
     color:#00c2ff;
 
@@ -141,9 +144,11 @@ header {
 
 
 
-.menu-toggle {
+.menu-toggle{
 
     display:none;
+
+    color:white;
 
     font-size:30px;
 
@@ -153,14 +158,16 @@ header {
 
 
 
+
+
 /* =========================
- HERO
+HERO
 ========================= */
 
 
-.hero {
+.hero{
 
-    min-height:90vh;
+    min-height:100vh;
 
     display:flex;
 
@@ -173,7 +180,8 @@ header {
 }
 
 
-.hero-overlay {
+
+.hero-overlay{
 
     max-width:800px;
 
@@ -183,9 +191,9 @@ header {
 
 
 
-.hero h1 {
+.hero h1{
 
-    font-size:45px;
+    font-size:42px;
 
     color:#00c2ff;
 
@@ -193,9 +201,9 @@ header {
 
 
 
-.hero p {
+.hero p{
 
-    margin-top:20px;
+    margin-top:15px;
 
     font-size:18px;
 
@@ -205,30 +213,30 @@ header {
 
 
 
-/* BUTTON */
+.btn{
 
-.btn {
 
     display:inline-block;
 
     margin-top:25px;
 
-    padding:12px 30px;
+    padding:12px 25px;
 
     background:#00c2ff;
 
     color:black;
 
-    border-radius:10px;
-
     text-decoration:none;
 
+    border-radius:8px;
+
     font-weight:bold;
+
 
 }
 
 
-.btn:hover {
+.btn:hover{
 
     background:white;
 
@@ -237,36 +245,39 @@ header {
 
 
 
-
 /* =========================
- CARDS
+GLASS BOXES
 ========================= */
 
 
-.card,
+.info-box,
 .news-card,
-.info-box {
+.contact-box,
+.booking-form,
+.card{
 
 
-    background:rgba(255,255,255,.07);
+    background:rgba(255,255,255,0.06);
 
-    border:1px solid rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,0.12);
 
-    border-radius:15px;
+    backdrop-filter:blur(12px);
 
-    backdrop-filter:blur(10px);
+    border-radius:16px;
+
 
 }
 
 
 
 
+
 /* =========================
- NEWS
+NEWS
 ========================= */
 
 
-.news-container {
+.news-container{
 
     max-width:1100px;
 
@@ -278,8 +289,7 @@ header {
 
 
 
-.news-grid {
-
+.news-grid{
 
     display:grid;
 
@@ -287,13 +297,29 @@ header {
 
     gap:20px;
 
+}
+
+
+
+.news-card{
+
+    overflow:hidden;
+
+    transition:.3s;
 
 }
 
 
 
-.news-card img {
+.news-card:hover{
 
+    transform:translateY(-6px);
+
+}
+
+
+
+.news-card img{
 
     width:100%;
 
@@ -301,20 +327,19 @@ header {
 
     object-fit:cover;
 
+}
+
+
+
+.news-content{
+
+    padding:18px;
 
 }
 
 
 
-.news-content {
-
-    padding:20px;
-
-}
-
-
-
-.news-content h3 {
+.news-content h3{
 
     color:#00c2ff;
 
@@ -322,22 +347,40 @@ header {
 
 
 
-
-
-.news-btn {
+.tag{
 
 
     display:inline-block;
 
-    margin-top:15px;
+    margin-top:10px;
+
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    background:rgba(0,194,255,.2);
+
+    color:#00c2ff;
+
+}
+
+
+
+
+
+.news-btn{
+
+    display:inline-block;
+
+    margin-top:12px;
 
     padding:8px 15px;
+
+    border-radius:20px;
 
     border:1px solid #00c2ff;
 
     color:#00c2ff;
-
-    border-radius:20px;
 
     text-decoration:none;
 
@@ -349,11 +392,11 @@ header {
 
 
 /* =========================
- GALLERY
+GALLERY
 ========================= */
 
 
-.gallery-page {
+.gallery-page{
 
     max-width:1200px;
 
@@ -366,7 +409,8 @@ header {
 }
 
 
-.gallery-cards {
+
+.gallery-cards{
 
 
     display:grid;
@@ -375,12 +419,11 @@ header {
 
     gap:15px;
 
-
 }
 
 
-.gallery-card img {
 
+.gallery-card img{
 
     width:100%;
 
@@ -388,15 +431,17 @@ header {
 
     object-fit:cover;
 
-    border-radius:15px;
+    border-radius:12px;
 
     cursor:pointer;
 
+    transition:.3s;
 
 }
 
 
-.gallery-card img:hover {
+
+.gallery-card img:hover{
 
     transform:scale(1.05);
 
@@ -406,11 +451,7 @@ header {
 
 
 
-/* LIGHTBOX */
-
-
-.lightbox {
-
+.lightbox{
 
     display:none;
 
@@ -430,15 +471,11 @@ header {
 
 
 
-.lightbox img {
-
+.lightbox img{
 
     max-width:90%;
 
     max-height:90%;
-
-    border-radius:15px;
-
 
 }
 
@@ -447,51 +484,57 @@ header {
 
 
 /* =========================
- FORMS
+BOOKING
 ========================= */
 
 
-.booking-form {
+.booking-section{
+
+    max-width:720px;
+
+    margin:auto;
+
+    padding:60px 20px;
+
+}
 
 
-    max-width:600px;
 
-    margin:50px auto;
+.booking-form{
 
     padding:30px;
 
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
 
 }
+
 
 
 .booking-form input,
-.booking-form select {
+.booking-form select{
 
-
-    width:100%;
 
     padding:12px;
 
-    margin:8px 0;
+    border-radius:10px;
 
-    background:rgba(0,0,0,.5);
+    background:rgba(0,0,0,.4);
 
     color:white;
 
-    border-radius:10px;
-
-    border:1px solid #555;
+    border:1px solid rgba(255,255,255,.1);
 
 
 }
 
 
 
+.booking-form button{
 
-.booking-form button {
-
-
-    width:100%;
 
     padding:13px;
 
@@ -511,27 +554,26 @@ header {
 
 
 /* =========================
- DOCUMENTS
+DOCUMENTS
 ========================= */
 
 
-.document-section {
+.document-section{
 
 
     max-width:900px;
 
     margin:auto;
 
-    padding:50px 20px;
+    padding:60px 20px;
 
     text-align:center;
-
 
 }
 
 
 
-.doc-item {
+.doc-item{
 
 
     list-style:none;
@@ -542,58 +584,18 @@ header {
 
 
 
-.doc-item a {
+.doc-item a{
 
 
     display:block;
 
-    padding:15px;
-
-
-    background:rgba(255,255,255,.08);
+    padding:16px;
 
     color:white;
 
     text-decoration:none;
 
-    border-radius:10px;
-
-
-}
-
-
-
-
-
-/* =========================
- CONTACT
-========================= */
-
-
-.contact-box {
-
-
-    max-width:550px;
-
-    margin:70px auto;
-
-    padding:35px;
-
-    text-align:center;
-
-
-}
-
-
-
-.contact-item {
-
-
-    padding:15px;
-
-    margin:15px;
-
-    background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.06);
 
     border-radius:12px;
 
@@ -602,20 +604,10 @@ header {
 
 
 
-.contact-item a {
-
-    color:white;
-
-    text-decoration:none;
-
-}
-
-
-
 
 
 /* =========================
- MOBILE
+MOBILE
 ========================= */
 
 
@@ -630,7 +622,7 @@ header {
 
 
 
-.menu {
+.menu{
 
 
     position:fixed;
@@ -644,44 +636,40 @@ header {
     height:100vh;
 
 
-    background:black;
+    background:rgba(0,0,0,.95);
 
     flex-direction:column;
 
-    padding:80px 25px;
+    padding:80px 20px;
 
-
-    transition:.3s;
+    transition:.35s;
 
 
 }
 
 
-.menu.active {
 
+.menu.active{
 
     right:0;
-
-
-}
-
-
-
-
-.hero h1 {
-
-    font-size:30px;
 
 }
 
 
 
 .news-grid,
-.gallery-cards {
+.gallery-cards{
 
 
     grid-template-columns:1fr;
 
+}
+
+
+
+.hero h1{
+
+    font-size:30px;
 
 }
 
