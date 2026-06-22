@@ -1,805 +1,372 @@
-/* =========================
-RESET
-========================= */
+<!DOCTYPE html>
+<html lang="en">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+<head>
 
+<meta charset="UTF-8">
 
-/* =========================
-GLOBAL
-========================= */
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body{
 
-    background:url("para1.jpg")
-    center/cover no-repeat fixed;
+<title>Book Your Flight | Georgian Paragliding Federation</title>
 
-    color:white;
 
-    min-height:100vh;
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-    position:relative;
 
-}
+</head>
 
 
 
-body::before{
+<body>
 
-    content:"";
 
-    position:fixed;
 
-    inset:0;
 
-    background:rgba(0,0,0,0.55);
 
-    z-index:-1;
+<!-- ================= HEADER ================= -->
 
-}
 
+<header>
 
 
-/* =========================
-HEADER
-========================= */
+<div class="container">
 
 
-header{
 
-    background:rgba(0,0,0,0.85);
+<a href="/" class="logo">
 
-    backdrop-filter:blur(10px);
 
-    padding:10px 0;
+<img src="{{ url_for('static', filename='images/logo.jpg') }}">
 
-    position:sticky;
 
-    top:0;
+<span>
 
-    z-index:1000;
+Georgian Paragliding Federation
 
-}
+</span>
 
 
+</a>
 
-.container{
 
-    max-width:1200px;
 
-    margin:auto;
 
-    padding:0 15px;
 
-    display:flex;
+<div class="menu-toggle" onclick="toggleMenu()">
 
-    justify-content:space-between;
+☰
 
-    align-items:center;
+</div>
 
-}
 
 
 
-.logo{
 
-    display:flex;
+<nav class="menu" id="menu">
 
-    align-items:center;
 
-    gap:10px;
+<a href="/">Home</a>
 
-    text-decoration:none;
+<a href="/about">About Us</a>
 
-    color:white;
+<a href="/gallery">Gallery</a>
 
-}
+<a href="/document">Documents</a>
 
+<a href="/contact">Contact</a>
 
+<a href="/BookYourFlight">
+Book Your Flight
+</a>
 
-.logo img{
+<a href="/news">News</a>
 
-    width:42px;
+<a href="/dashboard">
+Dashboard
+</a>
 
-    height:42px;
 
-    border-radius:50%;
+</nav>
 
-}
 
 
 
+</div>
 
-/* =========================
-NAVIGATION
-========================= */
 
+</header>
 
-.menu{
 
-    display:flex;
 
-    gap:18px;
 
-}
 
 
 
-.menu a{
 
-    color:white;
 
-    text-decoration:none;
+<!-- ================= BOOKING ================= -->
 
-    transition:.3s;
 
-}
 
+<section class="booking-section">
 
 
-.menu a:hover{
 
-    color:#00c2ff;
 
-}
 
+<div class="booking-title">
 
 
-/* =========================
-MOBILE MENU
-========================= */
+<h1>
 
+Book Your Paragliding Adventure
 
-.menu-toggle{
+</h1>
 
-    display:none;
 
-    font-size:30px;
+</div>
 
-    cursor:pointer;
 
-    color:white;
 
-}
 
 
 
+<p class="subtext">
 
-/* =========================
-HERO
-========================= */
 
+Choose your location and reserve your flight with Georgian Paragliding Federation.
 
-.hero{
 
-    min-height:100vh;
+</p>
 
-    display:flex;
 
-    justify-content:center;
 
-    align-items:center;
 
-    text-align:center;
 
-}
 
 
 
-.hero-overlay{
 
-    max-width:800px;
+<form class="booking-form" method="POST" action="/BookYourFlight">
 
-    padding:25px;
 
-}
 
 
 
-.hero h1{
+<label>
 
-    font-size:42px;
+Location
 
-}
+</label>
 
 
 
-.hero p{
 
-    margin:15px 0;
 
-    font-size:18px;
+<select name="location" required>
 
-    line-height:1.6;
 
-}
+<option value="">
 
+Select Location
 
+</option>
 
-/* =========================
-BUTTON
-========================= */
 
+<option value="Gudauri">
 
-.btn{
+Gudauri
 
-    display:inline-block;
+</option>
 
-    margin-top:20px;
 
-    padding:12px 25px;
 
-    background:#00c2ff;
+<option value="Ananuri">
 
-    color:black;
+Ananuri
 
-    border-radius:8px;
+</option>
 
-    text-decoration:none;
 
-    font-weight:bold;
 
-    transition:.3s;
+<option value="Tbilisi Sea">
 
-}
+Tbilisi Sea
 
+</option>
 
 
-.btn:hover{
 
-    background:white;
+<option value="Mestia">
 
-}
+Mestia
 
+</option>
 
 
 
+</select>
 
-/* =========================
-BOOKING FORM
-========================= */
 
 
-.booking-section{
 
-    max-width:760px;
 
-    margin:auto;
 
-    padding:70px 20px;
 
-}
 
+<label>
 
+Date
 
-.booking-title h1{
+</label>
 
-    text-align:center;
 
-    color:#00c2ff;
+<input 
+type="date"
+name="date"
+required>
 
-    font-size:38px;
 
-}
 
 
 
-.subtext{
 
-    text-align:center;
 
-    color:#b9c2d0;
 
-    margin-bottom:30px;
+<label>
 
-}
+Full Name
 
+</label>
 
 
-.booking-form{
+<input
 
-    max-width:520px;
+type="text"
 
-    margin:40px auto;
+name="name"
 
-    display:flex;
+placeholder="Your name"
 
-    flex-direction:column;
+required>
 
-    gap:14px;
 
-    padding:28px;
 
+<label>
 
-    background:rgba(255,255,255,0.06);
+Email
 
-    border:1px solid rgba(255,255,255,0.15);
+</label>
 
-    border-radius:16px;
 
-    backdrop-filter:blur(10px);
 
-}
+<input
 
+type="email"
 
+name="email"
 
-.booking-form input,
-.booking-form select{
+placeholder="Your email"
 
+required>
 
-    padding:12px;
 
-    border-radius:10px;
 
-    border:1px solid rgba(255,255,255,.1);
 
-    background:rgba(0,0,0,.4);
 
-    color:white;
+<label>
 
-}
+Phone
 
+</label>
 
 
-.booking-form button{
 
+<input
 
-    padding:12px;
+type="tel"
 
-    border:none;
+name="phone"
 
-    border-radius:10px;
+placeholder="+995..."
 
-    background:linear-gradient(
-    135deg,
-    #00c2ff,
-    #0095c9
-    );
+required>
 
-    font-weight:bold;
 
-    cursor:pointer;
 
-}
 
 
 
 
+<div class="warning-box">
 
-/* =========================
-DOCUMENTS
-========================= */
 
+⚠️ Flights depend on weather conditions and pilot availability.
 
-.document-section{
 
-    max-width:900px;
+</div>
 
-    margin:auto;
 
-    padding:60px 20px;
 
-    text-align:center;
 
-}
 
 
+<button type="submit">
 
-.docs-list{
 
-    list-style:none;
+Confirm Booking
 
-    display:flex;
 
-    flex-direction:column;
+</button>
 
-    gap:14px;
 
-}
 
 
 
-.doc-item a{
 
 
-    display:flex;
+</form>
 
-    align-items:center;
 
-    gap:12px;
 
-    padding:16px;
 
-    background:rgba(255,255,255,.06);
 
-    border-radius:12px;
 
-    color:white;
 
-    text-decoration:none;
+</section>
 
-    border:1px solid rgba(255,255,255,.12);
 
-}
 
 
 
-.doc-item a:hover{
 
-    border-color:#00c2ff;
 
-    transform:translateX(5px);
 
-}
 
+<script>
 
 
-.red{
+function toggleMenu(){
 
-border-left:4px solid #ef4444;
 
-}
-
-
-
-.blue{
-
-border-left:4px solid #3b82f6;
-
-}
-
-
-
-.green{
-
-border-left:4px solid #22c55e;
-
-}
-
-
-
-
-
-/* =========================
-ABOUT
-========================= */
-
-
-.about-hero{
-
-padding:80px 20px;
-
-text-align:center;
-
-}
-
-
-
-.about-hero h1{
-
-color:#00c2ff;
-
-font-size:42px;
-
-}
-
-
-
-.about-hero p{
-
-max-width:700px;
-
-margin:20px auto;
-
-font-size:18px;
-
-color:#ddd;
-
-}
-
-
-
-.about-grid{
-
-
-max-width:1100px;
-
-margin:auto;
-
-padding:20px;
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:25px;
+document
+.getElementById("menu")
+.classList.toggle("active");
 
 
 }
 
 
 
-.info-box{
+</script>
 
 
-background:rgba(255,255,255,0.07);
 
-border:1px solid rgba(255,255,255,0.15);
 
-border-radius:16px;
 
-padding:30px;
 
-text-align:center;
 
-cursor:pointer;
+</body>
 
-backdrop-filter:blur(12px);
-
-transition:.3s;
-
-
-}
-
-
-
-.info-box:hover{
-
-transform:translateY(-8px);
-
-border-color:#00c2ff;
-
-}
-
-
-
-.icon{
-
-font-size:40px;
-
-margin-bottom:15px;
-
-}
-
-
-
-.info-box h3{
-
-color:#00c2ff;
-
-margin-bottom:15px;
-
-}
-
-
-
-.more{
-
-display:none;
-
-margin-top:15px;
-
-}
-
-
-
-.info-box.open .more{
-
-display:block;
-
-}
-
-
-
-
-
-/* =========================
-NEWS
-========================= */
-
-
-.news-btn{
-
-
-display:inline-block;
-
-margin-top:14px;
-
-padding:10px 16px;
-
-
-border-radius:10px;
-
-
-background:rgba(0,194,255,.15);
-
-border:1px solid #00c2ff;
-
-
-color:#00c2ff;
-
-
-text-decoration:none;
-
-
-}
-
-
-
-.news-btn:hover{
-
-background:#00c2ff;
-
-color:black;
-
-}
-
-
-
-
-
-
-/* =========================
-REVEAL ANIMATION
-========================= */
-
-
-.reveal{
-
-opacity:0;
-
-transform:translateY(40px);
-
-transition:.6s;
-
-}
-
-
-
-.reveal.active{
-
-opacity:1;
-
-transform:none;
-
-}
-
-
-
-
-
-
-
-/* =========================
-MOBILE
-========================= */
-
-
-@media(max-width:900px){
-
-
-.about-grid{
-
-grid-template-columns:1fr;
-
-}
-
-
-}
-
-
-
-
-
-@media(max-width:768px){
-
-
-
-.menu-toggle{
-
-display:block;
-
-}
-
-
-
-
-
-.menu{
-
-
-position:fixed;
-
-
-top:0;
-
-right:-100%;
-
-
-width:75%;
-
-
-height:100vh;
-
-
-background:rgba(0,0,0,.95);
-
-
-flex-direction:column;
-
-
-padding:80px 25px;
-
-
-gap:20px;
-
-
-transition:.35s;
-
-
-z-index:2000;
-
-
-}
-
-
-
-.menu.active{
-
-
-right:0;
-
-
-}
-
-
-
-.hero h1{
-
-font-size:30px;
-
-}
-
-
-
-.hero p{
-
-font-size:16px;
-
-}
-
-
-
-
-.logo span{
-
-font-size:14px;
-
-}
-
-
-
-
-.booking-title h1{
-
-font-size:28px;
-
-}
-
-
-
-
-.container{
-
-padding:0 20px;
-
-}
-
-
-
-}
+</html>
