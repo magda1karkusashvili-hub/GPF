@@ -1,66 +1,80 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
+
 
 <head>
 
+
 <meta charset="UTF-8">
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>Dashboard | Paragliding Admin</title>
+<title>
+Dashboard
+</title>
 
 
-<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="css/style.css">
 
 
 </head>
 
 
+
+
 <body>
+
 
 
 <script>
 
+
 if(localStorage.getItem("admin")!=="true"){
+
 
 window.location="login.html";
 
+
 }
+
 
 </script>
 
 
 
+
+
+
+
 <header>
 
+
 <div class="container">
+
 
 
 <h2>
 
 Admin Dashboard
 
-<span class="admin-badge">
-ADMIN
-</span>
-
 </h2>
 
 
 
-<div>
 
-
-<button class="btn"
-onclick="logout()">
+<button 
+onclick="logout()"
+class="logout-btn">
 
 Logout
 
 </button>
 
-
-</div>
 
 
 </div>
@@ -72,46 +86,100 @@ Logout
 
 
 
+
+
+
+<section class="dashboard">
+
+
+
+
+
+<h1>
+📊 Booking Dashboard
+</h1>
+
+
+
+
+
+
 <div class="cards">
 
 
-<div class="card">
 
-<h3>Total</h3>
-
-<h2>12</h2>
-
-</div>
 
 
 <div class="card">
 
-<h3>New</h3>
+<h3>
+Total
+</h3>
 
-<h2>5</h2>
+<p>
+12
+</p>
 
 </div>
+
+
+
 
 
 <div class="card">
 
-<h3>Confirmed</h3>
+<h3>
+New
+</h3>
 
-<h2>6</h2>
+<p>
+5
+</p>
 
 </div>
+
+
+
 
 
 <div class="card">
 
-<h3>Cancelled</h3>
+<h3>
+Confirmed
+</h3>
 
-<h2>1</h2>
+<p>
+6
+</p>
 
 </div>
 
 
+
+
+
+
+<div class="card">
+
+<h3>
+Cancelled
+</h3>
+
+<p>
+1
+</p>
+
 </div>
+
+
+
+
+
+
+</div>
+
+
+
 
 
 
@@ -120,30 +188,90 @@ Logout
 <table>
 
 
+
 <tr>
 
-<th>ID</th>
-<th>Location</th>
-<th>Date</th>
-<th>Name</th>
-<th>Email</th>
-<th>Phone</th>
-<th>Status</th>
+
+<th>
+ID
+</th>
+
+
+<th>
+Location
+</th>
+
+
+<th>
+Date
+</th>
+
+
+<th>
+Name
+</th>
+
+
+<th>
+Email
+</th>
+
+
+<th>
+Phone
+</th>
+
+
+<th>
+Status
+</th>
 
 
 </tr>
 
 
 
+
+
+
+
 <tr>
 
-<td>1</td>
-<td>Gudauri</td>
-<td>2026-06-20</td>
-<td>Giorgi</td>
-<td>example@mail.com</td>
-<td>555000000</td>
-<td class="CONFIRMED">CONFIRMED</td>
+
+<td>
+1
+</td>
+
+
+<td>
+Gudauri
+</td>
+
+
+<td>
+2026-06-20
+</td>
+
+
+<td>
+Giorgi
+</td>
+
+
+<td>
+example@mail.com
+</td>
+
+
+<td>
+555000000
+</td>
+
+
+<td>
+CONFIRMED
+</td>
+
 
 
 </tr>
@@ -151,37 +279,98 @@ Logout
 
 
 
+
+
+
+
 <tr>
 
-<td>2</td>
-<td>Manavi</td>
-<td>2026-06-25</td>
-<td>Anna</td>
-<td>anna@mail.com</td>
-<td>555111111</td>
-<td class="NEW">NEW</td>
+
+<td>
+2
+</td>
+
+
+<td>
+Manavi
+</td>
+
+
+<td>
+2026-06-25
+</td>
+
+
+<td>
+Anna
+</td>
+
+
+<td>
+anna@mail.com
+</td>
+
+
+<td>
+555111111
+</td>
+
+
+<td>
+NEW
+</td>
+
 
 
 </tr>
+
+
+
+
+
 
 
 </table>
 
 
 
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
 <script>
+
 
 function logout(){
 
+
 localStorage.removeItem("admin");
+
 
 window.location="login.html";
 
+
 }
+
+
 
 </script>
 
 
 
+
+
+
 </body>
+
+
 </html>
