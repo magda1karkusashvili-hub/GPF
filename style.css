@@ -16,7 +16,7 @@ GLOBAL
 
 body{
 
-    background:url("/static/images/para1.jpg")
+    background:url("para1.jpg")
     center/cover no-repeat fixed;
 
     color:white;
@@ -114,8 +114,9 @@ header{
 
 
 
+
 /* =========================
-NAV
+NAVIGATION
 ========================= */
 
 
@@ -150,7 +151,7 @@ NAV
 
 
 /* =========================
-HAMBURGER
+MOBILE MENU
 ========================= */
 
 
@@ -164,10 +165,7 @@ HAMBURGER
 
     color:white;
 
-    z-index:3000;
-
 }
-
 
 
 
@@ -223,8 +221,6 @@ HERO
 
 
 
-
-
 /* =========================
 BUTTON
 ========================= */
@@ -265,8 +261,44 @@ BUTTON
 
 
 /* =========================
-FORMS
+BOOKING FORM
 ========================= */
+
+
+.booking-section{
+
+    max-width:760px;
+
+    margin:auto;
+
+    padding:70px 20px;
+
+}
+
+
+
+.booking-title h1{
+
+    text-align:center;
+
+    color:#00c2ff;
+
+    font-size:38px;
+
+}
+
+
+
+.subtext{
+
+    text-align:center;
+
+    color:#b9c2d0;
+
+    margin-bottom:30px;
+
+}
+
 
 
 .booking-form{
@@ -283,12 +315,12 @@ FORMS
 
     padding:28px;
 
-    border-radius:16px;
-
 
     background:rgba(255,255,255,0.06);
 
     border:1px solid rgba(255,255,255,0.15);
+
+    border-radius:16px;
 
     backdrop-filter:blur(10px);
 
@@ -324,55 +356,14 @@ FORMS
     border-radius:10px;
 
     background:linear-gradient(
-    135deg,#00c2ff,#0095c9);
+    135deg,
+    #00c2ff,
+    #0095c9
+    );
 
     font-weight:bold;
 
     cursor:pointer;
-
-}
-
-
-
-
-
-
-/* =========================
-BOOK PAGE
-========================= */
-
-
-.booking-section{
-
-    max-width:760px;
-
-    margin:auto;
-
-    padding:70px 20px;
-
-}
-
-
-
-.booking-title h1{
-
-    text-align:center;
-
-    color:#00c2ff;
-
-    font-size:38px;
-
-}
-
-
-
-.subtext{
-
-    text-align:center;
-
-    color:#b9c2d0;
-
-    margin-bottom:30px;
 
 }
 
@@ -422,23 +413,17 @@ DOCUMENTS
 
     gap:12px;
 
-
     padding:16px;
-
 
     background:rgba(255,255,255,.06);
 
-
     border-radius:12px;
-
 
     color:white;
 
     text-decoration:none;
 
-
     border:1px solid rgba(255,255,255,.12);
-
 
 }
 
@@ -455,15 +440,25 @@ DOCUMENTS
 
 
 .red{
+
 border-left:4px solid #ef4444;
+
 }
+
+
 
 .blue{
+
 border-left:4px solid #3b82f6;
+
 }
+
+
 
 .green{
+
 border-left:4px solid #22c55e;
+
 }
 
 
@@ -471,133 +466,8 @@ border-left:4px solid #22c55e;
 
 
 /* =========================
-NEWS BUTTON
+ABOUT
 ========================= */
-
-
-.news-btn{
-
-
-    display:inline-block;
-
-    margin-top:14px;
-
-    padding:10px 16px;
-
-
-    border-radius:10px;
-
-
-    background:rgba(0,194,255,.15);
-
-    border:1px solid #00c2ff;
-
-
-    color:#00c2ff;
-
-
-    text-decoration:none;
-
-
-}
-
-
-
-.news-btn:hover{
-
-    background:#00c2ff;
-
-    color:black;
-
-}
-
-
-
-
-
-
-/* =========================
-MOBILE
-========================= */
-
-
-@media(max-width:768px){
-
-
-.menu-toggle{
-
-    display:block;
-
-}
-
-
-
-.menu{
-
-
-    position:fixed;
-
-
-    top:0;
-
-    right:-100%;
-
-
-    width:75%;
-
-    height:100vh;
-
-
-    background:rgba(0,0,0,.95);
-
-
-    flex-direction:column;
-
-
-    padding:80px 25px;
-
-
-    gap:20px;
-
-
-    transition:.35s;
-
-
-    z-index:2000;
-
-
-}
-
-
-
-.menu.active{
-
-
-    right:0;
-
-
-}
-
-
-
-.hero h1{
-
-    font-size:30px;
-
-}
-
-
-
-.hero p{
-
-    font-size:16px;
-
-}
-
-
-
-}
-/* ================= ABOUT ================= */
 
 
 .about-hero{
@@ -609,6 +479,7 @@ text-align:center;
 }
 
 
+
 .about-hero h1{
 
 color:#00c2ff;
@@ -616,6 +487,7 @@ color:#00c2ff;
 font-size:42px;
 
 }
+
 
 
 .about-hero p{
@@ -629,8 +501,6 @@ font-size:18px;
 color:#ddd;
 
 }
-
-
 
 
 
@@ -708,25 +578,11 @@ margin-bottom:15px;
 
 
 
-.short{
-
-color:#ddd;
-
-line-height:1.5;
-
-}
-
-
-
 .more{
 
 display:none;
 
 margin-top:15px;
-
-color:#fff;
-
-line-height:1.6;
 
 }
 
@@ -741,6 +597,89 @@ display:block;
 
 
 
+
+/* =========================
+NEWS
+========================= */
+
+
+.news-btn{
+
+
+display:inline-block;
+
+margin-top:14px;
+
+padding:10px 16px;
+
+
+border-radius:10px;
+
+
+background:rgba(0,194,255,.15);
+
+border:1px solid #00c2ff;
+
+
+color:#00c2ff;
+
+
+text-decoration:none;
+
+
+}
+
+
+
+.news-btn:hover{
+
+background:#00c2ff;
+
+color:black;
+
+}
+
+
+
+
+
+
+/* =========================
+REVEAL ANIMATION
+========================= */
+
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:.6s;
+
+}
+
+
+
+.reveal.active{
+
+opacity:1;
+
+transform:none;
+
+}
+
+
+
+
+
+
+
+/* =========================
+MOBILE
+========================= */
+
+
 @media(max-width:900px){
 
 
@@ -751,11 +690,116 @@ grid-template-columns:1fr;
 }
 
 
-.about-hero h1{
+}
+
+
+
+
+
+@media(max-width:768px){
+
+
+
+.menu-toggle{
+
+display:block;
+
+}
+
+
+
+
+
+.menu{
+
+
+position:fixed;
+
+
+top:0;
+
+right:-100%;
+
+
+width:75%;
+
+
+height:100vh;
+
+
+background:rgba(0,0,0,.95);
+
+
+flex-direction:column;
+
+
+padding:80px 25px;
+
+
+gap:20px;
+
+
+transition:.35s;
+
+
+z-index:2000;
+
+
+}
+
+
+
+.menu.active{
+
+
+right:0;
+
+
+}
+
+
+
+.hero h1{
 
 font-size:30px;
 
 }
+
+
+
+.hero p{
+
+font-size:16px;
+
+}
+
+
+
+
+.logo span{
+
+font-size:14px;
+
+}
+
+
+
+
+.booking-title h1{
+
+font-size:28px;
+
+}
+
+
+
+
+.container{
+
+padding:0 20px;
+
+}
+
 
 
 }
