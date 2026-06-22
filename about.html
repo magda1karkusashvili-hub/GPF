@@ -1,23 +1,27 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 
 <head>
 
+
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 
 <title>
-About Us | Georgian Paragliding Federation
+About Us
 </title>
 
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 
 
 </head>
-
 
 
 <body>
@@ -27,16 +31,12 @@ About Us | Georgian Paragliding Federation
 
 <header>
 
-
 <div class="container">
-
 
 
 <a href="index.html" class="logo">
 
-
 <img src="images/logo.jpg">
-
 
 <span>
 Georgian Paragliding Federation
@@ -48,19 +48,13 @@ Georgian Paragliding Federation
 
 
 
-
 <div class="menu-toggle">
-
 ☰
-
 </div>
 
 
 
-
-
-
-<nav class="menu" id="menu">
+<nav class="menu">
 
 
 <a href="index.html">
@@ -69,7 +63,7 @@ Home
 
 
 <a href="about.html">
-About Us
+About
 </a>
 
 
@@ -78,7 +72,7 @@ Gallery
 </a>
 
 
-<a href="document.html">
+<a href="documents.html">
 Documents
 </a>
 
@@ -88,8 +82,8 @@ Contact
 </a>
 
 
-<a href="BookYourFlight.html">
-Book Your Flight
+<a href="book.html">
+Book Flight
 </a>
 
 
@@ -97,10 +91,6 @@ Book Your Flight
 News
 </a>
 
-
-<a href="dashboard.html">
-Dashboard
-</a>
 
 
 </nav>
@@ -116,58 +106,45 @@ Dashboard
 
 
 
-
-
-
-
-<section class="page-title">
+<section class="document-section">
 
 
 <h1>
-
 About Our Federation
-
 </h1>
 
 
-<p>
+
+<p class="subtext">
+
 
 Georgian Paragliding Federation develops safe aviation culture,
 professional pilot training and international paragliding standards.
 
+
 </p>
 
 
-</section>
 
 
 
+<div class="info-box"
+onclick="openModal('mission')">
 
 
-
-
-
-
-<div class="card-container">
-
-
-
-
-
-<div class="card">
-
-
-<h2>
+<h3>
 🎯 Mission
-</h2>
+</h3>
 
 
 <p>
 
-Developing paragliding in Georgia as a safe and internationally recognized aviation sport.
+
+Develop paragliding in Georgia as a safe,
+structured and internationally recognized aviation sport.
+
 
 </p>
-
 
 
 </div>
@@ -176,24 +153,22 @@ Developing paragliding in Georgia as a safe and internationally recognized aviat
 
 
 
+<div class="info-box"
+onclick="openModal('safety')">
 
 
-
-<div class="card">
-
-
-<h2>
+<h3>
 🛡 Safety
-</h2>
+</h3>
 
 
 <p>
 
-Safety is the core principle of every flight.
-We follow aviation safety principles, weather assessment and pilot responsibility.
+
+Safety is the core principle of every flight operation.
+
 
 </p>
-
 
 
 </div>
@@ -202,51 +177,29 @@ We follow aviation safety principles, weather assessment and pilot responsibilit
 
 
 
+<div class="info-box"
+onclick="openModal('development')">
 
 
-
-<div class="card">
-
-
-<h2>
+<h3>
 🎓 Development
-</h2>
+</h3>
 
 
 <p>
 
-Supporting future pilots, training programs and international aviation standards.
+
+Supporting pilot education and future of paragliding.
+
 
 </p>
 
 
-
 </div>
 
 
 
 
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<section class="page-title">
-
-
-<h1>
-
-Core Values
-
-</h1>
 
 
 </section>
@@ -256,32 +209,27 @@ Core Values
 
 
 
+<div id="modal"
+class="lightbox">
 
 
-
-<div class="card-container">
-
+<div class="modal-content">
 
 
-<div class="card">
-Safety
+<h2 id="modal-title"></h2>
+
+
+<p id="modal-text"></p>
+
+
+<button onclick="closeModal()">
+
+Close
+
+</button>
+
+
 </div>
-
-
-<div class="card">
-Professionalism
-</div>
-
-
-<div class="card">
-Innovation
-</div>
-
-
-<div class="card">
-Growth
-</div>
-
 
 
 </div>
@@ -290,76 +238,7 @@ Growth
 
 
 
-
-
-
-
-<div class="gallery-cards">
-
-
-
-<div class="gallery-card">
-
-<img src="images/para10.jpg"
-onclick="openLightbox(this)">
-
-</div>
-
-
-
-
-
-<div class="gallery-card">
-
-<img src="images/para15.jpg"
-onclick="openLightbox(this)">
-
-</div>
-
-
-
-
-
-<div class="gallery-card">
-
-<img src="images/para19.jpg"
-onclick="openLightbox(this)">
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div id="lightbox"
-class="lightbox"
-onclick="closeLightbox()">
-
-
-
-<img id="lightbox-img">
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 
 
 
