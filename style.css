@@ -6,35 +6,40 @@ RESET
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
+
+/* =========================
+BODY
+========================= */
 
 body{
 
     background-image:url("../images/para1.jpg");
     background-size:cover;
     background-position:center;
-    background-repeat:no-repeat;
     background-attachment:fixed;
 
     color:white;
     min-height:100vh;
-
 }
 
+
+/* DARK OVERLAY */
 
 body::before{
 
     content:"";
     position:fixed;
+
     inset:0;
 
     background:rgba(0,0,0,0.55);
 
     z-index:-1;
-
 }
+
 
 
 /* =========================
@@ -46,16 +51,12 @@ header{
 
     background:rgba(0,0,0,0.85);
 
-    backdrop-filter:blur(10px);
-
     padding:10px 0;
 
     position:sticky;
-
     top:0;
 
     z-index:1000;
-
 }
 
 
@@ -70,9 +71,9 @@ header{
 
     display:flex;
 
-    align-items:center;
-
     justify-content:space-between;
+
+    align-items:center;
 
 }
 
@@ -89,9 +90,9 @@ header{
 
     gap:10px;
 
-    color:white;
-
     text-decoration:none;
+
+    color:white;
 
 }
 
@@ -99,7 +100,6 @@ header{
 .logo img{
 
     width:42px;
-
     height:42px;
 
     border-radius:50%;
@@ -108,9 +108,9 @@ header{
 
 
 
-
-
-/* MENU */
+/* =========================
+MENU
+========================= */
 
 
 .menu{
@@ -120,7 +120,6 @@ header{
     gap:18px;
 
 }
-
 
 
 .menu a{
@@ -134,7 +133,6 @@ header{
 }
 
 
-
 .menu a:hover{
 
     color:#00c2ff;
@@ -143,19 +141,18 @@ header{
 
 
 
+/* HAMBURGER */
+
 
 .menu-toggle{
 
     display:none;
-
-    color:white;
 
     font-size:30px;
 
     cursor:pointer;
 
 }
-
 
 
 
@@ -171,9 +168,9 @@ HERO
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
     text-align:center;
 
@@ -185,7 +182,7 @@ HERO
 
     max-width:800px;
 
-    padding:30px;
+    padding:25px;
 
 }
 
@@ -200,10 +197,9 @@ HERO
 }
 
 
-
 .hero p{
 
-    margin-top:15px;
+    margin:20px 0;
 
     font-size:18px;
 
@@ -213,12 +209,15 @@ HERO
 
 
 
-.btn{
 
+/* BUTTON */
+
+
+.btn{
 
     display:inline-block;
 
-    margin-top:25px;
+    margin-top:20px;
 
     padding:12px 25px;
 
@@ -226,12 +225,11 @@ HERO
 
     color:black;
 
+    border-radius:10px;
+
     text-decoration:none;
 
-    border-radius:8px;
-
     font-weight:bold;
-
 
 }
 
@@ -246,148 +244,158 @@ HERO
 
 
 /* =========================
-GLASS BOXES
+BOOKING
 ========================= */
 
 
-.info-box,
-.news-card,
-.contact-box,
-.booking-form,
-.card{
+.booking-section{
+
+    max-width:760px;
+
+    margin:auto;
+
+    padding:70px 20px;
+
+}
 
 
-    background:rgba(255,255,255,0.06);
+.booking-title h1{
 
-    border:1px solid rgba(255,255,255,0.12);
+    text-align:center;
 
-    backdrop-filter:blur(12px);
+    color:#00c2ff;
+
+}
+
+
+.subtext{
+
+    text-align:center;
+
+    color:#ccc;
+
+    margin:20px;
+
+}
+
+
+
+.booking-form{
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+
+    padding:30px;
+
+
+    background:rgba(255,255,255,0.08);
+
 
     border-radius:16px;
 
 
+    backdrop-filter:blur(10px);
+
+
 }
 
 
+
+.booking-form input,
+.booking-form select{
+
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:rgba(0,0,0,.4);
+
+    color:white;
+
+    border:1px solid #555;
+
+
+}
+
+
+
+.booking-form button{
+
+
+    padding:14px;
+
+    background:#00c2ff;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+}
 
 
 
 /* =========================
-NEWS
+DOCUMENTS
 ========================= */
 
 
-.news-container{
+.document-section{
 
-    max-width:1100px;
+    max-width:900px;
 
     margin:auto;
 
-    padding:40px 20px;
+    padding:60px 20px;
+
+    text-align:center;
 
 }
 
 
 
-.news-grid{
+.docs-list{
 
-    display:grid;
+    list-style:none;
 
-    grid-template-columns:repeat(3,1fr);
-
-    gap:20px;
+    margin-top:30px;
 
 }
 
 
+.doc-item a{
 
-.news-card{
-
-    overflow:hidden;
-
-    transition:.3s;
-
-}
-
-
-
-.news-card:hover{
-
-    transform:translateY(-6px);
-
-}
-
-
-
-.news-card img{
-
-    width:100%;
-
-    height:200px;
-
-    object-fit:cover;
-
-}
-
-
-
-.news-content{
+    display:block;
 
     padding:18px;
 
-}
+    margin:15px 0;
 
+    background:rgba(255,255,255,.07);
 
-
-.news-content h3{
-
-    color:#00c2ff;
-
-}
-
-
-
-.tag{
-
-
-    display:inline-block;
-
-    margin-top:10px;
-
-    padding:5px 12px;
-
-    border-radius:20px;
-
-    background:rgba(0,194,255,.2);
-
-    color:#00c2ff;
-
-}
-
-
-
-
-
-.news-btn{
-
-    display:inline-block;
-
-    margin-top:12px;
-
-    padding:8px 15px;
-
-    border-radius:20px;
-
-    border:1px solid #00c2ff;
-
-    color:#00c2ff;
+    color:white;
 
     text-decoration:none;
 
+    border-radius:12px;
+
 
 }
 
 
+
+.doc-item a:hover{
+
+    border:1px solid #00c2ff;
+
+}
 
 
 
@@ -402,7 +410,7 @@ GALLERY
 
     margin:auto;
 
-    padding:40px 20px;
+    padding:50px 20px;
 
     text-align:center;
 
@@ -410,8 +418,15 @@ GALLERY
 
 
 
-.gallery-cards{
+.gallery-page h1{
 
+    color:#00c2ff;
+
+}
+
+
+
+.gallery-cards{
 
     display:grid;
 
@@ -435,20 +450,12 @@ GALLERY
 
     cursor:pointer;
 
-    transition:.3s;
-
 }
 
 
 
-.gallery-card img:hover{
 
-    transform:scale(1.05);
-
-}
-
-
-
+/* LIGHTBOX */
 
 
 .lightbox{
@@ -459,113 +466,43 @@ GALLERY
 
     inset:0;
 
-    background:rgba(0,0,0,.9);
+    background:black;
 
     justify-content:center;
 
     align-items:center;
 
-    z-index:9999;
-
 }
-
 
 
 .lightbox img{
 
     max-width:90%;
 
-    max-height:90%;
-
 }
-
 
 
 
 
 /* =========================
-BOOKING
+CONTACT
 ========================= */
 
 
-.booking-section{
+.contact-box{
 
-    max-width:720px;
+    max-width:520px;
 
-    margin:auto;
+    margin:80px auto;
 
-    padding:60px 20px;
-
-}
+    padding:35px;
 
 
-
-.booking-form{
-
-    padding:30px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:14px;
-
-}
+    background:rgba(255,255,255,.08);
 
 
+    border-radius:18px;
 
-.booking-form input,
-.booking-form select{
-
-
-    padding:12px;
-
-    border-radius:10px;
-
-    background:rgba(0,0,0,.4);
-
-    color:white;
-
-    border:1px solid rgba(255,255,255,.1);
-
-
-}
-
-
-
-.booking-form button{
-
-
-    padding:13px;
-
-    background:#00c2ff;
-
-    border:none;
-
-    border-radius:10px;
-
-    font-weight:bold;
-
-
-}
-
-
-
-
-
-/* =========================
-DOCUMENTS
-========================= */
-
-
-.document-section{
-
-
-    max-width:900px;
-
-    margin:auto;
-
-    padding:60px 20px;
 
     text-align:center;
 
@@ -573,36 +510,28 @@ DOCUMENTS
 
 
 
-.doc-item{
+.contact-box h1{
 
-
-    list-style:none;
-
-    margin:15px;
+    color:#00c2ff;
 
 }
 
 
 
-.doc-item a{
+.contact-item{
+
+    margin:20px;
+
+}
 
 
-    display:block;
-
-    padding:16px;
+.contact-item a{
 
     color:white;
 
     text-decoration:none;
 
-    background:rgba(255,255,255,.06);
-
-    border-radius:12px;
-
-
 }
-
-
 
 
 
@@ -621,7 +550,6 @@ MOBILE
 }
 
 
-
 .menu{
 
 
@@ -631,6 +559,7 @@ MOBILE
 
     right:-100%;
 
+
     width:75%;
 
     height:100vh;
@@ -638,15 +567,17 @@ MOBILE
 
     background:rgba(0,0,0,.95);
 
+
     flex-direction:column;
+
 
     padding:80px 20px;
 
-    transition:.35s;
+
+    transition:.3s;
 
 
 }
-
 
 
 .menu.active{
@@ -657,19 +588,17 @@ MOBILE
 
 
 
-.news-grid,
-.gallery-cards{
+.hero h1{
 
-
-    grid-template-columns:1fr;
+    font-size:30px;
 
 }
 
 
 
-.hero h1{
+.gallery-cards{
 
-    font-size:30px;
+    grid-template-columns:1fr;
 
 }
 
