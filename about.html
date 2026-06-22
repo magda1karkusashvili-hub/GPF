@@ -8,7 +8,7 @@
 
 <title>About Us | Georgian Paragliding Federation</title>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -17,14 +17,15 @@
 
 
 <!-- HEADER -->
+
 <header>
 
 <div class="container">
 
 
-<a href="/" class="logo">
+<a href="index.html" class="logo">
 
-<img src="{{ url_for('static', filename='images/logo.jpg') }}">
+<img src="logo.jpg" alt="Logo">
 
 <span>
 Georgian Paragliding Federation
@@ -34,22 +35,36 @@ Georgian Paragliding Federation
 
 
 
+
 <div class="menu-toggle" onclick="toggleMenu()">
+
 ☰
+
 </div>
+
+
 
 
 
 <nav class="menu" id="menu">
 
-<a href="/">Home</a>
-<a href="/about">About Us</a>
-<a href="/gallery">Gallery</a>
-<a href="/document">Documents</a>
-<a href="/contact">Contact</a>
-<a href="/BookYourFlight">Book Your Flight</a>
-<a href="/news">News</a>
-<a href="/dashboard">Dashboard</a>
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About Us</a>
+
+<a href="gallery.html">Gallery</a>
+
+<a href="document.html">Documents</a>
+
+<a href="contact.html">Contact</a>
+
+<a href="BookYourFlight.html">Book Your Flight</a>
+
+<a href="news.html">News</a>
+
+<a href="dashboard.html">Dashboard</a>
+
 
 
 </nav>
@@ -57,21 +72,28 @@ Georgian Paragliding Federation
 
 </div>
 
+
 </header>
 
 
 
 
 
+
 <!-- HERO -->
+
 <section class="about-hero">
+
 
 <div class="hero-content">
 
 
 <h1>
+
 About Our Federation
+
 </h1>
+
 
 
 <p>
@@ -92,13 +114,18 @@ professional pilot training and world-class paragliding standards.
 
 
 
+
 <!-- INFO CARDS -->
+
 
 <section class="about-grid">
 
 
 
+
+
 <div class="info-box" onclick="toggleBox(this)">
+
 
 <div class="icon">
 🎯
@@ -110,6 +137,7 @@ Mission
 </h3>
 
 
+
 <p class="short">
 
 The mission of the Georgian Paragliding Federation is to develop paragliding in Georgia as a safe, structured and internationally recognized aviation sport.
@@ -119,6 +147,7 @@ The mission of the Georgian Paragliding Federation is to develop paragliding in 
 
 
 <div class="more">
+
 
 <p>
 
@@ -136,7 +165,12 @@ We aim to provide unforgettable tandem flight experiences while maintaining the 
 
 
 
+
+
+
+
 <div class="info-box" onclick="toggleBox(this)">
+
 
 
 <div class="icon">
@@ -144,9 +178,11 @@ We aim to provide unforgettable tandem flight experiences while maintaining the 
 </div>
 
 
+
 <h3>
 Safety
 </h3>
+
 
 
 <p class="short">
@@ -156,7 +192,10 @@ Safety is the core principle of every flight operation.
 </p>
 
 
+
+
 <div class="more">
+
 
 <p>
 
@@ -168,7 +207,10 @@ We strictly follow international aviation standards and operational procedures a
 </div>
 
 
+
 </div>
+
+
 
 
 
@@ -179,9 +221,11 @@ We strictly follow international aviation standards and operational procedures a
 <div class="info-box" onclick="toggleBox(this)">
 
 
+
 <div class="icon">
 🎓
 </div>
+
 
 
 <h3>
@@ -189,11 +233,13 @@ Development
 </h3>
 
 
+
 <p class="short">
 
 Supporting pilot education and the future of paragliding in Georgia.
 
 </p>
+
 
 
 
@@ -215,7 +261,10 @@ We actively contribute to the development of paragliding as a professional sport
 
 
 
+
+
 </section>
+
 
 
 
@@ -227,8 +276,10 @@ We actively contribute to the development of paragliding as a professional sport
 
 function toggleMenu(){
 
-document.getElementById("menu")
+document
+.getElementById("menu")
 .classList.toggle("active");
+
 
 }
 
@@ -239,10 +290,14 @@ function toggleBox(element){
 
 element.classList.toggle("open");
 
+
 }
 
 
+
 </script>
+
+
 
 
 
