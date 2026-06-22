@@ -1,158 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard | Georgian Paragliding Federation</title>
+
+<title>
+Dashboard | Georgian Paragliding Federation
+</title>
+
+
+<link rel="stylesheet" href="style.css">
+
 
 
 <style>
 
-body {
 
-    background:#0f1115;
-    color:white;
-    font-family:Arial,sans-serif;
-    padding:30px;
-
-}
+/* ================= DASHBOARD ================= */
 
 
 
-header {
-
-    background:#111;
-    padding:10px 0;
-    margin-bottom:20px;
-
-}
+.dashboard-section{
 
 
+padding:50px 20px;
 
-.container {
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-}
-
-
-
-.logo {
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    color:white;
-
-}
-
-
-
-.logo img {
-
-    width:40px;
-    height:40px;
-    border-radius:50%;
-
-}
-
-
-
-.menu {
-
-    display:flex;
-    gap:15px;
-
-}
-
-
-
-.menu a {
-
-    color:white;
-    text-decoration:none;
-
-}
-
-
-.menu a:hover {
-
-    color:#00c2ff;
-
-}
-
-
-
-.menu-toggle {
-
-    display:none;
-    font-size:28px;
-    cursor:pointer;
-
-}
-
-
-
-@media(max-width:768px){
-
-
-.menu {
-
-display:none;
-flex-direction:column;
-background:#111;
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-padding:15px;
-
-}
-
-
-
-.menu.active {
-
-display:flex;
-
-}
-
-
-
-.menu-toggle {
-
-display:block;
-
-}
 
 }
 
 
 
 
+.dashboard-title{
 
-h1 {
 
 text-align:center;
-color:#00c2ff;
+
+
+margin-bottom:40px;
+
 
 }
 
 
 
-.cards {
+.dashboard-title h1{
+
+
+font-size:42px;
+
+
+color:#00c2ff;
+
+
+}
+
+
+
+
+.dashboard-title p{
+
+
+color:#ddd;
+
+
+margin-top:10px;
+
+
+}
+
+
+
+
+
+/* CARDS */
+
+
+
+.cards{
+
+
+max-width:1100px;
+
+
+margin:auto;
 
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-margin-bottom:30px;
+
+
+grid-template-columns:repeat(4,1fr);
+
+
+gap:20px;
 
 
 }
@@ -160,65 +106,286 @@ margin-bottom:30px;
 
 
 
-.card {
 
-background:#161a22;
-padding:20px;
-border-radius:12px;
+
+.card{
+
+
+background:
+
+
+linear-gradient(
+
+145deg,
+
+rgba(0,194,255,.18),
+
+rgba(255,255,255,.06)
+
+);
+
+
+
+border:
+
+1px solid rgba(255,255,255,.2);
+
+
+border-radius:22px;
+
+
+padding:30px;
+
+
 text-align:center;
 
 
+backdrop-filter:blur(12px);
+
+
+transition:.3s;
+
+
+
 }
 
 
 
-.card p {
 
-font-size:26px;
-color:#00c2ff;
+.card:hover{
+
+
+transform:translateY(-8px);
+
+
+border-color:#00c2ff;
+
+
+box-shadow:
+
+0 15px 40px rgba(0,194,255,.25);
+
+
+}
+
+
+
+
+.card h3{
+
+
+color:#ddd;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+.card p{
+
+
+font-size:35px;
+
+
 font-weight:bold;
 
 
+color:#00c2ff;
+
+
 }
 
 
 
 
-table {
+
+
+/* TABLE */
+
+
+
+.table-box{
+
+
+max-width:1200px;
+
+
+margin:40px auto;
+
+
+background:
+
+
+rgba(255,255,255,.07);
+
+
+border:
+
+1px solid rgba(255,255,255,.15);
+
+
+border-radius:20px;
+
+
+padding:25px;
+
+
+overflow-x:auto;
+
+
+backdrop-filter:blur(12px);
+
+
+}
+
+
+
+
+
+table{
 
 
 width:100%;
+
+
 border-collapse:collapse;
-background:#161a22;
 
 
 }
 
 
 
-th {
+
+th{
+
 
 background:#00c2ff;
+
+
 color:black;
-padding:12px;
+
+
+padding:15px;
+
 
 }
 
 
 
-td {
+td{
 
-padding:12px;
+
+padding:15px;
+
+
 text-align:center;
-border-bottom:1px solid #2a2f3a;
+
+
+border-bottom:
+
+
+1px solid rgba(255,255,255,.15);
+
+
+color:#ddd;
+
 
 }
+
+
+
+
+tr:hover{
+
+
+background:
+
+rgba(0,194,255,.08);
+
+
+}
+
+
+
+
+
+.status{
+
+
+padding:6px 15px;
+
+
+border-radius:20px;
+
+
+background:
+
+rgba(0,194,255,.2);
+
+
+color:#00c2ff;
+
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+
+.cards{
+
+
+grid-template-columns:1fr 1fr;
+
+
+}
+
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.cards{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+.dashboard-title h1{
+
+
+font-size:30px;
+
+
+}
+
+
+
+}
+
 
 
 
 </style>
 
+
+
 </head>
+
+
 
 
 <body>
@@ -240,7 +407,9 @@ border-bottom:1px solid #2a2f3a;
 
 
 <span>
+
 Georgian Paragliding Federation
+
 </span>
 
 
@@ -260,27 +429,52 @@ Georgian Paragliding Federation
 
 
 
+
 <nav class="menu" id="menu">
 
 
-<a href="index.html">Home</a>
+<a href="index.html">
+Home
+</a>
 
-<a href="about.html">About Us</a>
 
-<a href="gallery.html">Gallery</a>
+<a href="about.html">
+About Us
+</a>
 
-<a href="document.html">Documents</a>
 
-<a href="contact.html">Contact</a>
+<a href="gallery.html">
+Gallery
+</a>
 
-<a href="BookYourFlight.html">Book Your Flight</a>
 
-<a href="news.html">News</a>
+<a href="document.html">
+Documents
+</a>
 
-<a href="dashboard.html">Dashboard</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+
+<a href="BookYourFlight.html">
+Book Your Flight
+</a>
+
+
+<a href="news.html">
+News
+</a>
+
+
+<a href="dashboard.html">
+Dashboard
+</a>
 
 
 </nav>
+
 
 
 
@@ -295,11 +489,35 @@ Georgian Paragliding Federation
 
 
 
+
+
+<section class="dashboard-section">
+
+
+
+
+
+<div class="dashboard-title">
+
+
 <h1>
 
-📊 DASHBOARD WORKING
+📊 Flight Dashboard
 
 </h1>
+
+
+<p>
+
+Paragliding booking management system
+
+</p>
+
+
+
+</div>
+
+
 
 
 
@@ -311,36 +529,27 @@ Georgian Paragliding Federation
 
 
 
-<div class="card">
-
-<h3>Total</h3>
-
-<p>0</p>
-
-</div>
-
-
 
 
 <div class="card">
 
-<h3>New</h3>
+<h3>
 
-<p>0</p>
+Total Flights
 
-</div>
-
-
+</h3>
 
 
+<p>
 
-<div class="card">
+0
 
-<h3>Confirmed</h3>
+</p>
 
-<p>0</p>
 
 </div>
+
+
 
 
 
@@ -348,18 +557,87 @@ Georgian Paragliding Federation
 
 <div class="card">
 
-<h3>Cancelled</h3>
+<h3>
 
-<p>0</p>
+New Requests
+
+</h3>
+
+
+<p>
+
+0
+
+</p>
+
 
 </div>
 
 
 
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+Confirmed
+
+</h3>
+
+
+<p>
+
+0
+
+</p>
+
+
 </div>
 
 
 
+
+
+
+
+
+<div class="card">
+
+<h3>
+
+Cancelled
+
+</h3>
+
+
+<p>
+
+0
+
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="table-box">
 
 
 
@@ -368,8 +646,8 @@ Georgian Paragliding Federation
 <table>
 
 
-
 <tr>
+
 
 <th>ID</th>
 
@@ -385,25 +663,46 @@ Georgian Paragliding Federation
 
 <th>Status</th>
 
+
 </tr>
+
+
 
 
 
 
 <tr>
 
+
 <td colspan="7">
+
 
 No bookings available
 
+
 </td>
+
 
 </tr>
 
 
 
 
+
 </table>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</section>
 
 
 
@@ -418,9 +717,13 @@ No bookings available
 
 function toggleMenu(){
 
+
 document
+
 .getElementById("menu")
+
 .classList.toggle("active");
+
 
 }
 
@@ -430,6 +733,10 @@ document
 
 
 
+
+
+
 </body>
+
 
 </html>
