@@ -1,23 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 
 <head>
 
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-
-<title>
-Documents | Georgian Paragliding Federation
-</title>
-
-
+<title>Documents | Georgian Paragliding Federation</title>
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -26,14 +15,15 @@ Documents | Georgian Paragliding Federation
 
 
 
-
 <body>
 
 
 
 
-<header>
+<!-- ================= HEADER ================= -->
 
+
+<header>
 
 <div class="container">
 
@@ -50,20 +40,22 @@ Georgian Paragliding Federation
 </span>
 
 
-
 </a>
 
 
 
 
-<div class="menu-toggle">
+<div class="menu-toggle" onclick="toggleMenu()">
+
 ☰
+
 </div>
 
 
 
 
-<nav class="menu">
+
+<nav class="menu" id="menu">
 
 
 <a href="index.html">
@@ -72,7 +64,7 @@ Home
 
 
 <a href="about.html">
-About
+About Us
 </a>
 
 
@@ -92,7 +84,7 @@ Contact
 
 
 <a href="book.html">
-Book Flight
+Book Your Flight
 </a>
 
 
@@ -100,6 +92,10 @@ Book Flight
 News
 </a>
 
+
+<a href="dashboard.html">
+Dashboard
+</a>
 
 
 </nav>
@@ -118,21 +114,29 @@ News
 
 
 
-<section class="document-section">
+<!-- ================= DOCUMENTS ================= -->
+
+
+
+<main class="document-section">
 
 
 
 <h1>
+
 Documents
+
 </h1>
+
 
 
 
 <p class="subtext">
 
-Official paragliding regulations, safety guidelines and federation documents.
+Access official paragliding regulations, safety guidelines and federation documents.
 
 </p>
+
 
 
 
@@ -143,14 +147,18 @@ Official paragliding regulations, safety guidelines and federation documents.
 
 
 
-<li>
 
 
-<a href="docs/para1.pdf"
-target="_blank">
+
+<li class="doc-item">
+
+
+<a class="red" href="docs/para1.pdf" target="_blank">
+
 
 📄 Pilot Competency Categories Register
 
+
 </a>
 
 
@@ -160,14 +168,16 @@ target="_blank">
 
 
 
-<li>
+
+<li class="doc-item">
 
 
-<a href="docs/para2.pdf"
-target="_blank">
+<a class="blue" href="docs/para2.pdf" target="_blank">
+
 
 📄 Operator Certification Register
 
+
 </a>
 
 
@@ -177,18 +187,24 @@ target="_blank">
 
 
 
-<li>
 
 
-<a href="docs/para3.pdf"
-target="_blank">
+
+<li class="doc-item">
+
+
+<a class="green" href="docs/para3.pdf" target="_blank">
+
 
 📄 Equipment Airworthiness Register
 
+
 </a>
 
 
 </li>
+
+
 
 
 
@@ -197,7 +213,9 @@ target="_blank">
 
 
 
-</section>
+
+
+</main>
 
 
 
@@ -206,6 +224,7 @@ target="_blank">
 
 
 <script src="js/script.js"></script>
+
 
 
 </body>
