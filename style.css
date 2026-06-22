@@ -1,354 +1,231 @@
-<!DOCTYPE html>
-<html lang="en">
+/* =========================
+GLOBAL RESET
+========================= */
 
-<head>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
 
-<meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+html{
+    scroll-behavior:smooth;
+}
 
-<title>Book Your Flight | Georgian Paragliding Federation</title>
 
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+body{
 
+    background:
+    linear-gradient(
+    rgba(0,40,80,0.45),
+    rgba(0,0,0,0.65)
+    ),
+    url("/static/images/para1.jpg");
 
-</head>
 
+    background-size:cover;
 
-<body>
+    background-position:center;
 
+    background-attachment:fixed;
 
 
-<!-- ================= HEADER ================= -->
+    color:white;
 
+    min-height:100vh;
 
-<header>
+}
 
 
-<div class="container">
 
 
 
-<a href="/" class="logo">
 
 
-<img src="{{ url_for('static', filename='images/logo.jpg') }}">
+/* =========================
+HEADER
+========================= */
 
 
-<span>
-Georgian Paragliding Federation
-</span>
+header{
 
 
-</a>
+    position:sticky;
 
+    top:0;
 
 
+    z-index:1000;
 
 
-<div class="menu-toggle" onclick="toggleMenu()">
+    background:
 
-☰
+    rgba(5,20,40,.75);
 
-</div>
 
+    backdrop-filter:blur(15px);
 
 
+    border-bottom:
 
-
-
-<nav class="menu" id="menu">
-
-
-<a href="/">Home</a>
-
-<a href="/about">About Us</a>
-
-<a href="/gallery">Gallery</a>
-
-<a href="/document">Documents</a>
-
-<a href="/contact">Contact</a>
-
-<a href="/BookYourFlight">
-Book Your Flight
-</a>
-
-<a href="/news">News</a>
-
-<a href="/dashboard">
-Dashboard
-</a>
-
-
-
-</nav>
-
-
-
-
-</div>
-
-
-</header>
-
-
-
-
-
-
-
-
-<!-- ================= BOOKING ================= -->
-
-
-
-<section class="booking-section">
-
-
-
-
-
-<div class="booking-title">
-
-
-<h1>
-
-Book Your Paragliding Adventure
-
-</h1>
-
-
-</div>
-
-
-
-
-
-
-
-<p class="subtext">
-
-Choose your location and reserve your flight with Georgian Paragliding Federation.
-
-</p>
-
-
-
-
-
-
-
-
-
-<form class="booking-form" method="POST" action="/BookYourFlight">
-
-
-
-
-
-<label>
-Location
-</label>
-
-
-
-
-<select name="location" required>
-
-
-<option value="">
-Select Location
-</option>
-
-
-<option value="Gudauri">
-Gudauri
-</option>
-
-
-
-<option value="Ananuri">
-Ananuri
-</option>
-
-
-
-<option value="Tbilisi Sea">
-Tbilisi Sea
-</option>
-
-
-
-<option value="Mestia">
-Mestia
-</option>
-
-
-
-</select>
-
-
-
-
-
-
-
-
-<label>
-Date
-</label>
-
-
-
-<input 
-type="date"
-name="date"
-required>
-
-
-
-
-
-
-
-
-
-<label>
-Full Name
-</label>
-
-
-
-<input
-
-type="text"
-
-name="name"
-
-placeholder="Your name"
-
-required>
-
-
-
-
-
-
-
-
-<label>
-Email
-</label>
-
-
-
-
-<input
-
-type="email"
-
-name="email"
-
-placeholder="Your email"
-
-required>
-
-
-
-
-
-
-
-
-
-<label>
-Phone
-</label>
-
-
-
-<input
-
-type="tel"
-
-name="phone"
-
-placeholder="+995..."
-
-required>
-
-
-
-
-
-
-
-
-<div class="warning-box">
-
-
-⚠️ Flights depend on weather conditions and pilot availability.
-
-
-</div>
-
-
-
-
-
-
-
-
-<button type="submit">
-
-
-Confirm Booking
-
-
-</button>
-
-
-
-
-
-
-
-</form>
-
-
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<script>
-
-
-function toggleMenu(){
-
-
-document
-.getElementById("menu")
-.classList.toggle("active");
+    1px solid rgba(255,255,255,.15);
 
 
 }
 
 
 
-</script>
+.container{
+
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:15px 25px;
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+}
+
+
+
+
+
+.logo{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:18px;
+
+    font-weight:700;
+
+
+}
+
+
+
+.logo img{
+
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+
+    border:2px solid #00d9ff;
+
+
+}
+
+
+
+
+
+
+/* =========================
+MENU
+========================= */
+
+
+.menu{
+
+
+    display:flex;
+
+    gap:25px;
+
+
+}
+
+
+
+.menu a{
+
+
+    color:white;
+
+    text-decoration:none;
+
+
+    font-weight:600;
+
+
+    position:relative;
+
+
+}
+
+
+
+.menu a::after{
+
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-7px;
+
+
+    width:0;
+
+    height:2px;
+
+
+    background:#00eaff;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.menu a:hover::after{
+
+    width:100%;
+
+}
+
+
+
+
+
+
+.menu-toggle{
+
+
+    display:none;
+
+    font-size:32px;
+
+}
 
 
 
@@ -357,6 +234,490 @@ document
 
 
 
-</body>
+/* =========================
+CARDS
+========================= */
 
-</html>
+
+.card,
+.info-box,
+.news-card,
+.booking-form,
+.contact-box{
+
+
+background:
+
+rgba(255,255,255,.12);
+
+
+border:
+
+1px solid rgba(255,255,255,.25);
+
+
+backdrop-filter:blur(18px);
+
+
+border-radius:25px;
+
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.35);
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+BUTTONS
+========================= */
+
+
+.btn,
+button{
+
+
+background:
+
+linear-gradient(
+135deg,
+#00eaff,
+#0077ff
+);
+
+
+
+color:white;
+
+
+border:none;
+
+
+padding:14px 30px;
+
+
+border-radius:30px;
+
+
+font-weight:bold;
+
+
+cursor:pointer;
+
+
+transition:.3s;
+
+
+}
+
+
+
+.btn:hover,
+button:hover{
+
+
+transform:translateY(-4px);
+
+
+box-shadow:
+
+0 10px 30px rgba(0,220,255,.5);
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+HEADINGS
+========================= */
+
+
+h1{
+
+
+font-size:45px;
+
+
+background:
+
+linear-gradient(
+90deg,
+#00eaff,
+#ffd166
+);
+
+
+-webkit-background-clip:text;
+
+color:transparent;
+
+
+text-align:center;
+
+
+}
+
+
+
+
+h2,h3{
+
+color:#00eaff;
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+BOOKING
+========================= */
+
+
+.booking-section{
+
+
+max-width:750px;
+
+
+margin:auto;
+
+
+padding:70px 20px;
+
+
+}
+
+
+
+.booking-form{
+
+
+padding:35px;
+
+
+display:flex;
+
+
+flex-direction:column;
+
+
+gap:15px;
+
+
+}
+
+
+
+input,
+select{
+
+
+padding:14px;
+
+
+border-radius:15px;
+
+
+border:none;
+
+
+background:
+
+rgba(0,0,0,.35);
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+NEWS
+========================= */
+
+
+.news-grid{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+
+gap:25px;
+
+
+}
+
+
+
+.news-card{
+
+
+overflow:hidden;
+
+
+}
+
+
+
+.news-card img{
+
+
+width:100%;
+
+height:220px;
+
+object-fit:cover;
+
+
+}
+
+
+
+
+.news-content{
+
+
+padding:25px;
+
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+ABOUT
+========================= */
+
+
+.about-grid{
+
+
+max-width:1100px;
+
+
+margin:auto;
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+
+gap:30px;
+
+
+padding:50px 20px;
+
+
+}
+
+
+
+
+.info-box{
+
+
+padding:35px;
+
+
+text-align:center;
+
+
+transition:.4s;
+
+
+}
+
+
+
+.info-box:hover{
+
+
+transform:
+
+translateY(-15px)
+scale(1.03);
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+DOCUMENTS
+========================= */
+
+
+.doc-item a{
+
+
+display:block;
+
+
+padding:20px;
+
+
+margin:15px;
+
+
+background:
+
+rgba(255,255,255,.12);
+
+
+border-radius:18px;
+
+
+color:white;
+
+
+text-decoration:none;
+
+
+transition:.3s;
+
+
+}
+
+
+
+.doc-item a:hover{
+
+
+background:
+
+rgba(0,220,255,.25);
+
+
+transform:translateX(10px);
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+MOBILE
+========================= */
+
+
+@media(max-width:900px){
+
+
+.menu{
+
+
+position:fixed;
+
+
+right:-100%;
+
+
+top:0;
+
+
+height:100vh;
+
+
+width:75%;
+
+
+background:#021526;
+
+
+flex-direction:column;
+
+
+padding:100px 30px;
+
+
+transition:.4s;
+
+
+}
+
+
+.menu.active{
+
+
+right:0;
+
+
+}
+
+
+
+.menu-toggle{
+
+
+display:block;
+
+cursor:pointer;
+
+
+}
+
+
+.news-grid,
+.about-grid{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+h1{
+
+font-size:32px;
+
+}
+
+
+}
