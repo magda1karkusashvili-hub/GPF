@@ -1,156 +1,65 @@
 /* =========================
-RESET
+   HELPERS
 ========================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+const qs = (selector) => document.querySelector(selector);
+const qsa = (selector) => document.querySelectorAll(selector);
 
 
 /* =========================
-BODY
+   DOM READY
 ========================= */
 
-body{
-
-    background-image:url("../images/para1.jpg");
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-
-    color:white;
-    min-height:100vh;
-}
-
-
-/* DARK OVERLAY */
-
-body::before{
-
-    content:"";
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,0.55);
-
-    z-index:-1;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
 
 
 /* =========================
-HEADER
+   MOBILE MENU
 ========================= */
 
-
-header{
-
-    background:rgba(0,0,0,0.85);
-
-    padding:10px 0;
-
-    position:sticky;
-    top:0;
-
-    z-index:1000;
-}
+const toggle = qs(".menu-toggle");
+const menu = qs(".menu");
 
 
+if(toggle && menu){
 
-.container{
+    toggle.addEventListener("click", (e)=>{
 
-    max-width:1200px;
+        e.stopPropagation();
 
-    margin:auto;
+        menu.classList.toggle("active");
 
-    padding:0 15px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-}
+    });
 
 
 
-/* LOGO */
+    document.addEventListener("click",(e)=>{
 
 
-.logo{
+        if(
+            !menu.contains(e.target)
+            &&
+            !toggle.contains(e.target)
+        ){
 
-    display:flex;
+            menu.classList.remove("active");
 
-    align-items:center;
+        }
 
-    gap:10px;
-
-    text-decoration:none;
-
-    color:white;
-
-}
-
-
-.logo img{
-
-    width:42px;
-    height:42px;
-
-    border-radius:50%;
-
-}
+    });
 
 
 
-/* =========================
-MENU
-========================= */
+    menu.querySelectorAll("a").forEach(link=>{
 
+        link.addEventListener("click",()=>{
 
-.menu{
+            menu.classList.remove("active");
 
-    display:flex;
+        });
 
-    gap:18px;
-
-}
-
-
-.menu a{
-
-    color:white;
-
-    text-decoration:none;
-
-    transition:.3s;
-
-}
-
-
-.menu a:hover{
-
-    color:#00c2ff;
-
-}
-
-
-
-/* HAMBURGER */
-
-
-.menu-toggle{
-
-    display:none;
-
-    font-size:30px;
-
-    cursor:pointer;
+    });
 
 }
 
@@ -158,85 +67,52 @@ MENU
 
 
 /* =========================
-HERO
+   HERO SLIDER
 ========================= */
 
 
-.hero{
+let currentSlide = 0;
 
-    min-height:100vh;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-}
+const slides = qsa(".hero .slide");
 
 
+function showSlide(index){
 
-.hero-overlay{
+    if(!slides.length) return;
 
-    max-width:800px;
 
-    padding:25px;
-
-}
+    currentSlide =
+    (index + slides.length)
+    %
+    slides.length;
 
 
 
-.hero h1{
+    slides.forEach(slide=>{
 
-    font-size:42px;
+        slide.classList.remove("active");
 
-    color:#00c2ff;
-
-}
+    });
 
 
-.hero p{
 
-    margin:20px 0;
-
-    font-size:18px;
-
-    line-height:1.6;
+    slides[currentSlide]
+    .classList
+    .add("active");
 
 }
 
 
 
-
-/* BUTTON */
-
-
-.btn{
-
-    display:inline-block;
-
-    margin-top:20px;
-
-    padding:12px 25px;
-
-    background:#00c2ff;
-
-    color:black;
-
-    border-radius:10px;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-}
+if(slides.length > 1){
 
 
-.btn:hover{
+setInterval(()=>{
 
-    background:white;
+    showSlide(currentSlide + 1);
+
+},3500);
+
 
 }
 
@@ -244,364 +120,389 @@ HERO
 
 
 /* =========================
-BOOKING
+   SCROLL REVEAL
 ========================= */
 
 
-.booking-section{
+function reveal(){
 
-    max-width:760px;
+qsa(".reveal").forEach(el=>{
 
-    margin:auto;
 
-    padding:70px 20px;
+const position =
+el.getBoundingClientRect().top;
+
+
+
+if(position <
+window.innerHeight - 100){
+
+
+el.classList.add("active");
+
 
 }
 
 
-.booking-title h1{
-
-    text-align:center;
-
-    color:#00c2ff;
-
-}
-
-
-.subtext{
-
-    text-align:center;
-
-    color:#ccc;
-
-    margin:20px;
-
-}
-
-
-
-.booking-form{
-
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:15px;
-
-
-    padding:30px;
-
-
-    background:rgba(255,255,255,0.08);
-
-
-    border-radius:16px;
-
-
-    backdrop-filter:blur(10px);
+});
 
 
 }
 
 
 
-.booking-form input,
-.booking-form select{
+window.addEventListener(
+"scroll",
+reveal
+);
 
 
-    padding:12px;
+reveal();
 
-    border-radius:10px;
-
-    background:rgba(0,0,0,.4);
-
-    color:white;
-
-    border:1px solid #555;
-
-
-}
-
-
-
-.booking-form button{
-
-
-    padding:14px;
-
-    background:#00c2ff;
-
-    border:none;
-
-    border-radius:10px;
-
-    font-weight:bold;
-
-}
-
-
-
-/* =========================
-DOCUMENTS
-========================= */
-
-
-.document-section{
-
-    max-width:900px;
-
-    margin:auto;
-
-    padding:60px 20px;
-
-    text-align:center;
-
-}
-
-
-
-.docs-list{
-
-    list-style:none;
-
-    margin-top:30px;
-
-}
-
-
-.doc-item a{
-
-    display:block;
-
-    padding:18px;
-
-    margin:15px 0;
-
-    background:rgba(255,255,255,.07);
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:12px;
-
-
-}
-
-
-
-.doc-item a:hover{
-
-    border:1px solid #00c2ff;
-
-}
-
-
-
-/* =========================
-GALLERY
-========================= */
-
-
-.gallery-page{
-
-    max-width:1200px;
-
-    margin:auto;
-
-    padding:50px 20px;
-
-    text-align:center;
-
-}
-
-
-
-.gallery-page h1{
-
-    color:#00c2ff;
-
-}
-
-
-
-.gallery-cards{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:15px;
-
-}
-
-
-
-.gallery-card img{
-
-    width:100%;
-
-    height:250px;
-
-    object-fit:cover;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
-}
-
-
-
-
-/* LIGHTBOX */
-
-
-.lightbox{
-
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    background:black;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-
-.lightbox img{
-
-    max-width:90%;
-
-}
 
 
 
 
 /* =========================
-CONTACT
+   GALLERY AUTO SLIDER
 ========================= */
 
 
-.contact-box{
-
-    max-width:520px;
-
-    margin:80px auto;
-
-    padding:35px;
+qsa(".gallery-card")
+.forEach(card=>{
 
 
-    background:rgba(255,255,255,.08);
+const images =
+card.querySelectorAll("img");
 
 
-    border-radius:18px;
-
-
-    text-align:center;
-
-}
+if(images.length <=1)
+return;
 
 
 
-.contact-box h1{
-
-    color:#00c2ff;
-
-}
+let index=0;
 
 
 
-.contact-item{
+images.forEach((img,i)=>{
 
-    margin:20px;
+img.style.display =
+i===0
+?
+"block"
+:
+"none";
 
-}
+
+});
 
 
-.contact-item a{
 
-    color:white;
+setInterval(()=>{
 
-    text-decoration:none;
 
-}
+images[index]
+.style.display="none";
+
+
+
+index =
+(index+1)
+%
+images.length;
+
+
+
+images[index]
+.style.display="block";
+
+
+
+},3000);
+
+
+
+});
+
+
+
+
+
+});
+
+
+
 
 
 
 /* =========================
-MOBILE
+   ABOUT MODAL
 ========================= */
 
 
-@media(max-width:768px){
+function openModal(type){
 
 
-.menu-toggle{
+const modal =
+qs("#modal");
 
-    display:block;
+
+const title =
+qs("#modal-title");
+
+
+const text =
+qs("#modal-text");
+
+
+
+if(!modal)
+return;
+
+
+
+const data={
+
+
+
+mission:{
+
+
+title:"🎯 Mission",
+
+text:
+"To develop safe and professional paragliding experiences in Georgia."
+
+
+},
+
+
+
+safety:{
+
+
+title:"🛡 Safety",
+
+text:
+"We follow strict international aviation safety standards."
+
+
+},
+
+
+
+development:{
+
+
+title:"🎓 Development",
+
+text:
+"We train pilots and support aviation growth."
+
+
+},
+
+
+
+vision:{
+
+
+title:"🌍 Vision",
+
+text:
+"To make Georgia a world paragliding hub."
+
 
 }
 
 
-.menu{
+};
 
 
-    position:fixed;
 
-    top:0;
-
-    right:-100%;
+if(!data[type])
+return;
 
 
-    width:75%;
 
-    height:100vh;
-
-
-    background:rgba(0,0,0,.95);
+title.innerText =
+data[type].title;
 
 
-    flex-direction:column;
+text.innerText =
+data[type].text;
 
 
-    padding:80px 20px;
 
-
-    transition:.3s;
+modal.style.display="flex";
 
 
 }
 
 
-.menu.active{
 
-    right:0;
+
+
+function closeModal(){
+
+
+const modal =
+qs("#modal");
+
+
+if(modal)
+
+modal.style.display="none";
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   PASSWORD MODAL
+========================= */
+
+
+function openPasswordModal(){
+
+
+const modal =
+qs("#passwordModal");
+
+
+if(modal)
+
+modal.style.display="flex";
+
 
 }
 
 
 
-.hero h1{
+function closePasswordModal(){
 
-    font-size:30px;
+
+const modal =
+qs("#passwordModal");
+
+
+if(modal)
+
+modal.style.display="none";
+
 
 }
 
 
 
-.gallery-cards{
 
-    grid-template-columns:1fr;
+window.addEventListener("click",(e)=>{
+
+
+const modal =
+qs("#passwordModal");
+
+
+if(
+modal
+&&
+e.target === modal
+){
+
+
+modal.style.display="none";
+
 
 }
 
+
+
+});
+
+
+
+
+
+
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+
+function openLightbox(img){
+
+
+const box =
+qs("#lightbox");
+
+
+const image =
+qs("#lightbox-img");
+
+
+
+if(!box || !image)
+return;
+
+
+
+box.style.display="flex";
+
+
+image.src =
+img.src;
+
+
+
+}
+
+
+
+
+
+function closeLightbox(){
+
+
+const box =
+qs("#lightbox");
+
+
+if(box)
+
+box.style.display="none";
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+   MENU FUNCTION
+   (HTML onclick მხარდაჭერა)
+========================= */
+
+
+function toggleMenu(){
+
+
+const menu =
+document.getElementById("menu");
+
+
+if(menu)
+
+menu.classList.toggle("active");
 
 
 }
