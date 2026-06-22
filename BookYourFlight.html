@@ -1,63 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Book Your Flight | Georgian Paragliding Federation</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
+
 
 <style>
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
+
 
 body {
 
-    background: url("images/para1.jpg") center/cover no-repeat fixed;
+    background:url("para1.jpg") center/cover no-repeat fixed;
 
-    color: white;
-    min-height: 100vh;
-    position: relative;
+    color:white;
+    min-height:100vh;
+    position:relative;
 
 }
+
 
 
 body::before {
 
-    content: "";
+    content:"";
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    background: rgba(0,0,0,0.6);
+    background:rgba(0,0,0,0.6);
 
-    z-index: -1;
+    z-index:-1;
 
 }
+
 
 
 /* HEADER */
 
+
 header {
 
-    background: rgba(0,0,0,0.85);
+    background:rgba(0,0,0,0.85);
 
-    backdrop-filter: blur(10px);
+    backdrop-filter:blur(10px);
 
-    position: sticky;
+    position:sticky;
 
-    top: 0;
+    top:0;
 
-    z-index: 1000;
+    z-index:1000;
 
 }
+
 
 
 .container {
@@ -71,6 +79,7 @@ header {
     padding:15px 20px;
 
 }
+
 
 
 .logo {
@@ -88,6 +97,7 @@ header {
 }
 
 
+
 .logo img {
 
     width:40px;
@@ -100,6 +110,7 @@ header {
 
 
 
+
 .menu {
 
     display:flex;
@@ -107,6 +118,7 @@ header {
     gap:15px;
 
 }
+
 
 
 .menu a {
@@ -118,11 +130,13 @@ header {
 }
 
 
+
 .menu a:hover {
 
     color:#00c2ff;
 
 }
+
 
 
 
@@ -138,7 +152,8 @@ header {
 
 
 
-@media (max-width:768px){
+
+@media(max-width:768px){
 
 
 .menu {
@@ -163,11 +178,13 @@ header {
 }
 
 
+
 .menu.active {
 
     display:flex;
 
 }
+
 
 
 .menu-toggle {
@@ -180,7 +197,10 @@ header {
 }
 
 
+
+
 /* BOOKING */
+
 
 .booking-section {
 
@@ -224,6 +244,7 @@ header {
 
 
 
+
 .booking-form {
 
 
@@ -235,10 +256,12 @@ header {
 
     padding:30px;
 
+
     border-radius:16px;
 
 
     background:rgba(255,255,255,0.06);
+
 
     border:1px solid rgba(255,255,255,0.12);
 
@@ -247,6 +270,7 @@ header {
 
 
 }
+
 
 
 
@@ -309,6 +333,7 @@ header {
 
 
 
+
 .warning-box {
 
 
@@ -324,13 +349,16 @@ header {
 }
 
 
+
 </style>
 
 
 </head>
 
 
+
 <body>
+
 
 
 <header>
@@ -343,11 +371,13 @@ header {
 <a href="index.html" class="logo">
 
 
-<img src="images/logo.jpg">
+<img src="logo.jpg" alt="Logo">
 
 
 <span>
+
 Georgian Paragliding Federation
+
 </span>
 
 
@@ -355,11 +385,20 @@ Georgian Paragliding Federation
 
 
 
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+
+<div class="menu-toggle" onclick="toggleMenu()">
+
+☰
+
+</div>
+
+
 
 
 
 <nav class="menu" id="menu">
+
 
 
 <a href="index.html">Home</a>
@@ -379,13 +418,18 @@ Georgian Paragliding Federation
 <a href="dashboard.html">Dashboard</a>
 
 
+
 </nav>
+
 
 
 </div>
 
 
 </header>
+
+
+
 
 
 
@@ -398,7 +442,9 @@ Georgian Paragliding Federation
 
 
 <h1>
+
 Book Your Paragliding Adventure
+
 </h1>
 
 
@@ -406,11 +452,18 @@ Book Your Paragliding Adventure
 
 
 
+
+
 <p class="subtext">
+
 
 Choose your location and we will contact you shortly.
 
+
 </p>
+
+
+
 
 
 
@@ -420,8 +473,12 @@ Choose your location and we will contact you shortly.
 
 
 
+
+
 <label>
+
 Location
+
 </label>
 
 
@@ -429,29 +486,45 @@ Location
 <select name="location" required>
 
 
+
 <option value="">
+
 Select Location
+
 </option>
+
 
 
 <option value="gudauri">
+
 Gudauri
+
 </option>
+
 
 
 <option value="ananuri">
+
 Ananuri
+
 </option>
+
 
 
 <option value="tbilisi">
+
 Tbilisi Sea
+
 </option>
+
 
 
 <option value="mestia">
+
 Mestia
+
 </option>
+
 
 
 </select>
@@ -459,8 +532,14 @@ Mestia
 
 
 
+
+
+
+
 <label>
+
 Date
+
 </label>
 
 
@@ -470,8 +549,12 @@ Date
 
 
 
+
+
 <label>
+
 Full Name
+
 </label>
 
 
@@ -480,8 +563,13 @@ Full Name
 
 
 
+
+
+
 <label>
+
 Email
+
 </label>
 
 
@@ -490,12 +578,19 @@ Email
 
 
 
+
+
+
 <label>
+
 Phone
+
 </label>
 
 
 <input type="tel" name="phone" required>
+
+
 
 
 
@@ -512,6 +607,9 @@ Phone
 
 
 
+
+
+
 <button type="submit">
 
 
@@ -522,11 +620,19 @@ Confirm Booking
 
 
 
+
+
 </form>
 
 
 
+
+
 </section>
+
+
+
+
 
 
 
@@ -537,15 +643,22 @@ Confirm Booking
 function toggleMenu(){
 
 
-document.getElementById("menu").classList.toggle("active");
+document
+.getElementById("menu")
+.classList.toggle("active");
 
 
 }
+
 
 
 </script>
 
 
 
+
+
+
 </body>
+
 </html>
