@@ -1,311 +1,599 @@
 /* =========================
-   RESET
+RESET
 ========================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
+
 
 /* =========================
-   GLOBAL BACKGROUND
+GLOBAL
 ========================= */
-body {
-    background-image: url("/static/images/para1.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
-    color: white;
-    min-height: 100vh;
-    position: relative;
+body{
+
+    background:url("/static/images/para1.jpg")
+    center/cover no-repeat fixed;
+
+    color:white;
+
+    min-height:100vh;
+
+    position:relative;
+
 }
 
-/* DARK OVERLAY */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: -1;
+
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,0.55);
+
+    z-index:-1;
+
 }
 
-/* ================= HEADER ================= */
-header {
-    background: rgba(0,0,0,0.85);
-    padding: 10px 0;
 
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+
+/* =========================
+HEADER
+========================= */
+
+
+header{
+
+    background:rgba(0,0,0,0.85);
+
+    backdrop-filter:blur(10px);
+
+    padding:10px 0;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 15px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+.container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:0 15px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 
-    text-decoration: none;
-    color: white;
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    color:white;
+
 }
 
-.logo img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
+
+
+.logo img{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
 }
 
-/* ================= NAV ================= */
-.menu {
-    display: flex;
-    gap: 18px;
+
+
+/* =========================
+NAV
+========================= */
+
+
+.menu{
+
+    display:flex;
+
+    gap:18px;
+
 }
 
-.menu a {
-    color: white;
-    text-decoration: none;
-    transition: 0.2s;
+
+
+.menu a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
 }
 
-.menu a:hover {
-    color: #00c2ff;
+
+
+.menu a:hover{
+
+    color:#00c2ff;
+
 }
 
-/* ================= ☰ MENU BUTTON ================= */
-.menu-toggle {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: white;
-    z-index: 3000;
+
+
+/* =========================
+HAMBURGER
+========================= */
+
+
+.menu-toggle{
+
+    display:none;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:white;
+
+    z-index:3000;
+
 }
 
-/* ================= HERO ================= */
-.hero {
-    min-height: 100vh;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    text-align: center;
+
+
+/* =========================
+HERO
+========================= */
+
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
 }
 
-.hero-overlay {
-    max-width: 800px;
-    padding: 25px;
+
+
+.hero-overlay{
+
+    max-width:800px;
+
+    padding:25px;
+
 }
 
-.hero h1 {
-    font-size: 42px;
+
+
+.hero h1{
+
+    font-size:42px;
+
 }
 
-.hero p {
-    margin: 15px 0;
-    font-size: 18px;
-    line-height: 1.6;
+
+
+.hero p{
+
+    margin:15px 0;
+
+    font-size:18px;
+
+    line-height:1.6;
+
 }
 
-/* ================= BUTTON ================= */
-.btn {
-    display: inline-block;
 
-    margin-top: 20px;
-    padding: 12px 25px;
 
-    background: #00c2ff;
-    color: black;
 
-    border-radius: 8px;
 
-    text-decoration: none;
-    font-weight: bold;
+/* =========================
+BUTTON
+========================= */
 
-    transition: 0.2s;
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:12px 25px;
+
+    background:#00c2ff;
+
+    color:black;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+
 }
 
-.btn:hover {
-    background: white;
+
+
+.btn:hover{
+
+    background:white;
+
 }
 
-/* ================= FORMS ================= */
-.booking-form {
-    max-width: 520px;
-    margin: 40px auto;
 
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
 
-    padding: 28px;
-    border-radius: 16px;
 
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.15);
 
-    backdrop-filter: blur(4px);
+/* =========================
+FORMS
+========================= */
+
+
+.booking-form{
+
+    max-width:520px;
+
+    margin:40px auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    padding:28px;
+
+    border-radius:16px;
+
+
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(10px);
+
 }
+
+
 
 .booking-form input,
-.booking-form select {
-    padding: 12px;
+.booking-form select{
 
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.08);
 
-    background: rgba(0,0,0,0.3);
-    color: white;
+    padding:12px;
+
+    border-radius:10px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    background:rgba(0,0,0,.4);
+
+    color:white;
+
 }
 
-.booking-form button {
-    padding: 12px;
 
-    background: linear-gradient(135deg, #00c2ff, #0095c9);
 
-    border: none;
-    border-radius: 10px;
+.booking-form button{
 
-    font-weight: bold;
-    cursor: pointer;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:linear-gradient(
+    135deg,#00c2ff,#0095c9);
+
+    font-weight:bold;
+
+    cursor:pointer;
+
 }
 
-.booking-form button:hover {
-    background: white;
+
+
+
+
+
+/* =========================
+BOOK PAGE
+========================= */
+
+
+.booking-section{
+
+    max-width:760px;
+
+    margin:auto;
+
+    padding:70px 20px;
+
 }
 
-/* ================= BOOKING PAGE ================= */
-.booking-section {
-    max-width: 760px;
-    margin: auto;
-    padding: 70px 20px;
+
+
+.booking-title h1{
+
+    text-align:center;
+
+    color:#00c2ff;
+
+    font-size:38px;
+
 }
 
-.booking-title h1 {
-    text-align: center;
-    color: #00c2ff;
-    font-size: 38px;
+
+
+.subtext{
+
+    text-align:center;
+
+    color:#b9c2d0;
+
+    margin-bottom:30px;
+
 }
 
-.subtext {
-    text-align: center;
-    color: #b9c2d0;
-    margin-bottom: 30px;
+
+
+
+
+/* =========================
+DOCUMENTS
+========================= */
+
+
+.document-section{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:60px 20px;
+
+    text-align:center;
+
 }
 
-/* ================= DOCUMENTS ================= */
-.document-section {
-    max-width: 900px;
-    margin: auto;
-    padding: 60px 20px;
-    text-align: center;
+
+
+.docs-list{
+
+    list-style:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
 }
 
-.docs-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+
+
+.doc-item a{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+
+    padding:16px;
+
+
+    background:rgba(255,255,255,.06);
+
+
+    border-radius:12px;
+
+
+    color:white;
+
+    text-decoration:none;
+
+
+    border:1px solid rgba(255,255,255,.12);
+
+
 }
 
-.doc-item a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
 
-    padding: 16px;
 
-    border-radius: 12px;
+.doc-item a:hover{
 
-    text-decoration: none;
-    color: white;
+    border-color:#00c2ff;
 
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
+    transform:translateX(5px);
 
-    transition: 0.2s;
 }
 
-.doc-item a:hover {
-    transform: translateX(4px);
-    border-color: #00c2ff;
+
+
+.red{
+border-left:4px solid #ef4444;
 }
 
-/* COLORS */
-.red { border-left: 4px solid #ef4444; }
-.blue { border-left: 4px solid #3b82f6; }
-.green { border-left: 4px solid #22c55e; }
-
-/* ================= NEWS BUTTON ================= */
-.news-btn {
-    display: inline-block;
-    margin-top: 14px;
-    padding: 10px 16px;
-
-    background: rgba(0,194,255,0.15);
-    border: 1px solid rgba(0,194,255,0.5);
-
-    color: #00c2ff;
-
-    text-decoration: none;
-    border-radius: 10px;
-
-    font-weight: 600;
+.blue{
+border-left:4px solid #3b82f6;
 }
 
-.news-btn:hover {
-    background: #00c2ff;
-    color: black;
+.green{
+border-left:4px solid #22c55e;
 }
 
-/* ================= RESPONSIVE MENU (FINAL CLEAN VERSION) ================= */
-@media (max-width: 768px) {
 
-    /* SHOW HAMBURGER */
-    .menu-toggle {
-        display: block;
-    }
 
-    /* SLIDE MENU */
-    .menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
 
-        width: 75%;
-        height: 100vh;
 
-        background: rgba(0,0,0,0.95);
+/* =========================
+NEWS BUTTON
+========================= */
 
-        flex-direction: column;
-        padding: 80px 20px;
 
-        gap: 18px;
+.news-btn{
 
-        transition: right 0.35s ease;
-        z-index: 2000;
-    }
 
-    .menu.active {
-        right: 0;
-    }
+    display:inline-block;
 
-    /* TEXT SIZE MOBILE */
-    .hero h1 {
-        font-size: 30px;
-    }
+    margin-top:14px;
 
-    .hero p {
-        font-size: 16px;
-    }
+    padding:10px 16px;
+
+
+    border-radius:10px;
+
+
+    background:rgba(0,194,255,.15);
+
+    border:1px solid #00c2ff;
+
+
+    color:#00c2ff;
+
+
+    text-decoration:none;
+
+
+}
+
+
+
+.news-btn:hover{
+
+    background:#00c2ff;
+
+    color:black;
+
+}
+
+
+
+
+
+
+/* =========================
+MOBILE
+========================= */
+
+
+@media(max-width:768px){
+
+
+.menu-toggle{
+
+    display:block;
+
+}
+
+
+
+.menu{
+
+
+    position:fixed;
+
+
+    top:0;
+
+    right:-100%;
+
+
+    width:75%;
+
+    height:100vh;
+
+
+    background:rgba(0,0,0,.95);
+
+
+    flex-direction:column;
+
+
+    padding:80px 25px;
+
+
+    gap:20px;
+
+
+    transition:.35s;
+
+
+    z-index:2000;
+
+
+}
+
+
+
+.menu.active{
+
+
+    right:0;
+
+
+}
+
+
+
+.hero h1{
+
+    font-size:30px;
+
+}
+
+
+
+.hero p{
+
+    font-size:16px;
+
+}
+
+
+
 }
