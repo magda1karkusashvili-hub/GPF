@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>Admin Login</title>
 
 
@@ -32,8 +31,6 @@ body {
 }
 
 
-
-/* LOGIN CARD */
 
 .login-box {
 
@@ -72,7 +69,6 @@ body {
 h2 {
 
     margin-bottom:8px;
-    font-size:22px;
 
 }
 
@@ -83,8 +79,6 @@ h2 {
 
     font-size:12px;
 
-    letter-spacing:1px;
-
     color:#fbbf24;
 
     margin-bottom:12px;
@@ -92,6 +86,7 @@ h2 {
     text-transform:uppercase;
 
 }
+
 
 
 
@@ -110,15 +105,11 @@ h2 {
 
     font-size:12px;
 
-    border:1px solid rgba(251,191,36,0.25);
-
 }
 
 
 
 
-
-/* INPUT */
 
 input {
 
@@ -133,25 +124,20 @@ input {
 
     border-radius:10px;
 
-    outline:none;
-
     background:#1f2937;
 
     color:white;
 
     font-size:14px;
 
-    transition:.25s;
-
 
 }
 
 
 
+
 input:focus {
 
-
-    background:#111827;
 
     box-shadow:0 0 0 2px #3b82f6;
 
@@ -161,7 +147,6 @@ input:focus {
 
 
 
-/* BUTTON */
 
 
 button {
@@ -185,10 +170,6 @@ button {
 
     margin-top:8px;
 
-    transition:.3s;
-
-    font-size:14px;
-
 
 }
 
@@ -198,8 +179,6 @@ button:hover {
 
 
     transform:translateY(-1px);
-
-    box-shadow:0 10px 25px rgba(37,99,235,.35);
 
 
 }
@@ -211,53 +190,24 @@ button:hover {
 
 .warning {
 
-
     font-size:11px;
 
     color:#9ca3af;
 
     margin-top:14px;
 
-    line-height:1.4;
-
-
 }
-
 
 
 
 
 .small-note {
 
-
     font-size:11px;
 
     color:#6b7280;
 
     margin-top:10px;
-
-
-}
-
-
-
-
-
-@media(max-width:420px){
-
-
-.login-box {
-
-    padding:30px 20px;
-
-}
-
-
-h2 {
-
-    font-size:20px;
-
-}
 
 
 }
@@ -275,7 +225,11 @@ h2 {
 
 
 
+
+
 <div class="login-box">
+
+
 
 
 
@@ -284,6 +238,7 @@ h2 {
 🔐
 
 </div>
+
 
 
 
@@ -297,11 +252,13 @@ Secure Admin Access
 
 
 
+
 <div class="access-warning">
 
 Restricted Area • Authorized Personnel Only
 
 </div>
+
 
 
 
@@ -317,22 +274,29 @@ Admin Login
 
 
 
-<form method="POST">
+
+
+<form onsubmit="login(event)">
+
+
+
 
 
 <input 
-name="username"
+id="username"
 placeholder="Username"
 required>
 
 
 
 
+
 <input 
+id="password"
 type="password"
-name="password"
 placeholder="Password"
 required>
+
 
 
 
@@ -345,7 +309,9 @@ Login
 
 
 
+
 </form>
+
 
 
 
@@ -354,11 +320,10 @@ Login
 
 <div class="warning">
 
-
 ⚠️ All login attempts are monitored and logged for security purposes.
 
-
 </div>
+
 
 
 
@@ -366,16 +331,68 @@ Login
 
 <div class="small-note">
 
-
 Paragliding Admin System v3.0
 
+</div>
+
+
+
+
 
 </div>
 
 
 
 
-</div>
+
+
+
+
+
+<script>
+
+
+function login(event){
+
+
+event.preventDefault();
+
+
+
+let user =
+document.getElementById("username").value;
+
+
+
+let pass =
+document.getElementById("password").value;
+
+
+
+if(user==="admin" && pass==="admin123"){
+
+
+window.location.href="dashboard.html";
+
+
+}
+
+else{
+
+
+alert("Invalid username or password");
+
+
+}
+
+
+
+}
+
+
+
+</script>
+
 
 
 
