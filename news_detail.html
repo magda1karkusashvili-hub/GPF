@@ -1,68 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <title>{{ news.title }}</title>
 
+
 <style>
-body {
+
+
+* {
+
     margin:0;
-    font-family: Arial;
-    background: url("/static/images/para1.jpg") center/cover fixed;
-    color:white;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+
 }
+
+
+
+body {
+
+    background:url("/static/images/para1.jpg") center/cover fixed;
+
+    color:white;
+
+    min-height:100vh;
+
+}
+
+
 
 body::before {
+
     content:"";
+
     position:fixed;
+
     inset:0;
+
     background:rgba(0,0,0,0.6);
+
     z-index:-1;
+
 }
+
+
+
+
+
+/* HEADER STYLE */
+
+
+header {
+
+    background:rgba(0,0,0,0.85);
+
+    padding:12px 0;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+
+
+.nav-container {
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:0 20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+.logo {
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+
+.menu {
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+
+
+.menu a {
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+
+
+.menu a:hover {
+
+    color:#00c2ff;
+
+}
+
+
+
+
+
+
+
+/* NEWS */
+
 
 .container {
+
+
     max-width:800px;
+
     margin:60px auto;
-    padding:20px;
+
+    padding:25px;
+
+
     background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.12);
+
     border-radius:14px;
+
+    backdrop-filter:blur(10px);
+
+
 }
+
+
+
+
 
 img {
+
+
     width:100%;
+
     border-radius:12px;
+
     margin-bottom:20px;
+
+
 }
+
+
 
 h1 {
+
+
     color:#00c2ff;
+
+    margin-bottom:15px;
+
+
 }
 
-.tag {
-    display:inline-block;
-    margin-top:10px;
-    padding:5px 12px;
-    background:rgba(0,194,255,0.2);
-    color:#00c2ff;
-    border-radius:20px;
+
+
+p {
+
+
+    color:#ddd;
+
+    line-height:1.7;
+
+    font-size:16px;
+
+
 }
+
+
+
+.tag {
+
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:6px 14px;
+
+
+    background:rgba(0,194,255,0.2);
+
+
+    color:#00c2ff;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+
+@media(max-width:768px){
+
+
+.menu {
+
+    display:none;
+
+}
+
+
+.container {
+
+    margin:30px 15px;
+
+}
+
+
+}
+
+
+
+
 </style>
+
 
 </head>
 
+
+
+
 <body>
 
-<div class="container">
 
-    <img src="/static/images/{{ news.image }}">
 
-    <h1>{{ news.title }}</h1>
 
-    <p>{{ news.content }}</p>
 
-    <span class="tag">{{ news.category }}</span>
+<header>
+
+
+<div class="nav-container">
+
+
+<a href="/" class="logo">
+
+Georgian Paragliding Federation
+
+</a>
+
+
+
+<nav class="menu">
+
+
+<a href="/">Home</a>
+
+<a href="/about">About Us</a>
+
+<a href="/gallery">Gallery</a>
+
+<a href="/document">Documents</a>
+
+<a href="/contact">Contact</a>
+
+<a href="/BookYourFlight">Book Your Flight</a>
+
+<a href="/news">News</a>
+
+<a href="/dashboard">Dashboard</a>
+
+
+</nav>
+
+
 
 </div>
 
+
+</header>
+
+
+
+
+
+
+
+<div class="container">
+
+
+
+<img src="/static/images/{{ news.image }}">
+
+
+
+<h1>
+
+{{ news.title }}
+
+</h1>
+
+
+
+
+<p>
+
+{{ news.content }}
+
+</p>
+
+
+
+
+<span class="tag">
+
+{{ news.category }}
+
+</span>
+
+
+
+
+
+</div>
+
+
+
+
+
+
 </body>
+
 </html>
