@@ -6,17 +6,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>Gallery | Georgian Paragliding Federation</title>
 
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="style.css">
 
 
 <style>
-
-
-/* ================= PAGE ================= */
 
 
 .gallery-page {
@@ -47,9 +42,6 @@
 
 }
 
-
-
-/* GRID */
 
 
 .gallery-cards {
@@ -94,9 +86,6 @@
 
 
 
-/* LIGHTBOX */
-
-
 .lightbox {
 
     display:none;
@@ -121,9 +110,6 @@
 
 
 
-
-
-/* HEADER */
 
 
 header {
@@ -187,7 +173,6 @@ header {
 
     color:white;
     text-decoration:none;
-    transition:.3s;
 
 }
 
@@ -201,7 +186,6 @@ header {
 
 
 
-
 .menu-toggle {
 
     display:none;
@@ -210,6 +194,7 @@ header {
     color:white;
 
 }
+
 
 
 
@@ -264,16 +249,13 @@ header {
 }
 
 
-
 </style>
 
 
 </head>
 
 
-
 <body>
-
 
 
 
@@ -283,11 +265,10 @@ header {
 <div class="container">
 
 
+<a href="index.html" class="logo">
 
-<a href="/" class="logo">
 
-
-<img src="{{ url_for('static', filename='images/logo.jpg') }}">
+<img src="logo.jpg">
 
 
 <span>
@@ -301,8 +282,6 @@ Georgian Paragliding Federation
 
 
 
-
-
 <div class="menu-toggle" onclick="toggleMenu()">
 
 ☰
@@ -311,26 +290,24 @@ Georgian Paragliding Federation
 
 
 
-
-
 <nav class="menu" id="menu">
 
 
-<a href="/">Home</a>
+<a href="index.html">Home</a>
 
-<a href="/about">About Us</a>
+<a href="about.html">About Us</a>
 
-<a href="/gallery">Gallery</a>
+<a href="gallery.html">Gallery</a>
 
-<a href="/document">Documents</a>
+<a href="document.html">Documents</a>
 
-<a href="/contact">Contact</a>
+<a href="contact.html">Contact</a>
 
-<a href="/BookYourFlight">Book Your Flight</a>
+<a href="BookYourFlight.html">Book Your Flight</a>
 
-<a href="/news">News</a>
+<a href="news.html">News</a>
 
-<a href="/dashboard">Dashboard</a>
+<a href="dashboard.html">Dashboard</a>
 
 
 </nav>
@@ -346,11 +323,7 @@ Georgian Paragliding Federation
 
 
 
-
-
-
 <section class="gallery-page">
-
 
 
 <h1>
@@ -358,7 +331,6 @@ Georgian Paragliding Federation
 Gallery
 
 </h1>
-
 
 
 
@@ -371,73 +343,67 @@ Gallery
 <div class="gallery-cards">
 
 
-
-{% for i in range(1,10) %}
+<div class="gallery-card">
+<img src="para1.jpg" onclick="openLightbox(this)">
+</div>
 
 
 <div class="gallery-card">
-
-
-<img src="{{ url_for('static', filename='images/para' ~ i ~ '.jpg') }}"
-onclick="openLightbox(this)">
-
-
-
+<img src="para2.jpg" onclick="openLightbox(this)">
 </div>
-
-
-{% endfor %}
-
-
-
-
 
 
 <div class="gallery-card">
-
-
-<img src="{{ url_for('static', filename='images/para18.jpg') }}"
-onclick="openLightbox(this)">
-
-
-
+<img src="para3.jpg" onclick="openLightbox(this)">
 </div>
-
-
-
 
 
 <div class="gallery-card">
-
-
-<img src="{{ url_for('static', filename='images/para19.jpg') }}"
-onclick="openLightbox(this)">
-
-
-
+<img src="para4.jpg" onclick="openLightbox(this)">
 </div>
-
-
-
 
 
 <div class="gallery-card">
-
-
-<img src="{{ url_for('static', filename='images/para20.jpg') }}"
-onclick="openLightbox(this)">
-
-
-
+<img src="para5.jpg" onclick="openLightbox(this)">
 </div>
 
 
+<div class="gallery-card">
+<img src="para6.jpg" onclick="openLightbox(this)">
+</div>
 
 
+<div class="gallery-card">
+<img src="para7.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para8.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para9.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para18.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para19.jpg" onclick="openLightbox(this)">
+</div>
+
+
+<div class="gallery-card">
+<img src="para20.jpg" onclick="openLightbox(this)">
+</div>
 
 
 </div>
-
 
 
 </section>
@@ -446,20 +412,13 @@ onclick="openLightbox(this)">
 
 
 
-
-
-
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-
 
 
 <img id="lightbox-img">
 
 
-
 </div>
-
-
 
 
 
@@ -504,8 +463,7 @@ document.getElementById("lightbox").style.display="none";
 
 
 
-
-const text = "Moments captured during paragliding adventures across Georgia, showcasing the country’s stunning mountains, valleys, and skies through unforgettable flights filled with excitement and discovery.";
+const text = "Moments captured during paragliding adventures across Georgia, showcasing the country's stunning mountains, valleys, and skies through unforgettable flights filled with excitement and discovery.";
 
 
 let i=0;
@@ -531,14 +489,10 @@ setTimeout(typeEffect,40);
 }
 
 
-
 typeEffect();
 
 
-
 </script>
-
-
 
 
 
