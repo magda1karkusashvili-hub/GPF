@@ -17,10 +17,7 @@
 </head>
 
 
-
 <body>
-
-
 
 
 
@@ -41,9 +38,7 @@
 
 
 <span>
-
 Georgian Paragliding Federation
-
 </span>
 
 
@@ -58,6 +53,7 @@ Georgian Paragliding Federation
 ☰
 
 </div>
+
 
 
 
@@ -87,6 +83,7 @@ Dashboard
 </a>
 
 
+
 </nav>
 
 
@@ -96,7 +93,6 @@ Dashboard
 
 
 </header>
-
 
 
 
@@ -132,11 +128,10 @@ Book Your Paragliding Adventure
 
 
 
+
 <p class="subtext">
 
-
 Choose your location and reserve your flight with Georgian Paragliding Federation.
-
 
 </p>
 
@@ -155,11 +150,8 @@ Choose your location and reserve your flight with Georgian Paragliding Federatio
 
 
 <label>
-
 Location
-
 </label>
-
 
 
 
@@ -168,40 +160,30 @@ Location
 
 
 <option value="">
-
 Select Location
-
 </option>
 
 
 <option value="Gudauri">
-
 Gudauri
-
 </option>
 
 
 
 <option value="Ananuri">
-
 Ananuri
-
 </option>
 
 
 
 <option value="Tbilisi Sea">
-
 Tbilisi Sea
-
 </option>
 
 
 
 <option value="Mestia">
-
 Mestia
-
 </option>
 
 
@@ -216,10 +198,9 @@ Mestia
 
 
 <label>
-
 Date
-
 </label>
+
 
 
 <input 
@@ -234,11 +215,11 @@ required>
 
 
 
+
 <label>
-
 Full Name
-
 </label>
+
 
 
 <input
@@ -253,11 +234,15 @@ required>
 
 
 
+
+
+
+
+
 <label>
-
 Email
-
 </label>
+
 
 
 
@@ -275,10 +260,12 @@ required>
 
 
 
+
+
+
+
 <label>
-
 Phone
-
 </label>
 
 
@@ -299,6 +286,7 @@ required>
 
 
 
+
 <div class="warning-box">
 
 
@@ -306,6 +294,8 @@ required>
 
 
 </div>
+
+
 
 
 
@@ -327,7 +317,6 @@ Confirm Booking
 
 
 </form>
-
 
 
 
@@ -360,6 +349,7 @@ document
 
 
 </script>
+
 
 
 
