@@ -2,20 +2,21 @@
    RESET
 ========================= */
 
-*{
+* {
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 
+body {
 
-body{
-
-    background:
-    url("../images/para1.jpg")
-    center/cover fixed no-repeat;
+    background-image:url("../images/para1.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
 
     color:white;
     min-height:100vh;
@@ -23,15 +24,16 @@ body{
 }
 
 
+/* DARK OVERLAY */
 
-body::before{
+body::before {
 
     content:"";
     position:fixed;
+
     inset:0;
 
-    background:
-    rgba(0,0,0,0.6);
+    background:rgba(0,0,0,0.6);
 
     z-index:-1;
 
@@ -40,16 +42,14 @@ body::before{
 
 
 /* =========================
-HEADER
+ HEADER
 ========================= */
 
+header {
 
-header{
+    background:rgba(0,0,0,0.85);
 
-    background:
-    rgba(0,0,0,0.85);
-
-    padding:12px 0;
+    backdrop-filter:blur(10px);
 
     position:sticky;
 
@@ -60,15 +60,13 @@ header{
 }
 
 
-
-
-.container{
+.container {
 
     max-width:1200px;
 
     margin:auto;
 
-    padding:0 20px;
+    padding:12px 20px;
 
     display:flex;
 
@@ -80,8 +78,9 @@ header{
 
 
 
+/* LOGO */
 
-.logo{
+.logo {
 
     display:flex;
 
@@ -96,8 +95,7 @@ header{
 }
 
 
-
-.logo img{
+.logo img {
 
     width:42px;
 
@@ -110,7 +108,10 @@ header{
 
 
 
-.menu{
+/* MENU */
+
+
+.menu {
 
     display:flex;
 
@@ -120,17 +121,18 @@ header{
 
 
 
-.menu a{
+.menu a {
 
     color:white;
 
     text-decoration:none;
 
+    transition:.3s;
+
 }
 
 
-
-.menu a:hover{
+.menu a:hover {
 
     color:#00c2ff;
 
@@ -139,7 +141,7 @@ header{
 
 
 
-.menu-toggle{
+.menu-toggle {
 
     display:none;
 
@@ -151,142 +153,84 @@ header{
 
 
 
-
-
 /* =========================
-HERO
+ HERO
 ========================= */
 
 
-.hero{
+.hero {
+
+    min-height:90vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
 
 
-height:100vh;
+.hero-overlay {
 
+    max-width:800px;
 
-display:flex;
-
-
-justify-content:center;
-
-
-align-items:center;
-
-
-text-align:center;
-
+    padding:30px;
 
 }
 
 
 
-.hero-overlay{
+.hero h1 {
 
+    font-size:45px;
 
-max-width:800px;
-
-padding:30px;
-
+    color:#00c2ff;
 
 }
 
 
 
-.hero h1{
+.hero p {
 
-font-size:45px;
+    margin-top:20px;
 
-color:#00c2ff;
+    font-size:18px;
 
-}
-
-
-
-.hero p{
-
-margin:20px;
-
-font-size:18px;
-
-line-height:1.6;
+    line-height:1.6;
 
 }
 
 
 
+/* BUTTON */
 
+.btn {
 
-.btn{
+    display:inline-block;
 
+    margin-top:25px;
 
-display:inline-block;
+    padding:12px 30px;
 
-padding:12px 25px;
+    background:#00c2ff;
 
-background:#00c2ff;
+    color:black;
 
-color:black;
+    border-radius:10px;
 
-border-radius:10px;
+    text-decoration:none;
 
-text-decoration:none;
-
-font-weight:bold;
-
-
-}
-
-
-
-
-
-
-/* =========================
-GENERAL SECTIONS
-========================= */
-
-
-.document-section,
-.contact-box,
-.booking-section,
-.gallery-page,
-.news-container,
-.dashboard{
-
-
-max-width:1100px;
-
-margin:auto;
-
-padding:60px 20px;
-
+    font-weight:bold;
 
 }
 
 
+.btn:hover {
 
-
-
-h1{
-
-color:#00c2ff;
-
-text-align:center;
-
-margin-bottom:20px;
-
-}
-
-
-
-
-.subtext{
-
-text-align:center;
-
-color:#ccc;
-
-margin-bottom:30px;
+    background:white;
 
 }
 
@@ -295,131 +239,22 @@ margin-bottom:30px;
 
 
 /* =========================
-ABOUT BOX
+ CARDS
 ========================= */
 
 
-.info-box{
+.card,
+.news-card,
+.info-box {
 
 
-background:
-rgba(255,255,255,0.08);
+    background:rgba(255,255,255,.07);
 
+    border:1px solid rgba(255,255,255,.15);
 
-padding:25px;
+    border-radius:15px;
 
-margin:20px;
-
-
-border-radius:15px;
-
-
-cursor:pointer;
-
-
-transition:.3s;
-
-
-}
-
-
-
-.info-box:hover{
-
-transform:translateY(-5px);
-
-border:1px solid #00c2ff;
-
-}
-
-
-
-
-
-
-
-/* =========================
-GALLERY
-========================= */
-
-
-.gallery-cards{
-
-
-display:grid;
-
-grid-template-columns:
-repeat(3,1fr);
-
-gap:15px;
-
-
-}
-
-
-
-
-.gallery-cards img{
-
-
-width:100%;
-
-height:250px;
-
-object-fit:cover;
-
-border-radius:15px;
-
-cursor:pointer;
-
-transition:.3s;
-
-
-}
-
-
-
-.gallery-cards img:hover{
-
-transform:scale(1.05);
-
-}
-
-
-
-
-
-.lightbox{
-
-
-display:none;
-
-position:fixed;
-
-inset:0;
-
-
-background:
-rgba(0,0,0,.9);
-
-
-justify-content:center;
-
-align-items:center;
-
-z-index:5000;
-
-
-}
-
-
-
-
-.lightbox img{
-
-max-width:90%;
-
-max-height:90%;
+    backdrop-filter:blur(10px);
 
 }
 
@@ -427,116 +262,225 @@ max-height:90%;
 
 
 /* =========================
-DOCUMENTS
+ NEWS
 ========================= */
 
 
-.docs-list{
+.news-container {
 
-list-style:none;
+    max-width:1100px;
 
-}
+    margin:auto;
 
-
-
-.docs-list li{
-
-margin:15px 0;
+    padding:40px 20px;
 
 }
 
 
 
-.docs-list a{
+.news-grid {
 
 
-display:block;
+    display:grid;
 
+    grid-template-columns:repeat(3,1fr);
 
-padding:15px;
-
-
-background:
-rgba(255,255,255,.08);
-
-
-color:white;
-
-
-text-decoration:none;
-
-
-border-radius:10px;
+    gap:20px;
 
 
 }
 
 
 
+.news-card img {
+
+
+    width:100%;
+
+    height:200px;
+
+    object-fit:cover;
+
+
+}
+
+
+
+.news-content {
+
+    padding:20px;
+
+}
+
+
+
+.news-content h3 {
+
+    color:#00c2ff;
+
+}
+
+
+
+
+
+.news-btn {
+
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:8px 15px;
+
+    border:1px solid #00c2ff;
+
+    color:#00c2ff;
+
+    border-radius:20px;
+
+    text-decoration:none;
+
+
+}
 
 
 
 
 
 /* =========================
-BOOKING
+ GALLERY
 ========================= */
 
 
-.booking-form{
+.gallery-page {
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:40px 20px;
+
+    text-align:center;
+
+}
 
 
-display:flex;
-
-flex-direction:column;
-
-gap:15px;
+.gallery-cards {
 
 
-background:
-rgba(255,255,255,.08);
+    display:grid;
 
+    grid-template-columns:repeat(3,1fr);
 
-padding:30px;
-
-border-radius:15px;
+    gap:15px;
 
 
 }
 
+
+.gallery-card img {
+
+
+    width:100%;
+
+    height:250px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+
+}
+
+
+.gallery-card img:hover {
+
+    transform:scale(1.05);
+
+}
+
+
+
+
+
+/* LIGHTBOX */
+
+
+.lightbox {
+
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.9);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+
+
+.lightbox img {
+
+
+    max-width:90%;
+
+    max-height:90%;
+
+    border-radius:15px;
+
+
+}
+
+
+
+
+
+/* =========================
+ FORMS
+========================= */
+
+
+.booking-form {
+
+
+    max-width:600px;
+
+    margin:50px auto;
+
+    padding:30px;
+
+
+}
 
 
 .booking-form input,
-.booking-form select{
+.booking-form select {
 
 
-padding:12px;
+    width:100%;
 
-border-radius:8px;
+    padding:12px;
 
-border:none;
+    margin:8px 0;
 
+    background:rgba(0,0,0,.5);
 
-}
+    color:white;
 
+    border-radius:10px;
 
-
-.booking-form button{
-
-
-padding:14px;
-
-
-background:#00c2ff;
-
-
-border:none;
-
-
-border-radius:10px;
-
-
-font-weight:bold;
+    border:1px solid #555;
 
 
 }
@@ -544,454 +488,179 @@ font-weight:bold;
 
 
 
-
-.warning-box{
-
-
-padding:15px;
+.booking-form button {
 
 
-background:
-rgba(255,165,0,.15);
+    width:100%;
 
+    padding:13px;
 
-border-left:
-4px solid orange;
+    background:#00c2ff;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-weight:bold;
 
 
 }
-
-
-
 
 
 
 
 
 /* =========================
-CONTACT
+ DOCUMENTS
 ========================= */
 
 
-.contact-box{
+.document-section {
 
 
-background:
-rgba(255,255,255,.08);
+    max-width:900px;
 
+    margin:auto;
 
-border-radius:15px;
+    padding:50px 20px;
 
-
-text-align:center;
-
-
-}
-
-
-
-.contact-item{
-
-
-margin:20px;
-
-
-padding:15px;
-
-
-background:
-rgba(255,255,255,.05);
-
-
-border-radius:10px;
+    text-align:center;
 
 
 }
 
 
 
-.contact-item a{
+.doc-item {
 
-color:white;
 
-text-decoration:none;
+    list-style:none;
+
+    margin:15px;
 
 }
 
 
 
+.doc-item a {
+
+
+    display:block;
+
+    padding:15px;
+
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+
+}
 
 
 
 
 
 /* =========================
-NEWS
+ CONTACT
 ========================= */
 
 
-.news-grid{
+.contact-box {
 
 
-display:grid;
+    max-width:550px;
 
-grid-template-columns:
-repeat(3,1fr);
+    margin:70px auto;
 
+    padding:35px;
 
-gap:20px;
-
-
-}
-
-
-
-.news-card{
-
-
-background:
-rgba(255,255,255,.08);
-
-
-border-radius:15px;
-
-
-overflow:hidden;
+    text-align:center;
 
 
 }
 
 
 
-.news-card img{
+.contact-item {
 
 
-width:100%;
+    padding:15px;
 
-height:200px;
+    margin:15px;
 
-object-fit:cover;
+    background:rgba(255,255,255,.08);
 
-
-}
-
-
-
-.news-content{
-
-
-padding:20px;
+    border-radius:12px;
 
 
 }
 
 
 
-.tag{
+.contact-item a {
 
+    color:white;
 
-display:inline-block;
-
-padding:5px 12px;
-
-border-radius:20px;
-
-
-background:#00c2ff;
-
-
-color:black;
-
-
-margin-top:10px;
-
+    text-decoration:none;
 
 }
-
-
-
-
-
-.news-btn{
-
-
-display:inline-block;
-
-
-margin-top:15px;
-
-
-padding:10px 15px;
-
-
-background:#00c2ff;
-
-
-color:black;
-
-
-border-radius:10px;
-
-
-text-decoration:none;
-
-
-}
-
 
 
 
 
 
 /* =========================
-DASHBOARD
-========================= */
-
-
-.cards{
-
-
-display:grid;
-
-
-grid-template-columns:
-repeat(4,1fr);
-
-
-gap:15px;
-
-
-margin:30px 0;
-
-
-}
-
-
-
-.card{
-
-
-background:#161a22;
-
-
-padding:25px;
-
-
-border-radius:15px;
-
-
-text-align:center;
-
-
-}
-
-
-
-.card p{
-
-
-font-size:30px;
-
-color:#00c2ff;
-
-
-}
-
-
-
-
-
-table{
-
-
-width:100%;
-
-background:#111;
-
-border-collapse:collapse;
-
-
-}
-
-
-
-th{
-
-
-background:#00c2ff;
-
-color:black;
-
-padding:12px;
-
-
-}
-
-
-
-td{
-
-
-padding:12px;
-
-text-align:center;
-
-
-}
-
-
-
-
-
-
-.logout-btn{
-
-
-background:red;
-
-color:white;
-
-padding:10px 15px;
-
-border:none;
-
-border-radius:8px;
-
-
-}
-
-
-
-
-
-
-
-
-/* =========================
-LOGIN
-========================= */
-
-
-.login-box{
-
-
-width:350px;
-
-
-margin:120px auto;
-
-
-padding:30px;
-
-
-background:
-rgba(255,255,255,.1);
-
-
-border-radius:15px;
-
-
-text-align:center;
-
-
-}
-
-
-
-.login-box input{
-
-
-width:100%;
-
-
-padding:12px;
-
-
-margin:10px 0;
-
-
-}
-
-
-
-.login-box button{
-
-
-padding:12px 30px;
-
-
-background:#00c2ff;
-
-
-border:none;
-
-
-}
-
-
-
-
-
-
-
-
-/* =========================
-MOBILE
+ MOBILE
 ========================= */
 
 
 @media(max-width:768px){
 
 
-
-.menu{
-
-
-position:fixed;
-
-
-right:-100%;
-
-
-top:0;
-
-
-height:100vh;
-
-
-width:75%;
-
-
-background:#000;
-
-
-flex-direction:column;
-
-
-padding:80px 20px;
-
-
-transition:.3s;
-
-
-}
-
-
-
-.menu.active{
-
-
-right:0;
-
-
-}
-
-
-
 .menu-toggle{
 
+    display:block;
 
-display:block;
+}
+
+
+
+.menu {
+
+
+    position:fixed;
+
+    top:0;
+
+    right:-100%;
+
+    width:75%;
+
+    height:100vh;
+
+
+    background:black;
+
+    flex-direction:column;
+
+    padding:80px 25px;
+
+
+    transition:.3s;
+
+
+}
+
+
+.menu.active {
+
+
+    right:0;
 
 
 }
@@ -999,20 +668,19 @@ display:block;
 
 
 
-.hero h1{
+.hero h1 {
 
-font-size:30px;
+    font-size:30px;
 
 }
 
 
 
-.gallery-cards,
 .news-grid,
-.cards{
+.gallery-cards {
 
 
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
 
 
 }
