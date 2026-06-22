@@ -1,255 +1,51 @@
 /* =========================
-   HELPERS
-========================= */
-
-const qs = (s)=>document.querySelector(s);
-const qsa = (s)=>document.querySelectorAll(s);
-
-
-
-/* =========================
-   MOBILE MENU
+ MOBILE MENU
 ========================= */
 
 
-function toggleMenu(){
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
 
-const menu = document.getElementById("menu");
+
+const toggle =
+document.querySelector(".menu-toggle");
 
 
-if(menu){
+const menu =
+document.querySelector(".menu");
+
+
+
+if(toggle && menu){
+
+
+toggle.addEventListener(
+"click",
+()=>{
+
 
 menu.classList.toggle("active");
 
-}
-
-}
-
-
-
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-
-const menu = qs("#menu");
-const toggle = qs(".menu-toggle");
-
-
-
-if(menu && toggle){
-
-
-toggle.addEventListener("click",(e)=>{
-
-e.stopPropagation();
-
-menu.classList.toggle("active");
 
 });
 
 
 
-document.addEventListener("click",(e)=>{
-
-
-if(
-!menu.contains(e.target) &&
-!toggle.contains(e.target)
-
-){
-
-menu.classList.remove("active");
-
 }
 
 
-});
-
-
-
-menu.querySelectorAll("a")
-.forEach(link=>{
-
-
-link.addEventListener("click",()=>{
-
-menu.classList.remove("active");
-
-});
 
 
 });
 
-
-}
 
 
 
 
 
 /* =========================
-   REVEAL ANIMATION
-========================= */
-
-
-function reveal(){
-
-
-qsa(".reveal")
-.forEach(el=>{
-
-
-const pos =
-el.getBoundingClientRect().top;
-
-
-
-if(pos < window.innerHeight-100){
-
-el.classList.add("active");
-
-}
-
-
-});
-
-
-}
-
-
-
-window.addEventListener(
-"scroll",
-reveal
-);
-
-
-reveal();
-
-
-
-
-
-/* =========================
-   HERO SLIDER
-========================= */
-
-
-let index=0;
-
-
-const slides =
-qsa(".hero .slide");
-
-
-
-if(slides.length>1){
-
-
-setInterval(()=>{
-
-
-slides.forEach(s=>
-s.classList.remove("active")
-);
-
-
-
-index =
-(index+1)%slides.length;
-
-
-
-slides[index]
-.classList.add("active");
-
-
-
-},3500);
-
-
-}
-
-
-
-
-
-/* =========================
-   GALLERY
-========================= */
-
-
-qsa(".gallery-card")
-.forEach(card=>{
-
-
-const imgs =
-card.querySelectorAll("img");
-
-
-
-if(imgs.length<=1)
-return;
-
-
-
-let i=0;
-
-
-
-imgs.forEach((img,x)=>{
-
-img.style.display =
-x===0 ? "block":"none";
-
-});
-
-
-
-
-setInterval(()=>{
-
-
-imgs[i].style.display="none";
-
-
-i=(i+1)%imgs.length;
-
-
-imgs[i].style.display="block";
-
-
-},3000);
-
-
-
-});
-
-
-
-});
-
-
-
-
-
-/* =========================
-   ABOUT BOX
-========================= */
-
-
-function toggleBox(el){
-
-el.classList.toggle("active");
-
-}
-
-
-
-
-
-/* =========================
-   LIGHTBOX
+ GALLERY LIGHTBOX
 ========================= */
 
 
@@ -257,21 +53,25 @@ function openLightbox(img){
 
 
 const box =
-qs("#lightbox");
+document.getElementById("lightbox");
+
 
 const image =
-qs("#lightbox-img");
+document.getElementById("lightbox-img");
 
 
 
-if(!box || !image)
-return;
-
+if(box && image){
 
 
 box.style.display="flex";
 
+
 image.src=img.src;
+
+
+}
+
 
 
 }
@@ -283,70 +83,191 @@ function closeLightbox(){
 
 
 const box =
-qs("#lightbox");
+document.getElementById("lightbox");
 
 
 if(box){
 
+
 box.style.display="none";
 
+
 }
 
 
 }
+
+
+
 
 
 
 
 
 /* =========================
-   NEWS FILTER
+ ABOUT MODAL
 ========================= */
 
 
-function filterNews(category,event){
+function openModal(type){
 
 
 
-qsa(".tab-btn")
-.forEach(btn=>{
-
-btn.classList.remove("active");
-
-});
+const modal =
+document.getElementById("modal");
 
 
+const title =
+document.getElementById("modal-title");
 
-if(event){
 
-event.target.classList.add("active");
+const text =
+document.getElementById("modal-text");
+
+
+
+
+let data={
+
+
+
+mission:{
+
+
+title:"🎯 Mission",
+
+
+text:
+"Develop paragliding in Georgia as a safe and internationally recognized aviation sport."
+
+},
+
+
+
+safety:{
+
+
+title:"🛡 Safety",
+
+
+text:
+"Safety is the main principle of every flight operation."
+
+},
+
+
+
+development:{
+
+
+title:"🎓 Development",
+
+
+text:
+"Supporting pilot education and aviation development."
+
+}
+
+
+
+};
+
+
+
+
+
+
+if(data[type]){
+
+
+title.innerHTML=data[type].title;
+
+
+text.innerHTML=data[type].text;
+
+
+modal.style.display="flex";
+
 
 }
 
 
 
 
-qsa(".news-card")
-.forEach(card=>{
+}
+
+
+
+
+
+function closeModal(){
+
+
+let modal =
+document.getElementById("modal");
+
+
+if(modal){
+
+
+modal.style.display="none";
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+/* =========================
+ NEWS FILTER
+========================= */
+
+
+
+function filterNews(category){
+
+
+
+let cards =
+document.querySelectorAll(".news-card");
+
+
+
+
+cards.forEach(card=>{
 
 
 if(
-category==="all" ||
+category==="all"
+||
 card.dataset.category===category
 ){
 
+
 card.style.display="block";
+
 
 }
 
 else{
 
+
 card.style.display="none";
+
 
 }
 
 
+
 });
+
 
 
 }
