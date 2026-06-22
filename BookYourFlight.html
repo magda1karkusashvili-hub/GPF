@@ -1,27 +1,227 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 
 <head>
 
-
 <meta charset="UTF-8">
 
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<title>
-Book Your Flight
-</title>
+<title>Book Your Flight | Georgian Paragliding Federation</title>
 
 
 <link rel="stylesheet" href="css/style.css">
 
 
+
+<style>
+
+
+/* ================= BOOKING ================= */
+
+
+.booking-section {
+
+
+    max-width:720px;
+
+    margin:auto;
+
+    padding:60px 20px;
+
+
+}
+
+
+
+
+.booking-title h1 {
+
+
+    text-align:center;
+
+    color:#00c2ff;
+
+    font-size:36px;
+
+
+}
+
+
+
+
+
+.subtext {
+
+
+    text-align:center;
+
+    color:#b9c2d0;
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+
+.booking-form {
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+
+    padding:30px;
+
+
+    border-radius:16px;
+
+
+    background:rgba(255,255,255,0.06);
+
+
+    border:1px solid rgba(255,255,255,0.12);
+
+
+    backdrop-filter:blur(14px);
+
+
+
+}
+
+
+
+
+
+
+.booking-form label {
+
+
+    color:#00c2ff;
+
+    font-weight:600;
+
+    font-size:13px;
+
+
+}
+
+
+
+
+
+
+
+.booking-form input,
+.booking-form select {
+
+
+
+    padding:12px;
+
+
+    border-radius:10px;
+
+
+    border:1px solid rgba(255,255,255,0.1);
+
+
+    background:rgba(0,0,0,0.4);
+
+
+    color:white;
+
+
+
+}
+
+
+
+
+
+
+.booking-form button {
+
+
+
+    padding:13px;
+
+
+    background:linear-gradient(135deg,#00c2ff,#0095c9);
+
+
+    border:none;
+
+
+    border-radius:10px;
+
+
+    font-weight:bold;
+
+
+    cursor:pointer;
+
+
+
+}
+
+
+
+
+
+.booking-form button:hover {
+
+
+
+    background:white;
+
+
+
+}
+
+
+
+
+
+
+
+.warning-box {
+
+
+
+    padding:12px;
+
+
+    background:rgba(255,165,0,0.08);
+
+
+    border-left:4px solid orange;
+
+
+    color:#ffcc66;
+
+
+
+}
+
+
+
+
+</style>
+
+
+
 </head>
+
+
 
 
 
@@ -31,10 +231,16 @@ Book Your Flight
 
 
 
+
+
+<!-- ================= HEADER ================= -->
+
+
 <header>
 
 
 <div class="container">
+
 
 
 <a href="index.html" class="logo">
@@ -53,53 +259,44 @@ Georgian Paragliding Federation
 
 
 
-<div class="menu-toggle">
+
+
+<div class="menu-toggle" onclick="toggleMenu()">
+
 ☰
+
 </div>
 
 
 
 
-<nav class="menu">
 
 
-<a href="index.html">
-Home
-</a>
+
+<nav class="menu" id="menu">
 
 
-<a href="about.html">
-About
-</a>
 
+<a href="index.html">Home</a>
 
-<a href="gallery.html">
-Gallery
-</a>
+<a href="about.html">About Us</a>
 
+<a href="gallery.html">Gallery</a>
 
-<a href="documents.html">
-Documents
-</a>
+<a href="documents.html">Documents</a>
 
+<a href="contact.html">Contact</a>
 
-<a href="contact.html">
-Contact
-</a>
+<a href="book.html">Book Your Flight</a>
 
+<a href="news.html">News</a>
 
-<a href="book.html">
-Book Flight
-</a>
-
-
-<a href="news.html">
-News
-</a>
+<a href="dashboard.html">Dashboard</a>
 
 
 
 </nav>
+
 
 
 
@@ -114,18 +311,40 @@ News
 
 
 
+
+<!-- ================= BOOKING ================= -->
+
+
+
 <section class="booking-section">
 
 
+
+
+
+<div class="booking-title">
+
+
 <h1>
+
 Book Your Paragliding Adventure
+
 </h1>
+
+
+</div>
+
+
+
+
 
 
 
 <p class="subtext">
 
-Choose your location and we will contact you.
+
+Choose your location and we will contact you shortly.
+
 
 </p>
 
@@ -134,22 +353,30 @@ Choose your location and we will contact you.
 
 
 
-<form class="booking-form">
+
+
+<form class="booking-form"
+action="mailto:info@paragliding.ge"
+method="post"
+enctype="text/plain">
 
 
 
 
 
 <label>
+
 Location
+
 </label>
 
 
 
-<select>
+
+<select name="Location" required>
 
 
-<option>
+<option value="">
 Select Location
 </option>
 
@@ -176,12 +403,17 @@ Manavi
 
 
 
+
 <label>
+
 Date
+
 </label>
 
 
-<input type="date">
+
+<input type="date" name="Date" required>
+
 
 
 
@@ -189,24 +421,30 @@ Date
 
 
 <label>
+
 Full Name
+
 </label>
 
 
-<input type="text"
-placeholder="Your name">
+
+<input type="text" name="Name" required>
+
+
 
 
 
 
 
 <label>
+
 Email
+
 </label>
 
 
-<input type="email"
-placeholder="Email">
+<input type="email" name="Email" required>
+
 
 
 
@@ -214,12 +452,13 @@ placeholder="Email">
 
 
 <label>
+
 Phone
+
 </label>
 
 
-<input type="tel"
-placeholder="Phone">
+<input type="tel" name="Phone" required>
 
 
 
@@ -229,7 +468,9 @@ placeholder="Phone">
 
 <div class="warning-box">
 
+
 ⚠️ Flights depend on weather conditions.
+
 
 </div>
 
@@ -241,7 +482,9 @@ placeholder="Phone">
 
 <button type="submit">
 
+
 Confirm Booking
+
 
 </button>
 
@@ -250,6 +493,10 @@ Confirm Booking
 
 
 </form>
+
+
+
+
 
 
 
@@ -262,7 +509,10 @@ Confirm Booking
 
 
 
+
 <script src="js/script.js"></script>
+
+
 
 
 </body>
