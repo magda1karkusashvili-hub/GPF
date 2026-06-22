@@ -4,33 +4,360 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>Contact | Georgian Paragliding Federation</title>
 
+
 <link rel="stylesheet" href="style.css">
 
+
+<style>
+
+
+.contact-page{
+
+
+    min-height:90vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:60px 20px;
+
+
+}
+
+
+
+
+
+.contact-box{
+
+
+    width:100%;
+
+    max-width:900px;
+
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+
+    background:rgba(255,255,255,0.08);
+
+
+    border:1px solid rgba(255,255,255,0.15);
+
+
+    backdrop-filter:blur(15px);
+
+
+    border-radius:25px;
+
+
+    overflow:hidden;
+
+
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+
+
+}
+
+
+
+
+
+
+/* LEFT */
+
+
+.contact-info{
+
+
+    padding:45px;
+
+
+}
+
+
+
+
+
+.contact-info h1{
+
+
+    color:#00c2ff;
+
+    font-size:38px;
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.contact-info p{
+
+
+    color:#ddd;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+
+.contact-item{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+
+    margin:20px 0;
+
+
+    padding:15px;
+
+
+    background:rgba(0,0,0,.35);
+
+
+    border-radius:15px;
+
+
+}
+
+
+
+
+
+.contact-item span{
+
+
+    font-size:28px;
+
+
+}
+
+
+
+
+
+.contact-item a{
+
+
+    color:white;
+
+    text-decoration:none;
+
+
+}
+
+
+
+.contact-item a:hover{
+
+
+    color:#00c2ff;
+
+
+}
+
+
+
+
+
+
+
+/* RIGHT */
+
+
+.contact-image{
+
+
+    background:
+
+    linear-gradient(
+    rgba(0,0,0,.25),
+    rgba(0,0,0,.55)
+    ),
+
+    url("para22.jpg");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+
+    min-height:400px;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    text-align:center;
+
+
+}
+
+
+
+.contact-image h2{
+
+
+    font-size:34px;
+
+    text-shadow:0 5px 20px black;
+
+
+}
+
+
+
+
+.flight-btn{
+
+
+    display:inline-block;
+
+    margin-top:20px;
+
+
+    padding:12px 25px;
+
+
+    background:#00c2ff;
+
+
+    color:black;
+
+
+    border-radius:25px;
+
+
+    text-decoration:none;
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+
+.flight-btn:hover{
+
+
+    background:white;
+
+
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:800px){
+
+
+.contact-box{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.contact-image{
+
+
+height:300px;
+
+
+}
+
+
+
+.contact-info{
+
+
+padding:30px;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+</style>
+
+
+
 </head>
+
+
 
 
 <body>
 
 
-<!-- HEADER -->
+
+
+
 
 <header>
 
 <div class="container">
 
 
+
 <a href="index.html" class="logo">
 
 
-<img src="logo.jpg" alt="Logo">
+<img src="logo.jpg">
 
 
 <span>
+
 Georgian Paragliding Federation
+
 </span>
 
 
@@ -38,9 +365,14 @@ Georgian Paragliding Federation
 
 
 
+
+
 <div class="menu-toggle" onclick="toggleMenu()">
+
 ☰
+
 </div>
+
 
 
 
@@ -79,14 +411,40 @@ Georgian Paragliding Federation
 
 
 
-<!-- CONTACT -->
 
-<section class="contact-box">
+
+<section class="contact-page">
+
+
+
+<div class="contact-box">
+
+
+
+
+
+
+<div class="contact-info">
+
 
 
 <h1>
+
 Contact Us
+
 </h1>
+
+
+
+
+<p>
+
+Have questions about flights, training, events or cooperation?
+Our team will be happy to help you.
+
+</p>
+
+
 
 
 
@@ -96,16 +454,18 @@ Contact Us
 
 
 <span>
-📍 LOCATION
-</span>
 
+📍
+
+</span>
 
 
 <a href="https://www.google.com/maps?q=David+Agmashenebeli+Alley+172g,+Tbilisi,+Georgia"
 target="_blank">
 
 
-David Agmashenebeli Alley 172g, Tbilisi, Georgia
+David Agmashenebeli Alley 172g,
+Tbilisi, Georgia
 
 
 </a>
@@ -118,14 +478,14 @@ David Agmashenebeli Alley 172g, Tbilisi, Georgia
 
 
 
-
 <div class="contact-item">
 
 
 <span>
-📞 PHONE
-</span>
 
+📞
+
+</span>
 
 
 <a href="tel:+995593466744">
@@ -149,9 +509,10 @@ David Agmashenebeli Alley 172g, Tbilisi, Georgia
 
 
 <span>
-📧 EMAIL
-</span>
 
+📧
+
+</span>
 
 
 <a href="mailto:info@paragliding.ge">
@@ -168,9 +529,55 @@ info@paragliding.ge
 
 
 
+
+</div>
+
+
+
+
+
+
+
+
+<div class="contact-image">
+
+
+<div>
+
+
+<h2>
+
+Fly Above Georgia
+
+</h2>
+
+
+
+<a href="BookYourFlight.html" class="flight-btn">
+
+
+Book Your Flight
+
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
 </section>
-
-
 
 
 
