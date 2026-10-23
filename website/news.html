@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>News | Georgian Paragliding Federation</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" href="index.html">
+                <img class="brand-symbol" 
+                    src="images/logo.jpg"
+                    alt="Georgian paragliding federation logo"
+                    width="43"
+                    height="43"
+                    >
+                <span class="brand-name">
+                    Georgian
+                    <small>Paragliding Federation</small>
+                </span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-controls="main-menu"
+                aria-expanded="false"
+            >
+                Menu ☰
+            </button>
+
+            <nav class="main-menu" id="main-menu" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="document.html">Documents</a>
+                <a href="news.html" aria-current="page">News</a>
+                <a href="contact.html">Contact</a>
+                <a class="nav-book" href="BookYourFlight.html">
+                    Book Your Flight ↗
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="section">
+            <div class="container">
+                <div class="section-heading">
+                    
+                    <h1>News & Resources</h1>
+
+
+                </div>
+
+                <div
+                    class="news-filters"
+                    role="group"
+                    aria-label="Filter news"
+                >
+                    <button
+                        class="news-filter is-active"
+                        type="button"
+                        data-news-filter="all"
+                        aria-pressed="true"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="news-filter"
+                        type="button"
+                        data-news-filter="events"
+                        aria-pressed="false"
+                    >
+                        Events
+                    </button>
+
+                    <button
+                        class="news-filter"
+                        type="button"
+                        data-news-filter="training"
+                        aria-pressed="false"
+                    >
+                        Training
+                    </button>
+
+                    <button
+                        class="news-filter"
+                        type="button"
+                        data-news-filter="safety"
+                        aria-pressed="false"
+                    >
+                        Safety
+                    </button>
+                </div>
+
+                <div class="locations-grid">
+                    <article
+                        class="location-card"
+                        data-news-category="events"
+                    >
+                        <div class="location-image">
+                            <img
+                                src="images/para22.jpg"
+                                alt="Paragliding photograph"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="location-content">
+                            <p class="eyebrow">International resources</p>
+                            <h3>FAI information</h3>
+
+                            <p>
+                                Explore information from the
+                                Fédération Aéronautique Internationale.
+                            </p>
+
+                            <a
+                                class="text-link"
+                                href="https://www.fai.org/node/208114"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Visit FAI ↗
+                            </a>
+                        </div>
+                    </article>
+
+                    <article
+                        class="location-card"
+                        data-news-category="training"
+                    >
+                        <div class="location-image">
+                            <img
+                                src="images/para15.jpg"
+                                alt="Paragliding photograph"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="location-content">
+                            <p class="eyebrow">Learning & development</p>
+                            <h3>Pilot training</h3>
+
+                            <p>
+                                Contact our team for current training
+                                opportunities, dates and requirements.
+                            </p>
+
+                            <a class="text-link" href="contact.html">
+                                Ask about training ↗
+                            </a>
+                        </div>
+                    </article>
+
+                    <article
+                        class="location-card"
+                        data-news-category="safety"
+                    >
+                        <div class="location-image">
+                            <img
+                                src="images/para19.jpg"
+                                alt="Paragliding photograph"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="location-content">
+                            <p class="eyebrow">Flight preparation</p>
+                            <h3>Weather & NOTAM</h3>
+
+                            <p>
+                                Review current information
+                                with your flight team.
+                            </p>
+
+                            <div class="resource-links">
+                                <a
+                                    href="https://ais.airnav.ge/en/notam"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    NOTAM ↗
+                                </a>
+
+                                <a
+                                    href="https://www.meteoblue.com/en/weather/week/tbilisi_georgia_611717"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Weather ↗
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <strong>Georgian Paragliding Federation</strong>
+
+            <div class="footer-bottom">
+                <p>© <span id="year">2026</span> All rights reserved.</p>
+                <a href="contact.html">Contact us ↗</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

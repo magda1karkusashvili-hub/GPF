@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Book your paragliding experience with the Georgian Paragliding Federation."
+    >
+
+    <title>Book Your Flight | Georgian Paragliding Federation</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" href="index.html">
+                <img
+                    class="brand-symbol"
+                    src="images/logo.jpg"
+                    alt="Georgian Paragliding Federation logo"
+                    width="43"
+                    height="43"
+                >
+
+                <span class="brand-name">
+                    Georgian
+                    <small>Paragliding Federation</small>
+                </span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-controls="main-menu"
+                aria-expanded="false"
+            >
+                Menu ☰
+            </button>
+
+            <nav
+                class="main-menu"
+                id="main-menu"
+                aria-label="Main navigation"
+            >
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="document.html">Documents</a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact</a>
+
+                <a
+                    class="nav-book"
+                    href="BookYourFlight.html"
+                    aria-current="page"
+                >
+                    Book Your Flight 
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Displayed after FormSubmit returns to this page. -->
+
+        <section
+            id="booking-receipt"
+            hidden
+            aria-labelledby="receipt-title"
+        >
+            <div class="receipt-card">
+                <header class="receipt-header">
+                    <span class="receipt-label">
+                        Georgian Paragliding Federation
+                    </span>
+
+                    <h1 id="receipt-title">
+                        Your next adventure starts here
+                    </h1>
+
+                    <p>Your flight request has been submitted</p>
+                </header>
+
+                <div class="receipt-body">
+                    <h2>What happens next?</h2>
+
+                    <p>
+                        Our team will review your preferred date and
+                        contact you to confirm availability and flight
+                        arrangements.
+                    </p>
+
+                    <div class="receipt-alert">
+                        <strong>
+                            Please check your Spam or Junk folder.
+                        </strong>
+
+                        <br>
+
+                        Our email may arrive there. Mark it as
+                        Not spam to help future messages reach
+                        your inbox.
+                    </div>
+
+                    <p>
+                        Flights are subject to weather conditions
+                        and confirmation by our team.
+                    </p>
+
+                    <a
+                        class="receipt-link"
+                        href="BookYourFlight.html"
+                    >
+                        Back to booking
+                    </a>
+
+                    <p>
+                        Need help?
+                        <a href="tel:+995593466744">
+                            +995 593 46 67 44
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking form -->
+
+        <section class="section booking-section">
+            <div class="container booking-layout">
+                <div class="booking-intro">
+                    <p class="eyebrow light">
+                        Your adventure starts here
+                    </p>
+
+                    <h1>Book Your Flight</h1>
+
+                    <p>
+                        Choose your preferred location, date and
+                        number of participants. Send your flight
+                        request directly to our team.
+                    </p>
+
+                    <div class="booking-explanation">
+                        <h3>How it works</h3>
+
+                        <ol>
+                            <li>
+                                Choose your preferred flight location.
+                            </li>
+
+                            <li>
+                                Select a date and number of participants.
+                            </li>
+
+                            <li>
+                                Enter your contact details.
+                            </li>
+
+                            <li>
+                                Send your request and complete the
+                                security check if prompted.
+                            </li>
+
+                            <li>
+                                Check your inbox and Spam folder.
+                                Our team will contact you to confirm
+                                your flight arrangements.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <p class="booking-disclaimer">
+                        Flights depend on weather and operational
+                        availability. Submitting this form does not
+                        confirm a reservation. Your booking is confirmed
+                        once agreed with our team.
+                    </p>
+
+                    <a href="tel:+995593466744">
+                        Call: +995 593 46 67 44
+                    </a>
+                </div>
+
+                <form
+                    class="booking-form"
+                    id="flight-request-form"
+                    action="https://formsubmit.co/magda1.karkusashvili@gmail.com"
+                    method="POST"
+                >
+                    <h3>Request a flight</h3>
+
+                    <input
+                        type="hidden"
+                        name="_subject"
+                        value="New Flight Request — Georgian Paragliding Federation"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_template"
+                        value="table"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_captcha"
+                        value="true"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_url"
+                        id="booking-page-url"
+                        value="https://solid-space-happiness-6vgw99qq477wfrv5g-5500.app.github.dev/website/BookYourFlight.html"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="_autoresponse"
+                        id="booking-autoresponse"
+                        value="Hello! Your flight request has been received. Please check your inbox and Spam or Junk folder for our email."
+                    >
+
+                    <div hidden>
+                        <label for="request-website">
+                            Leave this field empty
+                        </label>
+
+                        <input
+                            id="request-website"
+                            name="_honey"
+                            type="text"
+                            tabindex="-1"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="request-location">
+                            Preferred location
+                        </label>
+
+                        <select
+                            id="request-location"
+                            name="Location"
+                            required
+                        >
+                            <option value="">Choose a location</option>
+                            <option value="Tbilisi Sea">Tbilisi Sea</option>
+                            <option value="Gudauri">Gudauri</option>
+                            <option value="Ananuri">Ananuri</option>
+                            <option value="Mestia">Mestia</option>
+                            <option value="Bakuriani">Bakuriani</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="request-date">
+                                Preferred date
+                            </label>
+
+                            <input
+                                id="request-date"
+                                name="Preferred date"
+                                type="date"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-field">
+                            <label for="request-people">
+                                Participants
+                            </label>
+
+                            <input
+                                id="request-people"
+                                name="Participants"
+                                type="number"
+                                min="1"
+                                max="20"
+                                step="1"
+                                value="1"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="request-name">Full name</label>
+
+                        <input
+                            id="request-name"
+                            name="name"
+                            type="text"
+                            autocomplete="name"
+                            minlength="2"
+                            maxlength="100"
+                            placeholder="Your full name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="request-phone">Phone number</label>
+
+                        <input
+                            id="request-phone"
+                            name="Phone"
+                            type="tel"
+                            autocomplete="tel"
+                            minlength="9"
+                            maxlength="16"
+                            pattern="\+[1-9][0-9]{7,14}"
+                            placeholder="+995593466744"
+                            title="Include + and your country code. Example: +995593466744"
+                            aria-describedby="phone-help"
+                            required
+                        >
+
+                        <small id="phone-help">
+                            Include + and your country code.
+                            Do not use spaces, brackets or hyphens.
+                            Example: +995593466744.
+                        </small>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="request-email">Email</label>
+
+                        <input
+                            id="request-email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            maxlength="254"
+                            placeholder="you@example.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="request-message">
+                            Additional information — optional
+                        </label>
+
+                        <textarea
+                            id="request-message"
+                            name="message"
+                            rows="4"
+                            maxlength="1000"
+                            placeholder="Questions or preferences"
+                        ></textarea>
+                    </div>
+
+                    <label class="consent">
+                        <input
+                            id="request-consent"
+                            name="Contact consent"
+                            type="checkbox"
+                            value="Agreed"
+                            required
+                        >
+
+                        <span>
+                            I agree to send these details through
+                            FormSubmit to the Georgian Paragliding
+                            Federation so the team can process my
+                            request and contact me about my flight.
+                        </span>
+                    </label>
+
+                    <button
+                        class="button button-primary form-submit"
+                        type="submit"
+                    >
+                        Send Flight Request ↗
+                    </button>
+
+                    <p class="form-help">
+                        Complete the security check after submitting.
+                        Please check your inbox and Spam or Junk folder
+                        for our email.
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <strong>Georgian Paragliding Federation</strong>
+
+            <div class="footer-bottom">
+                <p>
+                    © <span id="year">2026</span>
+                    All rights reserved.
+                </p>
+
+                <a href="contact.html">Contact us ↗</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
