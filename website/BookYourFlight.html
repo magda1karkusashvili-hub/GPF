@@ -10,7 +10,7 @@
 
     <meta
         name="description"
-        content="Plan your adventure in Georgia. Choose a location and contact the local operator by phone or WhatsApp."
+        content="Plan your adventure in Georgia. Choose a location and connect with the local operator by phone or WhatsApp."
     >
 
     <title>
@@ -47,7 +47,6 @@
             line-height: 1.4;
             text-align: center;
             text-decoration: none;
-
             cursor: pointer;
         }
 
@@ -72,27 +71,6 @@
             outline-offset: 3px;
         }
 
-        .adventure-operator {
-            margin-top: 18px;
-            padding: 18px;
-
-            border: 1px solid #cbdacf;
-            border-radius: 10px;
-
-            color: #123b38;
-            background: #edf4ef;
-        }
-
-        .adventure-operator strong {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .adventure-operator a {
-            color: #123b38;
-            font-weight: 700;
-        }
-
         .adventure-note {
             margin: 14px 0 20px;
             font-size: 13px;
@@ -103,31 +81,6 @@
             margin: 26px 0;
             border: 0;
             border-top: 1px solid rgba(18, 59, 56, 0.18);
-        }
-
-        .adventure-contact-list {
-            margin-top: 24px;
-            padding: 18px;
-            border: 1px solid rgba(18, 59, 56, 0.18);
-            border-radius: 10px;
-        }
-
-        .adventure-contact-list summary {
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .adventure-contact-list ul {
-            padding-left: 20px;
-        }
-
-        .adventure-contact-list li {
-            margin: 12px 0;
-            line-height: 1.7;
-        }
-
-        #adventure-form [hidden] {
-            display: none !important;
         }
 
         /* LANGUAGE BUTTONS */
@@ -347,107 +300,8 @@
                         Your arrangements are confirmed only
                         after agreement with the operator.
                     </p>
-
-                    <details class="adventure-contact-list">
-                        <summary>
-                            All operator contacts
-                        </summary>
-
-                        <ul>
-                            <li>
-                                <strong>Gudauri</strong><br>
-
-                                <a href="tel:+995558338989">
-                                    +995 558 33 89 89
-                                </a>
-
-                                ·
-
-                                <a
-                                    href="https://wa.me/995558338989"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    WhatsApp
-                                </a>
-                            </li>
-
-                            <li>
-                                <strong>Ananuri</strong><br>
-
-                                <a href="tel:+995599045777">
-                                    +995 599 04 57 77
-                                </a>
-
-                                ·
-
-                                <a
-                                    href="https://wa.me/995599045777"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    WhatsApp
-                                </a>
-                            </li>
-
-                            <li>
-                                <strong>Tbilisi Sea</strong><br>
-
-                                <a href="tel:+995555004993">
-                                    +995 555 00 49 93
-                                </a>
-
-                                ·
-
-                                <a
-                                    href="https://wa.me/995555004993"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    WhatsApp
-                                </a>
-                            </li>
-
-                            <li>
-                                <strong>Mestia</strong><br>
-
-                                <a href="tel:+995593988811">
-                                    +995 593 98 88 11
-                                </a>
-
-                                ·
-
-                                <a
-                                    href="https://wa.me/995593988811"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    WhatsApp
-                                </a>
-                            </li>
-
-                            <li>
-                                <strong>Bakuriani</strong><br>
-
-                                <a href="tel:+995599334486">
-                                    +995 599 33 44 86
-                                </a>
-
-                                ·
-
-                                <a
-                                    href="https://wa.me/995599334486"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    WhatsApp
-                                </a>
-                            </li>
-                        </ul>
-                    </details>
                 </div>
 
-                <!-- PHONE AND WHATSAPP ONLY -->
                 <form
                     class="booking-form"
                     id="adventure-form"
@@ -487,22 +341,6 @@
                                 Bakuriani
                             </option>
                         </select>
-                    </div>
-
-                    <div
-                        class="adventure-operator"
-                        id="adventure-operator"
-                        aria-live="polite"
-                        hidden
-                    >
-                        <strong
-                            id="adventure-operator-name"
-                        ></strong>
-
-                        <a
-                            id="adventure-operator-phone"
-                            translate="no"
-                        ></a>
                     </div>
 
                     <div class="adventure-actions">
@@ -581,8 +419,8 @@
                             minlength="9"
                             maxlength="16"
                             pattern="\+[1-9][0-9]{7,14}"
-                            placeholder="+995599123456"
-                            title="Include + and your country code. Example: +995599123456"
+                            placeholder="+[country code][number]"
+                            title="Include + and your country code. Use digits only after +."
                             aria-describedby="adventure-phone-help"
                             required
                         >
@@ -590,7 +428,6 @@
                         <small id="adventure-phone-help">
                             Include + and your country code.
                             Do not use spaces, brackets or hyphens.
-                            Example: +995599123456.
                         </small>
                     </div>
 
@@ -645,10 +482,8 @@
 
                     <noscript>
                         <p class="adventure-note">
-                            Enable JavaScript to use this form.
-                            You can also use the All operator
-                            contacts list to call or open
-                            WhatsApp directly.
+                            Please enable JavaScript to use
+                            the operator contact buttons.
                         </p>
                     </noscript>
                 </form>
@@ -803,19 +638,19 @@
                         !expanded
                     );
 
-                    if (!expanded) {
-                        menu.style.display = "flex";
-                    } else {
-                        menu.style.display = "none";
-                    }
+                    menu.style.display = expanded
+                        ? "none"
+                        : "flex";
                 });
 
                 window.addEventListener("resize", () => {
                     menu.style.removeProperty("display");
+
                     menuButton.setAttribute(
                         "aria-expanded",
                         "false"
                     );
+
                     menu.classList.remove(
                         "is-open",
                         "open",
@@ -832,44 +667,14 @@
                 year.textContent = new Date().getFullYear();
             }
 
-            /* OPERATOR NUMBERS */
+            /* LOCATION ROUTING */
 
             const operators = new Map([
-                [
-                    "Gudauri",
-                    {
-                        phone: "995558338989",
-                        display: "+995 558 33 89 89"
-                    }
-                ],
-                [
-                    "Ananuri",
-                    {
-                        phone: "995599045777",
-                        display: "+995 599 04 57 77"
-                    }
-                ],
-                [
-                    "Tbilisi Sea",
-                    {
-                        phone: "995555004993",
-                        display: "+995 555 00 49 93"
-                    }
-                ],
-                [
-                    "Mestia",
-                    {
-                        phone: "995593988811",
-                        display: "+995 593 98 88 11"
-                    }
-                ],
-                [
-                    "Bakuriani",
-                    {
-                        phone: "995599334486",
-                        display: "+995 599 33 44 86"
-                    }
-                ]
+                ["Gudauri", "995558338989"],
+                ["Ananuri", "995599045777"],
+                ["Tbilisi Sea", "995555004993"],
+                ["Mestia", "995593988811"],
+                ["Bakuriani", "995599334486"]
             ]);
 
             const form = document.getElementById(
@@ -880,18 +685,6 @@
                 "adventure-location"
             );
 
-            const operatorBox = document.getElementById(
-                "adventure-operator"
-            );
-
-            const operatorName = document.getElementById(
-                "adventure-operator-name"
-            );
-
-            const operatorPhone = document.getElementById(
-                "adventure-operator-phone"
-            );
-
             const callButton = document.getElementById(
                 "adventure-call-button"
             );
@@ -900,65 +693,34 @@
                 "adventure-whatsapp-button"
             );
 
-            function getOperator() {
+            function getOperatorPhone() {
                 return operators.get(locationField.value);
             }
 
-            function updateOperator() {
-                const operator = getOperator();
-
-                if (!operator) {
-                    operatorBox.hidden = true;
-                    operatorName.textContent = "";
-                    operatorPhone.textContent = "";
-                    operatorPhone.removeAttribute("href");
-                    return;
-                }
-
-                operatorName.textContent =
-                    locationField.value + " operator";
-
-                operatorPhone.textContent =
-                    operator.display;
-
-                operatorPhone.href =
-                    "tel:+" + operator.phone;
-
-                operatorBox.hidden = false;
+            function getValue(id) {
+                return document.getElementById(id).value.trim();
             }
-
-            locationField.addEventListener(
-                "change",
-                updateOperator
-            );
-
-            updateOperator();
 
             /* CALL THE SELECTED OPERATOR */
 
             callButton.addEventListener("click", () => {
                 if (!locationField.reportValidity()) return;
 
-                const operator = getOperator();
+                const phone = getOperatorPhone();
 
-                if (!operator) return;
+                if (!phone) return;
 
-                window.location.href =
-                    "tel:+" + operator.phone;
+                window.location.href = "tel:+" + phone;
             });
 
             /* PREPARE WHATSAPP REQUEST */
 
-            function getValue(id) {
-                return document.getElementById(id).value.trim();
-            }
-
             function openWhatsAppRequest() {
                 if (!form.reportValidity()) return;
 
-                const operator = getOperator();
+                const phone = getOperatorPhone();
 
-                if (!operator) return;
+                if (!phone) return;
 
                 const message = [
                     "NEW ADVENTURE REQUEST",
@@ -978,7 +740,7 @@
 
                 const whatsappURL =
                     "https://wa.me/" +
-                    operator.phone +
+                    phone +
                     "?text=" +
                     encodeURIComponent(message);
 
@@ -998,10 +760,6 @@
                 openWhatsAppRequest
             );
 
-            /*
-             * Prevent normal form submission.
-             * No data is submitted by email.
-             */
             form.addEventListener("submit", (event) => {
                 event.preventDefault();
                 openWhatsAppRequest();
