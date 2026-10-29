@@ -1,1 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Need to Know | Georgian Paragliding Federation</title>
+
+    <meta
+        name="description"
+        content="Before your paragliding flight in Georgia: understand the risks, your responsibilities, safety instructions and preparation requirements."
+    >
+
+    <meta name="theme-color" content="#123b38">
+
+    <link
+        rel="canonical"
+        href="https://paraglidingfederation.ge/Needtoknow.html"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --nk-green: #123b38;
+            --nk-paper: #f5f3ed;
+            --nk-line: #dce2dc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: #18332f;
+            background: var(--nk-paper);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .nk-skip {
+            position: absolute;
+            top: -70px;
+            left: 16px;
+            z-index: 99;
+            padding: 12px;
+            background: white;
+        }
+
+        .nk-skip:focus {
+            top: 10px;
+        }
+
+        /* HEADER */
+
+        .nk-header {
+            background: white;
+        }
+
+        .nk-header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            max-width: 1240px;
+            margin: auto;
+            padding: 20px 24px;
+        }
+
+        .nk-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--nk-green);
+            text-decoration: none;
+        }
+
+        .nk-brand-logo {
+            flex-shrink: 0;
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+            object-fit: contain;
+        }
+
+        .nk-brand-name {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .nk-brand-name small {
+            display: block;
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        .nk-nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 17px;
+        }
+
+        .nk-nav a {
+            color: var(--nk-green);
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .nk-nav a:hover,
+        .nk-nav a[aria-current="page"] {
+            text-decoration: underline;
+            text-underline-offset: 6px;
+        }
+
+        .nk-nav .nk-book {
+            padding: 12px 15px;
+            border-radius: 5px;
+            color: white;
+            background: var(--nk-green);
+        }
+
+        /* HERO IMAGE */
+
+        .nk-hero {
+            position: relative;
+            isolation: isolate;
+            display: flex;
+            align-items: flex-end;
+            min-height: 470px;
+            overflow: hidden;
+            background: var(--nk-green);
+        }
+
+        .nk-hero > img {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nk-hero::after {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(
+                90deg,
+                rgba(8, 31, 28, 0.85),
+                rgba(8, 31, 28, 0.25)
+            );
+            content: "";
+        }
+
+        .nk-hero-content {
+            width: 1150px;
+            max-width: 100%;
+            margin: auto;
+            padding: 75px 28px;
+            color: white;
+        }
+
+        .nk-kicker {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nk-hero h1 {
+            margin: 20px 0;
+            color: white;
+            font-size: clamp(44px, 7vw, 82px);
+            line-height: 1.04;
+            letter-spacing: -2px;
+        }
+
+        .nk-hero p {
+            max-width: 550px;
+            color: white;
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        /* CONTENT */
+
+        .nk-wrap {
+            max-width: 1150px;
+            margin: auto;
+            padding: 44px 28px 65px;
+        }
+
+        .nk-intro {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 35px;
+            padding: 25px 28px;
+            border-radius: 12px;
+            color: white;
+            background: var(--nk-green);
+        }
+
+        .nk-intro strong {
+            min-width: 150px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .nk-intro p {
+            margin: 0;
+            color: white;
+            line-height: 1.75;
+        }
+
+        .nk-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .nk-card {
+            padding: 28px;
+            border: 1px solid var(--nk-line);
+            border-radius: 12px;
+            background: white;
+        }
+
+        .nk-number {
+            color: #557c67;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nk-card h2 {
+            margin: 13px 0 16px;
+            color: #18332f;
+            font-size: 23px;
+            line-height: 1.25;
+        }
+
+        .nk-card p {
+            margin: 0 0 12px;
+            color: #495c55;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .nk-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* PHOTOS */
+
+        .nk-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .nk-photos figure {
+            margin: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #dbe3dc;
+        }
+
+        .nk-photos img {
+            display: block;
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .nk-photos figcaption {
+            padding: 14px 20px;
+            color: #18332f;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* CONTACT AND FOOTER */
+
+        .nk-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #cbd6cc;
+        }
+
+        .nk-bottom p {
+            max-width: 660px;
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .nk-button {
+            display: inline-block;
+            padding: 15px 20px;
+            border-radius: 6px;
+            color: white;
+            background: var(--nk-green);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nk-button:hover {
+            background: #1d5751;
+        }
+
+        .nk-footer {
+            padding: 26px;
+            color: white;
+            background: var(--nk-green);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .nk-footer a {
+            color: inherit;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 1050px) {
+            .nk-header-content {
+                flex-wrap: wrap;
+            }
+
+            .nk-nav {
+                width: 100%;
+            }
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 640px) {
+            .nk-grid,
+            .nk-photos {
+                grid-template-columns: 1fr;
+            }
+
+            .nk-header-content {
+                padding: 18px;
+            }
+
+            .nk-nav {
+                gap: 15px;
+            }
+
+            .nk-hero {
+                min-height: 410px;
+            }
+
+            .nk-hero-content {
+                padding: 55px 22px;
+            }
+
+            .nk-hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .nk-wrap {
+                padding: 28px 18px 45px;
+            }
+
+            .nk-intro,
+            .nk-bottom {
+                flex-direction: column;
+            }
+
+            .nk-intro,
+            .nk-card {
+                padding: 24px;
+            }
+
+            .nk-photos img {
+                height: 240px;
+            }
+
+            .nk-button {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="nk-skip" href="#main">Skip to content</a>
+
+    <header class="nk-header">
+        <div class="nk-header-content">
+            <a class="nk-brand" href="index.html" aria-label="Home">
+                <img
+                    class="nk-brand-logo"
+                    src="images/logo.jpg"
+                    alt="Georgian Paragliding Federation logo"
+                    width="43"
+                    height="43"
+                >
+
+                <span class="nk-brand-name">
+                    Georgian
+                    <small>Paragliding Federation</small>
+                </span>
+            </a>
+
+            <nav class="nk-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="document.html">Documents</a>
+                <a href="Needtoknow.html" aria-current="page">
+                    Need to know
+                </a>
+                <a href="news.html">News</a>
+                <a href="contact.html">Contact</a>
+
+                <a class="nk-book" href="BookYourFlight.html">
+                    Book Your Flight ↗
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="nk-hero" aria-labelledby="page-title">
+            <img
+                src="images/para1.jpg"
+                alt="Paragliding in Georgia"
+                fetchpriority="high"
+            >
+
+            <div class="nk-hero-content">
+                <span class="nk-kicker">Before you fly</span>
+
+                <h1 id="page-title">Need to know.</h1>
+
+                <p>
+                    Understand the risks. Know your responsibilities.
+                    <br>
+                    Prepare for your flight with safety in mind.
+                </p>
+            </div>
+        </section>
+
+        <div class="nk-wrap">
+            <aside class="nk-intro">
+                <strong>
+                    Your safety starts
+                    <br>
+                    before take-off.
+                </strong>
+
+                <p>
+                    Read the information below before participating.
+                    Ask questions, share relevant information with your
+                    operator and follow your pilot’s instructions
+                    throughout the experience.
+                </p>
+            </aside>
+
+            <div class="nk-grid">
+                <article class="nk-card">
+                    <span class="nk-number">01</span>
+
+                    <h2>Understanding the Risks</h2>
+
+                    <p>
+                        Paragliding is an activity that involves risks.
+                        Proper preparation, equipment and adherence to
+                        safety procedures reduce these risks but cannot
+                        completely eliminate the possibility of injury
+                        or other serious consequences.
+                        Before participating, make sure you understand
+                        these risks and make your decision voluntarily.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">02</span>
+
+                    <h2>Making an Informed Decision</h2>
+
+                    <p>
+                        Before flying, familiarise yourself with the
+                        participation conditions and safety instructions.
+                        If anything is unclear, ask your pilot to explain.
+                        Do not begin the flight until you understand what
+                        you will need to do during take-off, flight
+                        and landing.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">03</span>
+
+                    <h2>Your Responsibility</h2>
+
+                    <p>
+                        Participants are responsible for providing
+                        accurate information about their health, weight,
+                        age and any other relevant circumstances,
+                        paying attention during the safety briefing
+                        and following the pilot’s instructions.
+                        Withholding important information or disregarding
+                        instructions may put both the passenger
+                        and the pilot at risk.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">04</span>
+
+                    <h2>Health and Readiness</h2>
+
+                    <p>
+                        Inform your operator in advance about any medical
+                        condition, pregnancy, injury, surgery, mobility
+                        limitation or medication that may affect your
+                        attention, balance or physical ability.
+                        If in doubt, consult a healthcare professional
+                        before participating and share the relevant
+                        information with your operator.
+                    </p>
+
+                    <p>
+                        If you feel unwell, dizzy, extremely tired or
+                        anxious before your flight, tell your pilot
+                        immediately.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">05</span>
+
+                    <h2>Alcohol and Other Substances</h2>
+
+                    <p>
+                        Do not participate in a flight while under the
+                        influence of alcohol, drugs or any other substance
+                        that impairs your reactions, attention
+                        or coordination.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">06</span>
+
+                    <h2>Safety Briefing</h2>
+
+                    <p>
+                        Listen carefully to the safety briefing.
+                        During take-off and landing, act only as
+                        instructed by your pilot.
+                        If you do not understand an instruction or believe
+                        you may be unable to follow it, say so before
+                        take-off.
+                    </p>
+                </article>
+            </div>
+
+            <div class="nk-photos">
+                <figure>
+                    <img
+                        src="images/para2.jpg"
+                        alt="A view of paragliding in Georgia"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        Prepare carefully. Listen to your pilot.
+                    </figcaption>
+                </figure>
+
+                <figure>
+                    <img
+                        src="images/para3.jpg"
+                        alt="Paragliding scenery in Georgia"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+                        Conditions matter. Respect the decision to postpone.
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="nk-grid">
+                <article class="nk-card">
+                    <span class="nk-number">07</span>
+
+                    <h2>Equipment and Personal Belongings</h2>
+
+                    <p>
+                        Do not open, loosen or adjust the fastenings on
+                        your helmet, harness or any other equipment.
+                        If you feel discomfort or notice anything unusual,
+                        inform your pilot immediately.
+                        Use phones, cameras and other personal items only
+                        with the pilot’s agreement and after they have
+                        been securely attached.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">08</span>
+
+                    <h2>Behaviour During the Flight</h2>
+
+                    <p>
+                        Do not touch the controls or equipment mechanisms
+                        unless instructed by your pilot.
+                        Avoid sudden movements and promptly tell your
+                        pilot about any discomfort, nausea or fear.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">09</span>
+
+                    <h2>Weather and the Pilot’s Decision</h2>
+
+                    <p>
+                        Your pilot assesses whether the flight can take
+                        place based on the conditions.
+                        For safety reasons, a flight may be delayed,
+                        changed or cancelled.
+                        Do not pressure the pilot to fly if they consider
+                        the conditions unsuitable.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">10</span>
+
+                    <h2>What to Wear</h2>
+
+                    <p>
+                        Wear comfortable, season-appropriate clothing
+                        and closed-toe footwear with a good grip.
+                        Mountain locations can be cold even in summer,
+                        so bring a warm layer.
+                        Avoid flip-flops and loose items that could fall
+                        during the flight.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">11</span>
+
+                    <h2>Age and Weight Restrictions</h2>
+
+                    <p>
+                        Age and weight limits depend on the operator,
+                        equipment, location and flight conditions.
+                        Provide accurate details when booking and confirm
+                        your eligibility with the operator.
+                        For passengers under 18, check the parent or legal
+                        guardian consent requirements in advance.
+                    </p>
+                </article>
+
+                <article class="nk-card">
+                    <span class="nk-number">12</span>
+
+                    <h2>Weather and Flight Conditions</h2>
+
+                    <p>
+                        Paragliding depends on suitable weather conditions.
+                        Wind, limited visibility, precipitation or other
+                        circumstances may cause a flight to be delayed,
+                        rescheduled or cancelled.
+                        The pilot makes the final decision on whether
+                        to fly.
+                        Before booking, review the operator’s cancellation
+                        and refund policy.
+                    </p>
+                </article>
+            </div>
+
+            <div class="nk-bottom">
+                <p>
+                    This page provides general information.
+                    Confirm the requirements and participation conditions
+                    for your chosen flight directly with your operator.
+                </p>
+
+                <a class="nk-button" href="contact.html">
+                    Have a question? Contact us ↗
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="nk-footer">
+        Georgian Paragliding Federation
+        · <a href="index.html">Home</a>
+        · <a href="contact.html">Contact</a>
+    </footer>
+</body>
+</html>
