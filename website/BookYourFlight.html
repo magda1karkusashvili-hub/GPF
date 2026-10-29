@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 
-    <!-- LANGUAGE BUTTON STYLES -->
     <style>
+        /* LANGUAGE BUTTONS */
+
         .gpf-languages {
             position: fixed;
             right: 18px;
@@ -97,6 +98,66 @@
 
         .gpf-language-spacer {
             height: 95px;
+        }
+
+        /* WHATSAPP ALTERNATIVE */
+
+        .gpf-whatsapp-option {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(18, 59, 56, 0.18);
+        }
+
+        .gpf-whatsapp-option h4 {
+            margin: 0 0 10px;
+            font-size: 19px;
+        }
+
+        .gpf-whatsapp-option p {
+            margin: 0 0 14px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .gpf-whatsapp-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            width: 100%;
+            min-height: 50px;
+            padding: 14px 20px;
+
+            border: 0;
+            border-radius: 8px;
+
+            color: #ffffff;
+            background: #147d42;
+
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .gpf-whatsapp-button:hover {
+            background: #106635;
+        }
+
+        .gpf-whatsapp-button:focus-visible {
+            outline: 3px solid #123b38;
+            outline-offset: 3px;
+        }
+
+        .gpf-whatsapp-button svg {
+            flex-shrink: 0;
+            width: 23px;
+            height: 23px;
+        }
+
+        .gpf-whatsapp-note {
+            margin-top: 12px !important;
+            font-size: 13px !important;
         }
 
         @media (max-width: 600px) {
@@ -185,8 +246,6 @@
     </header>
 
     <main id="main">
-        <!-- Displayed after FormSubmit returns to this page. -->
-
         <section
             id="booking-receipt"
             hidden
@@ -250,8 +309,6 @@
             </div>
         </section>
 
-        <!-- BOOKING FORM -->
-
         <section class="section booking-section">
             <div class="container booking-layout">
                 <div class="booking-intro">
@@ -284,12 +341,14 @@
                             </li>
 
                             <li>
-                                Send your request and complete the
-                                security check if prompted.
+                                Send your request by email, or use
+                                the alternative WhatsApp button.
                             </li>
 
                             <li>
-                                Check your inbox and Spam folder.
+                                For email requests, check your inbox
+                                and Spam folder. For WhatsApp requests,
+                                press Send in the WhatsApp chat.
                                 Our team will contact you to confirm
                                 your flight arrangements.
                             </li>
@@ -513,18 +572,21 @@
                         >
 
                         <span>
-                            I agree to send these details through
-                            FormSubmit to the Georgian Paragliding
-                            Federation so the team can process my
-                            request and contact me about my flight.
+                            I agree to share these details with the
+                            Georgian Paragliding Federation through
+                            FormSubmit or WhatsApp, depending on my
+                            selected sending method, so the team can
+                            process my request and contact me about
+                            my flight.
                         </span>
                     </label>
 
+                    <!-- PRIMARY OPTION: EMAIL -->
                     <button
                         class="button button-primary form-submit"
                         type="submit"
                     >
-                        Send Flight Request ↗
+                        Send Flight Request by Email ↗
                     </button>
 
                     <p class="form-help">
@@ -532,6 +594,77 @@
                         Please check your inbox and Spam or Junk folder
                         for our email.
                     </p>
+
+                    <!-- ALTERNATIVE OPTION: WHATSAPP -->
+                    <div class="gpf-whatsapp-option">
+                        <h4>Prefer WhatsApp?</h4>
+
+                        <p>
+                            If email submission is unavailable, or you
+                            prefer WhatsApp, send the same flight
+                            request directly to our team.
+                        </p>
+
+                        <button
+                            class="gpf-whatsapp-button"
+                            id="whatsapp-booking-button"
+                            type="button"
+                            aria-describedby="whatsapp-booking-note"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5
+                                    9 9 0 0 1-4-.9L3 21l1.9-5.5
+                                    a9 9 0 0 1-.9-4A8.5 8.5 0 0 1
+                                    12.5 3H13a8.5 8.5 0 0 1 8 8v.5Z"
+                                ></path>
+
+                                <path
+                                    d="M9 8.5c.5 3 2 4.5 5 5l1-1.5
+                                    2 1c.2 1.5-.8 2.5-2.2 2.3
+                                    -4.1-.6-6.5-3-7.1-7.1
+                                    C7.5 6.8 8.5 5.8 10 6l1 2Z"
+                                ></path>
+                            </svg>
+
+                            Send via WhatsApp
+                        </button>
+
+                        <p
+                            class="gpf-whatsapp-note"
+                            id="whatsapp-booking-note"
+                        >
+                            WhatsApp will open with your completed
+                            request. Press Send in WhatsApp to deliver
+                            it to +995 599 33 44 86.
+                            Opening the chat does not send the request
+                            or confirm a booking.
+                        </p>
+
+                        <noscript>
+                            <p>
+                                To send your completed form through
+                                WhatsApp, enable JavaScript.
+                                Alternatively,
+                                <a
+                                    href="https://wa.me/995599334486"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    open our WhatsApp chat
+                                </a>
+                                and type your flight request.
+                            </p>
+                        </noscript>
+                    </div>
                 </form>
             </div>
         </section>
@@ -556,6 +689,76 @@
         </div>
     </footer>
 
-   
+    <!-- WHATSAPP ALTERNATIVE SCRIPT -->
+    <script>
+        (() => {
+            const form = document.getElementById(
+                "flight-request-form"
+            );
+
+            const whatsappButton = document.getElementById(
+                "whatsapp-booking-button"
+            );
+
+            if (!form || !whatsappButton) return;
+
+            const companyWhatsApp = "995599334486";
+
+            function getValue(id) {
+                const field = document.getElementById(id);
+
+                return field ? field.value.trim() : "";
+            }
+
+            whatsappButton.addEventListener("click", () => {
+                /*
+                 * Validate all required fields, including consent.
+                 * This button does not submit the email form.
+                 */
+                if (!form.reportValidity()) return;
+
+                const message = [
+                    "NEW FLIGHT REQUEST 🪂",
+                    "Georgian Paragliding Federation",
+                    "",
+                    "Name: " + getValue("request-name"),
+                    "Phone: " + getValue("request-phone"),
+                    "Email: " + getValue("request-email"),
+                    "Location: " + getValue("request-location"),
+                    "Preferred date: " + getValue("request-date"),
+                    "Participants: " + getValue("request-people"),
+                    "",
+                    "Additional information:",
+                    getValue("request-message") || "Not provided",
+                    "",
+                    "Please confirm availability and flight arrangements."
+                ].join("\n");
+
+                /*
+                 * All locations use this same company number.
+                 * The user must press Send in WhatsApp.
+                 */
+                const whatsappURL =
+                    "https://wa.me/" +
+                    companyWhatsApp +
+                    "?text=" +
+                    encodeURIComponent(message);
+
+                /*
+                 * Open WhatsApp in a new tab so the booking
+                 * form remains available with the entered details.
+                 */
+                const link = document.createElement("a");
+
+                link.href = whatsappURL;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            });
+        })();
+    </script>
 </body>
 </html>
