@@ -632,21 +632,18 @@
 
                 if (!phone) return;
 
-                const message = [
-                    "NEW ADVENTURE REQUEST",
-                    "",
-                    "Hello, I am interested in your company’s services and would like to go paragliding.",
-                    "Please confirm receipt of this message.",
-                    "",
-                    "Location: " + locationField.value,
-                    "Preferred date: " + getValue("adventure-date"),
-                    "Participants: " + getValue("adventure-people"),
-                    "Name: " + getValue("adventure-name"),
-                    "Phone: " + getValue("adventure-phone"),
-                    "",
-                    "Additional information:",
-                    getValue("adventure-message") || "Not provided"
-                ].join("\n");
+const message = [
+    "NEW ADVENTURE REQUEST",
+    "",
+    "Hello, I am interested in your company’s services and would like to go paragliding.",
+    "Please confirm receipt of this message.",
+    "",
+    "Location: " + locationField.value,
+    "Preferred date: " + getValue("adventure-date"),
+    "Participants: " + getValue("adventure-people"),
+    "Name: " + getValue("adventure-name"),
+    "Phone: " + getValue("adventure-phone")
+].join("\n");
 
                 const whatsappURL =
                     "https://wa.me/" +
