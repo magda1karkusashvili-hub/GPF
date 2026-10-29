@@ -13,14 +13,125 @@
         content="Book your paragliding experience with the Georgian Paragliding Federation."
     >
 
-    <title>Book Your Flight | Georgian Paragliding Federation</title>
+    <title>
+        Book Your Flight | Georgian Paragliding Federation
+    </title>
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+
+    <!-- LANGUAGE BUTTON STYLES -->
+    <style>
+        .gpf-languages {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 9999;
+
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            max-width: calc(100vw - 24px);
+            padding: 8px;
+
+            border: 1px solid rgba(18, 59, 56, 0.15);
+            border-radius: 16px;
+
+            background: #ffffff;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.16);
+        }
+
+        .gpf-languages .gpf-language {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+
+            width: 45px;
+            min-height: 49px;
+            padding: 5px;
+
+            border: 1px solid transparent;
+            border-radius: 10px;
+
+            color: #123b38;
+            background: transparent;
+
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .gpf-languages .gpf-language:hover {
+            border-color: #c7d7cc;
+            background: #edf3ee;
+        }
+
+        .gpf-languages .gpf-language:focus-visible {
+            outline: 3px solid #123b38;
+            outline-offset: 2px;
+        }
+
+        .gpf-language-flag {
+            font-family:
+                "Apple Color Emoji",
+                "Segoe UI Emoji",
+                "Noto Color Emoji",
+                sans-serif;
+
+            font-size: 23px;
+            line-height: 1;
+        }
+
+        .gpf-language-code {
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+
+        .gpf-language-spacer {
+            height: 95px;
+        }
+
+        @media (max-width: 600px) {
+            .gpf-languages {
+                right: 12px;
+                bottom: calc(
+                    12px + env(safe-area-inset-bottom, 0px)
+                );
+                gap: 2px;
+                padding: 6px;
+            }
+
+            .gpf-languages .gpf-language {
+                width: 40px;
+                min-height: 46px;
+            }
+
+            .gpf-language-flag {
+                font-size: 22px;
+            }
+        }
+
+        @media print {
+            .gpf-languages,
+            .gpf-language-spacer {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">
+        Skip to content
+    </a>
 
     <header class="site-header">
         <div class="container header-content">
@@ -67,7 +178,7 @@
                     href="BookYourFlight.html"
                     aria-current="page"
                 >
-                    Book Your Flight 
+                    Book Your Flight
                 </a>
             </nav>
         </div>
@@ -91,7 +202,9 @@
                         Your next adventure starts here
                     </h1>
 
-                    <p>Your flight request has been submitted</p>
+                    <p>
+                        Your flight request has been submitted
+                    </p>
                 </header>
 
                 <div class="receipt-body">
@@ -137,7 +250,7 @@
             </div>
         </section>
 
-        <!-- Booking form -->
+        <!-- BOOKING FORM -->
 
         <section class="section booking-section">
             <div class="container booking-layout">
@@ -259,12 +372,29 @@
                             name="Location"
                             required
                         >
-                            <option value="">Choose a location</option>
-                            <option value="Tbilisi Sea">Tbilisi Sea</option>
-                            <option value="Gudauri">Gudauri</option>
-                            <option value="Ananuri">Ananuri</option>
-                            <option value="Mestia">Mestia</option>
-                            <option value="Bakuriani">Bakuriani</option>
+                            <option value="">
+                                Choose a location
+                            </option>
+
+                            <option value="Tbilisi Sea">
+                                Tbilisi Sea
+                            </option>
+
+                            <option value="Gudauri">
+                                Gudauri
+                            </option>
+
+                            <option value="Ananuri">
+                                Ananuri
+                            </option>
+
+                            <option value="Mestia">
+                                Mestia
+                            </option>
+
+                            <option value="Bakuriani">
+                                Bakuriani
+                            </option>
                         </select>
                     </div>
 
@@ -301,7 +431,9 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="request-name">Full name</label>
+                        <label for="request-name">
+                            Full name
+                        </label>
 
                         <input
                             id="request-name"
@@ -316,7 +448,9 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="request-phone">Phone number</label>
+                        <label for="request-phone">
+                            Phone number
+                        </label>
 
                         <input
                             id="request-phone"
@@ -340,7 +474,9 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="request-email">Email</label>
+                        <label for="request-email">
+                            Email
+                        </label>
 
                         <input
                             id="request-email"
@@ -403,7 +539,9 @@
 
     <footer class="site-footer">
         <div class="container">
-            <strong>Georgian Paragliding Federation</strong>
+            <strong>
+                Georgian Paragliding Federation
+            </strong>
 
             <div class="footer-bottom">
                 <p>
@@ -411,252 +549,170 @@
                     All rights reserved.
                 </p>
 
-                <a href="contact.html">Contact us ↗</a>
+                <a href="contact.html">
+                    Contact us ↗
+                </a>
             </div>
         </div>
     </footer>
+
     <!-- LANGUAGE BUTTONS: START -->
 
-<style>
-    .gpf-languages {
-        position: fixed;
-        right: 18px;
-        bottom: 18px;
-        z-index: 9999;
+    <div
+        class="gpf-language-spacer"
+        aria-hidden="true"
+    ></div>
 
-        display: flex;
-        align-items: center;
-        gap: 5px;
+    <nav
+        class="gpf-languages"
+        aria-label="Choose page language"
+        translate="no"
+        dir="ltr"
+    >
+        <!-- ENGLISH -->
+        <a
+            class="gpf-language"
+            data-gpf-language="en"
+            href="https://paraglidingfederation.ge/"
+            aria-label="English — original page"
+            title="English"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇬🇧</span>
 
-        max-width: calc(100vw - 24px);
-        padding: 8px;
+            <span class="gpf-language-code">EN</span>
+        </a>
 
-        border: 1px solid rgba(18, 59, 56, 0.15);
-        border-radius: 16px;
+        <!-- GEORGIAN -->
+        <a
+            class="gpf-language"
+            data-gpf-language="ka"
+            href="https://translate.google.com/"
+            aria-label="ქართული — ავტომატური თარგმანი"
+            title="ქართული"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇬🇪</span>
 
-        background: #ffffff;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.16);
-    }
+            <span class="gpf-language-code">KA</span>
+        </a>
 
-    .gpf-languages .gpf-language {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
+        <!-- FRENCH -->
+        <a
+            class="gpf-language"
+            data-gpf-language="fr"
+            href="https://translate.google.com/"
+            aria-label="Français — traduction automatique"
+            title="Français"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇫🇷</span>
 
-        width: 45px;
-        min-height: 49px;
-        padding: 5px;
+            <span class="gpf-language-code">FR</span>
+        </a>
 
-        border: 1px solid transparent;
-        border-radius: 10px;
+        <!-- ARABIC -->
+        <a
+            class="gpf-language"
+            data-gpf-language="ar"
+            href="https://translate.google.com/"
+            aria-label="العربية — ترجمة آلية"
+            title="العربية"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇸🇦</span>
 
-        color: #123b38;
-        background: transparent;
+            <span class="gpf-language-code">AR</span>
+        </a>
 
-        font-family: Arial, sans-serif;
-        text-decoration: none;
+        <!-- CHINESE: SIMPLIFIED -->
+        <a
+            class="gpf-language"
+            data-gpf-language="zh-CN"
+            href="https://translate.google.com/"
+            aria-label="简体中文 — 自动翻译"
+            title="中文（简体）"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇨🇳</span>
 
-        transition:
-            background 0.2s ease,
-            border-color 0.2s ease;
-    }
+            <span class="gpf-language-code">ZH</span>
+        </a>
+    </nav>
 
-    .gpf-languages .gpf-language:hover {
-        border-color: #c7d7cc;
-        background: #edf3ee;
-    }
-
-    .gpf-languages .gpf-language:focus-visible {
-        outline: 3px solid #123b38;
-        outline-offset: 2px;
-    }
-
-    .gpf-language-flag {
-        font-family:
-            "Apple Color Emoji",
-            "Segoe UI Emoji",
-            "Noto Color Emoji",
-            sans-serif;
-        font-size: 23px;
-        line-height: 1;
-    }
-
-    .gpf-language-code {
-        font-size: 10px;
-        font-weight: 700;
-        line-height: 1.2;
-        letter-spacing: 0.5px;
-    }
-
-    /* Space to keep the buttons clear of the footer. */
-    .gpf-language-spacer {
-        height: 95px;
-    }
-
-    @media (max-width: 600px) {
-        .gpf-languages {
-            right: 12px;
-            bottom: calc(
-                12px + env(safe-area-inset-bottom, 0px)
+    <script>
+        (() => {
+            const originalPage = new URL(
+                window.location.href
             );
-            gap: 2px;
-            padding: 6px;
-        }
 
-        .gpf-languages .gpf-language {
-            width: 40px;
-            min-height: 46px;
-        }
+            /*
+             * Restore the original website domain when
+             * viewing the page through Google Translate.
+             */
+            originalPage.protocol = "https:";
+            originalPage.hostname = "paraglidingfederation.ge";
+            originalPage.port = "";
 
-        .gpf-language-flag {
-            font-size: 22px;
-        }
-    }
-
-    @media print {
-        .gpf-languages,
-        .gpf-language-spacer {
-            display: none;
-        }
-    }
-</style>
-
-<div class="gpf-language-spacer" aria-hidden="true"></div>
-
-<nav
-    class="gpf-languages"
-    aria-label="Choose page language"
-    translate="no"
-    dir="ltr"
->
-    <!-- ENGLISH -->
-    <a
-        class="gpf-language"
-        data-gpf-language="en"
-        href="https://paraglidingfederation.ge/"
-        aria-label="English — original page"
-        title="English"
-    >
-        <span class="gpf-language-flag" aria-hidden="true">
-            🇬🇧
-        </span>
-
-        <span class="gpf-language-code">EN</span>
-    </a>
-
-    <!-- GEORGIAN -->
-    <a
-        class="gpf-language"
-        data-gpf-language="ka"
-        href="https://translate.google.com/"
-        aria-label="ქართული — ავტომატური თარგმანი"
-        title="ქართული"
-    >
-        <span class="gpf-language-flag" aria-hidden="true">
-            🇬🇪
-        </span>
-
-        <span class="gpf-language-code">KA</span>
-    </a>
-
-    <!-- FRENCH -->
-    <a
-        class="gpf-language"
-        data-gpf-language="fr"
-        href="https://translate.google.com/"
-        aria-label="Français — traduction automatique"
-        title="Français"
-    >
-        <span class="gpf-language-flag" aria-hidden="true">
-            🇫🇷
-        </span>
-
-        <span class="gpf-language-code">FR</span>
-    </a>
-
-    <!-- ARABIC -->
-    <a
-        class="gpf-language"
-        data-gpf-language="ar"
-        href="https://translate.google.com/"
-        aria-label="العربية — ترجمة آلية"
-        title="العربية"
-    >
-        <span class="gpf-language-flag" aria-hidden="true">
-            🇸🇦
-        </span>
-
-        <span class="gpf-language-code">AR</span>
-    </a>
-
-    <!-- CHINESE: SIMPLIFIED -->
-    <a
-        class="gpf-language"
-        data-gpf-language="zh-CN"
-        href="https://translate.google.com/"
-        aria-label="简体中文 — 自动翻译"
-        title="中文（简体）"
-    >
-        <span class="gpf-language-flag" aria-hidden="true">
-            🇨🇳
-        </span>
-
-        <span class="gpf-language-code">ZH</span>
-    </a>
-</nav>
-
-<script>
-    (() => {
-        const originalPage = new URL(window.location.href);
-
-        /*
-         * Use the original website address, including when the page
-         * is being displayed through Google Translate.
-         */
-        originalPage.protocol = "https:";
-        originalPage.hostname = "paraglidingfederation.ge";
-        originalPage.port = "";
-
-        /*
-         * Remove Google Translate parameters while preserving
-         * the current page path and other URL parameters.
-         */
-        for (const name of [...originalPage.searchParams.keys()]) {
-            if (name.startsWith("_x_tr_")) {
-                originalPage.searchParams.delete(name);
-            }
-        }
-
-        const languageLinks = document.querySelectorAll(
-            ".gpf-languages [data-gpf-language]"
-        );
-
-        languageLinks.forEach((link) => {
-            const language = link.dataset.gpfLanguage;
-
-            if (language === "en") {
-                link.href = originalPage.href;
-                return;
+            /*
+             * Remove Google Translate parameters.
+             */
+            for (
+                const name of [
+                    ...originalPage.searchParams.keys()
+                ]
+            ) {
+                if (name.startsWith("_x_tr_")) {
+                    originalPage.searchParams.delete(name);
+                }
             }
 
-            const translatedPage = new URL(
-                "https://translate.google.com/translate"
+            const languageLinks = document.querySelectorAll(
+                ".gpf-languages [data-gpf-language]"
             );
 
-            translatedPage.searchParams.set("sl", "en");
-            translatedPage.searchParams.set("tl", language);
-            translatedPage.searchParams.set(
-                "u",
-                originalPage.href
-            );
+            languageLinks.forEach((link) => {
+                const language = link.dataset.gpfLanguage;
 
-            link.href = translatedPage.href;
-        });
-    })();
-</script>
+                if (language === "en") {
+                    link.href = originalPage.href;
+                    return;
+                }
 
-<!-- LANGUAGE BUTTONS: END -->
+                const translatedPage = new URL(
+                    "https://translate.google.com/translate"
+                );
+
+                translatedPage.searchParams.set(
+                    "sl",
+                    "en"
+                );
+
+                translatedPage.searchParams.set(
+                    "tl",
+                    language
+                );
+
+                translatedPage.searchParams.set(
+                    "u",
+                    originalPage.href
+                );
+
+                link.href = translatedPage.href;
+            });
+        })();
+    </script>
+
+    <!-- LANGUAGE BUTTONS: END -->
 </body>
 </html>
