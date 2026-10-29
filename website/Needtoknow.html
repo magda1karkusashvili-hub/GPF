@@ -192,27 +192,75 @@
             padding: 44px 28px 65px;
         }
 
+        /* SAFETY INTRO */
+
         .nk-intro {
-            display: flex;
-            align-items: flex-start;
-            gap: 24px;
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr);
+            align-items: center;
+            gap: 32px;
             margin-bottom: 35px;
-            padding: 25px 28px;
-            border-radius: 12px;
-            color: white;
-            background: var(--nk-green);
+            padding: 36px 38px;
+            border: 1px solid #d4dfd5;
+            border-left: 5px solid var(--nk-green);
+            border-radius: 18px;
+            color: var(--nk-green);
+            background: linear-gradient(120deg, #ffffff, #eaf0e7);
+            box-shadow: 0 12px 32px rgba(18, 59, 56, 0.06);
+        }
+
+        .nk-intro-heading {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            min-width: 0;
+        }
+
+        .nk-intro-icon {
+            display: grid;
+            flex: 0 0 52px;
+            width: 52px;
+            height: 58px;
+            place-items: center;
+            border-radius: 16px;
+            color: var(--nk-green);
+            background: #dce8d9;
+        }
+
+        .nk-intro-icon svg {
+            width: 28px;
+            height: 28px;
         }
 
         .nk-intro strong {
-            min-width: 150px;
-            color: white;
-            font-size: 20px;
+            color: var(--nk-green);
+            font-size: clamp(22px, 2.4vw, 29px);
+            line-height: 1.25;
+            letter-spacing: -0.7px;
         }
 
         .nk-intro p {
             margin: 0;
-            color: white;
-            line-height: 1.75;
+            padding-left: 30px;
+            border-left: 1px solid #cbd8cb;
+            color: #42594f;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        @media (max-width: 760px) {
+            .nk-intro {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                padding: 28px 24px;
+            }
+
+            .nk-intro p {
+                padding: 20px 0 0;
+                border-left: 0;
+                border-top: 1px solid #cbd8cb;
+            }
         }
 
         .nk-grid {
@@ -453,11 +501,29 @@
 
         <div class="nk-wrap">
             <aside class="nk-intro">
-                <strong>
-                    Your safety starts
-                    <br>
-                    before take-off.
-                </strong>
+                <div class="nk-intro-heading">
+                    <span class="nk-intro-icon" aria-hidden="true">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path
+                                d="M12 3 20 6v6c0 4.5-5 8-8 9-3-1-8-4.5-8-9V6l8-3Z"
+                            />
+                            <path d="m8.5 12 2.3 2.3 4.7-4.7" />
+                        </svg>
+                    </span>
+
+                    <strong>
+                        Your safety starts
+                        <br>
+                        before take-off.
+                    </strong>
+                </div>
 
                 <p>
                     Read the information below before participating.
