@@ -1,1 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
+    <title>Flying Paragliders</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: grid;
+            min-height: 100vh;
+            margin: 0;
+            padding: 24px;
+            place-items: center;
+            background: #fafaf6;
+            font-family: Arial, sans-serif;
+        }
+
+        .flight-scene {
+            width: min(900px, 100%);
+            margin: 0;
+        }
+
+        .flight-frame {
+            overflow: hidden;
+            border-radius: 20px;
+            background: #123b38;
+            box-shadow: 0 18px 50px rgb(0 0 0 / 15%);
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .flight-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: 0;
+            border-radius: 24px;
+            background: #123b38;
+            color: white;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        button:focus-visible {
+            outline: 3px solid #edba65;
+            outline-offset: 4px;
+        }
+
+        .error {
+            color: #963c28;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <figure class="flight-scene">
+        <div class="flight-frame">
+            <canvas
+                id="flight-canvas"
+                width="600"
+                height="402"
+                role="img"
+                aria-label="Two paragliders flying above snowy mountains"
+            ></canvas>
+        </div>
+
+        <div class="flight-controls">
+            <button id="motion-button" type="button" disabled>
+                Pause
+            </button>
+        </div>
+
+        <p id="error" class="error" hidden></p>
+    </figure>
+
+    <script>
+        const canvas = document.getElementById("flight-canvas");
+        const context = canvas.getContext("2d");
+
+        const button = document.getElementById("motion-button");
+        const error = document.getElementById("error");
+
+        const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
+
+        const photo = new Image();
+
+        let background;
+        let gliders = [];
+        let running = !reducedMotion.matches;
+        let animationId = null;
+        let elapsed = 0;
+        let previousTime = null;
+
+        function makeCanvas(width, height) {
+            const element = document.createElement("canvas");
+            element.width = width;
+            element.height = height;
+            return element;
+        }
+
+        /*
+         * Coordinates match the supplied 600 × 402 photograph.
+         * Each polygon includes a canopy, lines and its pilot.
+         */
+        const shapes = [
+            {
+                points: [
+                    [244, 114],
+                    [247, 99],
+                    [269, 86],
+                    [295, 83],
+                    [324, 90],
+                    [350, 106],
+                    [374, 129],
+                    [391, 152],
+                    [389, 171],
+                    [376, 170],
+                    [296, 222],
+                    [306, 239],
+                    [298, 253],
+                    [280, 253],
+                    [278, 237],
+                    [287, 220],
+                    [257, 123]
+                ],
+                centerX: 306,
+                centerY: 165,
+                phase: 0,
+                speed: 0.7,
+                distanceX: 12,
+                distanceY: 7,
+                rotation: 0.018
+            },
+            {
+                points: [
+                    [117, 208],
+                    [118, 195],
+                    [133, 181],
+                    [154, 173],
+                    [179, 172],
+                    [201, 180],
+                    [220, 193],
+                    [226, 207],
+                    [177, 260],
+                    [180, 277],
+                    [165, 281],
+                    [160, 270],
+                    [166, 256],
+                    [124, 210]
+                ],
+                centerX: 171,
+                centerY: 225,
+                phase: 2,
+                speed: 0.55,
+                distanceX: 9,
+                distanceY: 5,
+                rotation: 0.022
+            }
+        ];
+
+        function polygonPath(points) {
+            const path = new Path2D();
+
+            points.forEach(([x, y], index) => {
+                if (index === 0) {
+                    path.moveTo(x, y);
+                } else {
+                    path.lineTo(x, y);
+                }
+            });
+
+            path.closePath();
+            return path;
+        }
+
+        function buildScene() {
+            const width = 600;
+            const height = 402;
+
+            const original = makeCanvas(width, height);
+            const originalContext = original.getContext("2d");
+
+            originalContext.drawImage(photo, 0, 0, width, height);
+
+            background = makeCanvas(width, height);
+
+            const backgroundContext = background.getContext("2d");
+            backgroundContext.drawImage(original, 0, 0);
+
+            const pixels = originalContext.getImageData(
+                0, 0, width, height
+            );
+
+            const cleaned = backgroundContext.getImageData(
+                0, 0, width, height
+            );
+
+            const maskCanvas = makeCanvas(width, height);
+            const maskContext = maskCanvas.getContext("2d");
+
+            shapes.forEach((shape) => {
+                maskContext.fill(polygonPath(shape.points));
+            });
+
+            const mask = maskContext.getImageData(
+                0, 0, width, height
+            ).data;
+
+            /*
+             * Reconstruct the background using neighbouring
+             * pixels on each horizontal row.
+             */
+            for (let y = 0; y < height; y++) {
+                let x = 0;
+
+                while (x < width) {
+                    const index = (y * width + x) * 4;
+
+                    if (mask[index + 3] === 0) {
+                        x++;
+                        continue;
+                    }
+
+                    const start = x;
+
+                    while (
+                        x < width &&
+                        mask[(y * width + x) * 4 + 3] > 0
+                    ) {
+                        x++;
+                    }
+
+                    const end = x - 1;
+                    const left = Math.max(0, start - 2);
+                    const right = Math.min(width - 1, end + 2);
+
+                    const leftIndex = (y * width + left) * 4;
+                    const rightIndex = (y * width + right) * 4;
+
+                    for (let fillX = start; fillX <= end; fillX++) {
+                        const amount =
+                            (fillX - left) / (right - left || 1);
+
+                        const target = (y * width + fillX) * 4;
+
+                        for (let channel = 0; channel < 3; channel++) {
+                            cleaned.data[target + channel] =
+                                pixels.data[leftIndex + channel] *
+                                (1 - amount) +
+                                pixels.data[rightIndex + channel] *
+                                amount;
+                        }
+
+                        cleaned.data[target + 3] = 255;
+                    }
+                }
+            }
+
+            backgroundContext.putImageData(cleaned, 0, 0);
+
+            /*
+             * Build separate transparent glider layers.
+             * Compare each pixel with the reconstructed background
+             * to reduce the amount of sky carried with the gliders.
+             */
+            gliders = shapes.map((shape) => {
+                const layer = makeCanvas(width, height);
+                const layerContext = layer.getContext("2d");
+
+                const individualMask = makeCanvas(width, height);
+                const individualContext = individualMask.getContext("2d");
+
+                individualContext.fill(polygonPath(shape.points));
+
+                const selection = individualContext.getImageData(
+                    0, 0, width, height
+                ).data;
+
+                const output = layerContext.createImageData(
+                    width, height
+                );
+
+                for (let i = 0; i < pixels.data.length; i += 4) {
+                    if (selection[i + 3] === 0) {
+                        continue;
+                    }
+
+                    const difference = Math.max(
+                        Math.abs(pixels.data[i] - cleaned.data[i]),
+                        Math.abs(
+                            pixels.data[i + 1] - cleaned.data[i + 1]
+                        ),
+                        Math.abs(
+                            pixels.data[i + 2] - cleaned.data[i + 2]
+                        )
+                    );
+
+                    const opacity = Math.min(
+                        1,
+                        Math.max(0, (difference - 10) / 24)
+                    );
+
+                    output.data[i] = pixels.data[i];
+                    output.data[i + 1] = pixels.data[i + 1];
+                    output.data[i + 2] = pixels.data[i + 2];
+                    output.data[i + 3] = Math.round(opacity * 255);
+                }
+
+                layerContext.putImageData(output, 0, 0);
+
+                return {
+                    ...shape,
+                    layer
+                };
+            });
+        }
+
+        function drawScene(seconds) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(background, 0, 0);
+
+            gliders.forEach((glider) => {
+                const time =
+                    seconds * glider.speed + glider.phase;
+
+                const x = Math.sin(time) * glider.distanceX;
+                const y = Math.sin(time * 1.3) * glider.distanceY;
+                const angle = Math.sin(time * 0.8) * glider.rotation;
+
+                context.save();
+
+                context.translate(
+                    glider.centerX + x,
+                    glider.centerY + y
+                );
+
+                context.rotate(angle);
+
+                context.drawImage(
+                    glider.layer,
+                    -glider.centerX,
+                    -glider.centerY
+                );
+
+                context.restore();
+            });
+        }
+
+        function frame(timestamp) {
+            if (!running) {
+                animationId = null;
+                return;
+            }
+
+            if (previousTime !== null) {
+                elapsed += Math.min(
+                    (timestamp - previousTime) / 1000,
+                    0.05
+                );
+            }
+
+            previousTime = timestamp;
+            drawScene(elapsed);
+            animationId = requestAnimationFrame(frame);
+        }
+
+        function updatePlayback() {
+            button.textContent = running ? "Pause" : "Play";
+
+            if (animationId !== null) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+
+            previousTime = null;
+
+            if (running && !document.hidden) {
+                animationId = requestAnimationFrame(frame);
+            }
+        }
+
+        button.addEventListener("click", () => {
+            running = !running;
+            updatePlayback();
+        });
+
+        document.addEventListener("visibilitychange", () => {
+            if (background) {
+                updatePlayback();
+            }
+        });
+
+        reducedMotion.addEventListener("change", (event) => {
+            if (event.matches) {
+                running = false;
+
+                if (background) {
+                    updatePlayback();
+                }
+            }
+        });
+
+        photo.onload = () => {
+            try {
+                buildScene();
+                drawScene(0);
+                button.disabled = false;
+                updatePlayback();
+            } catch (problem) {
+                context.drawImage(photo, 0, 0, 600, 402);
+                error.hidden = false;
+                error.textContent =
+                    "Open this page through your website or a local web server.";
+            }
+        };
+
+        photo.onerror = () => {
+            error.hidden = false;
+            error.textContent =
+                "Photo not found. Check images/para10.jpg.";
+        };
+
+        photo.src = "images/para10.jpg";
+    </script>
+</body>
+</html>
