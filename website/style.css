@@ -1251,4 +1251,70 @@ h3 {
         transition: none !important;
         animation: none !important;
     }
+}
+
+/* =========================
+   GALLERY FLOATING ANIMATION
+========================= */
+
+.gallery-grid > .gallery-item {
+    --float-height: -10px;
+    animation: gallery-float 7s ease-in-out infinite;
+}
+
+.gallery-grid > .gallery-item:nth-child(2n) {
+    animation-delay: -2s;
+    animation-duration: 8s;
+}
+
+.gallery-grid > .gallery-item:nth-child(3n) {
+    animation-delay: -4s;
+    animation-duration: 9s;
+}
+
+.gallery-grid > .gallery-item:nth-child(4n) {
+    animation-delay: -1s;
+    animation-duration: 7.5s;
+}
+
+.gallery-grid > .gallery-item:hover,
+.gallery-grid > .gallery-item:focus-within {
+    animation-play-state: paused;
+}
+
+@keyframes gallery-float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
     }
+
+    25% {
+        transform:
+            translateY(calc(var(--float-height) * 0.5))
+            rotate(0.4deg);
+    }
+
+    50% {
+        transform:
+            translateY(var(--float-height))
+            rotate(-0.4deg);
+    }
+
+    75% {
+        transform:
+            translateY(calc(var(--float-height) * 0.4))
+            rotate(0.3deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-grid > .gallery-item {
+        --float-height: -6px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-grid > .gallery-item {
+        animation: none;
+    }
+}
