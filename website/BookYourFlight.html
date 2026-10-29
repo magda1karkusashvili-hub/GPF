@@ -20,8 +20,6 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* CONTACT BUTTONS */
-
         .adventure-actions {
             display: grid;
             gap: 12px;
@@ -81,108 +79,6 @@
             margin: 26px 0;
             border: 0;
             border-top: 1px solid rgba(18, 59, 56, 0.18);
-        }
-
-        /* LANGUAGE BUTTONS */
-
-        .gpf-languages {
-            position: fixed;
-            right: 18px;
-            bottom: 18px;
-            z-index: 9999;
-
-            display: flex;
-            align-items: center;
-            gap: 5px;
-
-            max-width: calc(100vw - 24px);
-            padding: 8px;
-
-            border: 1px solid rgba(18, 59, 56, 0.15);
-            border-radius: 16px;
-
-            background: #ffffff;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.16);
-        }
-
-        .gpf-languages .gpf-language {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-
-            width: 45px;
-            min-height: 49px;
-            padding: 5px;
-
-            border: 1px solid transparent;
-            border-radius: 10px;
-
-            color: #123b38;
-            background: transparent;
-
-            font-family: Arial, sans-serif;
-            text-decoration: none;
-        }
-
-        .gpf-languages .gpf-language:hover {
-            border-color: #c7d7cc;
-            background: #edf3ee;
-        }
-
-        .gpf-languages .gpf-language:focus-visible {
-            outline: 3px solid #123b38;
-            outline-offset: 2px;
-        }
-
-        .gpf-language-flag {
-            font-family:
-                "Apple Color Emoji",
-                "Segoe UI Emoji",
-                "Noto Color Emoji",
-                sans-serif;
-
-            font-size: 23px;
-            line-height: 1;
-        }
-
-        .gpf-language-code {
-            font-size: 10px;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.5px;
-        }
-
-        .gpf-language-spacer {
-            height: 95px;
-        }
-
-        @media (max-width: 600px) {
-            .gpf-languages {
-                right: 12px;
-                bottom: calc(
-                    12px + env(safe-area-inset-bottom, 0px)
-                );
-                gap: 2px;
-                padding: 6px;
-            }
-
-            .gpf-languages .gpf-language {
-                width: 40px;
-                min-height: 46px;
-            }
-
-            .gpf-language-flag {
-                font-size: 22px;
-            }
-        }
-
-        @media print {
-            .gpf-languages,
-            .gpf-language-spacer {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -462,7 +358,7 @@
                         <button
                             class="adventure-action adventure-whatsapp"
                             id="adventure-whatsapp-button"
-                            type="button"
+                            type="submit"
                             aria-describedby="adventure-whatsapp-note"
                         >
                             Continue to WhatsApp ↗
@@ -510,10 +406,10 @@
         </div>
     </footer>
 
-  
-
     <script>
         (() => {
+            "use strict";
+
             /* MOBILE MENU */
 
             const menuButton = document.getElementById(
@@ -523,6 +419,23 @@
             const menu = document.getElementById(
                 "main-menu"
             );
+
+            function closeMenu() {
+                if (!menu || !menuButton) return;
+
+                menu.classList.remove(
+                    "is-open",
+                    "open",
+                    "active"
+                );
+
+                menu.style.removeProperty("display");
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
 
             if (menuButton && menu) {
                 menuButton.addEventListener("click", () => {
@@ -541,35 +454,30 @@
                         !expanded
                     );
 
-                    menu.classList.toggle(
-                        "open",
-                        !expanded
-                    );
-
-                    menu.classList.toggle(
-                        "active",
-                        !expanded
-                    );
-
                     menu.style.display = expanded
                         ? "none"
                         : "flex";
                 });
 
-                window.addEventListener("resize", () => {
-                    menu.style.removeProperty("display");
-
-                    menuButton.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                    menu.classList.remove(
-                        "is-open",
-                        "open",
-                        "active"
-                    );
+                menu.addEventListener("click", (event) => {
+                    if (
+                        event.target instanceof Element &&
+                        event.target.closest("a")
+                    ) {
+                        closeMenu();
+                    }
                 });
+
+                document.addEventListener("keydown", (event) => {
+                    if (event.key === "Escape") {
+                        closeMenu();
+                    }
+                });
+
+                window.addEventListener(
+                    "resize",
+                    closeMenu
+                );
             }
 
             /* FOOTER YEAR */
@@ -577,10 +485,11 @@
             const year = document.getElementById("year");
 
             if (year) {
-                year.textContent = new Date().getFullYear();
+                year.textContent =
+                    new Date().getFullYear();
             }
 
-            /* LOCATION ROUTING */
+            /* OPERATOR ROUTING */
 
             const operators = new Map([
                 ["Gudauri", "995558338989"],
@@ -590,6 +499,14 @@
                 ["Bakuriani", "995599334486"]
             ]);
 
+            const locationNames = {
+                gudauri: "Gudauri",
+                ananuri: "Ananuri",
+                tbilisi_sea: "Tbilisi Sea",
+                mestia: "Mestia",
+                bakuriani: "Bakuriani"
+            };
+
             const form = document.getElementById(
                 "adventure-form"
             );
@@ -598,20 +515,79 @@
                 "adventure-location"
             );
 
+            const dateField = document.getElementById(
+                "adventure-date"
+            );
+
+            const nameField = document.getElementById(
+                "adventure-name"
+            );
+
             const callButton = document.getElementById(
                 "adventure-call-button"
             );
 
-            const whatsappButton = document.getElementById(
-                "adventure-whatsapp-button"
-            );
+            /* PRESELECT LOCATION FROM A WEBSITE LINK */
 
-            function getOperatorPhone() {
-                return operators.get(locationField.value);
+            const requestedLocation = new URLSearchParams(
+                window.location.search
+            ).get("location");
+
+            if (
+                Object.prototype.hasOwnProperty.call(
+                    locationNames,
+                    requestedLocation
+                )
+            ) {
+                locationField.value =
+                    locationNames[requestedLocation];
+            } else if (operators.has(requestedLocation)) {
+                locationField.value = requestedLocation;
             }
 
+            /* DATE VALIDATION */
+
+            function dateInGeorgia() {
+                const parts = new Intl.DateTimeFormat(
+                    "en-US",
+                    {
+                        timeZone: "Asia/Tbilisi",
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit"
+                    }
+                ).formatToParts(new Date());
+
+                const values = {};
+
+                parts.forEach((part) => {
+                    values[part.type] = part.value;
+                });
+
+                return (
+                    values.year + "-" +
+                    values.month + "-" +
+                    values.day
+                );
+            }
+
+            dateField.min = dateInGeorgia();
+
+            dateField.addEventListener("focus", () => {
+                dateField.min = dateInGeorgia();
+            });
+
+            dateField.addEventListener("input", () => {
+                dateField.setCustomValidity("");
+            });
+
+            nameField.addEventListener("input", () => {
+                nameField.setCustomValidity("");
+            });
+
             function getValue(id) {
-                return document.getElementById(id).value.trim();
+                return document.getElementById(id)
+                    .value.trim();
             }
 
             /* CALL THE SELECTED OPERATOR */
@@ -619,25 +595,48 @@
             callButton.addEventListener("click", () => {
                 if (!locationField.reportValidity()) return;
 
-                const phone = getOperatorPhone();
+                const phone = operators.get(
+                    locationField.value
+                );
 
                 if (!phone) return;
 
                 window.location.href = "tel:+" + phone;
             });
 
-            /* PREPARE WHATSAPP REQUEST */
+            /* WHATSAPP REQUEST */
 
-            function openWhatsAppRequest() {
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                dateField.min = dateInGeorgia();
+
+                nameField.setCustomValidity(
+                    nameField.value.trim().length < 2
+                        ? "Please enter your full name."
+                        : ""
+                );
+
+                dateField.setCustomValidity(
+                    dateField.value &&
+                    dateField.value < dateInGeorgia()
+                        ? "Please choose today or a future date."
+                        : ""
+                );
+
                 if (!form.reportValidity()) return;
 
-                const phone = getOperatorPhone();
+                const phone = operators.get(
+                    locationField.value
+                );
 
                 if (!phone) return;
 
                 const message = [
                     "NEW ADVENTURE REQUEST",
-                    "Georgian Paragliding Federation",
+                    "",
+                    "Hello, I am interested in your company’s services and would like to go paragliding.",
+                    "Please confirm receipt of this message.",
                     "",
                     "Location: " + locationField.value,
                     "Preferred date: " + getValue("adventure-date"),
@@ -645,10 +644,8 @@
                     "Name: " + getValue("adventure-name"),
                     "Phone: " + getValue("adventure-phone"),
                     "",
-                    "Activity / additional information:",
-                    getValue("adventure-message") || "Not specified",
-                    "",
-                    "Please confirm available activities, prices and arrangements."
+                    "Additional information:",
+                    getValue("adventure-message") || "Not provided"
                 ].join("\n");
 
                 const whatsappURL =
@@ -666,60 +663,6 @@
                 document.body.appendChild(link);
                 link.click();
                 link.remove();
-            }
-
-            whatsappButton.addEventListener(
-                "click",
-                openWhatsAppRequest
-            );
-
-            form.addEventListener("submit", (event) => {
-                event.preventDefault();
-                openWhatsAppRequest();
-            });
-
-            /* LANGUAGE LINKS */
-
-            const originalPage = new URL(
-                window.location.href
-            );
-
-            originalPage.protocol = "https:";
-            originalPage.hostname = "paraglidingfederation.ge";
-            originalPage.port = "";
-
-            for (
-                const name of [
-                    ...originalPage.searchParams.keys()
-                ]
-            ) {
-                if (name.startsWith("_x_tr_")) {
-                    originalPage.searchParams.delete(name);
-                }
-            }
-
-            document.querySelectorAll(
-                "[data-gpf-language]"
-            ).forEach((link) => {
-                const language = link.dataset.gpfLanguage;
-
-                if (language === "en") {
-                    link.href = originalPage.href;
-                    return;
-                }
-
-                const translatedPage = new URL(
-                    "https://translate.google.com/translate"
-                );
-
-                translatedPage.searchParams.set("sl", "en");
-                translatedPage.searchParams.set("tl", language);
-                translatedPage.searchParams.set(
-                    "u",
-                    originalPage.href
-                );
-
-                link.href = translatedPage.href;
             });
         })();
     </script>
