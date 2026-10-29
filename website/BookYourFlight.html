@@ -10,17 +10,126 @@
 
     <meta
         name="description"
-        content="Book your paragliding experience with the Georgian Paragliding Federation."
+        content="Plan your adventure in Georgia. Choose a location and contact the local operator by phone or WhatsApp."
     >
 
     <title>
-        Book Your Flight | Georgian Paragliding Federation
+        Plan Your Adventure | Georgian Paragliding Federation
     </title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 
     <style>
+        /* CONTACT BUTTONS */
+
+        .adventure-actions {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .adventure-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            width: 100%;
+            min-height: 52px;
+            padding: 14px 20px;
+
+            border: 0;
+            border-radius: 8px;
+
+            color: #ffffff;
+            font: inherit;
+            font-weight: 700;
+            line-height: 1.4;
+            text-align: center;
+            text-decoration: none;
+
+            cursor: pointer;
+        }
+
+        .adventure-call {
+            background: #123b38;
+        }
+
+        .adventure-call:hover {
+            background: #1d5751;
+        }
+
+        .adventure-whatsapp {
+            background: #147d42;
+        }
+
+        .adventure-whatsapp:hover {
+            background: #106635;
+        }
+
+        .adventure-action:focus-visible {
+            outline: 3px solid #668a76;
+            outline-offset: 3px;
+        }
+
+        .adventure-operator {
+            margin-top: 18px;
+            padding: 18px;
+
+            border: 1px solid #cbdacf;
+            border-radius: 10px;
+
+            color: #123b38;
+            background: #edf4ef;
+        }
+
+        .adventure-operator strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .adventure-operator a {
+            color: #123b38;
+            font-weight: 700;
+        }
+
+        .adventure-note {
+            margin: 14px 0 20px;
+            font-size: 13px;
+            line-height: 1.75;
+        }
+
+        .adventure-divider {
+            margin: 26px 0;
+            border: 0;
+            border-top: 1px solid rgba(18, 59, 56, 0.18);
+        }
+
+        .adventure-contact-list {
+            margin-top: 24px;
+            padding: 18px;
+            border: 1px solid rgba(18, 59, 56, 0.18);
+            border-radius: 10px;
+        }
+
+        .adventure-contact-list summary {
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .adventure-contact-list ul {
+            padding-left: 20px;
+        }
+
+        .adventure-contact-list li {
+            margin: 12px 0;
+            line-height: 1.7;
+        }
+
+        #adventure-form [hidden] {
+            display: none !important;
+        }
+
         /* LANGUAGE BUTTONS */
 
         .gpf-languages {
@@ -62,10 +171,6 @@
 
             font-family: Arial, sans-serif;
             text-decoration: none;
-
-            transition:
-                background 0.2s ease,
-                border-color 0.2s ease;
         }
 
         .gpf-languages .gpf-language:hover {
@@ -98,66 +203,6 @@
 
         .gpf-language-spacer {
             height: 95px;
-        }
-
-        /* WHATSAPP ALTERNATIVE */
-
-        .gpf-whatsapp-option {
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(18, 59, 56, 0.18);
-        }
-
-        .gpf-whatsapp-option h4 {
-            margin: 0 0 10px;
-            font-size: 19px;
-        }
-
-        .gpf-whatsapp-option p {
-            margin: 0 0 14px;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .gpf-whatsapp-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-
-            width: 100%;
-            min-height: 50px;
-            padding: 14px 20px;
-
-            border: 0;
-            border-radius: 8px;
-
-            color: #ffffff;
-            background: #147d42;
-
-            font: inherit;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .gpf-whatsapp-button:hover {
-            background: #106635;
-        }
-
-        .gpf-whatsapp-button:focus-visible {
-            outline: 3px solid #123b38;
-            outline-offset: 3px;
-        }
-
-        .gpf-whatsapp-button svg {
-            flex-shrink: 0;
-            width: 23px;
-            height: 23px;
-        }
-
-        .gpf-whatsapp-note {
-            margin-top: 12px !important;
-            font-size: 13px !important;
         }
 
         @media (max-width: 600px) {
@@ -239,76 +284,13 @@
                     href="BookYourFlight.html"
                     aria-current="page"
                 >
-                    Book Your Flight
+                    Plan Your Adventure ↗
                 </a>
             </nav>
         </div>
     </header>
 
     <main id="main">
-        <section
-            id="booking-receipt"
-            hidden
-            aria-labelledby="receipt-title"
-        >
-            <div class="receipt-card">
-                <header class="receipt-header">
-                    <span class="receipt-label">
-                        Georgian Paragliding Federation
-                    </span>
-
-                    <h1 id="receipt-title">
-                        Your next adventure starts here
-                    </h1>
-
-                    <p>
-                        Your flight request has been submitted
-                    </p>
-                </header>
-
-                <div class="receipt-body">
-                    <h2>What happens next?</h2>
-
-                    <p>
-                        Our team will review your preferred date and
-                        contact you to confirm availability and flight
-                        arrangements.
-                    </p>
-
-                    <div class="receipt-alert">
-                        <strong>
-                            Please check your Spam or Junk folder.
-                        </strong>
-
-                        <br>
-
-                        Our email may arrive there. Mark it as
-                        Not spam to help future messages reach
-                        your inbox.
-                    </div>
-
-                    <p>
-                        Flights are subject to weather conditions
-                        and confirmation by our team.
-                    </p>
-
-                    <a
-                        class="receipt-link"
-                        href="BookYourFlight.html"
-                    >
-                        Back to booking
-                    </a>
-
-                    <p>
-                        Need help?
-                        <a href="tel:+995593466744">
-                            +995 593 46 67 44
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </section>
-
         <section class="section booking-section">
             <div class="container booking-layout">
                 <div class="booking-intro">
@@ -316,12 +298,13 @@
                         Your adventure starts here
                     </p>
 
-                    <h1>Book Your Flight</h1>
+                    <h1>Plan Your Adventure</h1>
 
                     <p>
-                        Choose your preferred location, date and
-                        number of participants. Send your flight
-                        request directly to our team.
+                        Choose your preferred location and connect
+                        directly with the local operator to discuss
+                        available activities, dates, prices and
+                        arrangements.
                     </p>
 
                     <div class="booking-explanation">
@@ -329,114 +312,159 @@
 
                         <ol>
                             <li>
-                                Choose your preferred flight location.
+                                Choose your preferred location.
                             </li>
 
                             <li>
-                                Select a date and number of participants.
+                                Call the operator directly, or
+                                complete the details to prepare
+                                a WhatsApp request.
                             </li>
 
                             <li>
-                                Enter your contact details.
+                                Select your preferred date and
+                                number of participants.
                             </li>
 
                             <li>
-                                Send your request by email, or use
-                                the alternative WhatsApp button.
+                                WhatsApp will open with your
+                                completed request. Press Send
+                                in the chat to deliver it.
                             </li>
 
                             <li>
-                                For email requests, check your inbox
-                                and Spam folder. For WhatsApp requests,
-                                press Send in the WhatsApp chat.
-                                Our team will contact you to confirm
-                                your flight arrangements.
+                                Confirm available activities,
+                                prices and arrangements directly
+                                with the operator.
                             </li>
                         </ol>
                     </div>
 
                     <p class="booking-disclaimer">
-                        Flights depend on weather and operational
-                        availability. Submitting this form does not
-                        confirm a reservation. Your booking is confirmed
-                        once agreed with our team.
+                        Activities depend on the location, weather
+                        and operational availability. Sending a
+                        request does not confirm a booking.
+                        Your arrangements are confirmed only
+                        after agreement with the operator.
                     </p>
 
-                    <a href="tel:+995593466744">
-                        Call: +995 593 46 67 44
-                    </a>
+                    <details class="adventure-contact-list">
+                        <summary>
+                            All operator contacts
+                        </summary>
+
+                        <ul>
+                            <li>
+                                <strong>Gudauri</strong><br>
+
+                                <a href="tel:+995558338989">
+                                    +995 558 33 89 89
+                                </a>
+
+                                ·
+
+                                <a
+                                    href="https://wa.me/995558338989"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    WhatsApp
+                                </a>
+                            </li>
+
+                            <li>
+                                <strong>Ananuri</strong><br>
+
+                                <a href="tel:+995599045777">
+                                    +995 599 04 57 77
+                                </a>
+
+                                ·
+
+                                <a
+                                    href="https://wa.me/995599045777"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    WhatsApp
+                                </a>
+                            </li>
+
+                            <li>
+                                <strong>Tbilisi Sea</strong><br>
+
+                                <a href="tel:+995555004993">
+                                    +995 555 00 49 93
+                                </a>
+
+                                ·
+
+                                <a
+                                    href="https://wa.me/995555004993"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    WhatsApp
+                                </a>
+                            </li>
+
+                            <li>
+                                <strong>Mestia</strong><br>
+
+                                <a href="tel:+995593988811">
+                                    +995 593 98 88 11
+                                </a>
+
+                                ·
+
+                                <a
+                                    href="https://wa.me/995593988811"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    WhatsApp
+                                </a>
+                            </li>
+
+                            <li>
+                                <strong>Bakuriani</strong><br>
+
+                                <a href="tel:+995599334486">
+                                    +995 599 33 44 86
+                                </a>
+
+                                ·
+
+                                <a
+                                    href="https://wa.me/995599334486"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    WhatsApp
+                                </a>
+                            </li>
+                        </ul>
+                    </details>
                 </div>
 
+                <!-- PHONE AND WHATSAPP ONLY -->
                 <form
                     class="booking-form"
-                    id="flight-request-form"
-                    action="https://formsubmit.co/magda1.karkusashvili@gmail.com"
-                    method="POST"
+                    id="adventure-form"
                 >
-                    <h3>Request a flight</h3>
-
-                    <input
-                        type="hidden"
-                        name="_subject"
-                        value="New Flight Request — Georgian Paragliding Federation"
-                    >
-
-                    <input
-                        type="hidden"
-                        name="_template"
-                        value="table"
-                    >
-
-                    <input
-                        type="hidden"
-                        name="_captcha"
-                        value="true"
-                    >
-
-                    <input
-                        type="hidden"
-                        name="_url"
-                        id="booking-page-url"
-                        value="https://solid-space-happiness-6vgw99qq477wfrv5g-5500.app.github.dev/website/BookYourFlight.html"
-                    >
-
-                    <input
-                        type="hidden"
-                        name="_autoresponse"
-                        id="booking-autoresponse"
-                        value="Hello! Your flight request has been received. Please check your inbox and Spam or Junk folder for our email."
-                    >
-
-                    <div hidden>
-                        <label for="request-website">
-                            Leave this field empty
-                        </label>
-
-                        <input
-                            id="request-website"
-                            name="_honey"
-                            type="text"
-                            tabindex="-1"
-                            autocomplete="off"
-                        >
-                    </div>
+                    <h3>Connect with an operator</h3>
 
                     <div class="form-field">
-                        <label for="request-location">
+                        <label for="adventure-location">
                             Preferred location
                         </label>
 
                         <select
-                            id="request-location"
-                            name="Location"
+                            id="adventure-location"
                             required
                         >
                             <option value="">
                                 Choose a location
-                            </option>
-
-                            <option value="Tbilisi Sea">
-                                Tbilisi Sea
                             </option>
 
                             <option value="Gudauri">
@@ -445,6 +473,10 @@
 
                             <option value="Ananuri">
                                 Ananuri
+                            </option>
+
+                            <option value="Tbilisi Sea">
+                                Tbilisi Sea
                             </option>
 
                             <option value="Mestia">
@@ -457,28 +489,60 @@
                         </select>
                     </div>
 
+                    <div
+                        class="adventure-operator"
+                        id="adventure-operator"
+                        aria-live="polite"
+                        hidden
+                    >
+                        <strong
+                            id="adventure-operator-name"
+                        ></strong>
+
+                        <a
+                            id="adventure-operator-phone"
+                            translate="no"
+                        ></a>
+                    </div>
+
+                    <div class="adventure-actions">
+                        <button
+                            class="adventure-action adventure-call"
+                            id="adventure-call-button"
+                            type="button"
+                        >
+                            Call Operator
+                        </button>
+                    </div>
+
+                    <p class="adventure-note">
+                        To call, simply choose a location.
+                        To send a WhatsApp request, complete
+                        the details below.
+                    </p>
+
+                    <hr class="adventure-divider">
+
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="request-date">
+                            <label for="adventure-date">
                                 Preferred date
                             </label>
 
                             <input
-                                id="request-date"
-                                name="Preferred date"
+                                id="adventure-date"
                                 type="date"
                                 required
                             >
                         </div>
 
                         <div class="form-field">
-                            <label for="request-people">
+                            <label for="adventure-people">
                                 Participants
                             </label>
 
                             <input
-                                id="request-people"
-                                name="Participants"
+                                id="adventure-people"
                                 type="number"
                                 min="1"
                                 max="20"
@@ -490,13 +554,12 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="request-name">
+                        <label for="adventure-name">
                             Full name
                         </label>
 
                         <input
-                            id="request-name"
-                            name="name"
+                            id="adventure-name"
                             type="text"
                             autocomplete="name"
                             minlength="2"
@@ -507,164 +570,87 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="request-phone">
+                        <label for="adventure-phone">
                             Phone number
                         </label>
 
                         <input
-                            id="request-phone"
-                            name="Phone"
+                            id="adventure-phone"
                             type="tel"
                             autocomplete="tel"
                             minlength="9"
                             maxlength="16"
                             pattern="\+[1-9][0-9]{7,14}"
-                            placeholder="+995593466744"
-                            title="Include + and your country code. Example: +995593466744"
-                            aria-describedby="phone-help"
+                            placeholder="+995599123456"
+                            title="Include + and your country code. Example: +995599123456"
+                            aria-describedby="adventure-phone-help"
                             required
                         >
 
-                        <small id="phone-help">
+                        <small id="adventure-phone-help">
                             Include + and your country code.
                             Do not use spaces, brackets or hyphens.
-                            Example: +995593466744.
+                            Example: +995599123456.
                         </small>
                     </div>
 
                     <div class="form-field">
-                        <label for="request-email">
-                            Email
-                        </label>
-
-                        <input
-                            id="request-email"
-                            name="email"
-                            type="email"
-                            autocomplete="email"
-                            maxlength="254"
-                            placeholder="you@example.com"
-                            required
-                        >
-                    </div>
-
-                    <div class="form-field">
-                        <label for="request-message">
-                            Additional information — optional
+                        <label for="adventure-message">
+                            Activity or additional information — optional
                         </label>
 
                         <textarea
-                            id="request-message"
-                            name="message"
+                            id="adventure-message"
                             rows="4"
                             maxlength="1000"
-                            placeholder="Questions or preferences"
+                            placeholder="Tell the operator which activity interests you, or ask a question."
                         ></textarea>
                     </div>
 
                     <label class="consent">
                         <input
-                            id="request-consent"
-                            name="Contact consent"
+                            id="adventure-consent"
                             type="checkbox"
-                            value="Agreed"
                             required
                         >
 
                         <span>
                             I agree to share these details with the
-                            Georgian Paragliding Federation through
-                            FormSubmit or WhatsApp, depending on my
-                            selected sending method, so the team can
-                            process my request and contact me about
-                            my flight.
+                            operator for my selected location via
+                            WhatsApp so they can respond to my request.
                         </span>
                     </label>
 
-                    <!-- PRIMARY OPTION: EMAIL -->
-                    <button
-                        class="button button-primary form-submit"
-                        type="submit"
-                    >
-                        Send Flight Request by Email ↗
-                    </button>
+                    <div class="adventure-actions">
+                        <button
+                            class="adventure-action adventure-whatsapp"
+                            id="adventure-whatsapp-button"
+                            type="button"
+                            aria-describedby="adventure-whatsapp-note"
+                        >
+                            Continue to WhatsApp ↗
+                        </button>
+                    </div>
 
-                    <p class="form-help">
-                        Complete the security check after submitting.
-                        Please check your inbox and Spam or Junk folder
-                        for our email.
+                    <p
+                        class="adventure-note"
+                        id="adventure-whatsapp-note"
+                    >
+                        WhatsApp will open with your completed
+                        request and connect you with the relevant
+                        operator. Press Send in WhatsApp to deliver
+                        your request. Opening the chat does not
+                        send the request or confirm a booking.
                     </p>
 
-                    <!-- ALTERNATIVE OPTION: WHATSAPP -->
-                    <div class="gpf-whatsapp-option">
-                        <h4>Prefer WhatsApp?</h4>
-
-                        <p>
-                            If email submission is unavailable, or you
-                            prefer WhatsApp, send the same flight
-                            request directly to our team.
+                    <noscript>
+                        <p class="adventure-note">
+                            Enable JavaScript to use this form.
+                            You can also use the All operator
+                            contacts list to call or open
+                            WhatsApp directly.
                         </p>
-
-                        <button
-                            class="gpf-whatsapp-button"
-                            id="whatsapp-booking-button"
-                            type="button"
-                            aria-describedby="whatsapp-booking-note"
-                        >
-                            <svg
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5
-                                    9 9 0 0 1-4-.9L3 21l1.9-5.5
-                                    a9 9 0 0 1-.9-4A8.5 8.5 0 0 1
-                                    12.5 3H13a8.5 8.5 0 0 1 8 8v.5Z"
-                                ></path>
-
-                                <path
-                                    d="M9 8.5c.5 3 2 4.5 5 5l1-1.5
-                                    2 1c.2 1.5-.8 2.5-2.2 2.3
-                                    -4.1-.6-6.5-3-7.1-7.1
-                                    C7.5 6.8 8.5 5.8 10 6l1 2Z"
-                                ></path>
-                            </svg>
-
-                            Send via WhatsApp
-                        </button>
-
-                        <p
-                            class="gpf-whatsapp-note"
-                            id="whatsapp-booking-note"
-                        >
-                            WhatsApp will open with your completed
-                            request. Press Send in WhatsApp to deliver
-                            it to +995 599 33 44 86.
-                            Opening the chat does not send the request
-                            or confirm a booking.
-                        </p>
-
-                        <noscript>
-                            <p>
-                                To send your completed form through
-                                WhatsApp, enable JavaScript.
-                                Alternatively,
-                                <a
-                                    href="https://wa.me/995599334486"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    open our WhatsApp chat
-                                </a>
-                                and type your flight request.
-                            </p>
-                        </noscript>
-                    </div>
+                    </noscript>
                 </form>
             </div>
         </section>
@@ -689,65 +675,313 @@
         </div>
     </footer>
 
-    <!-- WHATSAPP ALTERNATIVE SCRIPT -->
+    <!-- LANGUAGE BUTTONS -->
+
+    <div
+        class="gpf-language-spacer"
+        aria-hidden="true"
+    ></div>
+
+    <nav
+        class="gpf-languages"
+        aria-label="Choose page language"
+        translate="no"
+        dir="ltr"
+    >
+        <a
+            class="gpf-language"
+            data-gpf-language="en"
+            href="BookYourFlight.html"
+            aria-label="English — original page"
+            title="English"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇬🇧</span>
+
+            <span class="gpf-language-code">EN</span>
+        </a>
+
+        <a
+            class="gpf-language"
+            data-gpf-language="ka"
+            href="https://translate.google.com/"
+            aria-label="ქართული — ავტომატური თარგმანი"
+            title="ქართული"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇬🇪</span>
+
+            <span class="gpf-language-code">KA</span>
+        </a>
+
+        <a
+            class="gpf-language"
+            data-gpf-language="fr"
+            href="https://translate.google.com/"
+            aria-label="Français — traduction automatique"
+            title="Français"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇫🇷</span>
+
+            <span class="gpf-language-code">FR</span>
+        </a>
+
+        <a
+            class="gpf-language"
+            data-gpf-language="ar"
+            href="https://translate.google.com/"
+            aria-label="العربية — ترجمة آلية"
+            title="العربية"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇸🇦</span>
+
+            <span class="gpf-language-code">AR</span>
+        </a>
+
+        <a
+            class="gpf-language"
+            data-gpf-language="zh-CN"
+            href="https://translate.google.com/"
+            aria-label="简体中文 — 自动翻译"
+            title="中文（简体）"
+        >
+            <span
+                class="gpf-language-flag"
+                aria-hidden="true"
+            >🇨🇳</span>
+
+            <span class="gpf-language-code">ZH</span>
+        </a>
+    </nav>
+
     <script>
         (() => {
+            /* MOBILE MENU */
+
+            const menuButton = document.getElementById(
+                "menu-toggle"
+            );
+
+            const menu = document.getElementById(
+                "main-menu"
+            );
+
+            if (menuButton && menu) {
+                menuButton.addEventListener("click", () => {
+                    const expanded =
+                        menuButton.getAttribute(
+                            "aria-expanded"
+                        ) === "true";
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        String(!expanded)
+                    );
+
+                    menu.classList.toggle(
+                        "is-open",
+                        !expanded
+                    );
+
+                    menu.classList.toggle(
+                        "open",
+                        !expanded
+                    );
+
+                    menu.classList.toggle(
+                        "active",
+                        !expanded
+                    );
+
+                    if (!expanded) {
+                        menu.style.display = "flex";
+                    } else {
+                        menu.style.display = "none";
+                    }
+                });
+
+                window.addEventListener("resize", () => {
+                    menu.style.removeProperty("display");
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+                    menu.classList.remove(
+                        "is-open",
+                        "open",
+                        "active"
+                    );
+                });
+            }
+
+            /* FOOTER YEAR */
+
+            const year = document.getElementById("year");
+
+            if (year) {
+                year.textContent = new Date().getFullYear();
+            }
+
+            /* OPERATOR NUMBERS */
+
+            const operators = new Map([
+                [
+                    "Gudauri",
+                    {
+                        phone: "995558338989",
+                        display: "+995 558 33 89 89"
+                    }
+                ],
+                [
+                    "Ananuri",
+                    {
+                        phone: "995599045777",
+                        display: "+995 599 04 57 77"
+                    }
+                ],
+                [
+                    "Tbilisi Sea",
+                    {
+                        phone: "995555004993",
+                        display: "+995 555 00 49 93"
+                    }
+                ],
+                [
+                    "Mestia",
+                    {
+                        phone: "995593988811",
+                        display: "+995 593 98 88 11"
+                    }
+                ],
+                [
+                    "Bakuriani",
+                    {
+                        phone: "995599334486",
+                        display: "+995 599 33 44 86"
+                    }
+                ]
+            ]);
+
             const form = document.getElementById(
-                "flight-request-form"
+                "adventure-form"
+            );
+
+            const locationField = document.getElementById(
+                "adventure-location"
+            );
+
+            const operatorBox = document.getElementById(
+                "adventure-operator"
+            );
+
+            const operatorName = document.getElementById(
+                "adventure-operator-name"
+            );
+
+            const operatorPhone = document.getElementById(
+                "adventure-operator-phone"
+            );
+
+            const callButton = document.getElementById(
+                "adventure-call-button"
             );
 
             const whatsappButton = document.getElementById(
-                "whatsapp-booking-button"
+                "adventure-whatsapp-button"
             );
 
-            if (!form || !whatsappButton) return;
-
-            const companyWhatsApp = "995599334486";
-
-            function getValue(id) {
-                const field = document.getElementById(id);
-
-                return field ? field.value.trim() : "";
+            function getOperator() {
+                return operators.get(locationField.value);
             }
 
-            whatsappButton.addEventListener("click", () => {
-                /*
-                 * Validate all required fields, including consent.
-                 * This button does not submit the email form.
-                 */
+            function updateOperator() {
+                const operator = getOperator();
+
+                if (!operator) {
+                    operatorBox.hidden = true;
+                    operatorName.textContent = "";
+                    operatorPhone.textContent = "";
+                    operatorPhone.removeAttribute("href");
+                    return;
+                }
+
+                operatorName.textContent =
+                    locationField.value + " operator";
+
+                operatorPhone.textContent =
+                    operator.display;
+
+                operatorPhone.href =
+                    "tel:+" + operator.phone;
+
+                operatorBox.hidden = false;
+            }
+
+            locationField.addEventListener(
+                "change",
+                updateOperator
+            );
+
+            updateOperator();
+
+            /* CALL THE SELECTED OPERATOR */
+
+            callButton.addEventListener("click", () => {
+                if (!locationField.reportValidity()) return;
+
+                const operator = getOperator();
+
+                if (!operator) return;
+
+                window.location.href =
+                    "tel:+" + operator.phone;
+            });
+
+            /* PREPARE WHATSAPP REQUEST */
+
+            function getValue(id) {
+                return document.getElementById(id).value.trim();
+            }
+
+            function openWhatsAppRequest() {
                 if (!form.reportValidity()) return;
 
+                const operator = getOperator();
+
+                if (!operator) return;
+
                 const message = [
-                    "NEW FLIGHT REQUEST 🪂",
+                    "NEW ADVENTURE REQUEST",
                     "Georgian Paragliding Federation",
                     "",
-                    "Name: " + getValue("request-name"),
-                    "Phone: " + getValue("request-phone"),
-                    "Email: " + getValue("request-email"),
-                    "Location: " + getValue("request-location"),
-                    "Preferred date: " + getValue("request-date"),
-                    "Participants: " + getValue("request-people"),
+                    "Location: " + locationField.value,
+                    "Preferred date: " + getValue("adventure-date"),
+                    "Participants: " + getValue("adventure-people"),
+                    "Name: " + getValue("adventure-name"),
+                    "Phone: " + getValue("adventure-phone"),
                     "",
-                    "Additional information:",
-                    getValue("request-message") || "Not provided",
+                    "Activity / additional information:",
+                    getValue("adventure-message") || "Not specified",
                     "",
-                    "Please confirm availability and flight arrangements."
+                    "Please confirm available activities, prices and arrangements."
                 ].join("\n");
 
-                /*
-                 * All locations use this same company number.
-                 * The user must press Send in WhatsApp.
-                 */
                 const whatsappURL =
                     "https://wa.me/" +
-                    companyWhatsApp +
+                    operator.phone +
                     "?text=" +
                     encodeURIComponent(message);
 
-                /*
-                 * Open WhatsApp in a new tab so the booking
-                 * form remains available with the entered details.
-                 */
                 const link = document.createElement("a");
 
                 link.href = whatsappURL;
@@ -757,6 +991,64 @@
                 document.body.appendChild(link);
                 link.click();
                 link.remove();
+            }
+
+            whatsappButton.addEventListener(
+                "click",
+                openWhatsAppRequest
+            );
+
+            /*
+             * Prevent normal form submission.
+             * No data is submitted by email.
+             */
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                openWhatsAppRequest();
+            });
+
+            /* LANGUAGE LINKS */
+
+            const originalPage = new URL(
+                window.location.href
+            );
+
+            originalPage.protocol = "https:";
+            originalPage.hostname = "paraglidingfederation.ge";
+            originalPage.port = "";
+
+            for (
+                const name of [
+                    ...originalPage.searchParams.keys()
+                ]
+            ) {
+                if (name.startsWith("_x_tr_")) {
+                    originalPage.searchParams.delete(name);
+                }
+            }
+
+            document.querySelectorAll(
+                "[data-gpf-language]"
+            ).forEach((link) => {
+                const language = link.dataset.gpfLanguage;
+
+                if (language === "en") {
+                    link.href = originalPage.href;
+                    return;
+                }
+
+                const translatedPage = new URL(
+                    "https://translate.google.com/translate"
+                );
+
+                translatedPage.searchParams.set("sl", "en");
+                translatedPage.searchParams.set("tl", language);
+                translatedPage.searchParams.set(
+                    "u",
+                    originalPage.href
+                );
+
+                link.href = translatedPage.href;
             });
         })();
     </script>
