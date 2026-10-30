@@ -2,45 +2,28 @@
 
 (() => {
     function initializeSite() {
-        function hasKey(object, key) {
-            return Object.prototype.hasOwnProperty.call(
-                object,
-                key
-            );
-        }
+        if (document.body.dataset.gpfInitialized) return;
+
+        document.body.dataset.gpfInitialized = "true";
+
+        const reducedMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
 
         /* =========================
-           REMOVE LANGUAGE BUTTONS
+           REMOVE OLD LANGUAGE BUTTONS
         ========================= */
-
-        const languageStyles = document.createElement("style");
-
-        languageStyles.textContent = `
-            .gpf-languages,
-            .gpf-language-spacer {
-                display: none !important;
-            }
-        `;
-
-        document.head.appendChild(languageStyles);
 
         document.querySelectorAll(
             ".gpf-languages, .gpf-language-spacer"
-        ).forEach((element) => {
-            element.remove();
-        });
+        ).forEach((element) => element.remove());
 
         /* =========================
            MOBILE MENU
         ========================= */
 
-        const menuToggle = document.querySelector(
-            "#menu-toggle"
-        );
-
-        const mainMenu = document.querySelector(
-            "#main-menu"
-        );
+        const menuToggle = document.getElementById("menu-toggle");
+        const mainMenu = document.getElementById("main-menu");
 
         function closeMenu() {
             if (!mainMenu || !menuToggle) return;
@@ -59,10 +42,6 @@
             );
         }
 
-        /*
-         * Capture this button before any older inline
-         * menu handler, avoiding duplicate toggles.
-         */
         window.addEventListener("click", (event) => {
             if (
                 !menuToggle ||
@@ -76,33 +55,18 @@
             event.preventDefault();
             event.stopImmediatePropagation();
 
-            const isOpen =
-                menuToggle.getAttribute(
-                    "aria-expanded"
-                ) !== "true";
+            const open =
+                menuToggle.getAttribute("aria-expanded") !== "true";
 
-            mainMenu.classList.toggle(
-                "is-open",
-                isOpen
-            );
+            mainMenu.classList.toggle("is-open", open);
+            mainMenu.classList.toggle("open", open);
+            mainMenu.classList.toggle("active", open);
 
-            mainMenu.classList.toggle(
-                "open",
-                isOpen
-            );
-
-            mainMenu.classList.toggle(
-                "active",
-                isOpen
-            );
-
-            mainMenu.style.display = isOpen
-                ? "flex"
-                : "none";
+            mainMenu.style.display = open ? "flex" : "none";
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                String(isOpen)
+                String(open)
             );
         }, true);
 
@@ -128,18 +92,14 @@
         });
 
         document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                closeMenu();
-            }
+            if (event.key === "Escape") closeMenu();
         });
 
         window.matchMedia("(min-width: 851px)")
-            .addEventListener("change", () => {
-                closeMenu();
-            });
+            .addEventListener("change", closeMenu);
 
         /* =========================
-           PAGE LINKS
+           NAVIGATION
         ========================= */
 
         const pageLinks = {
@@ -155,31 +115,49 @@
         document.querySelectorAll("a[href]").forEach((link) => {
             const href = link.getAttribute("href");
 
-            if (hasKey(pageLinks, href)) {
-                link.setAttribute(
-                    "href",
-                    pageLinks[href]
-                );
+            if (
+                Object.prototype.hasOwnProperty.call(
+                    pageLinks,
+                    href
+                )
+            ) {
+                link.setAttribute("href", pageLinks[href]);
             }
         });
 
-        if (
-            mainMenu &&
-            !mainMenu.querySelector('a[href="news.html"]')
-        ) {
-            const newsLink = document.createElement("a");
+        if (mainMenu) {
+            [
+                ["news.html", "News"],
+                ["Needtoknow.html", "Need to know"]
+            ].forEach(([href, text]) => {
+                if (mainMenu.querySelector(`a[href="${href}"]`)) {
+                    return;
+                }
 
-            newsLink.href = "news.html";
-            newsLink.textContent = "News";
+                const link = document.createElement("a");
 
-            const contactLink = mainMenu.querySelector(
-                'a[href="contact.html"]'
-            );
+                link.href = href;
+                link.textContent = text;
 
-            mainMenu.insertBefore(
-                newsLink,
-                contactLink || null
-            );
+                mainMenu.insertBefore(
+                    link,
+                    mainMenu.querySelector(
+                        'a[href="contact.html"]'
+                    )
+                );
+            });
+
+            const currentPage =
+                window.location.pathname.split("/").pop() ||
+                "index.html";
+
+            mainMenu.querySelectorAll("a").forEach((link) => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.setAttribute("aria-current", "page");
+                } else {
+                    link.removeAttribute("aria-current");
+                }
+            });
         }
 
         document.querySelectorAll(
@@ -188,117 +166,209 @@
             link.textContent = "Plan Your Adventure ↗";
         });
 
-        const currentPage =
-            window.location.pathname.split("/").pop() ||
-            "index.html";
-
-        mainMenu?.querySelectorAll("a").forEach((link) => {
-            if (link.getAttribute("href") === currentPage) {
-                link.setAttribute(
-                    "aria-current",
-                    "page"
-                );
-            } else {
-                link.removeAttribute("aria-current");
-            }
-        });
-
         /* =========================
-           FOOTER YEAR
+           YEAR + BROWSER COLOR
         ========================= */
 
-        const yearElement = document.querySelector("#year");
+        document.querySelectorAll("#year").forEach((element) => {
+            element.textContent = new Date().getFullYear();
+        });
 
-        if (yearElement) {
-            yearElement.textContent =
-                new Date().getFullYear();
+        let themeColor = document.querySelector(
+            'meta[name="theme-color"]'
+        );
+
+        if (!themeColor) {
+            themeColor = document.createElement("meta");
+            themeColor.name = "theme-color";
+            document.head.appendChild(themeColor);
+        }
+
+        themeColor.content = "#101f34";
+
+        /* =========================
+           FACEBOOK + INSTAGRAM
+        ========================= */
+
+        const footer = document.querySelector(
+            ".site-footer, .nk-footer, footer"
+        );
+
+        if (footer && !footer.querySelector(".social-links")) {
+            const social = document.createElement("div");
+
+            social.className = "social-links";
+            social.setAttribute("aria-label", "Social media");
+
+            const socialPages = [
+                [
+                    "Facebook",
+                    "https://www.facebook.com/GeorgianParaglidingFederation/"
+                ],
+                [
+                    "Instagram",
+                    "https://www.instagram.com/georgian_paragliding_fed/"
+                ]
+            ];
+
+            socialPages.forEach(([name, url]) => {
+                const link = document.createElement("a");
+
+                link.href = url;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                link.textContent = name + " ↗";
+
+                link.setAttribute(
+                    "aria-label",
+                    name + " (opens in a new tab)"
+                );
+
+                social.appendChild(link);
+            });
+
+            const container =
+                footer.querySelector(".container") || footer;
+
+            const bottom =
+                container.querySelector(".footer-bottom");
+
+            if (bottom?.parentElement === container) {
+                container.insertBefore(social, bottom);
+            } else {
+                container.appendChild(social);
+            }
         }
 
         /* =========================
-           GALLERY AND LIGHTBOX
+           GALLERY
         ========================= */
 
-        try {
-            const galleryGrid = document.querySelector(
-                "#gallery-grid"
+        const galleryGrid =
+            document.getElementById("gallery-grid");
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        const lightboxImage =
+            document.getElementById("lightbox-image");
+
+        const lightboxCounter =
+            document.getElementById("lightbox-counter");
+
+        const photographs = Array.from(
+            { length: 22 },
+            (_, index) => ({
+                src: `images/para${index + 1}.jpg`,
+                alt: index === 21
+                    ? "Georgian Paragliding Federation official announcement"
+                    : `Paragliding in Georgia — photograph ${index + 1}`
+            })
+        );
+
+        let currentPhotograph = 0;
+        let lastGalleryButton = null;
+        let slideshowTimer = null;
+        let slideshowButton = null;
+
+        function updateSlideshowButton() {
+            if (!slideshowButton) return;
+
+            const playing = slideshowTimer !== null;
+
+            slideshowButton.textContent = playing
+                ? "Pause slideshow"
+                : "Play slideshow";
+
+            slideshowButton.setAttribute(
+                "aria-pressed",
+                String(playing)
             );
+        }
 
-            const lightbox = document.querySelector(
-                "#lightbox"
-            );
+        function stopSlideshow() {
+            if (slideshowTimer !== null) {
+                window.clearInterval(slideshowTimer);
+                slideshowTimer = null;
+            }
 
-            const lightboxImage = document.querySelector(
-                "#lightbox-image"
-            );
+            updateSlideshowButton();
+        }
 
-            const lightboxCounter = document.querySelector(
-                "#lightbox-counter"
-            );
+        function renderLightbox() {
+            if (!lightboxImage) return;
 
-            const photographs = [
-                {
-                    src: "images/para1.jpg",
-                    alt: "Paragliding in Georgia"
-                },
-                {
-                    src: "images/para2.jpg",
-                    alt: "A paragliding adventure"
-                },
-                {
-                    src: "images/para3.jpg",
-                    alt: "A moment in flight"
-                },
-                {
-                    src: "images/para4.jpg",
-                    alt: "Discover Georgia from above"
-                },
-                {
-                    src: "images/para5.jpg",
-                    alt: "Discover Georgia from above"
-                },
-                {
-                    src: "images/para8.jpg",
-                    alt: "Discover Georgia from above"
-                },
-                {
-                    src: "images/para17.jpg",
-                    alt: "Discover Georgia from above"
-                },
-                {
-                    src: "images/para18.jpg",
-                    alt: "Discover Georgia from above"
-                },
-                {
-                    src: "images/para20.jpg",
-                    alt: "Discover Georgia from above"
-                },
-                {
-                    src: "images/para21.jpg",
-                    alt: "Discover Georgia from above"
-                },
-                {
-                    src: "images/para11.jpg",
-                    alt: "Discover Georgia from above"
-                },
-                {
-                    src: "images/para13.jpg",
-                    alt: "Discover Georgia from above"
-                }
-            ];
+            const photograph =
+                photographs[currentPhotograph];
 
-            const reducedMotion = window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            );
+            lightboxImage.src = photograph.src;
+            lightboxImage.alt = photograph.alt;
 
-            let currentPhotograph = 0;
-            let lastGalleryButton = null;
-            let slideshowTimer = null;
-            let slideshowPlaying = false;
-            let slideshowButton = null;
+            if (lightboxCounter) {
+                lightboxCounter.textContent =
+                    `${currentPhotograph + 1} / ${photographs.length}`;
+            }
+        }
 
-            const toolbar = lightbox?.querySelector(
-                ".lightbox-toolbar"
-            );
+        function moveLightbox(direction) {
+            currentPhotograph = (
+                currentPhotograph +
+                direction +
+                photographs.length
+            ) % photographs.length;
+
+            renderLightbox();
+        }
+
+        function startSlideshow() {
+            stopSlideshow();
+
+            if (!lightbox?.open || document.hidden) return;
+
+            slideshowTimer = window.setInterval(() => {
+                moveLightbox(1);
+            }, 3500);
+
+            updateSlideshowButton();
+        }
+
+        function moveManually(direction) {
+            const wasPlaying = slideshowTimer !== null;
+
+            moveLightbox(direction);
+
+            if (wasPlaying) startSlideshow();
+        }
+
+        function openLightbox(index, button) {
+            if (
+                !lightbox ||
+                !lightboxImage ||
+                typeof lightbox.showModal !== "function"
+            ) {
+                window.location.assign(
+                    photographs[index].src
+                );
+
+                return;
+            }
+
+            stopSlideshow();
+
+            currentPhotograph = index;
+            lastGalleryButton = button;
+
+            renderLightbox();
+
+            if (!lightbox.open) {
+                lightbox.showModal();
+                document.body.classList.add("dialog-open");
+            }
+        }
+
+        if (lightbox) {
+            const toolbar =
+                lightbox.querySelector(".lightbox-toolbar");
 
             if (toolbar) {
                 slideshowButton =
@@ -306,213 +376,33 @@
 
                 slideshowButton.type = "button";
                 slideshowButton.className =
-                    "gallery-slideshow-toggle";
+                    "lightbox-slideshow";
 
-                slideshowButton.style.cssText = `
-                    padding: 10px 16px;
-                    margin-left: auto;
-                    margin-right: 12px;
-                    border: 1px solid currentColor;
-                    border-radius: 8px;
-                    background: transparent;
-                    color: inherit;
-                    font: inherit;
-                    cursor: pointer;
-                `;
+                slideshowButton.addEventListener(
+                    "click",
+                    () => {
+                        if (slideshowTimer !== null) {
+                            stopSlideshow();
+                        } else {
+                            startSlideshow();
+                        }
+                    }
+                );
 
                 toolbar.insertBefore(
                     slideshowButton,
                     toolbar.querySelector("#lightbox-close")
                 );
-            }
 
-            lightboxImage?.setAttribute(
-                "aria-live",
-                "off"
-            );
-
-            function updateSlideshowButton() {
-                if (!slideshowButton) return;
-
-                slideshowButton.textContent =
-                    slideshowPlaying
-                        ? "Pause ❚❚"
-                        : "Play ▶";
-
-                slideshowButton.setAttribute(
-                    "aria-label",
-                    slideshowPlaying
-                        ? "Pause automatic slideshow"
-                        : "Start automatic slideshow"
-                );
-
-                slideshowButton.disabled =
-                    photographs.length < 2;
-            }
-
-            function renderLightbox() {
-                if (!lightboxImage) return;
-
-                const photograph =
-                    photographs[currentPhotograph];
-
-                lightboxImage.src = photograph.src;
-                lightboxImage.alt = photograph.alt;
-
-                if (lightboxCounter) {
-                    lightboxCounter.textContent =
-                        `${currentPhotograph + 1} / ` +
-                        photographs.length;
-                }
-            }
-
-            function moveLightbox(direction) {
-                currentPhotograph =
-                    (
-                        currentPhotograph +
-                        direction +
-                        photographs.length
-                    ) % photographs.length;
-
-                renderLightbox();
-            }
-
-            function stopSlideshow() {
-                if (slideshowTimer !== null) {
-                    window.clearInterval(slideshowTimer);
-                    slideshowTimer = null;
-                }
-
-                slideshowPlaying = false;
                 updateSlideshowButton();
             }
 
-            function startSlideshow() {
-                stopSlideshow();
-
-                if (
-                    !lightbox?.open ||
-                    photographs.length < 2 ||
-                    document.hidden
-                ) {
-                    return;
-                }
-
-                slideshowPlaying = true;
-                updateSlideshowButton();
-
-                slideshowTimer = window.setInterval(() => {
-                    moveLightbox(1);
-                }, 3500);
-            }
-
-            function moveManually(direction) {
-                const wasPlaying = slideshowPlaying;
-
-                moveLightbox(direction);
-
-                if (wasPlaying) {
-                    startSlideshow();
-                }
-            }
-
-            slideshowButton?.addEventListener("click", () => {
-                if (slideshowPlaying) {
-                    stopSlideshow();
-                } else {
-                    startSlideshow();
-                }
-            });
-
-            function openLightbox(index, button) {
-                if (
-                    !lightbox ||
-                    !lightboxImage ||
-                    typeof lightbox.showModal !== "function"
-                ) {
-                    window.location.assign(
-                        photographs[index].src
-                    );
-                    return;
-                }
-
-                stopSlideshow();
-
-                currentPhotograph = index;
-                lastGalleryButton = button;
-
-                renderLightbox();
-
-                if (!lightbox.open) {
-                    lightbox.showModal();
-                    document.body.classList.add(
-                        "dialog-open"
-                    );
-                }
-
-                if (!reducedMotion.matches) {
-                    startSlideshow();
-                }
-            }
-
-            if (galleryGrid) {
-                const fragment =
-                    document.createDocumentFragment();
-
-                photographs.forEach((photograph, index) => {
-                    const button =
-                        document.createElement("button");
-
-                    button.className = "gallery-item";
-                    button.type = "button";
-
-                    button.setAttribute(
-                        "aria-label",
-                        `Enlarge photograph ${index + 1}: ` +
-                        photograph.alt
-                    );
-
-                    const image = document.createElement("img");
-
-                    image.src = photograph.src;
-                    image.alt = photograph.alt;
-                    image.loading = "lazy";
-                    image.decoding = "async";
-
-                    button.appendChild(image);
-
-                    button.addEventListener("click", () => {
-                        openLightbox(index, button);
-                    });
-
-                    fragment.appendChild(button);
-                });
-
-                galleryGrid.replaceChildren(fragment);
-            }
-
-            document.querySelector("#lightbox-close")
-                ?.addEventListener("click", () => {
-                    stopSlideshow();
-                    lightbox?.close();
-                });
-
-            document.querySelector("#lightbox-prev")
-                ?.addEventListener("click", () => {
-                    moveManually(-1);
-                });
-
-            document.querySelector("#lightbox-next")
-                ?.addEventListener("click", () => {
-                    moveManually(1);
-                });
-
-            lightbox?.addEventListener(
+            lightbox.addEventListener(
                 "cancel",
                 stopSlideshow
             );
 
-            lightbox?.addEventListener("close", () => {
+            lightbox.addEventListener("close", () => {
                 stopSlideshow();
 
                 document.body.classList.remove(
@@ -522,7 +412,7 @@
                 lastGalleryButton?.focus();
             });
 
-            lightbox?.addEventListener("click", (event) => {
+            lightbox.addEventListener("click", (event) => {
                 if (event.target !== lightbox) return;
 
                 const bounds =
@@ -534,51 +424,88 @@
                     event.clientY < bounds.top ||
                     event.clientY > bounds.bottom;
 
-                if (outside) {
-                    stopSlideshow();
-                    lightbox.close();
-                }
+                if (outside) lightbox.close();
             });
-
-            document.addEventListener("keydown", (event) => {
-                if (!lightbox?.open) return;
-
-                if (event.key === "ArrowLeft") {
-                    event.preventDefault();
-                    moveManually(-1);
-                }
-
-                if (event.key === "ArrowRight") {
-                    event.preventDefault();
-                    moveManually(1);
-                }
-            });
-
-            document.addEventListener(
-                "visibilitychange",
-                () => {
-                    if (document.hidden) {
-                        stopSlideshow();
-                    }
-                }
-            );
-
-            reducedMotion.addEventListener(
-                "change",
-                (event) => {
-                    if (event.matches) {
-                        stopSlideshow();
-                    }
-                }
-            );
-
-            updateSlideshowButton();
-        } catch (error) {
-            console.error(
-                "Gallery initialization failed:",
-                error
-            );
         }
+
+        if (galleryGrid) {
+            const fragment =
+                document.createDocumentFragment();
+
+            photographs.forEach((photograph, index) => {
+                const button =
+                    document.createElement("button");
+
+                button.type = "button";
+                button.className = "gallery-item";
+
+                button.setAttribute(
+                    "aria-label",
+                    `Enlarge photograph ${index + 1}: ${photograph.alt}`
+                );
+
+                const image =
+                    document.createElement("img");
+
+                image.src = photograph.src;
+                image.alt = photograph.alt;
+                image.loading = "lazy";
+                image.decoding = "async";
+
+                button.appendChild(image);
+
+                button.addEventListener("click", () => {
+                    openLightbox(index, button);
+                });
+
+                fragment.appendChild(button);
+            });
+
+            galleryGrid.replaceChildren(fragment);
+        }
+
+        document.getElementById("lightbox-close")
+            ?.addEventListener("click", () => {
+                lightbox?.close();
+            });
+
+        document.getElementById("lightbox-prev")
+            ?.addEventListener("click", () => {
+                moveManually(-1);
+            });
+
+        document.getElementById("lightbox-next")
+            ?.addEventListener("click", () => {
+                moveManually(1);
+            });
+
+        document.addEventListener("keydown", (event) => {
+            if (!lightbox?.open) return;
+
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                moveManually(-1);
+            }
+
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                moveManually(1);
+            }
+        });
+
+        document.addEventListener(
+            "visibilitychange",
+            () => {
+                if (document.hidden) stopSlideshow();
+            }
+        );
+
+        reducedMotion.addEventListener(
+            "change",
+            (event) => {
+                if (event.matches) stopSlideshow();
+            }
+        );
 
         /* =========================
            NEWS FILTERS
@@ -594,7 +521,8 @@
 
         newsButtons.forEach((button) => {
             button.addEventListener("click", () => {
-                const category = button.dataset.newsFilter;
+                const category =
+                    button.dataset.newsFilter;
 
                 newsButtons.forEach((item) => {
                     const active = item === button;
@@ -619,10 +547,10 @@
         });
 
         /* =========================
-           LOCATIONS
+           LOCATIONS + OPERATORS
         ========================= */
 
-        const locationNames = {
+        const locations = {
             tbilisi_sea: "Tbilisi Sea",
             gudauri: "Gudauri",
             ananuri: "Ananuri",
@@ -643,85 +571,72 @@
         ).forEach((link) => {
             const location = link.dataset.location;
 
-            if (hasKey(locationNames, location)) {
+            if (
+                Object.prototype.hasOwnProperty.call(
+                    locations,
+                    location
+                )
+            ) {
                 link.href =
                     "BookYourFlight.html?location=" +
                     encodeURIComponent(location);
             }
         });
 
-        const requestedLocation = new URLSearchParams(
-            window.location.search
-        ).get("location");
-
         /* =========================
            ADVENTURE FORM
         ========================= */
 
-        const adventureForm = document.querySelector(
-            "#adventure-form"
-        );
+        const form =
+            document.getElementById("adventure-form");
 
-        if (adventureForm) {
+        if (form) {
             const locationInput =
-                adventureForm.querySelector(
-                    "#adventure-location"
-                );
+                form.querySelector("#adventure-location");
 
             const dateInput =
-                adventureForm.querySelector(
-                    "#adventure-date"
-                );
+                form.querySelector("#adventure-date");
 
             const nameInput =
-                adventureForm.querySelector(
-                    "#adventure-name"
-                );
+                form.querySelector("#adventure-name");
 
             const phoneInput =
-                adventureForm.querySelector(
-                    "#adventure-phone"
-                );
+                form.querySelector("#adventure-phone");
 
             const peopleInput =
-                adventureForm.querySelector(
-                    "#adventure-people"
-                );
+                form.querySelector("#adventure-people");
 
             const messageInput =
-                adventureForm.querySelector(
-                    "#adventure-message"
-                );
+                form.querySelector("#adventure-message");
 
             const callButton =
-                adventureForm.querySelector(
-                    "#adventure-call-button"
-                );
+                form.querySelector("#adventure-call-button");
 
             const whatsappButton =
-                adventureForm.querySelector(
+                form.querySelector(
                     "#adventure-whatsapp-button"
                 );
 
-            const whatsappNote = document.querySelector(
-                "#adventure-whatsapp-note"
-            );
-
-            if (whatsappNote) {
-                whatsappNote.textContent =
-                    "WhatsApp will open with your completed " +
-                    "request and connect you with the relevant " +
-                    "operator. Press Send in WhatsApp to deliver " +
-                    "your request. Opening the chat does not " +
-                    "send the request or confirm a booking.";
-            }
+            const requestedLocation =
+                new URLSearchParams(
+                    window.location.search
+                ).get("location");
 
             if (
                 locationInput &&
-                hasKey(locationNames, requestedLocation)
+                Object.prototype.hasOwnProperty.call(
+                    locations,
+                    requestedLocation
+                )
             ) {
-                locationInput.value =
-                    locationNames[requestedLocation];
+                const value =
+                    locations[requestedLocation];
+
+                const exists = Array.from(
+                    locationInput.options
+                ).some((option) => option.value === value);
+
+                if (exists) locationInput.value = value;
             }
 
             function dateInGeorgia() {
@@ -756,7 +671,8 @@
                 });
             }
 
-            const phonePattern = /^\+[1-9][0-9]{7,14}$/;
+            const phonePattern =
+                /^\+[1-9][0-9]{7,14}$/;
 
             if (phoneInput) {
                 phoneInput.type = "tel";
@@ -772,24 +688,23 @@
                 phoneInput.title =
                     "Include + and your country code. " +
                     "Use digits only after +.";
-
-                phoneInput.addEventListener("input", () => {
-                    phoneInput.setCustomValidity("");
-                });
             }
 
-            nameInput?.addEventListener("input", () => {
-                nameInput.setCustomValidity("");
-            });
-
-            dateInput?.addEventListener("input", () => {
-                dateInput.setCustomValidity("");
+            [
+                nameInput,
+                phoneInput,
+                dateInput
+            ].forEach((input) => {
+                input?.addEventListener("input", () => {
+                    input.setCustomValidity("");
+                });
             });
 
             function selectedOperator() {
-                if (!locationInput) return null;
-
-                if (!locationInput.reportValidity()) {
+                if (
+                    !locationInput ||
+                    !locationInput.reportValidity()
+                ) {
                     return null;
                 }
 
@@ -799,12 +714,12 @@
             function callOperator() {
                 const phone = selectedOperator();
 
-                if (!phone) return;
-
-                window.location.href = "tel:+" + phone;
+                if (phone) {
+                    window.location.href = "tel:+" + phone;
+                }
             }
 
-            function openWhatsAppRequest() {
+            function openWhatsApp() {
                 if (dateInput) {
                     dateInput.min = dateInGeorgia();
 
@@ -828,15 +743,14 @@
                     phoneInput.setCustomValidity(
                         phonePattern.test(phoneInput.value)
                             ? ""
-                            : "Enter + followed by your country " +
-                              "code and phone number, using digits only."
+                            : "Enter + followed by your country code " +
+                              "and phone number, using digits only."
                     );
                 }
 
-                if (!adventureForm.reportValidity()) return;
+                if (!form.reportValidity()) return;
 
                 const phone = selectedOperator();
-
                 if (!phone) return;
 
                 const message = [
@@ -847,24 +761,35 @@
                     "Please confirm receipt of this message.",
                     "",
                     "Location: " + locationInput.value,
-                    "Preferred date: " + (dateInput?.value || ""),
-                    "Participants: " + (peopleInput?.value || ""),
-                    "Name: " + (nameInput?.value.trim() || ""),
-                    "Phone: " + (phoneInput?.value.trim() || ""),
-                    "",
-                    "Additional information:",
-                    messageInput?.value.trim() || "Not provided"
-                ].join("\n");
+                    "Preferred date: " +
+                        (dateInput?.value || ""),
+                    "Participants: " +
+                        (peopleInput?.value || ""),
+                    "Name: " +
+                        (nameInput?.value.trim() || ""),
+                    "Phone: " +
+                        (phoneInput?.value.trim() || "")
+                ];
 
-                const whatsappURL =
-                    "https://wa.me/" +
-                    phone +
-                    "?text=" +
-                    encodeURIComponent(message);
+                const additional =
+                    messageInput?.value.trim();
+
+                if (additional) {
+                    message.push(
+                        "",
+                        "Additional information:",
+                        additional
+                    );
+                }
 
                 const link = document.createElement("a");
 
-                link.href = whatsappURL;
+                link.href =
+                    "https://wa.me/" +
+                    phone +
+                    "?text=" +
+                    encodeURIComponent(message.join("\n"));
+
                 link.target = "_blank";
                 link.rel = "noopener noreferrer";
 
@@ -874,18 +799,20 @@
             }
 
             /*
-             * Capture the contact buttons before older inline
-             * handlers so that only the updated message is used.
+             * Prevent older inline handlers from
+             * opening the operator link twice.
              */
             window.addEventListener("click", (event) => {
-                if (!(event.target instanceof Element)) return;
+                if (!(event.target instanceof Element)) {
+                    return;
+                }
 
                 const button = event.target.closest(
                     "#adventure-call-button, " +
                     "#adventure-whatsapp-button"
                 );
 
-                if (!button || !adventureForm.contains(button)) {
+                if (!button || !form.contains(button)) {
                     return;
                 }
 
@@ -895,87 +822,397 @@
                 if (button === callButton) {
                     callOperator();
                 } else if (button === whatsappButton) {
-                    openWhatsAppRequest();
+                    openWhatsApp();
                 }
             }, true);
 
             window.addEventListener("submit", (event) => {
-                if (event.target !== adventureForm) return;
+                if (event.target !== form) return;
 
                 event.preventDefault();
                 event.stopImmediatePropagation();
 
-                openWhatsAppRequest();
+                openWhatsApp();
             }, true);
+
+            const note = document.getElementById(
+                "adventure-whatsapp-note"
+            );
+
+            if (note) {
+                note.textContent =
+                    "WhatsApp will open with your completed request. " +
+                    "Press Send in WhatsApp to deliver it. " +
+                    "Opening the chat does not send your request " +
+                    "or confirm a booking.";
+            }
         }
 
         /* =========================
-           LEGACY BOOKING LINKS
+           LEGACY BOOKING FORM
         ========================= */
 
-        const legacyBookingForm = document.querySelector(
-            "#booking-form"
-        );
+        const legacyForm =
+            document.getElementById("booking-form");
 
-        if (legacyBookingForm) {
-            const legacySubmit =
-                legacyBookingForm.querySelector(
-                    "#booking-submit"
-                );
+        if (legacyForm) {
+            const submit =
+                legacyForm.querySelector("#booking-submit");
 
-            if (legacySubmit) {
-                legacySubmit.disabled = false;
-                legacySubmit.textContent =
+            if (submit) {
+                submit.disabled = false;
+                submit.textContent =
                     "Plan Your Adventure ↗";
             }
 
-            const help = legacyBookingForm.querySelector(
-                ".form-help"
+            legacyForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const selected =
+                    legacyForm.querySelector(
+                        "#flight-location"
+                    )?.value || "";
+
+                const target = new URL(
+                    "BookYourFlight.html",
+                    window.location.href
+                );
+
+                const entry = Object.entries(
+                    locations
+                ).find(([key, name]) => {
+                    return (
+                        selected === key ||
+                        selected === name
+                    );
+                });
+
+                if (entry) {
+                    target.searchParams.set(
+                        "location",
+                        entry[0]
+                    );
+                }
+
+                window.location.assign(target.href);
+            });
+        }
+
+        /* =========================
+           PHOTO MOTION
+           
+           Subtle local deformation.
+           This is not generated video.
+        ========================= */
+
+        if (!("IntersectionObserver" in window)) return;
+
+        let motionPaused = reducedMotion.matches;
+
+        const scenes = [];
+
+        const motionButton =
+            document.createElement("button");
+
+        motionButton.type = "button";
+        motionButton.className = "motion-control";
+
+        function updateMotionButton() {
+            motionButton.textContent = motionPaused
+                ? "Play photo motion"
+                : "Pause photo motion";
+
+            motionButton.setAttribute(
+                "aria-pressed",
+                String(!motionPaused)
             );
 
-            if (help) {
-                help.textContent =
-                    "Choose a location and continue to contact " +
-                    "the operator by phone or WhatsApp.";
-            }
-
-            legacyBookingForm.addEventListener(
-                "submit",
-                (event) => {
-                    event.preventDefault();
-
-                    const selected =
-                        legacyBookingForm.querySelector(
-                            "#flight-location"
-                        )?.value || "";
-
-                    const target = new URL(
-                        "BookYourFlight.html",
-                        window.location.href
-                    );
-
-                    if (hasKey(locationNames, selected)) {
-                        target.searchParams.set(
-                            "location",
-                            selected
-                        );
-                    } else {
-                        const locationEntry = Object.entries(
-                            locationNames
-                        ).find(([, name]) => name === selected);
-
-                        if (locationEntry) {
-                            target.searchParams.set(
-                                "location",
-                                locationEntry[0]
-                            );
-                        }
-                    }
-
-                    window.location.assign(target.href);
-                }
+            document.body.classList.toggle(
+                "motion-paused",
+                motionPaused
             );
         }
+
+        motionButton.addEventListener("click", () => {
+            motionPaused = !motionPaused;
+            updateMotionButton();
+        });
+
+        reducedMotion.addEventListener(
+            "change",
+            (event) => {
+                if (event.matches) {
+                    motionPaused = true;
+                    updateMotionButton();
+                }
+            }
+        );
+
+        updateMotionButton();
+
+        const regions = {
+            1: [0.38, 0.16, 0.38, 0.77],
+            2: [0.27, 0.12, 0.27, 0.52],
+            3: [0.27, 0.25, 0.18, 0.45],
+            4: [0.02, 0.30, 0.96, 0.62],
+            5: [0.34, 0.38, 0.35, 0.43],
+            6: [0.23, 0.05, 0.38, 0.49],
+            7: [0.49, 0.11, 0.40, 0.57],
+            8: [0.35, 0.35, 0.28, 0.35],
+            9: [0.27, 0.15, 0.50, 0.60],
+            10: [0.15, 0.15, 0.52, 0.62],
+            11: [0.15, 0.15, 0.52, 0.62],
+            12: [0.20, 0.03, 0.52, 0.85],
+            13: [0.50, 0.10, 0.40, 0.64],
+            14: [0.30, 0.28, 0.25, 0.30],
+            15: [0.08, 0.01, 0.35, 0.62],
+            16: [0.32, 0.02, 0.40, 0.45],
+            17: [0.11, 0.10, 0.57, 0.64],
+            18: [0.13, 0.03, 0.62, 0.88],
+            19: [0.12, 0.43, 0.30, 0.38],
+            20: [0.53, 0.10, 0.34, 0.65],
+            21: [0.28, 0.28, 0.25, 0.30]
+        };
+
+        const motionObserver =
+            new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    const scene = scenes.find(
+                        (item) => item.canvas === entry.target
+                    );
+
+                    if (scene) {
+                        scene.visible = entry.isIntersecting;
+                    }
+                });
+            });
+
+        function showMotionButton() {
+            if (motionButton.isConnected) return;
+
+            if (galleryGrid) {
+                galleryGrid.before(motionButton);
+                return;
+            }
+
+            const container = document.querySelector(
+                "main .container, .nk-wrap"
+            );
+
+            container?.prepend(motionButton);
+        }
+
+        function attachPhotoMotion(image) {
+            if (
+                image.dataset.motionReady ||
+                image.id === "lightbox-image" ||
+                image.closest(".brand, .nk-brand")
+            ) {
+                return;
+            }
+
+            const match = image.getAttribute("src")?.match(
+                /para(\d+)(?:\(1\))?\.jpg(?:[?#].*)?$/
+            );
+
+            if (!match) return;
+
+            const number = Number(match[1]);
+
+            /* Keep the official announcement static. */
+            if (number === 22) return;
+
+            image.dataset.motionReady = "true";
+
+            function prepareScene() {
+                if (!image.naturalWidth) return;
+
+                const parent = image.parentElement;
+                if (!parent) return;
+
+                const canvas =
+                    document.createElement("canvas");
+
+                const context =
+                    canvas.getContext("2d");
+
+                if (!context) return;
+
+                const width = Math.min(
+                    image.naturalWidth,
+                    1000
+                );
+
+                const height = Math.round(
+                    width *
+                    image.naturalHeight /
+                    image.naturalWidth
+                );
+
+                canvas.width = width;
+                canvas.height = height;
+                canvas.className = "blue-hour-canvas";
+                canvas.setAttribute("aria-hidden", "true");
+
+                const source =
+                    document.createElement("canvas");
+
+                source.width = width;
+                source.height = height;
+
+                const sourceContext =
+                    source.getContext("2d");
+
+                if (!sourceContext) return;
+
+                sourceContext.drawImage(
+                    image,
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+                parent.classList.add("photo-motion");
+                parent.appendChild(canvas);
+
+                scenes.push({
+                    canvas,
+                    context,
+                    source,
+                    width,
+                    height,
+                    region: regions[number] || [
+                        0.2, 0.2, 0.6, 0.6
+                    ],
+                    phase: scenes.length * 0.7,
+                    visible: false
+                });
+
+                motionObserver.observe(canvas);
+                showMotionButton();
+            }
+
+            if (image.complete) {
+                prepareScene();
+            } else {
+                image.addEventListener(
+                    "load",
+                    prepareScene,
+                    { once: true }
+                );
+            }
+        }
+
+        document.querySelectorAll("img")
+            .forEach(attachPhotoMotion);
+
+        if (galleryGrid) {
+            new MutationObserver(() => {
+                galleryGrid.querySelectorAll("img")
+                    .forEach(attachPhotoMotion);
+            }).observe(galleryGrid, {
+                childList: true,
+                subtree: true
+            });
+        }
+
+        let lastFrame = 0;
+
+        function animatePhotos(timestamp) {
+            requestAnimationFrame(animatePhotos);
+
+            if (
+                motionPaused ||
+                document.hidden ||
+                timestamp - lastFrame < 66
+            ) {
+                return;
+            }
+
+            lastFrame = timestamp;
+
+            const time = timestamp / 1000;
+
+            scenes.forEach((scene) => {
+                if (!scene.visible) return;
+
+                const {
+                    context,
+                    source,
+                    width,
+                    height,
+                    region,
+                    phase
+                } = scene;
+
+                const centerX =
+                    (region[0] + region[2] / 2) * width;
+
+                const centerY =
+                    (region[1] + region[3] / 2) * height;
+
+                const radiusX = Math.max(
+                    region[2] * width * 0.9,
+                    80
+                );
+
+                const radiusY = Math.max(
+                    region[3] * height * 0.8,
+                    80
+                );
+
+                const movementX =
+                    Math.sin(time * 0.45 + phase) *
+                    width * 0.005;
+
+                const movementY =
+                    Math.cos(time * 0.38 + phase) *
+                    height * 0.003;
+
+                context.clearRect(
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+                for (let y = 0; y < height; y += 8) {
+                    for (let x = 0; x < width; x += 40) {
+                        const tileWidth = Math.min(
+                            40,
+                            width - x
+                        );
+
+                        const tileHeight = Math.min(
+                            8,
+                            height - y
+                        );
+
+                        const influence = Math.exp(
+                            -2 * (
+                                ((x - centerX) / radiusX) ** 2 +
+                                ((y - centerY) / radiusY) ** 2
+                            )
+                        );
+
+                        context.drawImage(
+                            source,
+                            x,
+                            y,
+                            tileWidth,
+                            tileHeight,
+                            x + movementX * influence,
+                            y + movementY * influence,
+                            tileWidth + 1,
+                            tileHeight + 1
+                        );
+                    }
+                }
+            });
+        }
+
+        requestAnimationFrame(animatePhotos);
     }
 
     if (document.readyState === "loading") {
