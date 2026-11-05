@@ -16,13 +16,14 @@
     <link rel="canonical" href="https://paraglidingfederation.ge/">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
     <link rel="stylesheet" href="/style.css">
 
     <script src="/languages.js" defer></script>
     <script src="/script.js" defer></script>
 
     <style>
-        /* საერთო სათაური */
+        /* სათაური */
 
         .site-header {
             position: sticky;
@@ -49,7 +50,7 @@
             line-height: 1.4;
         }
 
-        /* ენის არჩევა და სოციალური ქსელები */
+        /* ზედა მარჯვენა რიგი */
 
         .header-tools {
             position: absolute;
@@ -57,7 +58,6 @@
             right: 18px;
             left: auto;
             z-index: 60;
-
             display: flex;
             align-items: center;
             gap: 15px;
@@ -67,11 +67,9 @@
         .site-header .header-tools .gpf-language-bar {
             position: static !important;
             inset: auto !important;
-
             display: flex;
             align-items: center;
             gap: 7px;
-
             width: auto;
             margin: 0;
             padding: 0;
@@ -95,12 +93,10 @@
             min-width: 100px;
             min-height: 32px;
             padding: 4px 7px;
-
             border: 1px solid rgba(255,255,255,.25);
             border-radius: 7px;
             background: #102c46;
             color: #ffffff;
-
             font: inherit;
             font-size: 12px;
             direction: ltr;
@@ -117,18 +113,15 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-
             width: 30px;
             height: 30px;
             margin: 0;
             padding: 5px;
-
             border: 0;
             border-radius: 6px;
             background: transparent;
             color: #ffffff;
             text-decoration: none;
-
             transition:
                 background 180ms ease,
                 transform 180ms ease;
@@ -190,7 +183,6 @@
             inset: 0;
             z-index: 1;
             pointer-events: none;
-
             background: linear-gradient(
                 90deg,
                 rgba(7,25,44,.82),
@@ -208,7 +200,6 @@
         #home .flying-wing {
             transform-box: fill-box;
             transform-origin: center;
-
             animation-name: var(--flight, flight-glide);
             animation-duration: var(--duration, 18s);
             animation-delay: var(--delay, 0s);
@@ -216,6 +207,8 @@
             animation-iteration-count: infinite;
             animation-direction: var(--direction, normal);
         }
+
+        /* სწრაფი დაშვება */
 
         @keyframes flight-dive {
             0%, 100% {
@@ -237,6 +230,8 @@
                 transform: translate(60px,-55px) rotate(-18deg) scale(.92);
             }
         }
+
+        /* წრეზე ფრენა */
 
         @keyframes flight-circle {
             0%, 100% {
@@ -265,6 +260,8 @@
             }
         }
 
+        /* რვიანი */
+
         @keyframes flight-eight {
             0%, 100% {
                 transform: translate(0,0) rotate(0deg);
@@ -292,6 +289,8 @@
             }
         }
 
+        /* გვერდითი გაფრენა */
+
         @keyframes flight-pass {
             0%, 100% {
                 transform: translate(-260px,35px) rotate(-14deg) scale(.8);
@@ -309,6 +308,8 @@
                 transform: translate(70px,80px) rotate(-22deg) scale(.9);
             }
         }
+
+        /* ზიგზაგი */
 
         @keyframes flight-zigzag {
             0%, 100% {
@@ -331,6 +332,8 @@
             }
         }
 
+        /* ლივლივი */
+
         @keyframes flight-glide {
             0%, 100% {
                 transform: translate(-90px,25px) rotate(-5deg) scale(.95);
@@ -352,25 +355,21 @@
             }
         }
 
-        /* ვარიოს ხმის ღილაკი */
+        /* ვარიო */
 
         .vario-controls {
             position: fixed;
             right: 18px;
             bottom: 18px;
             z-index: 100;
-
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 12px;
-
             max-width: calc(100vw - 36px);
             padding: 12px 15px;
-
             border: 1px solid rgba(255,255,255,.25);
             border-radius: 14px;
-
             background: rgba(16,44,70,.94);
             color: #ffffff;
             box-shadow: 0 8px 28px rgba(0,0,0,.18);
@@ -419,7 +418,7 @@
             outline-offset: 3px;
         }
 
-        /* პარაპლანის კურსორი */
+        /* პარაპლანის ფორმის კურსორი */
 
         @media (hover: hover) and (pointer: fine) {
             :root {
@@ -499,11 +498,13 @@
 </head>
 
 <body>
-    <a class="skip-link" href="#main">შიგთავსზე გადასვლა</a>
+    <a class="skip-link" href="#main">
+        შიგთავსზე გადასვლა
+    </a>
 
     <header class="site-header">
 
-        <!-- ზედა მარჯვენა რიგი -->
+        <!-- ენა და სოციალური ქსელები -->
 
         <div class="header-tools">
             <div class="gpf-language-bar">
@@ -515,7 +516,11 @@
                     focusable="false"
                 >
                     <rect width="30" height="20" fill="#ffffff"/>
-                    <path d="M0 10H30 M15 0V20" stroke="#e52332" stroke-width="4"/>
+                    <path
+                        d="M0 10H30 M15 0V20"
+                        stroke="#e52332"
+                        stroke-width="4"
+                    />
                     <path
                         d="M5 5H9 M7 3V7 M21 5H25 M23 3V7 M5 15H9 M7 13V17 M21 15H25 M23 13V17"
                         stroke="#e52332"
@@ -568,11 +573,15 @@
                     >
                         <rect x="3" y="3" width="18" height="18" rx="5"/>
                         <circle cx="12" cy="12" r="4"/>
-                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                        <circle
+                            cx="17.5" cy="6.5" r="1"
+                            fill="currentColor"
+                            stroke="none"
+                        />
                     </svg>
                 </a>
 
-                <!-- TikTok-ის ბმულის მიღების შემდეგ ეს ღილაკი ბმულად შეიცვლება -->
+                <!-- TikTok-ის ბმული დასამატებელია -->
 
                 <button
                     type="button"
@@ -590,8 +599,6 @@
             </div>
         </div>
 
-        <!-- ლოგო და მენიუ -->
-
         <div class="container header-content">
             <a class="brand" href="index.html" aria-label="მთავარი">
                 <img
@@ -601,6 +608,7 @@
                     width="43"
                     height="43"
                 >
+
                 <span class="brand-name">საქართველოს პარაგლაიდინგის ფედერაცია</span>
             </a>
 
@@ -622,10 +630,16 @@
                 <a href="news.html">სიახლეები</a>
                 <a href="Needtoknow.html">საჭირო ინფორმაცია</a>
                 <a href="airspaces.html">საჰაერო სივრცეები</a>
-                <a href="pilots.html" id="pilots-nav-link">გაიცანი ჩვენი პილოტები</a>
+
+                <a href="pilots.html" id="pilots-nav-link">
+                    გაიცანი ჩვენი პილოტები
+                </a>
+
                 <a href="contact.html">კონტაქტი</a>
 
-                <a class="nav-book" href="BookYourFlight.html">
+                <!-- ჩვეულებრივი მენიუს ბმული -->
+
+                <a href="BookYourFlight.html" id="adventure-nav-link">
                     დაგეგმე შენი თავგადასავალი ↗
                 </a>
             </nav>
@@ -645,25 +659,42 @@
                     focusable="false"
                 >
                     <defs>
-                        <linearGradient id="flight-sky" x1="0" y1="0" x2="0" y2="1">
+                        <linearGradient
+                            id="flight-sky"
+                            x1="0" y1="0" x2="0" y2="1"
+                        >
                             <stop offset="0%" stop-color="#527fae"/>
                             <stop offset="55%" stop-color="#a9cce4"/>
                             <stop offset="100%" stop-color="#f1dfcd"/>
                         </linearGradient>
 
-                        <linearGradient id="flight-mountains" x1="0" y1="0" x2="0" y2="1">
+                        <linearGradient
+                            id="flight-mountains"
+                            x1="0" y1="0" x2="0" y2="1"
+                        >
                             <stop offset="0%" stop-color="#9eb9ce"/>
                             <stop offset="100%" stop-color="#527995"/>
                         </linearGradient>
 
-                        <linearGradient id="flight-valley" x1="0" y1="0" x2="0" y2="1">
+                        <linearGradient
+                            id="flight-valley"
+                            x1="0" y1="0" x2="0" y2="1"
+                        >
                             <stop offset="0%" stop-color="#416d8b"/>
                             <stop offset="100%" stop-color="#102f49"/>
                         </linearGradient>
 
                         <radialGradient id="flight-sun">
-                            <stop offset="0%" stop-color="#fff3db" stop-opacity=".8"/>
-                            <stop offset="100%" stop-color="#fff3db" stop-opacity="0"/>
+                            <stop
+                                offset="0%"
+                                stop-color="#fff3db"
+                                stop-opacity=".8"
+                            />
+                            <stop
+                                offset="100%"
+                                stop-color="#fff3db"
+                                stop-opacity="0"
+                            />
                         </radialGradient>
 
                         <g id="flight-paraglider">
@@ -677,7 +708,7 @@
                             <path
                                 d="M-62-23 L-62 17 M-40-38 L-38 0 M-14-45 L-13-10 M14-45 L13-10 M40-38 L38 0 M62-23 L62 17"
                                 fill="none"
-                                stroke="#fff"
+                                stroke="#ffffff"
                                 stroke-opacity=".65"
                                 stroke-width="2"
                             />
@@ -707,14 +738,21 @@
                         </g>
                     </defs>
 
-                    <rect width="1600" height="1000" fill="url(#flight-sky)"/>
+                    <rect
+                        width="1600"
+                        height="1000"
+                        fill="url(#flight-sky)"
+                    />
 
                     <ellipse
-                        cx="1300" cy="220" rx="430" ry="350"
+                        cx="1300"
+                        cy="220"
+                        rx="430"
+                        ry="350"
                         fill="url(#flight-sun)"
                     />
 
-                    <g fill="#fff" opacity=".22">
+                    <g fill="#ffffff" opacity=".22">
                         <ellipse cx="220" cy="220" rx="180" ry="28"/>
                         <ellipse cx="360" cy="230" rx="130" ry="22"/>
                         <ellipse cx="990" cy="335" rx="190" ry="23"/>
@@ -744,7 +782,7 @@
                         fill="url(#flight-valley)"
                     />
 
-                    <!-- ყვითელი 01: სწრაფი დაშვება -->
+                    <!-- ყვითელი: დაშვება -->
 
                     <g transform="translate(180 190) scale(.30)">
                         <g
@@ -774,7 +812,7 @@
                         </g>
                     </g>
 
-                    <!-- ყვითელი 02: სწრაფი გაფრენა -->
+                    <!-- ყვითელი: სწრაფი გაფრენა -->
 
                     <g transform="translate(820 320) scale(.60)">
                         <g
@@ -831,7 +869,7 @@
                         </g>
                     </g>
 
-                    <!-- ყვითელი 03: საპირისპირო მიმართულება -->
+                    <!-- ყვითელი: საპირისპირო გაფრენა -->
 
                     <g transform="translate(1230 490) scale(.90)">
                         <g
@@ -894,46 +932,14 @@
 
         <!-- მისია, ხედვა, უსაფრთხოება და განვითარება -->
 
-        <section class="section" id="about">
-            <div class="container">
-                <div class="values-grid">
-                    <article class="value-card">
-                        <h3>მისია</h3>
-                        <p>
-                            ხელი შევუწყოთ საქართველოში პარაგლაიდინგის უსაფრთხო, ორგანიზებულ და მდგრად განვითარებას. გავაძლიეროთ პილოტების ცოდნა და პრაქტიკული უნარები, პასუხისმგებლიანი ფრენის კულტურა და თანამშრომლობა პილოტებს, ოპერატორებსა და შესაბამის ორგანიზაციებს შორის.
-                        </p>
-                    </article>
-
-                    <article class="value-card">
-                        <h3>ხედვა</h3>
-                        <p>
-                            საქართველო ჩამოყალიბდეს საერთაშორისო დონეზე აღიარებულ პარაგლაიდინგის მიმართულებად, კვალიფიციური პილოტებით, უსაფრთხოების ძლიერი კულტურითა და მრავალფეროვანი საფრენი ადგილებით. სპორტული მიღწევები და სათავგადასავლო ტურიზმი განვითარდეს ბუნებისა და ადგილობრივი საზოგადოების პატივისცემით.
-                        </p>
-                    </article>
-
-                    <article class="value-card">
-                        <h3>უსაფრთხოება</h3>
-                        <p>
-                            გავაძლიეროთ უსაფრთხოების კულტურა სწავლებით, გამოცდილების გაზიარებითა და პასუხისმგებლიანი დაგეგმვით. განსაკუთრებული ყურადღება მივაქციოთ ამინდის შეფასებას, აღჭურვილობის გამართულობას, პილოტის მზადყოფნასა და ადგილობრივი მოთხოვნების დაცვას. წავახალისოთ რისკების გააზრება და დროული გადაწყვეტილებები ფრენამდე და ფრენისას.
-                        </p>
-                    </article>
-
-                    <article class="value-card">
-                        <h3>განვითარება</h3>
-                        <p>
-                            გავაფართოოთ განათლების, პრაქტიკული სწავლებისა და გამოცდილების გაცვლის შესაძლებლობები პილოტების პროფესიული და სპორტული განვითარებისთვის. წავახალისოთ შეჯიბრებებში მონაწილეობა, ახალი თაობა და საერთაშორისო თანამშრომლობა. შევქმნათ ერთიანი, ინფორმირებული და აქტიური საზოგადოება, რომელიც სპორტის ზრდასა და საქართველოს საერთაშორისო წარმომადგენლობას შეუწყობს ხელს.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
+       
 
         <!-- საფრენი ადგილები -->
 
         <section class="section section-tinted" id="locations">
             <div class="container">
                 <div class="section-heading">
-                    <p class="eyebrow">იპოვე ახალი ჰორიზონტი</p>
+                    <p class="eyebrow"></p>
                     <h2>აღმოაჩინე საფრენი ადგილები</h2>
 
                     <p>
@@ -1103,6 +1109,7 @@
 
         <label class="vario-volume-label" for="vario-volume">
             <span id="vario-volume-text">ხმა</span>
+
             <input
                 class="vario-volume"
                 id="vario-volume"
@@ -1122,7 +1129,7 @@
     (() => {
         "use strict";
 
-        /* დროშა ყოველთვის გამოჩნდება, ემოჯის მხარდაჭერის გარეშეც */
+        /* დროშები */
 
         const flags = {
             ka: `
@@ -1161,20 +1168,43 @@
                     <path d="M6 2L6.9 4.7L9.8 4.7L7.5 6.4
                              L8.4 9.1L6 7.4L3.6 9.1L4.5 6.4
                              L2.2 4.7L5.1 4.7Z"/>
-                    <circle cx="12" cy="3" r="1"/>
-                    <circle cx="14" cy="6" r="1"/>
-                    <circle cx="14" cy="9" r="1"/>
-                    <circle cx="12" cy="12" r="1"/>
+                    <path d="M12 2L12.3 2.7L13 2.7L12.4 3.2
+                             L12.6 4L12 3.5L11.4 4L11.6 3.2
+                             L11 2.7L11.7 2.7Z"/>
+                    <path d="M14 5L14.3 5.7L15 5.7L14.4 6.2
+                             L14.6 7L14 6.5L13.4 7L13.6 6.2
+                             L13 5.7L13.7 5.7Z"/>
+                    <path d="M14 8L14.3 8.7L15 8.7L14.4 9.2
+                             L14.6 10L14 9.5L13.4 10L13.6 9.2
+                             L13 8.7L13.7 8.7Z"/>
+                    <path d="M12 11L12.3 11.7L13 11.7L12.4 12.2
+                             L12.6 13L12 12.5L11.4 13L11.6 12.2
+                             L11 11.7L11.7 11.7Z"/>
                 </g>
             `
         };
 
         const headerTexts = {
-            ka: ["დაგეგმე შენი თავგადასავალი ↗", "გაიცანი ჩვენი პილოტები"],
-            en: ["Plan Your Adventure ↗", "Meet Our Pilots"],
-            fr: ["Préparez votre aventure ↗", "Rencontrez nos pilotes"],
-            ar: ["خطط لمغامرتك ↗", "تعرّف على طيارينا"],
-            zh: ["规划你的冒险 ↗", "认识我们的飞行员"]
+            ka: [
+                "დაგეგმე შენი თავგადასავალი ↗",
+                "გაიცანი ჩვენი პილოტები"
+            ],
+            en: [
+                "Plan Your Adventure ↗",
+                "Meet Our Pilots"
+            ],
+            fr: [
+                "Préparez votre aventure ↗",
+                "Rencontrez nos pilotes"
+            ],
+            ar: [
+                "خطط لمغامرتك ↗",
+                "تعرّف على طيارينا"
+            ],
+            zh: [
+                "规划你的冒险 ↗",
+                "认识我们的飞行员"
+            ]
         };
 
         function updateHeader() {
@@ -1188,14 +1218,20 @@
                 flag.innerHTML = flags[language] || flags.ka;
             }
 
-            const bookingLink = document.querySelector(".nav-book");
-            const pilotsLink = document.getElementById("pilots-nav-link");
+            const bookingLink =
+                document.getElementById("adventure-nav-link");
+
+            const pilotsLink =
+                document.getElementById("pilots-nav-link");
 
             if (bookingLink) bookingLink.textContent = text[0];
             if (pilotsLink) pilotsLink.textContent = text[1];
         }
 
-        document.addEventListener("DOMContentLoaded", updateHeader);
+        document.addEventListener(
+            "DOMContentLoaded",
+            updateHeader
+        );
 
         new MutationObserver(updateHeader).observe(
             document.documentElement,
@@ -1207,7 +1243,7 @@
 
         updateHeader();
 
-        /* ვარიოს ხმა */
+        /* ვარიოს ხმა — მობილურის მხარდაჭერით */
 
         const hero = document.getElementById("home");
         const controls = document.getElementById("vario-controls");
@@ -1217,11 +1253,6 @@
         const status = document.getElementById("vario-status");
 
         if (!hero || !controls || !button || !volume) return;
-
-        /*
-         * ყვითელი ფრთები პირდაპირაა მონიშნული.
-         * ფერის HEX/RGB ფორმატს აღარ ვადარებთ.
-         */
 
         const yellowWings = Array.from(
             hero.querySelectorAll('[data-vario="true"]')
@@ -1234,38 +1265,38 @@
 
         controls.hidden = false;
 
-        const labels = {
+        const audioLabels = {
             ka: {
                 on: "🔊 ვარიოს ჩართვა",
                 off: "🔇 ვარიოს გამორთვა",
                 volume: "ხმა",
                 ready: "ხმა მიბმულია ყვითელ პარაპლანებზე.",
-                active: "ვარიო ჩართულია — ყვითელი პარაპლანები.",
-                error: "ხმის ჩართვა ვერ მოხერხდა."
+                active: "ვარიო ჩართულია.",
+                error: "ხმა ვერ ჩაირთო. სცადეთ ხელახლა."
             },
             en: {
                 on: "🔊 Enable vario",
                 off: "🔇 Disable vario",
                 volume: "Volume",
                 ready: "Sound follows the yellow paragliders.",
-                active: "Vario enabled — yellow paragliders.",
-                error: "Audio could not be enabled."
+                active: "Vario enabled.",
+                error: "Audio could not start. Try again."
             },
             fr: {
                 on: "🔊 Activer le vario",
                 off: "🔇 Couper le vario",
                 volume: "Volume",
                 ready: "Le son suit les parapentes jaunes.",
-                active: "Vario activé — parapentes jaunes.",
-                error: "Impossible d’activer le son."
+                active: "Vario activé.",
+                error: "Impossible d’activer le son. Réessayez."
             },
             ar: {
                 on: "🔊 تشغيل الفاريو",
                 off: "🔇 إيقاف الفاريو",
                 volume: "الصوت",
                 ready: "يتبع الصوت المظلات الصفراء.",
-                active: "الفاريو يعمل — المظلات الصفراء.",
-                error: "تعذر تشغيل الصوت."
+                active: "الفاريو يعمل.",
+                error: "تعذر تشغيل الصوت. حاول مجددًا."
             },
             zh: {
                 on: "🔊 开启升降仪声音",
@@ -1273,38 +1304,35 @@
                 volume: "音量",
                 ready: "声音跟随黄色滑翔伞。",
                 active: "升降仪声音已开启。",
-                error: "无法开启声音。"
+                error: "无法开启声音，请重试。"
             }
         };
 
         let enabled = false;
-        let failed = false;
         let busy = false;
+        let failed = false;
 
-        let audioContext;
+        let context;
         let oscillator;
-        let gain;
+        let output;
 
-        let frameId = 0;
-        let lastSampleTime = 0;
-        let nextBeepTime = 0;
-        let warmupUntil = 0;
+        let animationFrame = 0;
+        let lastSample = 0;
+        let nextTone = 0;
+        let startupUntil = 0;
 
-        let activeWing = null;
-        let activeSince = 0;
+        let selectedWing = null;
+        let selectedAt = 0;
+        let toneMode = "silent";
 
-        const previousPositions = new Map();
-        const smoothedSpeeds = new Map();
+        const positions = new Map();
+        const speeds = new Map();
 
-        function currentLabels() {
+        function updateAudioLabels() {
             const language =
                 document.documentElement.lang.split("-")[0];
 
-            return labels[language] || labels.ka;
-        }
-
-        function updateLabels() {
-            const text = currentLabels();
+            const text = audioLabels[language] || audioLabels.ka;
 
             button.textContent = enabled ? text.off : text.on;
             button.setAttribute("aria-pressed", String(enabled));
@@ -1317,82 +1345,100 @@
                     : text.ready;
         }
 
-        function silence() {
-            if (!audioContext || !gain) return;
-
-            const now = audioContext.currentTime;
-
-            gain.gain.cancelScheduledValues(now);
-            gain.gain.setTargetAtTime(0, now, .02);
+        function resetMovement() {
+            positions.clear();
+            speeds.clear();
+            lastSample = 0;
+            selectedWing = null;
         }
 
-        function createAudio() {
-            if (audioContext) return;
+        function muteAudio() {
+            if (!context || !output) return;
 
-            const AudioContextClass =
-                window.AudioContext || window.webkitAudioContext;
+            const now = context.currentTime;
 
-            if (!AudioContextClass) {
-                throw new Error("Web Audio unavailable");
+            output.gain.cancelScheduledValues(now);
+            output.gain.setTargetAtTime(0, now, 0.015);
+
+            toneMode = "silent";
+        }
+
+        function prepareAudio() {
+            if (context) return;
+
+            const AudioEngine =
+                window.AudioContext ||
+                window.webkitAudioContext;
+
+            if (!AudioEngine) {
+                throw new Error("Audio unavailable");
             }
 
-            audioContext = new AudioContextClass();
-            oscillator = audioContext.createOscillator();
-            gain = audioContext.createGain();
+            context = new AudioEngine();
+            oscillator = context.createOscillator();
+            output = context.createGain();
 
-            oscillator.type = "sine";
-            oscillator.frequency.value = 850;
-            gain.gain.value = 0;
+            oscillator.type = "triangle";
+            oscillator.frequency.value = 1600;
+            output.gain.value = 0;
 
-            oscillator.connect(gain);
-            gain.connect(audioContext.destination);
+            oscillator.connect(output);
+            output.connect(context.destination);
             oscillator.start();
         }
 
-        function playBeep(frequency, duration, level) {
-            const now = audioContext.currentTime;
+        function beep(frequency, duration, level, rising = false) {
+            const now = context.currentTime;
 
-            oscillator.frequency.setTargetAtTime(
-                frequency, now, .025
+            oscillator.frequency.cancelScheduledValues(now);
+
+            oscillator.frequency.setValueAtTime(
+                frequency,
+                now
             );
 
-            gain.gain.cancelScheduledValues(now);
-            gain.gain.setValueAtTime(0, now);
-            gain.gain.linearRampToValueAtTime(level, now + .012);
+            if (rising) {
+                oscillator.frequency.linearRampToValueAtTime(
+                    frequency + 180,
+                    now + duration
+                );
+            }
 
-            gain.gain.setValueAtTime(
+            output.gain.cancelScheduledValues(now);
+            output.gain.setValueAtTime(0, now);
+
+            output.gain.linearRampToValueAtTime(
                 level,
-                now + Math.max(.015, duration - .025)
+                now + 0.008
             );
 
-            gain.gain.linearRampToValueAtTime(
-                0, now + duration
+            output.gain.setValueAtTime(
+                level,
+                now + Math.max(0.012, duration - 0.018)
+            );
+
+            output.gain.linearRampToValueAtTime(
+                0,
+                now + duration
             );
         }
 
-        function heroIsVisible() {
+        function visibleHero() {
             const box = hero.getBoundingClientRect();
 
             return (
+                !document.hidden &&
                 box.bottom > 0 &&
-                box.top < window.innerHeight &&
-                !document.hidden
+                box.top < window.innerHeight
             );
         }
 
-        function resetSamples() {
-            previousPositions.clear();
-            smoothedSpeeds.clear();
-            lastSampleTime = 0;
-            activeWing = null;
-        }
-
-        function sampleMovement(timestamp) {
-            const elapsed = lastSampleTime
-                ? (timestamp - lastSampleTime) / 1000
+        function measureSpeed(timestamp) {
+            const elapsed = lastSample
+                ? (timestamp - lastSample) / 1000
                 : 0;
 
-            lastSampleTime = timestamp;
+            lastSample = timestamp;
 
             const heroBox = hero.getBoundingClientRect();
             const candidates = [];
@@ -1403,26 +1449,38 @@
                 const y =
                     box.top + box.height / 2 - heroBox.top;
 
-                const previousY = previousPositions.get(wing);
-                previousPositions.set(wing, y);
+                const previous = positions.get(wing);
+                positions.set(wing, y);
 
                 if (
-                    previousY === undefined ||
+                    previous === undefined ||
                     elapsed <= 0 ||
-                    elapsed > .25
+                    elapsed > 0.3
                 ) {
-                    smoothedSpeeds.set(wing, 0);
+                    speeds.set(wing, 0);
                     continue;
                 }
 
-                const speed = (previousY - y) / elapsed;
-                const oldSpeed = smoothedSpeeds.get(wing) || 0;
-                const smoothing = 1 - Math.exp(-elapsed * 7);
+                const matrix = wing.getScreenCTM();
 
-                const smoothSpeed =
-                    oldSpeed + (speed - oldSpeed) * smoothing;
+                const scale = matrix
+                    ? Math.max(
+                        Math.hypot(matrix.c, matrix.d),
+                        0.01
+                    )
+                    : 1;
 
-                smoothedSpeeds.set(wing, smoothSpeed);
+                const rawSpeed =
+                    (previous - y) / elapsed / scale;
+
+                const oldSpeed = speeds.get(wing) || 0;
+                const smoothing = 1 - Math.exp(-elapsed * 8);
+
+                const speed =
+                    oldSpeed +
+                    (rawSpeed - oldSpeed) * smoothing;
+
+                speeds.set(wing, speed);
 
                 const visible =
                     box.right > heroBox.left &&
@@ -1431,41 +1489,39 @@
                     box.top < heroBox.bottom;
 
                 if (visible) {
-                    candidates.push({
-                        wing,
-                        speed: smoothSpeed
-                    });
+                    candidates.push({ wing, speed });
                 }
             }
 
             candidates.sort(
-                (a, b) => Math.abs(b.speed) - Math.abs(a.speed)
+                (a, b) =>
+                    Math.abs(b.speed) - Math.abs(a.speed)
             );
 
             const strongest = candidates[0];
 
             if (!strongest) {
-                activeWing = null;
+                selectedWing = null;
                 return 0;
             }
 
             const current = candidates.find(
-                item => item.wing === activeWing
+                item => item.wing === selectedWing
             );
 
             if (
                 !current ||
                 (
-                    timestamp - activeSince > 1200 &&
+                    timestamp - selectedAt > 1200 &&
                     Math.abs(strongest.speed) >
-                        Math.abs(current.speed) * 1.35 + 2
+                        Math.abs(current.speed) * 1.4 + 1
                 )
             ) {
-                activeWing = strongest.wing;
-                activeSince = timestamp;
+                selectedWing = strongest.wing;
+                selectedAt = timestamp;
 
-                silence();
-                nextBeepTime = audioContext.currentTime;
+                muteAudio();
+                nextTone = context.currentTime;
 
                 return strongest.speed;
             }
@@ -1473,60 +1529,103 @@
             return current.speed;
         }
 
-        function animate(timestamp) {
+        function audioLoop(timestamp) {
             if (!enabled) return;
 
-            frameId = requestAnimationFrame(animate);
+            animationFrame =
+                requestAnimationFrame(audioLoop);
 
-            if (!heroIsVisible()) {
-                silence();
-                resetSamples();
+            if (!visibleHero()) {
+                muteAudio();
+                resetMovement();
                 return;
             }
 
-            if (audioContext.state !== "running") {
-                resetSamples();
+            if (context.state !== "running") {
+                resetMovement();
                 return;
             }
 
-            if (audioContext.currentTime < warmupUntil) return;
-            if (timestamp - lastSampleTime < 33) return;
+            const now = context.currentTime;
 
-            const speed = sampleMovement(timestamp);
-            const level = Number(volume.value) / 100 * .12;
-            const now = audioContext.currentTime;
+            if (now < startupUntil) return;
 
-            if (level === 0 || Math.abs(speed) < 2) {
-                silence();
-                nextBeepTime = now;
+            if (
+                lastSample &&
+                timestamp - lastSample < 33
+            ) {
+                return;
+            }
+
+            const speed = measureSpeed(timestamp);
+            const level = Number(volume.value) / 100 * 0.10;
+
+            if (
+                level === 0 ||
+                Math.abs(speed) < 0.8
+            ) {
+                muteAudio();
+                nextTone = now;
                 return;
             }
 
             if (speed > 0) {
-                const intensity = Math.min(speed / 55, 1);
-                const frequency = 700 + intensity * 1100;
-                const interval = .7 - intensity * .5;
-                const duration = Math.min(.11, interval * .45);
+                if (toneMode !== "climb") {
+                    muteAudio();
+                    toneMode = "climb";
+                    nextTone = now;
+                }
 
-                if (now >= nextBeepTime) {
-                    playBeep(frequency, duration, level);
-                    nextBeepTime = now + interval;
+                const intensity =
+                    Math.min(speed / 65, 1);
+
+                const frequency =
+                    1400 + intensity * 1400;
+
+                const interval =
+                    0.48 - intensity * 0.35;
+
+                const duration =
+                    Math.min(0.075, interval * 0.45);
+
+                if (now >= nextTone) {
+                    beep(
+                        frequency,
+                        duration,
+                        level,
+                        true
+                    );
+
+                    nextTone = now + interval;
                 }
             } else {
-                const intensity = Math.min(-speed / 55, 1);
-                const frequency = 420 - intensity * 190;
+                const intensity =
+                    Math.min(-speed / 65, 1);
 
-                oscillator.frequency.setTargetAtTime(
-                    frequency, now, .08
+                if (toneMode !== "sink") {
+                    muteAudio();
+                    toneMode = "sink";
+                }
+
+                oscillator.frequency
+                    .cancelScheduledValues(now);
+
+                oscillator.frequency
+                    .setTargetAtTime(
+                        380 - intensity * 150,
+                        now,
+                        0.06
+                    );
+
+                output.gain.cancelScheduledValues(now);
+
+                output.gain.setTargetAtTime(
+                    level * 0.45,
+                    now,
+                    0.04
                 );
 
-                gain.gain.cancelScheduledValues(now);
-
-                gain.gain.setTargetAtTime(
-                    level * .55, now, .05
-                );
-
-                nextBeepTime = now;
+                nextTone = now;
             }
         }
 
@@ -1539,77 +1638,82 @@
             try {
                 if (enabled) {
                     enabled = false;
-                    cancelAnimationFrame(frameId);
-                    silence();
-                    resetSamples();
 
-                    if (audioContext?.state === "running") {
-                        await audioContext.suspend();
+                    cancelAnimationFrame(animationFrame);
+                    muteAudio();
+                    resetMovement();
+
+                    if (context?.state === "running") {
+                        await context.suspend();
                     }
                 } else {
-                    createAudio();
-                    await audioContext.resume();
+                    prepareAudio();
 
-                    if (audioContext.state !== "running") {
-                        throw new Error("Audio context suspended");
+                    const resumeRequest =
+                        context.resume();
+
+                    await resumeRequest;
+
+                    if (context.state !== "running") {
+                        throw new Error("Audio suspended");
                     }
 
                     enabled = true;
                     failed = false;
 
-                    resetSamples();
+                    resetMovement();
 
-                    const now = audioContext.currentTime;
-
-                    /*
-                     * მოკლე საცდელი სიგნალი ჩართვისას.
-                     */
-                    playBeep(
-                        900,
-                        .12,
-                        Number(volume.value) / 100 * .12
+                    beep(
+                        1600,
+                        0.12,
+                        Number(volume.value) / 100 * 0.10,
+                        true
                     );
 
-                    warmupUntil = now + .16;
-                    nextBeepTime = warmupUntil;
+                    startupUntil =
+                        context.currentTime + 0.17;
 
-                    frameId = requestAnimationFrame(animate);
+                    nextTone = startupUntil;
+
+                    animationFrame =
+                        requestAnimationFrame(audioLoop);
                 }
             } catch (error) {
                 enabled = false;
                 failed = true;
 
-                cancelAnimationFrame(frameId);
-                silence();
+                cancelAnimationFrame(animationFrame);
+                muteAudio();
 
                 console.error("Vario audio:", error);
             } finally {
                 busy = false;
                 button.disabled = false;
-                updateLabels();
+                updateAudioLabels();
             }
         });
 
         volume.addEventListener("input", () => {
             if (Number(volume.value) === 0) {
-                silence();
+                muteAudio();
             }
         });
 
         document.addEventListener("visibilitychange", () => {
-            if (document.hidden) silence();
-            resetSamples();
+            if (document.hidden) muteAudio();
+            resetMovement();
         });
 
         window.addEventListener("pagehide", () => {
             enabled = false;
-            cancelAnimationFrame(frameId);
-            silence();
-            resetSamples();
-            updateLabels();
+
+            cancelAnimationFrame(animationFrame);
+            muteAudio();
+            resetMovement();
+            updateAudioLabels();
         });
 
-        new MutationObserver(updateLabels).observe(
+        new MutationObserver(updateAudioLabels).observe(
             document.documentElement,
             {
                 attributes: true,
@@ -1617,7 +1721,7 @@
             }
         );
 
-        updateLabels();
+        updateAudioLabels();
     })();
     </script>
 </body>
