@@ -12,8 +12,10 @@
 
     <meta
         name="description"
-        content="საქართველოს პარაგლაიდინგის ფედერაცია — ჩვენ შესახებ. პარაგლაიდინგი საქართველოში."
+        content="საქართველოს პარაგლაიდინგის ფედერაციის მისია, ხედვა, უსაფრთხოების კულტურა და პარაგლაიდინგის განვითარების მიმართულებები."
     >
+
+    <meta name="theme-color" content="#123351">
 
     <link
         rel="canonical"
@@ -34,9 +36,120 @@
     >
 
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/languages.css">
 
-    <script src="/languages.js"></script>
+    <style>
+        .site-header {
+            padding-top: 44px;
+        }
+
+        .site-header .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .site-header .brand-symbol {
+            flex: 0 0 43px;
+        }
+
+        .site-header .brand-name {
+            display: block;
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .site-header > .gpf-language-bar {
+            position: absolute;
+            top: 7px;
+            right: 12px;
+            left: auto;
+            bottom: auto;
+            z-index: 30;
+
+            display: flex;
+            align-items: center;
+
+            width: auto;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            direction: ltr;
+        }
+
+        .gpf-language-bar select {
+            min-width: 145px;
+            min-height: 32px;
+            max-width: calc(100vw - 24px);
+            padding: 5px 10px;
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: #102c46;
+            color: #ffffff;
+
+            font: inherit;
+            font-size: 13px;
+            line-height: 1.4;
+            direction: ltr;
+        }
+
+        .gpf-language-bar select:focus-visible {
+            outline: 2px solid #8ccfff;
+            outline-offset: 3px;
+        }
+
+        .motion-control {
+            display: none !important;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            :root {
+                --paraglider-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2 12C4 1 28 1 30 12L25 14L20 12L16 14L12 12L7 14Z' fill='%232b93d1' stroke='%230d304d' stroke-width='1.2'/%3E%3Cpath d='M7 6L7 14M12 4L12 12M20 4L20 12M25 6L25 14' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Cpath d='M3 12L15 24M29 12L17 24M9 13L15 24M23 13L17 24' fill='none' stroke='%230d304d' stroke-width='1'/%3E%3Ccircle cx='16' cy='23' r='2' fill='%23f4a340' stroke='%230d304d' stroke-width='1'/%3E%3Cpath d='M16 25L14 29L19 29' fill='none' stroke='%230d304d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 16 3;
+            }
+
+            html,
+            body,
+            body a,
+            body button,
+            body select,
+            body summary,
+            body label,
+            body input[type="checkbox"],
+            body input[type="radio"] {
+                cursor: var(--paraglider-cursor), auto;
+            }
+
+            body input:not([type="checkbox"]):not([type="radio"]),
+            body textarea,
+            body [contenteditable="true"] {
+                cursor: text;
+            }
+
+            body button:disabled,
+            body select:disabled {
+                cursor: not-allowed;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-header .brand {
+                gap: 7px;
+            }
+
+            .site-header .brand-name {
+                font-size: 11px;
+            }
+
+            .site-header > .gpf-language-bar {
+                right: 8px;
+            }
+        }
+    </style>
+
+    <script src="/languages.js" defer></script>
     <script src="/script.js" defer></script>
 
     <script type="application/ld+json">
@@ -44,10 +157,7 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "საქართველოს პარაგლაიდინგის ფედერაცია",
-        "alternateName": [
-            "საქართველოს პარაგლაიდინგის ფედერაცია",
-            "Georgian Paragliding Federation"
-        ],
+        "alternateName": "Georgian Paragliding Federation",
         "url": "https://paraglidingfederation.ge/",
         "logo": "https://paraglidingfederation.ge/images/logo.jpg",
         "sameAs": [
@@ -63,11 +173,27 @@
         შიგთავსზე გადასვლა
     </a>
 
-    <!-- HEADER -->
-
     <header class="site-header">
+        <div class="gpf-language-bar">
+            <select
+                id="gpf-language"
+                aria-label="აირჩიეთ ენა"
+                dir="ltr"
+            >
+                <option value="ka">🇬🇪 ქართული</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="ar">🇸🇦 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
+        </div>
+
         <div class="container header-content">
-            <a class="brand" href="index.html">
+            <a
+                class="brand"
+                href="index.html"
+                aria-label="მთავარი"
+            >
                 <img
                     class="brand-symbol"
                     src="/images/logo.jpg"
@@ -76,10 +202,7 @@
                     height="43"
                 >
 
-                <span class="brand-name">
-                    საქართველოს
-                    <small>პარაგლაიდინგის ფედერაცია</small>
-                </span>
+                <span class="brand-name">საქართველოს პარაგლაიდინგის ფედერაცია</span>
             </a>
 
             <button
@@ -101,10 +224,7 @@
                     მთავარი
                 </a>
 
-                <a
-                    href="about.html"
-                    aria-current="page"
-                >
+                <a href="about.html" aria-current="page">
                     ჩვენ შესახებ
                 </a>
 
@@ -132,34 +252,16 @@
                     კონტაქტი
                 </a>
 
-                <a
-                    class="nav-book"
-                    href="BookYourFlight.html"
-                >
-                    დაგეგმე ფრენა 🪂
+                <a class="nav-book" href="BookYourFlight.html">
+                    დაგეგმე შენი თავგადასავალი ↗
                 </a>
             </nav>
-        </div>
-
-        <!-- LANGUAGE SELECTOR -->
-
-        <div class="gpf-language-bar">
-            <select
-                id="gpf-language"
-                aria-label="აირჩიეთ ენა"
-            >
-                <option value="ka">🇬🇪 ქართული</option>
-                <option value="en">🇬🇧 English</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="ar">🇦🇪 العربية</option>
-                <option value="zh">🇨🇳 中文</option>
-            </select>
         </div>
     </header>
 
     <main id="main">
 
-        <!-- ABOUT -->
+        <!-- ჩვენ შესახებ -->
 
         <section class="section">
             <div class="container">
@@ -177,55 +279,31 @@
 
                     <div class="about-copy">
                         <p>
-                            საქართველოს პარაგლაიდინგის ფედერაციაში
-                            გვჯერა, რომ სპორტის მომავალი იწყება
-                            ადამიანებით — პილოტებით, ინსტრუქტორებით,
-                            კლუბებით და ყველასგან, ვისაც ცა
-                            შთააგონებს.
+                            საქართველოს პარაგლაიდინგის ფედერაციაში გვჯერა, რომ სპორტის მომავალი იწყება ადამიანებით — პილოტებით, ინსტრუქტორებით, კლუბებით და ყველასგან, ვისაც ცა შთააგონებს.
                         </p>
 
                         <p>
-                            ჩვენ ვაძლიერებთ საქართველოს
-                            პარაგლაიდინგის საზოგადოებას
-                            უსაფრთხოების ხელშეწყობით, პილოტების
-                            განვითარებით, სწავლებით, ღონისძიებებითა
-                            და გამოცდილების გაზიარებით.
-                            საქართველოს მთების გარემოში ვქმნით
-                            პასუხისმგებლიანი ფრენის მდგრად
-                            კულტურას, სადაც ცოდნა ვრცელდება,
-                            უნარები ვითარდება და ყოველი თაობა
-                            შემდეგს შთააგონებს.
+                            ჩვენ ვაძლიერებთ საქართველოს პარაგლაიდინგის საზოგადოებას უსაფრთხოების ხელშეწყობით, პილოტების განვითარებით, სწავლებით, ღონისძიებებითა და გამოცდილების გაზიარებით. საქართველოს მთების გარემოში ვქმნით პასუხისმგებლიანი ფრენის მდგრად კულტურას, სადაც ცოდნა ვრცელდება, უნარები ვითარდება და ყოველი თაობა შემდეგს შთააგონებს.
                         </p>
 
                         <p>
-                            ჩვენი ინტერესებია ფრენა, პილოტების
-                            განვითარება, საავიაციო ღონისძიებები
-                            და ძლიერი პარაგლაიდინგის
-                            საზოგადოების შექმნა.
+                            ჩვენი ინტერესებია ფრენა, პილოტების განვითარება, საავიაციო ღონისძიებები და ძლიერი პარაგლაიდინგის საზოგადოების შექმნა.
                         </p>
 
                         <p>
-                            ვაერთიანებთ ადამიანებს, რომლებსაც
-                            ფრენის, სწავლისა და საქართველოს
-                            ბუნების სიყვარული აერთიანებთ.
+                            ვაერთიანებთ ადამიანებს, რომლებსაც ფრენის, სწავლისა და საქართველოს ბუნების სიყვარული აერთიანებთ.
                         </p>
                     </div>
                 </div>
 
-                <!-- MISSION, VISION, SAFETY, DEVELOPMENT -->
+                <!-- მისია, ხედვა, უსაფრთხოება და განვითარება -->
 
                 <div class="values-grid">
                     <article class="value-card">
                         <h3>მისია</h3>
 
                         <p>
-                            ხელი შევუწყოთ საქართველოში
-                            პარაგლაიდინგის უსაფრთხო, ორგანიზებულ
-                            და მდგრად განვითარებას. გავაძლიეროთ
-                            პილოტების ცოდნა და პრაქტიკული უნარები,
-                            პასუხისმგებლიანი ფრენის კულტურა და
-                            თანამშრომლობა პილოტებს, ოპერატორებსა
-                            და შესაბამის ორგანიზაციებს შორის.
+                            ხელი შევუწყოთ საქართველოში პარაგლაიდინგის უსაფრთხო, ორგანიზებულ და მდგრად განვითარებას. გავაძლიეროთ პილოტების ცოდნა და პრაქტიკული უნარები, პასუხისმგებლიანი ფრენის კულტურა და თანამშრომლობა პილოტებს, ოპერატორებსა და შესაბამის ორგანიზაციებს შორის.
                         </p>
                     </article>
 
@@ -233,14 +311,7 @@
                         <h3>ხედვა</h3>
 
                         <p>
-                            საქართველო ჩამოყალიბდეს საერთაშორისო
-                            დონეზე აღიარებულ პარაგლაიდინგის
-                            მიმართულებად, კვალიფიციური პილოტებით,
-                            უსაფრთხოების ძლიერი კულტურითა და
-                            მრავალფეროვანი საფრენი ადგილებით.
-                            სპორტული მიღწევები და სათავგადასავლო
-                            ტურიზმი განვითარდეს ბუნებისა და
-                            ადგილობრივი საზოგადოების პატივისცემით.
+                            საქართველო ჩამოყალიბდეს საერთაშორისო დონეზე აღიარებულ პარაგლაიდინგის მიმართულებად, კვალიფიციური პილოტებით, უსაფრთხოების ძლიერი კულტურითა და მრავალფეროვანი საფრენი ადგილებით. სპორტული მიღწევები და სათავგადასავლო ტურიზმი განვითარდეს ბუნებისა და ადგილობრივი საზოგადოების პატივისცემით.
                         </p>
                     </article>
 
@@ -248,16 +319,7 @@
                         <h3>უსაფრთხოება</h3>
 
                         <p>
-                            გავაძლიეროთ უსაფრთხოების კულტურა
-                            სწავლებით, გამოცდილების გაზიარებითა
-                            და პასუხისმგებლიანი დაგეგმვით.
-                            განსაკუთრებული ყურადღება მივაქციოთ
-                            ამინდის შეფასებას, აღჭურვილობის
-                            გამართულობას, პილოტის მზადყოფნასა და
-                            ადგილობრივი მოთხოვნების დაცვას.
-                            წავახალისოთ რისკების გააზრება და
-                            დროული გადაწყვეტილებები ფრენამდე
-                            და ფრენისას.
+                            გავაძლიეროთ უსაფრთხოების კულტურა სწავლებით, გამოცდილების გაზიარებითა და პასუხისმგებლიანი დაგეგმვით. განსაკუთრებული ყურადღება მივაქციოთ ამინდის შეფასებას, აღჭურვილობის გამართულობას, პილოტის მზადყოფნასა და ადგილობრივი მოთხოვნების დაცვას. წავახალისოთ რისკების გააზრება და დროული გადაწყვეტილებები ფრენამდე და ფრენისას.
                         </p>
                     </article>
 
@@ -265,24 +327,14 @@
                         <h3>განვითარება</h3>
 
                         <p>
-                            გავაფართოოთ განათლების, პრაქტიკული
-                            სწავლებისა და გამოცდილების გაცვლის
-                            შესაძლებლობები პილოტების პროფესიული
-                            და სპორტული განვითარებისთვის.
-                            წავახალისოთ შეჯიბრებებში მონაწილეობა,
-                            ახალი თაობა და საერთაშორისო
-                            თანამშრომლობა. შევქმნათ ერთიანი,
-                            ინფორმირებული და აქტიური საზოგადოება,
-                            რომელიც სპორტის ზრდასა და საქართველოს
-                            საერთაშორისო წარმომადგენლობას
-                            შეუწყობს ხელს.
+                            გავაფართოოთ განათლების, პრაქტიკული სწავლებისა და გამოცდილების გაცვლის შესაძლებლობები პილოტების პროფესიული და სპორტული განვითარებისთვის. წავახალისოთ შეჯიბრებებში მონაწილეობა, ახალი თაობა და საერთაშორისო თანამშრომლობა. შევქმნათ ერთიანი, ინფორმირებული და აქტიური საზოგადოება, რომელიც სპორტის ზრდასა და საქართველოს საერთაშორისო წარმომადგენლობას შეუწყობს ხელს.
                         </p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- DISCOVER MORE -->
+        <!-- დამატებითი მიმართულებები -->
 
         <section class="section section-tinted">
             <div class="container">
@@ -293,9 +345,6 @@
                 </div>
 
                 <div class="locations-grid">
-
-                    <!-- MOUNTAIN ADVENTURES -->
-
                     <article class="location-card">
                         <div class="location-image">
                             <img
@@ -318,8 +367,6 @@
                         </div>
                     </article>
 
-                    <!-- LEARNING -->
-
                     <article class="location-card">
                         <div class="location-image">
                             <img
@@ -333,8 +380,7 @@
                             <h3>სწავლის შესაძლებლობები</h3>
 
                             <p>
-                                გაიგეთ მიმდინარე სასწავლო
-                                შესაძლებლობების შესახებ.
+                                გაიგეთ მიმდინარე სასწავლო შესაძლებლობების შესახებ.
                             </p>
 
                             <a href="contact.html">
@@ -342,8 +388,6 @@
                             </a>
                         </div>
                     </article>
-
-                    <!-- FLIGHT -->
 
                     <article class="location-card">
                         <div class="location-image">
@@ -371,8 +415,6 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
-
     <footer class="site-footer">
         <div class="container">
             <strong>
@@ -382,7 +424,7 @@
             <div class="footer-bottom">
                 <p>
                     © <span id="year">2026</span>
-                    ყველა უფლება დაცულია.
+                    <span>ყველა უფლება დაცულია.</span>
                 </p>
 
                 <a href="mailto:info@paragliding.ge">
