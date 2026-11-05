@@ -1,6 +1,18 @@
 "use strict";
 
 (() => {
+    function t(text) {
+        return typeof window.GPFTranslate === "function"
+            ? window.GPFTranslate(text)
+            : text;
+    }
+
+    function localizeMessage(lines) {
+        return typeof window.GPFMessage === "function"
+            ? window.GPFMessage(lines)
+            : lines;
+    }
+
     function initializeSite() {
         if (document.body.dataset.gpfInitialized) return;
 
@@ -35,11 +47,7 @@
             );
 
             mainMenu.style.removeProperty("display");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+            menuToggle.setAttribute("aria-expanded", "false");
         }
 
         window.addEventListener("click", (event) => {
@@ -128,7 +136,8 @@
         if (mainMenu) {
             [
                 ["news.html", "News"],
-                ["Needtoknow.html", "Need to know"]
+                ["Needtoknow.html", "Need to know"],
+                ["airspaces.html", "Airspaces"]
             ].forEach(([href, text]) => {
                 if (mainMenu.querySelector(`a[href="${href}"]`)) {
                     return;
@@ -137,7 +146,7 @@
                 const link = document.createElement("a");
 
                 link.href = href;
-                link.textContent = text;
+                link.textContent = t(text);
 
                 mainMenu.insertBefore(
                     link,
@@ -163,7 +172,7 @@
         document.querySelectorAll(
             'a.nav-book[href="BookYourFlight.html"]'
         ).forEach((link) => {
-            link.textContent = "Plan Your Adventure ↗";
+            link.textContent = t("Plan Your Adventure ↗");
         });
 
         /* =========================
@@ -198,7 +207,7 @@
             const social = document.createElement("div");
 
             social.className = "social-links";
-            social.setAttribute("aria-label", "Social media");
+            social.setAttribute("aria-label", t("Social media"));
 
             const socialPages = [
                 [
@@ -259,7 +268,7 @@
         const photographs = Array.from(
             { length: 22 },
             (_, index) => ({
-                src: `images/para${index + 1}.jpg`,
+                src: `/images/para${index + 1}.jpg`,
                 alt: index === 21
                     ? "Georgian Paragliding Federation official announcement"
                     : `Paragliding in Georgia — photograph ${index + 1}`
@@ -277,8 +286,8 @@
             const playing = slideshowTimer !== null;
 
             slideshowButton.textContent = playing
-                ? "Pause slideshow"
-                : "Play slideshow";
+                ? t("Pause slideshow")
+                : t("Play slideshow");
 
             slideshowButton.setAttribute(
                 "aria-pressed",
@@ -302,7 +311,7 @@
                 photographs[currentPhotograph];
 
             lightboxImage.src = photograph.src;
-            lightboxImage.alt = photograph.alt;
+            lightboxImage.alt = t(photograph.alt);
 
             if (lightboxCounter) {
                 lightboxCounter.textContent =
@@ -441,14 +450,16 @@
 
                 button.setAttribute(
                     "aria-label",
-                    `Enlarge photograph ${index + 1}: ${photograph.alt}`
+                    t(
+                        `Enlarge photograph ${index + 1}: ${photograph.alt}`
+                    )
                 );
 
                 const image =
                     document.createElement("img");
 
                 image.src = photograph.src;
-                image.alt = photograph.alt;
+                image.alt = t(photograph.alt);
                 image.loading = "lazy";
                 image.decoding = "async";
 
@@ -613,9 +624,7 @@
                 form.querySelector("#adventure-call-button");
 
             const whatsappButton =
-                form.querySelector(
-                    "#adventure-whatsapp-button"
-                );
+                form.querySelector("#adventure-whatsapp-button");
 
             const requestedLocation =
                 new URLSearchParams(
@@ -683,11 +692,11 @@
                     "\\+[1-9][0-9]{7,14}";
 
                 phoneInput.placeholder =
-                    "+[country code][number]";
+                    t("+[country code][number]");
 
-                phoneInput.title =
-                    "Include + and your country code. " +
-                    "Use digits only after +.";
+                phoneInput.title = t(
+                    "Include + and your country code. Use digits only after +."
+                );
             }
 
             [
@@ -726,7 +735,9 @@
                     dateInput.setCustomValidity(
                         dateInput.value &&
                         dateInput.value < dateInGeorgia()
-                            ? "Please choose today or a future date."
+                            ? t(
+                                "Please choose today or a future date."
+                            )
                             : ""
                     );
                 }
@@ -734,7 +745,9 @@
                 if (nameInput) {
                     nameInput.setCustomValidity(
                         nameInput.value.trim().length < 2
-                            ? "Please enter your full name."
+                            ? t(
+                                "Please enter your full name."
+                            )
                             : ""
                     );
                 }
@@ -743,8 +756,9 @@
                     phoneInput.setCustomValidity(
                         phonePattern.test(phoneInput.value)
                             ? ""
-                            : "Enter + followed by your country code " +
-                              "and phone number, using digits only."
+                            : t(
+                                "Enter + followed by your country code and phone number, using digits only."
+                            )
                     );
                 }
 
@@ -788,7 +802,9 @@
                     "https://wa.me/" +
                     phone +
                     "?text=" +
-                    encodeURIComponent(message.join("\n"));
+                    encodeURIComponent(
+                        localizeMessage(message).join("\n")
+                    );
 
                 link.target = "_blank";
                 link.rel = "noopener noreferrer";
@@ -799,9 +815,10 @@
             }
 
             /*
-             * Prevent older inline handlers from
-             * opening the operator link twice.
+             * Prevent older inline handlers from opening
+             * the same operator link twice.
              */
+
             window.addEventListener("click", (event) => {
                 if (!(event.target instanceof Element)) {
                     return;
@@ -840,11 +857,9 @@
             );
 
             if (note) {
-                note.textContent =
-                    "WhatsApp will open with your completed request. " +
-                    "Press Send in WhatsApp to deliver it. " +
-                    "Opening the chat does not send your request " +
-                    "or confirm a booking.";
+                note.textContent = t(
+                    "WhatsApp will open with your completed request. Press Send in WhatsApp to deliver it. Opening the chat does not send your request or confirm a booking."
+                );
             }
         }
 
@@ -862,7 +877,7 @@
             if (submit) {
                 submit.disabled = false;
                 submit.textContent =
-                    "Plan Your Adventure ↗";
+                    t("Plan Your Adventure ↗");
             }
 
             legacyForm.addEventListener("submit", (event) => {
@@ -900,9 +915,6 @@
 
         /* =========================
            PHOTO MOTION
-           
-           Subtle local deformation.
-           This is not generated video.
         ========================= */
 
         if (!("IntersectionObserver" in window)) return;
@@ -919,8 +931,8 @@
 
         function updateMotionButton() {
             motionButton.textContent = motionPaused
-                ? "Play photo motion"
-                : "Pause photo motion";
+                ? t("Play photo motion")
+                : t("Pause photo motion");
 
             motionButton.setAttribute(
                 "aria-pressed",
@@ -1019,7 +1031,6 @@
 
             const number = Number(match[1]);
 
-            /* Keep the official announcement static. */
             if (number === 22) return;
 
             image.dataset.motionReady = "true";
