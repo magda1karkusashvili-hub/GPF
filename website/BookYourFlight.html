@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka" dir="ltr">
 <head>
     <meta charset="UTF-8">
 
@@ -8,16 +8,32 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <title>დაგეგმე ფრენა | საქართველოს პარაგლაიდინგის ფედერაცია</title>
+
     <meta
         name="description"
-        content="Plan your adventure in Georgia. Choose a location and connect with the local operator by phone or WhatsApp."
+        content="საქართველოს პარაგლაიდინგის ფედერაცია — დაგეგმე ფრენა. პარაგლაიდინგი საქართველოში."
     >
 
-    <title>
-        Plan Your Adventure | Georgian Paragliding Federation
-    </title>
+    <link
+        rel="canonical"
+        href="https://paraglidingfederation.ge/BookYourFlight.html"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="/favicon.png"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+    >
+
+    <link rel="stylesheet" href="/style.css">
 
     <style>
         .adventure-actions {
@@ -81,27 +97,52 @@
             border-top: 1px solid rgba(18, 59, 56, 0.18);
         }
     </style>
+
+    <link rel="stylesheet" href="/languages.css">
+
+    <script src="/languages.js"></script>
+    <script src="/script.js" defer></script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "საქართველოს პარაგლაიდინგის ფედერაცია",
+        "alternateName": [
+            "საქართველოს პარაგლაიდინგის ფედერაცია",
+            "Georgian Paragliding Federation"
+        ],
+        "url": "https://paraglidingfederation.ge/",
+        "logo": "https://paraglidingfederation.ge/images/logo.jpg",
+        "sameAs": [
+            "https://www.facebook.com/GeorgianParaglidingFederation/",
+            "https://www.instagram.com/georgian_paragliding_fed/"
+        ]
+    }
+    </script>
 </head>
 
 <body>
     <a class="skip-link" href="#main">
-        Skip to content
+        შიგთავსზე გადასვლა
     </a>
+
+    <!-- HEADER -->
 
     <header class="site-header">
         <div class="container header-content">
             <a class="brand" href="index.html">
                 <img
                     class="brand-symbol"
-                    src="images/logo.jpg"
-                    alt="Georgian Paragliding Federation logo"
+                    src="/images/logo.jpg"
+                    alt="საქართველოს პარაგლაიდინგის ფედერაციის ლოგო"
                     width="43"
                     height="43"
                 >
 
                 <span class="brand-name">
-                    Georgian
-                    <small>Paragliding Federation</small>
+                    საქართველოს
+                    <small>პარაგლაიდინგის ფედერაცია</small>
                 </span>
             </a>
 
@@ -112,101 +153,150 @@
                 aria-controls="main-menu"
                 aria-expanded="false"
             >
-                Menu ☰
+                მენიუ ☰
             </button>
 
             <nav
                 class="main-menu"
                 id="main-menu"
-                aria-label="Main navigation"
+                aria-label="მთავარი მენიუ"
             >
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="document.html">Documents</a>
-                <a href="news.html">News</a>
-                <a href="Needtoknow.html">Need to know</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html">
+                    მთავარი
+                </a>
+
+                <a href="about.html">
+                    ჩვენ შესახებ
+                </a>
+
+                <a href="gallery.html">
+                    გალერეა
+                </a>
+
+                <a href="document.html">
+                    დოკუმენტები
+                </a>
+
+                <a href="news.html">
+                    სიახლეები
+                </a>
+
+                <a href="Needtoknow.html">
+                    საჭირო ინფორმაცია
+                </a>
+
+                <a href="airspaces.html">
+                    საჰაერო სივრცეები
+                </a>
+
+                <a href="contact.html">
+                    კონტაქტი
+                </a>
 
                 <a
                     class="nav-book"
                     href="BookYourFlight.html"
                     aria-current="page"
                 >
-                    Plan Your Adventure ↗
+                    დაგეგმე ფრენა ↗
                 </a>
             </nav>
+        </div>
+
+        <!-- LANGUAGE SELECTOR -->
+
+        <div class="gpf-language-bar">
+            <label for="gpf-language">
+                ენა / Language
+            </label>
+
+            <select
+                id="gpf-language"
+                aria-label="ენა / Language"
+            >
+                <option value="ka">ქართული</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="ar">العربية</option>
+                <option value="zh">中文</option>
+            </select>
         </div>
     </header>
 
     <main id="main">
         <section class="section booking-section">
             <div class="container booking-layout">
+
+                <!-- INTRODUCTION -->
+
                 <div class="booking-intro">
                     <p class="eyebrow light">
-                        Your adventure starts here
+                        შენი თავგადასავალი აქ იწყება
                     </p>
 
-                    <h1>Plan Your Adventure</h1>
+                    <h1>დაგეგმე ფრენა</h1>
 
                     <p>
-                        Choose your preferred location and connect
-                        directly with the local operator to discuss
-                        available activities, dates, prices and
-                        arrangements.
+                        აირჩიეთ სასურველი ადგილი და დაუკავშირდით
+                        ადგილობრივ ოპერატორს აქტივობების,
+                        თარიღების, ფასებისა და პირობების
+                        შესათანხმებლად.
                     </p>
 
                     <div class="booking-explanation">
-                        <h3>How it works</h3>
+                        <h3>როგორ მუშაობს</h3>
 
                         <ol>
                             <li>
-                                Choose your preferred location.
+                                აირჩიეთ სასურველი ადგილი.
                             </li>
 
                             <li>
-                                Call the operator directly, or
-                                complete the details to prepare
-                                a WhatsApp request.
+                                დაურეკეთ ოპერატორს ან შეავსეთ
+                                მონაცემები WhatsApp-მოთხოვნის
+                                მოსამზადებლად.
                             </li>
 
                             <li>
-                                Select your preferred date and
-                                number of participants.
+                                მიუთითეთ სასურველი თარიღი
+                                და მონაწილეთა რაოდენობა.
                             </li>
 
                             <li>
-                                WhatsApp will open with your
-                                completed request. Press Send
-                                in the chat to deliver it.
+                                WhatsApp გაიხსნება შევსებული
+                                ტექსტით. გასაგზავნად ჩატში
+                                დააჭირეთ გაგზავნას.
                             </li>
 
                             <li>
-                                Confirm available activities,
-                                prices and arrangements directly
-                                with the operator.
+                                აქტივობები, ფასები და პირობები
+                                უშუალოდ ოპერატორთან შეათანხმეთ.
                             </li>
                         </ol>
                     </div>
 
                     <p class="booking-disclaimer">
-                        Activities depend on the location, weather
-                        and operational availability. Sending a
-                        request does not confirm a booking.
-                        Your arrangements are confirmed only
-                        after agreement with the operator.
+                        აქტივობები დამოკიდებულია ადგილმდებარეობაზე,
+                        ამინდსა და ოპერატორის შესაძლებლობებზე.
+                        მოთხოვნის გაგზავნა ჯავშნის დადასტურებას
+                        არ ნიშნავს. შეთანხმება დასტურდება მხოლოდ
+                        ოპერატორთან შეთანხმების შემდეგ.
                     </p>
                 </div>
+
+                <!-- BOOKING FORM -->
 
                 <form
                     class="booking-form"
                     id="adventure-form"
                 >
-                    <h3>Connect with an operator</h3>
+                    <h3>დაუკავშირდით ოპერატორს</h3>
+
+                    <!-- LOCATION -->
 
                     <div class="form-field">
                         <label for="adventure-location">
-                            Preferred location
+                            სასურველი ადგილი
                         </label>
 
                         <select
@@ -214,28 +304,28 @@
                             required
                         >
                             <option value="">
-                                Choose a location
+                                აირჩიეთ ადგილი
                             </option>
 
                             <option value="Gudauri">
-                                Gudauri
+                                გუდაური
                             </option>
 
                             <option value="Ananuri">
-                                Ananuri
+                                ანანური
                             </option>
 
                             <option value="Tbilisi Sea">
-                                Tbilisi Sea
+                                თბილისის ზღვა
                             </option>
 
                             <option value="Mestia">
-                                Mestia
+                                მესტია
                             </option>
-
-                        
                         </select>
                     </div>
+
+                    <!-- CALL OPERATOR -->
 
                     <div class="adventure-actions">
                         <button
@@ -243,22 +333,24 @@
                             id="adventure-call-button"
                             type="button"
                         >
-                            Call Operator
+                            დაურეკეთ ოპერატორს
                         </button>
                     </div>
 
                     <p class="adventure-note">
-                        To call, simply choose a location.
-                        To send a WhatsApp request, complete
-                        the details below.
+                        დასარეკად მხოლოდ ადგილი აირჩიეთ.
+                        WhatsApp-მოთხოვნის გასაგზავნად
+                        შეავსეთ ქვემოთ მოცემული ველები.
                     </p>
 
                     <hr class="adventure-divider">
 
+                    <!-- DATE AND PARTICIPANTS -->
+
                     <div class="form-row">
                         <div class="form-field">
                             <label for="adventure-date">
-                                Preferred date
+                                სასურველი თარიღი
                             </label>
 
                             <input
@@ -270,7 +362,7 @@
 
                         <div class="form-field">
                             <label for="adventure-people">
-                                Participants
+                                მონაწილეთა რაოდენობა
                             </label>
 
                             <input
@@ -285,9 +377,11 @@
                         </div>
                     </div>
 
+                    <!-- NAME -->
+
                     <div class="form-field">
                         <label for="adventure-name">
-                            Full name
+                            სახელი და გვარი
                         </label>
 
                         <input
@@ -296,14 +390,16 @@
                             autocomplete="name"
                             minlength="2"
                             maxlength="100"
-                            placeholder="Your full name"
+                            placeholder="თქვენი სახელი და გვარი"
                             required
                         >
                     </div>
 
+                    <!-- PHONE -->
+
                     <div class="form-field">
                         <label for="adventure-phone">
-                            Phone number
+                            ტელეფონის ნომერი
                         </label>
 
                         <input
@@ -313,30 +409,35 @@
                             minlength="9"
                             maxlength="16"
                             pattern="\+[1-9][0-9]{7,14}"
-                            placeholder="+[country code][number]"
-                            title="Include + and your country code. Use digits only after +."
+                            placeholder="+[ქვეყნის კოდი][ნომერი]"
+                            title="მიუთითეთ + და ქვეყნის კოდი. + ნიშნის შემდეგ გამოიყენეთ მხოლოდ ციფრები."
                             aria-describedby="adventure-phone-help"
                             required
                         >
 
                         <small id="adventure-phone-help">
-                            Include + and your country code.
-                            Do not use spaces, brackets or hyphens.
+                            მიუთითეთ + და ქვეყნის კოდი.
+                            არ გამოიყენოთ გამოტოვებები,
+                            ფრჩხილები ან დეფისები.
                         </small>
                     </div>
 
+                    <!-- OPTIONAL MESSAGE -->
+
                     <div class="form-field">
                         <label for="adventure-message">
-                            Activity or additional information — optional
+                            აქტივობა ან დამატებითი ინფორმაცია — არასავალდებულო
                         </label>
 
                         <textarea
                             id="adventure-message"
                             rows="4"
                             maxlength="1000"
-                            placeholder="Tell the operator which activity interests you, or ask a question."
+                            placeholder="მიუთითეთ სასურველი აქტივობა ან დასვით შეკითხვა."
                         ></textarea>
                     </div>
+
+                    <!-- CONSENT -->
 
                     <label class="consent">
                         <input
@@ -346,11 +447,14 @@
                         >
 
                         <span>
-                            I agree to share these details with the
-                            operator for my selected location via
-                            WhatsApp so they can respond to my request.
+                            ვეთანხმები, რომ ეს მონაცემები
+                            WhatsApp-ის მეშვეობით გაეგზავნოს
+                            არჩეული ადგილის ოპერატორს, რათა
+                            მან უპასუხოს ჩემს მოთხოვნას.
                         </span>
                     </label>
+
+                    <!-- WHATSAPP -->
 
                     <div class="adventure-actions">
                         <button
@@ -359,7 +463,7 @@
                             type="submit"
                             aria-describedby="adventure-whatsapp-note"
                         >
-                            Continue to WhatsApp ↗
+                            გაგრძელება WhatsApp-ში ↗
                         </button>
                     </div>
 
@@ -367,17 +471,17 @@
                         class="adventure-note"
                         id="adventure-whatsapp-note"
                     >
-                        WhatsApp will open with your completed
-                        request and connect you with the relevant
-                        operator. Press Send in WhatsApp to deliver
-                        your request. Opening the chat does not
-                        send the request or confirm a booking.
+                        WhatsApp გაიხსნება შევსებული მოთხოვნით
+                        შესაბამის ოპერატორთან. გასაგზავნად
+                        დააჭირეთ გაგზავნას WhatsApp-ში.
+                        ჩატის გახსნა მოთხოვნას არ აგზავნის
+                        და ჯავშანს არ ადასტურებს.
                     </p>
 
                     <noscript>
                         <p class="adventure-note">
-                            Please enable JavaScript to use
-                            the operator contact buttons.
+                            ოპერატორთან დაკავშირების
+                            ღილაკებისთვის ჩართეთ JavaScript.
                         </p>
                     </noscript>
                 </form>
@@ -385,282 +489,25 @@
         </section>
     </main>
 
+    <!-- FOOTER -->
+
     <footer class="site-footer">
         <div class="container">
             <strong>
-                Georgian Paragliding Federation
+                საქართველოს პარაგლაიდინგის ფედერაცია
             </strong>
 
             <div class="footer-bottom">
                 <p>
                     © <span id="year">2026</span>
-                    All rights reserved.
+                    ყველა უფლება დაცულია.
                 </p>
 
                 <a href="contact.html">
-                    Contact us ↗
+                    დაგვიკავშირდით ↗
                 </a>
             </div>
         </div>
     </footer>
-
-    <script>
-        (() => {
-            "use strict";
-
-            /* MOBILE MENU */
-
-            const menuButton = document.getElementById(
-                "menu-toggle"
-            );
-
-            const menu = document.getElementById(
-                "main-menu"
-            );
-
-            function closeMenu() {
-                if (!menu || !menuButton) return;
-
-                menu.classList.remove(
-                    "is-open",
-                    "open",
-                    "active"
-                );
-
-                menu.style.removeProperty("display");
-
-                menuButton.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-            }
-
-            if (menuButton && menu) {
-                menuButton.addEventListener("click", () => {
-                    const expanded =
-                        menuButton.getAttribute(
-                            "aria-expanded"
-                        ) === "true";
-
-                    menuButton.setAttribute(
-                        "aria-expanded",
-                        String(!expanded)
-                    );
-
-                    menu.classList.toggle(
-                        "is-open",
-                        !expanded
-                    );
-
-                    menu.style.display = expanded
-                        ? "none"
-                        : "flex";
-                });
-
-                menu.addEventListener("click", (event) => {
-                    if (
-                        event.target instanceof Element &&
-                        event.target.closest("a")
-                    ) {
-                        closeMenu();
-                    }
-                });
-
-                document.addEventListener("keydown", (event) => {
-                    if (event.key === "Escape") {
-                        closeMenu();
-                    }
-                });
-
-                window.addEventListener(
-                    "resize",
-                    closeMenu
-                );
-            }
-
-            /* FOOTER YEAR */
-
-            const year = document.getElementById("year");
-
-            if (year) {
-                year.textContent =
-                    new Date().getFullYear();
-            }
-
-            /* OPERATOR ROUTING */
-
-            const operators = new Map([
-                ["Gudauri", "995558338989"],
-                ["Ananuri", "995599045777"],
-                ["Tbilisi Sea", "995555004993"],
-                ["Mestia", "995593988811"],
-
-        
-            ]);
-
-            const locationNames = {
-                gudauri: "Gudauri",
-                ananuri: "Ananuri",
-                tbilisi_sea: "Tbilisi Sea",
-                mestia: "Mestia",
-               
-            };
-
-            const form = document.getElementById(
-                "adventure-form"
-            );
-
-            const locationField = document.getElementById(
-                "adventure-location"
-            );
-
-            const dateField = document.getElementById(
-                "adventure-date"
-            );
-
-            const nameField = document.getElementById(
-                "adventure-name"
-            );
-
-            const callButton = document.getElementById(
-                "adventure-call-button"
-            );
-
-            /* PRESELECT LOCATION FROM A WEBSITE LINK */
-
-            const requestedLocation = new URLSearchParams(
-                window.location.search
-            ).get("location");
-
-            if (
-                Object.prototype.hasOwnProperty.call(
-                    locationNames,
-                    requestedLocation
-                )
-            ) {
-                locationField.value =
-                    locationNames[requestedLocation];
-            } else if (operators.has(requestedLocation)) {
-                locationField.value = requestedLocation;
-            }
-
-            /* DATE VALIDATION */
-
-            function dateInGeorgia() {
-                const parts = new Intl.DateTimeFormat(
-                    "en-US",
-                    {
-                        timeZone: "Asia/Tbilisi",
-                        year: "numeric",
-                        month: "2-digit",
-                        day: "2-digit"
-                    }
-                ).formatToParts(new Date());
-
-                const values = {};
-
-                parts.forEach((part) => {
-                    values[part.type] = part.value;
-                });
-
-                return (
-                    values.year + "-" +
-                    values.month + "-" +
-                    values.day
-                );
-            }
-
-            dateField.min = dateInGeorgia();
-
-            dateField.addEventListener("focus", () => {
-                dateField.min = dateInGeorgia();
-            });
-
-            dateField.addEventListener("input", () => {
-                dateField.setCustomValidity("");
-            });
-
-            nameField.addEventListener("input", () => {
-                nameField.setCustomValidity("");
-            });
-
-            function getValue(id) {
-                return document.getElementById(id)
-                    .value.trim();
-            }
-
-            /* CALL THE SELECTED OPERATOR */
-
-            callButton.addEventListener("click", () => {
-                if (!locationField.reportValidity()) return;
-
-                const phone = operators.get(
-                    locationField.value
-                );
-
-                if (!phone) return;
-
-                window.location.href = "tel:+" + phone;
-            });
-
-            /* WHATSAPP REQUEST */
-
-            form.addEventListener("submit", (event) => {
-                event.preventDefault();
-
-                dateField.min = dateInGeorgia();
-
-                nameField.setCustomValidity(
-                    nameField.value.trim().length < 2
-                        ? "Please enter your full name."
-                        : ""
-                );
-
-                dateField.setCustomValidity(
-                    dateField.value &&
-                    dateField.value < dateInGeorgia()
-                        ? "Please choose today or a future date."
-                        : ""
-                );
-
-                if (!form.reportValidity()) return;
-
-                const phone = operators.get(
-                    locationField.value
-                );
-
-                if (!phone) return;
-
-const message = [
-    "NEW ADVENTURE REQUEST",
-    "",
-    "Hello, I am interested in your company’s services and would like to go paragliding.",
-    "Please confirm receipt of this message.",
-    "",
-    "Location: " + locationField.value,
-    "Preferred date: " + getValue("adventure-date"),
-    "Participants: " + getValue("adventure-people"),
-    "Name: " + getValue("adventure-name"),
-    "Phone: " + getValue("adventure-phone")
-].join("\n");
-
-                const whatsappURL =
-                    "https://wa.me/" +
-                    phone +
-                    "?text=" +
-                    encodeURIComponent(message);
-
-                const link = document.createElement("a");
-
-                link.href = whatsappURL;
-                link.target = "_blank";
-                link.rel = "noopener noreferrer";
-
-                document.body.appendChild(link);
-                link.click();
-                link.remove();
-            });
-        })();
-    </script>
 </body>
 </html>
