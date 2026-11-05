@@ -12,10 +12,10 @@
 
     <meta
         name="description"
-        content="საქართველოს პარაგლაიდინგის ფედერაცია — საჭირო ინფორმაცია. პარაგლაიდინგი საქართველოში."
+        content="გაეცანით პარაგლაიდინგში მონაწილეობის წინ საჭირო ინფორმაციას: უსაფრთხოება, მომზადება, ჯანმრთელობა და პასუხისმგებლობა."
     >
 
-    <meta name="theme-color" content="#123b38">
+    <meta name="theme-color" content="#123351">
 
     <link
         rel="canonical"
@@ -38,196 +38,130 @@
     <link rel="stylesheet" href="/style.css">
 
     <style>
-        :root {
-            --nk-green: #123b38;
-            --nk-paper: #f5f3ed;
-            --nk-line: #dce2dc;
+        /* საერთო სათაური და მენიუ */
+
+        .site-header {
+            padding-top: 44px;
         }
 
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            color: #18332f;
-            background: var(--nk-paper);
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .nk-skip {
-            position: absolute;
-            top: -70px;
-            left: 16px;
-            z-index: 99;
-            padding: 12px;
-            background: white;
-        }
-
-        .nk-skip:focus {
-            top: 10px;
-        }
-
-        /* HEADER */
-
-        .nk-header {
-            background: white;
-        }
-
-        .nk-header-content {
-            display: flex;
+        .site-header .brand {
+            display: inline-flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-
-            max-width: 1240px;
-            margin: auto;
-            padding: 20px 24px;
+            gap: 10px;
         }
 
-        .nk-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-
-            color: var(--nk-green);
-            text-decoration: none;
+        .site-header .brand-symbol {
+            flex: 0 0 43px;
         }
 
-        .nk-brand-logo {
-            flex-shrink: 0;
-
-            width: 43px;
-            height: 43px;
-
-            border-radius: 50%;
-            object-fit: contain;
-        }
-
-        .nk-brand-name {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .nk-brand-name small {
+        .site-header .brand-name {
             display: block;
-            margin-top: 4px;
-
-            font-size: 11px;
-            font-weight: 400;
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.4;
         }
 
-        .nk-nav {
+        .site-header > .gpf-language-bar {
+            position: absolute;
+            top: 7px;
+            right: 12px;
+            left: auto;
+            bottom: auto;
+            z-index: 30;
+
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            gap: 17px;
+
+            width: auto;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            direction: ltr;
         }
 
-        .nk-nav a {
-            color: var(--nk-green);
+        .gpf-language-bar select {
+            min-width: 145px;
+            min-height: 32px;
+            max-width: calc(100vw - 24px);
+            padding: 5px 10px;
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: #102c46;
+            color: #ffffff;
+
+            font: inherit;
             font-size: 13px;
-            text-decoration: none;
+            line-height: 1.4;
+            direction: ltr;
         }
 
-        .nk-nav a:hover,
-        .nk-nav a[aria-current="page"] {
-            text-decoration: underline;
-            text-underline-offset: 6px;
+        .gpf-language-bar select:focus-visible {
+            outline: 2px solid #8ccfff;
+            outline-offset: 3px;
         }
 
-        .nk-nav .nk-book {
-            padding: 12px 15px;
-            border-radius: 5px;
-
-            color: white;
-            background: var(--nk-green);
+        .motion-control {
+            display: none !important;
         }
 
-        /* HERO */
+        /* გვერდის დასაწყისი — ფონის ფოტოს გარეშე */
 
         .nk-hero {
-            position: relative;
-            isolation: isolate;
-
-            display: flex;
-            align-items: flex-end;
-
-            min-height: 470px;
-            overflow: hidden;
-
-            background: var(--nk-green);
+            display: block;
+            min-height: 0;
+            padding: 64px 0 52px;
+            background: #edf4fa;
+            background-image: none !important;
+            color: #16344f;
         }
 
-        .nk-hero > img {
-            position: absolute;
-            inset: 0;
-            z-index: -2;
-
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-        }
-
+        .nk-hero::before,
         .nk-hero::after {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-
-            background: linear-gradient(
-                90deg,
-                rgba(8, 31, 28, 0.85),
-                rgba(8, 31, 28, 0.25)
-            );
-
-            content: "";
+            display: none !important;
         }
 
         .nk-hero-content {
-            width: 1150px;
-            max-width: 100%;
-
-            margin: auto;
-            padding: 75px 28px;
-
-            color: white;
+            width: 100%;
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 28px;
         }
 
         .nk-kicker {
+            display: block;
+            margin-bottom: 16px;
+            color: #456b89;
             font-size: 12px;
             font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .nk-hero h1 {
-            margin: 20px 0;
-            color: white;
-
-            font-size: clamp(44px, 7vw, 82px);
-            line-height: 1.04;
-            letter-spacing: -2px;
+            margin: 0 0 22px;
+            color: #16344f;
+            font-size: clamp(32px, 5vw, 60px);
+            line-height: 1.2;
+            overflow-wrap: anywhere;
         }
 
         .nk-hero p {
-            max-width: 550px;
-
-            color: white;
+            max-width: 740px;
+            margin: 0 0 10px;
+            color: #425d73;
             font-size: 17px;
-            line-height: 1.75;
+            line-height: 1.85;
         }
 
-        /* CONTENT */
+        /* შიგთავსი */
 
         .nk-wrap {
             max-width: 1150px;
-
-            margin: auto;
+            margin: 0 auto;
             padding: 44px 28px 65px;
         }
-
-        /* SAFETY INTRODUCTION */
 
         .nk-intro {
             display: flex;
@@ -238,66 +172,51 @@
             margin-bottom: 35px;
             padding: 32px 36px;
 
-            border: 1px solid #d5dfd7;
-            border-left: 5px solid var(--nk-green);
+            border: 1px solid #d5e2ec;
+            border-inline-start: 5px solid #244d70;
             border-radius: 16px;
-
-            color: var(--nk-green);
 
             background: linear-gradient(
                 120deg,
                 #ffffff,
-                #eaf0e7
+                #edf4fa
             );
 
-            box-shadow:
-                0 10px 28px rgba(18, 59, 56, 0.06);
+            box-shadow: 0 10px 28px rgba(18, 51, 81, 0.06);
         }
 
         .nk-intro strong {
             display: block;
-            min-width: 0;
-
-            color: var(--nk-green);
-
+            color: #16344f;
             font-size: clamp(24px, 3vw, 34px);
             font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.8px;
+            line-height: 1.35;
         }
 
         .nk-intro p {
             max-width: 850px;
-
             margin: 0;
-            padding: 0;
-            border: 0;
-
-            color: #42594f;
+            color: #425d73;
             font-size: 16px;
             line-height: 1.85;
         }
 
-        /* INFORMATION CARDS */
-
         .nk-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 20px;
         }
 
         .nk-card {
+            min-width: 0;
             padding: 28px;
-
-            border: 1px solid var(--nk-line);
+            border: 1px solid #dce5ed;
             border-radius: 12px;
-
-            background: white;
+            background: #ffffff;
         }
 
         .nk-number {
-            color: #557c67;
-
+            color: #557a99;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 2px;
@@ -305,16 +224,15 @@
 
         .nk-card h2 {
             margin: 13px 0 16px;
-
-            color: #18332f;
+            color: #183951;
             font-size: 23px;
-            line-height: 1.25;
+            line-height: 1.35;
+            overflow-wrap: anywhere;
         }
 
         .nk-card p {
             margin: 0 0 12px;
-
-            color: #495c55;
+            color: #495f70;
             font-size: 15px;
             line-height: 1.85;
         }
@@ -323,42 +241,36 @@
             margin-bottom: 0;
         }
 
-        /* PHOTOS */
+        /* შიგთავსში არსებული ფოტოები */
 
         .nk-photos {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 20px;
-
             margin: 30px 0;
         }
 
         .nk-photos figure {
+            min-width: 0;
             margin: 0;
             overflow: hidden;
-
             border-radius: 12px;
-            background: #dbe3dc;
+            background: #edf4fa;
         }
 
         .nk-photos img {
             display: block;
-
             width: 100%;
             height: 280px;
-
             object-fit: cover;
         }
 
         .nk-photos figcaption {
             padding: 14px 20px;
-
-            color: #18332f;
+            color: #183951;
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 1.65;
         }
-
-        /* CONTACT AND FOOTER */
 
         .nk-bottom {
             display: flex;
@@ -369,85 +281,93 @@
             margin-top: 30px;
             padding-top: 25px;
 
-            border-top: 1px solid #cbd6cc;
+            border-top: 1px solid #d5e2ec;
         }
 
         .nk-bottom p {
             max-width: 660px;
-
+            margin: 0;
             font-size: 14px;
-            line-height: 1.75;
+            line-height: 1.85;
         }
 
         .nk-button {
             display: inline-block;
-
             padding: 15px 20px;
             border-radius: 6px;
 
-            color: white;
-            background: var(--nk-green);
+            background: #123351;
+            color: #ffffff;
 
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
             text-decoration: none;
-            white-space: nowrap;
         }
 
         .nk-button:hover {
-            background: #1d5751;
+            background: #244d70;
         }
 
-        .nk-footer {
-            padding: 26px;
-
-            color: white;
-            background: var(--nk-green);
-
-            font-size: 13px;
-            text-align: center;
+        .nk-button:focus-visible {
+            outline: 3px solid #709bbd;
+            outline-offset: 3px;
         }
 
-        .nk-footer a {
-            color: inherit;
-        }
+        /* პარაპლანის კურსორი */
 
-        /* TABLET */
-
-        @media (max-width: 1050px) {
-            .nk-header-content {
-                flex-wrap: wrap;
+        @media (hover: hover) and (pointer: fine) {
+            :root {
+                --paraglider-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2 12C4 1 28 1 30 12L25 14L20 12L16 14L12 12L7 14Z' fill='%232b93d1' stroke='%230d304d' stroke-width='1.2'/%3E%3Cpath d='M7 6L7 14M12 4L12 12M20 4L20 12M25 6L25 14' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Cpath d='M3 12L15 24M29 12L17 24M9 13L15 24M23 13L17 24' fill='none' stroke='%230d304d' stroke-width='1'/%3E%3Ccircle cx='16' cy='23' r='2' fill='%23f4a340' stroke='%230d304d' stroke-width='1'/%3E%3Cpath d='M16 25L14 29L19 29' fill='none' stroke='%230d304d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 16 3;
             }
 
-            .nk-nav {
-                width: 100%;
+            html,
+            body,
+            body a,
+            body button,
+            body select,
+            body summary,
+            body label,
+            body input[type="checkbox"],
+            body input[type="radio"] {
+                cursor: var(--paraglider-cursor), auto;
+            }
+
+            body input:not([type="checkbox"]):not([type="radio"]),
+            body textarea,
+            body [contenteditable="true"] {
+                cursor: text;
+            }
+
+            body button:disabled,
+            body select:disabled {
+                cursor: not-allowed;
             }
         }
-
-        /* MOBILE */
 
         @media (max-width: 640px) {
-            .nk-grid,
-            .nk-photos {
-                grid-template-columns: 1fr;
+            .site-header .brand {
+                gap: 7px;
             }
 
-            .nk-header-content {
-                padding: 18px;
+            .site-header .brand-name {
+                font-size: 11px;
             }
 
-            .nk-nav {
-                gap: 15px;
+            .site-header > .gpf-language-bar {
+                right: 8px;
             }
 
             .nk-hero {
-                min-height: 410px;
+                padding: 42px 0 34px;
             }
 
             .nk-hero-content {
-                padding: 55px 22px;
+                padding: 0 18px;
             }
 
-            .nk-hero h1 {
-                letter-spacing: -1px;
+            .nk-hero p {
+                font-size: 15px;
             }
 
             .nk-wrap {
@@ -467,8 +387,9 @@
                 font-size: 15px;
             }
 
-            .nk-bottom {
-                flex-direction: column;
+            .nk-grid,
+            .nk-photos {
+                grid-template-columns: 1fr;
             }
 
             .nk-card {
@@ -479,48 +400,67 @@
                 height: 240px;
             }
 
-            .nk-button {
-                white-space: normal;
+            .nk-bottom {
+                flex-direction: column;
+                align-items: stretch;
             }
         }
     </style>
 
-    <link rel="stylesheet" href="/languages.css">
-
-    <script src="/languages.js"></script>
+    <script src="/languages.js" defer></script>
     <script src="/script.js" defer></script>
 </head>
 
 <body>
-    <a class="nk-skip" href="#main">
+    <a class="skip-link" href="#main">
         შიგთავსზე გადასვლა
     </a>
 
-    <!-- HEADER -->
+    <header class="site-header">
+        <div class="gpf-language-bar">
+            <select
+                id="gpf-language"
+                aria-label="აირჩიეთ ენა"
+                dir="ltr"
+            >
+                <option value="ka">🇬🇪 ქართული</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="ar">🇸🇦 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
+        </div>
 
-    <header class="nk-header">
-        <div class="nk-header-content">
+        <div class="container header-content">
             <a
-                class="nk-brand"
+                class="brand"
                 href="index.html"
                 aria-label="მთავარი"
             >
                 <img
-                    class="nk-brand-logo"
+                    class="brand-symbol"
                     src="/images/logo.jpg"
                     alt="საქართველოს პარაგლაიდინგის ფედერაციის ლოგო"
                     width="43"
                     height="43"
                 >
 
-                <span class="nk-brand-name">
-                    საქართველოს
-                    <small>პარაგლაიდინგის ფედერაცია</small>
-                </span>
+                <span class="brand-name">საქართველოს პარაგლაიდინგის ფედერაცია</span>
             </a>
 
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-controls="main-menu"
+                aria-expanded="false"
+            >
+                მენიუ ☰
+            </button>
+
             <nav
-                class="nk-nav"
+                class="main-menu"
+                id="main-menu"
                 aria-label="მთავარი მენიუ"
             >
                 <a href="index.html">
@@ -539,15 +479,15 @@
                     დოკუმენტები
                 </a>
 
+                <a href="news.html">
+                    სიახლეები
+                </a>
+
                 <a
                     href="Needtoknow.html"
                     aria-current="page"
                 >
                     საჭირო ინფორმაცია
-                </a>
-
-                <a href="news.html">
-                    სიახლეები
                 </a>
 
                 <a href="airspaces.html">
@@ -558,45 +498,21 @@
                     კონტაქტი
                 </a>
 
-                <a
-                    class="nk-book"
-                    href="BookYourFlight.html"
-                >
-                    დაგეგმე ფრენა ↗
+                <a class="nav-book" href="BookYourFlight.html">
+                    დაგეგმე შენი თავგადასავალი ↗
                 </a>
             </nav>
-        </div>
-
-        <!-- LANGUAGE SELECTOR -->
-
-        <div class="gpf-language-bar">
-            <select
-                id="gpf-language"
-                aria-label="აირჩიეთ ენა"
-            >
-                <option value="ka">🇬🇪 ქართული</option>
-                <option value="en">🇬🇧 English</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="ar">🇦🇪 العربية</option>
-                <option value="zh">🇨🇳 中文</option>
-            </select>
         </div>
     </header>
 
     <main id="main">
 
-        <!-- HERO -->
+        <!-- გვერდის დასაწყისი, ფონის ფოტოს გარეშე -->
 
         <section
             class="nk-hero"
             aria-labelledby="page-title"
         >
-            <img
-                src="/images/para1.jpg"
-                alt="პარაგლაიდინგი საქართველოში"
-                fetchpriority="high"
-            >
-
             <div class="nk-hero-content">
                 <span class="nk-kicker">
                     ფრენამდე
@@ -607,18 +523,16 @@
                 </h1>
 
                 <p>
-                    გაიაზრეთ რისკები.
-                    იცოდეთ თქვენი პასუხისმგებლობა.
-                    <br>
-                    მოემზადეთ ფრენისთვის
-                    უსაფრთხოების გათვალისწინებით.
+                    გაიაზრეთ რისკები. იცოდეთ თქვენი პასუხისმგებლობა.
+                </p>
+
+                <p>
+                    მოემზადეთ ფრენისთვის უსაფრთხოების გათვალისწინებით.
                 </p>
             </div>
         </section>
 
         <div class="nk-wrap">
-
-            <!-- SAFETY INTRODUCTION -->
 
             <aside class="nk-intro">
                 <strong>
@@ -626,15 +540,11 @@
                 </strong>
 
                 <p>
-                    მონაწილეობამდე გაეცანით ქვემოთ მოცემულ
-                    ინფორმაციას. დასვით შეკითხვები, მიაწოდეთ
-                    ოპერატორს მნიშვნელოვანი ცნობები და მთელი
-                    ფრენის განმავლობაში შეასრულეთ პილოტის
-                    მითითებები.
+                    მონაწილეობამდე გაეცანით ქვემოთ მოცემულ ინფორმაციას. დასვით შეკითხვები, მიაწოდეთ ოპერატორს მნიშვნელოვანი ცნობები და მთელი ფრენის განმავლობაში შეასრულეთ პილოტის მითითებები.
                 </p>
             </aside>
 
-            <!-- CARDS 01–06 -->
+            <!-- ბარათები 01–06 -->
 
             <div class="nk-grid">
                 <article class="nk-card">
@@ -643,14 +553,7 @@
                     <h2>რისკების გააზრება</h2>
 
                     <p>
-                        პარაგლაიდინგი რისკებთან დაკავშირებული
-                        აქტივობაა. სათანადო მომზადება,
-                        აღჭურვილობა და უსაფრთხოების წესების
-                        დაცვა ამცირებს რისკებს, თუმცა ვერ
-                        გამორიცხავს ტრავმის ან სხვა მძიმე
-                        შედეგების შესაძლებლობას. მონაწილეობამდე
-                        დარწმუნდით, რომ რისკები გესმით და
-                        გადაწყვეტილებას ნებაყოფლობით იღებთ.
+                        პარაგლაიდინგი რისკებთან დაკავშირებული აქტივობაა. სათანადო მომზადება, აღჭურვილობა და უსაფრთხოების წესების დაცვა ამცირებს რისკებს, თუმცა ვერ გამორიცხავს ტრავმის ან სხვა მძიმე შედეგების შესაძლებლობას. მონაწილეობამდე დარწმუნდით, რომ რისკები გესმით და გადაწყვეტილებას ნებაყოფლობით იღებთ.
                     </p>
                 </article>
 
@@ -660,12 +563,7 @@
                     <h2>ინფორმირებული გადაწყვეტილება</h2>
 
                     <p>
-                        ფრენამდე გაეცანით მონაწილეობის
-                        პირობებსა და უსაფრთხოების ინსტრუქციებს.
-                        გაურკვევლობის შემთხვევაში სთხოვეთ
-                        პილოტს განმარტება. არ დაიწყოთ ფრენა,
-                        სანამ არ გაიგებთ, რა უნდა გააკეთოთ
-                        აფრენისას, ფრენისას და დაშვებისას.
+                        ფრენამდე გაეცანით მონაწილეობის პირობებსა და უსაფრთხოების ინსტრუქციებს. გაურკვევლობის შემთხვევაში სთხოვეთ პილოტს განმარტება. არ დაიწყოთ ფრენა, სანამ არ გაიგებთ, რა უნდა გააკეთოთ აფრენისას, ფრენისას და დაშვებისას.
                     </p>
                 </article>
 
@@ -675,14 +573,7 @@
                     <h2>თქვენი პასუხისმგებლობა</h2>
 
                     <p>
-                        მონაწილე ვალდებულია ზუსტად მიუთითოს
-                        ჯანმრთელობის მდგომარეობა, წონა, ასაკი
-                        და სხვა მნიშვნელოვანი გარემოებები,
-                        ყურადღებით მოისმინოს ინსტრუქტაჟი და
-                        შეასრულოს პილოტის მითითებები.
-                        მნიშვნელოვანი ინფორმაციის დამალვა ან
-                        მითითებების უგულებელყოფა საფრთხეს
-                        უქმნის მგზავრსა და პილოტს.
+                        მონაწილე ვალდებულია ზუსტად მიუთითოს ჯანმრთელობის მდგომარეობა, წონა, ასაკი და სხვა მნიშვნელოვანი გარემოებები, ყურადღებით მოისმინოს ინსტრუქტაჟი და შეასრულოს პილოტის მითითებები. მნიშვნელოვანი ინფორმაციის დამალვა ან მითითებების უგულებელყოფა საფრთხეს უქმნის მგზავრსა და პილოტს.
                     </p>
                 </article>
 
@@ -692,20 +583,11 @@
                     <h2>ჯანმრთელობა და მზადყოფნა</h2>
 
                     <p>
-                        წინასწარ აცნობეთ ოპერატორს დაავადების,
-                        ორსულობის, ტრავმის, ოპერაციის,
-                        მოძრაობის შეზღუდვის ან მედიკამენტის
-                        შესახებ, რომელმაც შესაძლოა ყურადღებაზე,
-                        წონასწორობასა თუ ფიზიკურ შესაძლებლობაზე
-                        იმოქმედოს. ეჭვის შემთხვევაში მონაწილეობამდე
-                        გაიარეთ კონსულტაცია ექიმთან და შესაბამისი
-                        ინფორმაცია ოპერატორს გაუზიარეთ.
+                        წინასწარ აცნობეთ ოპერატორს დაავადების, ორსულობის, ტრავმის, ოპერაციის, მოძრაობის შეზღუდვის ან მედიკამენტის შესახებ, რომელმაც შესაძლოა ყურადღებაზე, წონასწორობასა თუ ფიზიკურ შესაძლებლობაზე იმოქმედოს. ეჭვის შემთხვევაში მონაწილეობამდე გაიარეთ კონსულტაცია ექიმთან და შესაბამისი ინფორმაცია ოპერატორს გაუზიარეთ.
                     </p>
 
                     <p>
-                        თუ ფრენამდე თავს ცუდად გრძნობთ,
-                        გაქვთ თავბრუსხვევა, ძლიერი დაღლილობა
-                        ან შფოთვა, დაუყოვნებლივ აცნობეთ პილოტს.
+                        თუ ფრენამდე თავს ცუდად გრძნობთ, გაქვთ თავბრუსხვევა, ძლიერი დაღლილობა ან შფოთვა, დაუყოვნებლივ აცნობეთ პილოტს.
                     </p>
                 </article>
 
@@ -715,10 +597,7 @@
                     <h2>ალკოჰოლი და სხვა ნივთიერებები</h2>
 
                     <p>
-                        არ მიიღოთ მონაწილეობა ალკოჰოლის,
-                        ნარკოტიკის ან სხვა ნივთიერების
-                        ზემოქმედების ქვეშ, რომელიც რეაქციას,
-                        ყურადღებას ან კოორდინაციას აქვეითებს.
+                        არ მიიღოთ მონაწილეობა ალკოჰოლის, ნარკოტიკის ან სხვა ნივთიერების ზემოქმედების ქვეშ, რომელიც რეაქციას, ყურადღებას ან კოორდინაციას აქვეითებს.
                     </p>
                 </article>
 
@@ -728,16 +607,12 @@
                     <h2>უსაფრთხოების ინსტრუქტაჟი</h2>
 
                     <p>
-                        ყურადღებით მოისმინეთ ინსტრუქტაჟი.
-                        აფრენისა და დაშვებისას იმოქმედეთ მხოლოდ
-                        პილოტის მითითებით. თუ მითითება არ გესმით
-                        ან ფიქრობთ, რომ ვერ შეასრულებთ,
-                        ამის შესახებ აფრენამდე თქვით.
+                        ყურადღებით მოისმინეთ ინსტრუქტაჟი. აფრენისა და დაშვებისას იმოქმედეთ მხოლოდ პილოტის მითითებით. თუ მითითება არ გესმით ან ფიქრობთ, რომ ვერ შეასრულებთ, ამის შესახებ აფრენამდე თქვით.
                     </p>
                 </article>
             </div>
 
-            <!-- PHOTOS -->
+            <!-- ფოტოები შიგთავსში -->
 
             <div class="nk-photos">
                 <figure>
@@ -748,8 +623,7 @@
                     >
 
                     <figcaption>
-                        მოემზადეთ ყურადღებით.
-                        მოუსმინეთ პილოტს.
+                        მოემზადეთ ყურადღებით. მოუსმინეთ პილოტს.
                     </figcaption>
                 </figure>
 
@@ -761,13 +635,12 @@
                     >
 
                     <figcaption>
-                        პირობებს მნიშვნელობა აქვს.
-                        პატივი ეცით გადადების გადაწყვეტილებას.
+                        პირობებს მნიშვნელობა აქვს. პატივი ეცით გადადების გადაწყვეტილებას.
                     </figcaption>
                 </figure>
             </div>
 
-            <!-- CARDS 07–12 -->
+            <!-- ბარათები 07–12 -->
 
             <div class="nk-grid">
                 <article class="nk-card">
@@ -776,14 +649,7 @@
                     <h2>აღჭურვილობა და პირადი ნივთები</h2>
 
                     <p>
-                        არ გახსნათ, არ მოუშვათ და არ შეცვალოთ
-                        ჩაფხუტის, საკიდი სისტემის ან სხვა
-                        აღჭურვილობის სამაგრები. დისკომფორტის
-                        ან უჩვეულო გარემოების შემთხვევაში
-                        დაუყოვნებლივ აცნობეთ პილოტს. ტელეფონი,
-                        კამერა და სხვა ნივთები გამოიყენეთ
-                        მხოლოდ პილოტის თანხმობითა და
-                        საიმედოდ დამაგრების შემდეგ.
+                        არ გახსნათ, არ მოუშვათ და არ შეცვალოთ ჩაფხუტის, საკიდი სისტემის ან სხვა აღჭურვილობის სამაგრები. დისკომფორტის ან უჩვეულო გარემოების შემთხვევაში დაუყოვნებლივ აცნობეთ პილოტს. ტელეფონი, კამერა და სხვა ნივთები გამოიყენეთ მხოლოდ პილოტის თანხმობითა და საიმედოდ დამაგრების შემდეგ.
                     </p>
                 </article>
 
@@ -793,11 +659,7 @@
                     <h2>ქცევა ფრენისას</h2>
 
                     <p>
-                        არ შეეხოთ მართვის საშუალებებს ან
-                        აღჭურვილობის მექანიზმებს პილოტის
-                        მითითების გარეშე. მოერიდეთ უეცარ
-                        მოძრაობებს და დროულად აცნობეთ პილოტს
-                        დისკომფორტის, გულისრევის ან შიშის შესახებ.
+                        არ შეეხოთ მართვის საშუალებებს ან აღჭურვილობის მექანიზმებს პილოტის მითითების გარეშე. მოერიდეთ უეცარ მოძრაობებს და დროულად აცნობეთ პილოტს დისკომფორტის, გულისრევის ან შიშის შესახებ.
                     </p>
                 </article>
 
@@ -807,12 +669,7 @@
                     <h2>ამინდი და პილოტის გადაწყვეტილება</h2>
 
                     <p>
-                        პილოტი პირობების მიხედვით აფასებს
-                        ფრენის შესაძლებლობას. უსაფრთხოების
-                        მიზნით ფრენა შეიძლება გადაიდოს,
-                        შეიცვალოს ან გაუქმდეს. არ მოახდინოთ
-                        ზეწოლა პილოტზე, თუ მას პირობები
-                        შეუსაბამოდ მიაჩნია.
+                        პილოტი პირობების მიხედვით აფასებს ფრენის შესაძლებლობას. უსაფრთხოების მიზნით ფრენა შეიძლება გადაიდოს, შეიცვალოს ან გაუქმდეს. არ მოახდინოთ ზეწოლა პილოტზე, თუ მას პირობები შეუსაბამოდ მიაჩნია.
                     </p>
                 </article>
 
@@ -822,12 +679,7 @@
                     <h2>რა ჩავიცვათ</h2>
 
                     <p>
-                        ჩაიცვით კომფორტული, სეზონის შესაბამისი
-                        ტანსაცმელი და დახურული, კარგი მოჭიდების
-                        მქონე ფეხსაცმელი. მთაში ზაფხულშიც
-                        შეიძლება ციოდეს — იქონიეთ თბილი ზედა.
-                        მოერიდეთ ღია ჩუსტებსა და დაუმაგრებელ
-                        ნივთებს, რომლებიც შეიძლება ჩამოვარდეს.
+                        ჩაიცვით კომფორტული, სეზონის შესაბამისი ტანსაცმელი და დახურული, კარგი მოჭიდების მქონე ფეხსაცმელი. მთაში ზაფხულშიც შეიძლება ციოდეს — იქონიეთ თბილი ზედა. მოერიდეთ ღია ჩუსტებსა და დაუმაგრებელ ნივთებს, რომლებიც შეიძლება ჩამოვარდეს.
                     </p>
                 </article>
 
@@ -837,14 +689,7 @@
                     <h2>ასაკისა და წონის შეზღუდვები</h2>
 
                     <p>
-                        ასაკისა და წონის ზღვარი დამოკიდებულია
-                        ოპერატორზე, აღჭურვილობაზე, ადგილსა და
-                        ფრენის პირობებზე. დაჯავშნისას მიუთითეთ
-                        ზუსტი მონაცემები და ოპერატორთან
-                        გადაამოწმეთ მონაწილეობის შესაძლებლობა.
-                        18 წლამდე მგზავრებისთვის წინასწარ
-                        დააზუსტეთ მშობლის ან კანონიერი
-                        წარმომადგენლის თანხმობის მოთხოვნები.
+                        ასაკისა და წონის ზღვარი დამოკიდებულია ოპერატორზე, აღჭურვილობაზე, ადგილსა და ფრენის პირობებზე. დაჯავშნისას მიუთითეთ ზუსტი მონაცემები და ოპერატორთან გადაამოწმეთ მონაწილეობის შესაძლებლობა. 18 წლამდე მგზავრებისთვის წინასწარ დააზუსტეთ მშობლის ან კანონიერი წარმომადგენლის თანხმობის მოთხოვნები.
                     </p>
                 </article>
 
@@ -854,25 +699,14 @@
                     <h2>ამინდი და ფრენის პირობები</h2>
 
                     <p>
-                        პარაგლაიდინგს შესაბამისი ამინდი
-                        სჭირდება. ქარმა, შეზღუდულმა
-                        ხილვადობამ, ნალექმა ან სხვა გარემოებამ
-                        შესაძლოა ფრენის გადადება, თარიღის
-                        შეცვლა ან გაუქმება გამოიწვიოს.
-                        საბოლოო გადაწყვეტილებას პილოტი იღებს.
-                        დაჯავშნამდე გაეცანით ოპერატორის
-                        გაუქმებისა და თანხის დაბრუნების პირობებს.
+                        პარაგლაიდინგს შესაბამისი ამინდი სჭირდება. ქარმა, შეზღუდულმა ხილვადობამ, ნალექმა ან სხვა გარემოებამ შესაძლოა ფრენის გადადება, თარიღის შეცვლა ან გაუქმება გამოიწვიოს. საბოლოო გადაწყვეტილებას პილოტი იღებს. დაჯავშნამდე გაეცანით ოპერატორის გაუქმებისა და თანხის დაბრუნების პირობებს.
                     </p>
                 </article>
             </div>
 
-            <!-- CONTACT -->
-
             <div class="nk-bottom">
                 <p>
-                    გვერდი შეიცავს ზოგად ინფორმაციას.
-                    არჩეული ფრენის მოთხოვნები და მონაწილეობის
-                    პირობები უშუალოდ ოპერატორთან დააზუსტეთ.
+                    გვერდი შეიცავს ზოგად ინფორმაციას. არჩეული ფრენის მოთხოვნები და მონაწილეობის პირობები უშუალოდ ოპერატორთან დააზუსტეთ.
                 </p>
 
                 <a class="nk-button" href="contact.html">
@@ -882,12 +716,23 @@
         </div>
     </main>
 
-    <footer class="nk-footer">
-        საქართველოს პარაგლაიდინგის ფედერაცია
-        ·
-        <a href="index.html">მთავარი</a>
-        ·
-        <a href="contact.html">კონტაქტი</a>
+    <footer class="site-footer">
+        <div class="container">
+            <strong>
+                საქართველოს პარაგლაიდინგის ფედერაცია
+            </strong>
+
+            <div class="footer-bottom">
+                <p>
+                    © <span id="year">2026</span>
+                    <span>ყველა უფლება დაცულია.</span>
+                </p>
+
+                <a href="contact.html">
+                    დაგვიკავშირდით ↗
+                </a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
