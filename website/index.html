@@ -1097,5 +1097,552 @@
             </div>
         </div>
     </footer>
+
+
+
+    <style>
+    .vario-controls {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 100;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+
+        max-width: calc(100vw - 36px);
+        padding: 12px 15px;
+
+        border: 1px solid rgba(255, 255, 255, .25);
+        border-radius: 14px;
+
+        background: rgba(16, 44, 70, .94);
+        color: #ffffff;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, .18);
+    }
+
+    .vario-toggle {
+        min-height: 38px;
+        padding: 8px 12px;
+        border: 0;
+        border-radius: 8px;
+
+        background: #f6b648;
+        color: #102c46;
+
+        font: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .vario-toggle:focus-visible,
+    .vario-volume:focus-visible {
+        outline: 3px solid #ffffff;
+        outline-offset: 3px;
+    }
+
+    .vario-volume-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+    .vario-volume {
+        width: 85px;
+        accent-color: #f6b648;
+    }
+
+    .vario-status {
+        flex-basis: 100%;
+        margin: 0;
+        color: #d4e4f1;
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+        .vario-controls {
+            right: 10px;
+            bottom: 10px;
+            max-width: calc(100vw - 20px);
+            gap: 9px;
+            padding: 10px 12px;
+        }
+    }
+</style>
+
+<div class="vario-controls" id="vario-controls">
+    <button
+        class="vario-toggle"
+        id="vario-toggle"
+        type="button"
+        aria-pressed="false"
+    >
+        🔊 ვარიოს ჩართვა
+    </button>
+
+    <label class="vario-volume-label" for="vario-volume">
+        <span id="vario-volume-text">ხმა</span>
+
+        <input
+            class="vario-volume"
+            id="vario-volume"
+            type="range"
+            min="0"
+            max="100"
+            value="30"
+        >
+    </label>
+
+    <p class="vario-status" id="vario-status" role="status">
+        ხმა მიბმულია ყვითელ პარაპლანებზე.
+    </p>
+</div>
+
+<script>
+(() => {
+    "use strict";
+
+    const hero = document.getElementById("home");
+    const controls = document.getElementById("vario-controls");
+    const button = document.getElementById("vario-toggle");
+    const volume = document.getElementById("vario-volume");
+    const volumeText = document.getElementById("vario-volume-text");
+    const status = document.getElementById("vario-status");
+
+    if (!hero || !controls || !button || !volume) return;
+
+    const yellowColors = new Set([
+        "#f6b648",
+        "#f5b83f",
+        "#f7bc42"
+    ]);
+
+    const yellowWings = Array.from(
+        hero.querySelectorAll(".flying-wing")
+    ).filter(wing => {
+        const color = wing.style
+            .getPropertyValue("color")
+            .trim()
+            .toLowerCase();
+
+        return yellowColors.has(color);
+    });
+
+    if (!yellowWings.length) {
+        controls.hidden = true;
+        return;
+    }
+
+    const labels = {
+        ka: {
+            on: "🔊 ვარიოს ჩართვა",
+            off: "🔇 ვარიოს გამორთვა",
+            volume: "ხმა",
+            ready: "ხმა მიბმულია ყვითელ პარაპლანებზე.",
+            active: "ვარიო ჩართულია — ყვითელი პარაპლანები.",
+            error: "ხმის ჩართვა ვერ მოხერხდა."
+        },
+        en: {
+            on: "🔊 Enable vario",
+            off: "🔇 Disable vario",
+            volume: "Volume",
+            ready: "Sound follows the yellow paragliders.",
+            active: "Vario enabled — yellow paragliders.",
+            error: "Audio could not be enabled."
+        },
+        fr: {
+            on: "🔊 Activer le vario",
+            off: "🔇 Couper le vario",
+            volume: "Volume",
+            ready: "Le son suit les parapentes jaunes.",
+            active: "Vario activé — parapentes jaunes.",
+            error: "Impossible d’activer le son."
+        },
+        ar: {
+            on: "🔊 تشغيل الفاريو",
+            off: "🔇 إيقاف الفاريو",
+            volume: "الصوت",
+            ready: "يتبع الصوت المظلات الصفراء.",
+            active: "الفاريو يعمل — المظلات الصفراء.",
+            error: "تعذر تشغيل الصوت."
+        },
+        zh: {
+            on: "🔊 开启升降仪声音",
+            off: "🔇 关闭升降仪声音",
+            volume: "音量",
+            ready: "声音跟随黄色滑翔伞。",
+            active: "升降仪声音已开启。",
+            error: "无法开启声音。"
+        }
+    };
+
+    let enabled = false;
+    let audioContext;
+    let oscillator;
+    let gain;
+
+    let frameId = 0;
+    let lastSampleTime = 0;
+    let nextBeepTime = 0;
+
+    let activeWing = null;
+    let activeSince = 0;
+    let failed = false;
+
+    const previousPositions = new Map();
+    const smoothedSpeeds = new Map();
+
+    function currentLabels() {
+        const language = document.documentElement.lang.split("-")[0];
+        return labels[language] || labels.ka;
+    }
+
+    function updateLabels() {
+        const text = currentLabels();
+
+        button.textContent = enabled ? text.off : text.on;
+        button.setAttribute("aria-pressed", String(enabled));
+        volumeText.textContent = text.volume;
+
+        status.textContent = failed
+            ? text.error
+            : enabled
+                ? text.active
+                : text.ready;
+    }
+
+    function silence() {
+        if (!audioContext || !gain) return;
+
+        const now = audioContext.currentTime;
+
+        gain.gain.cancelScheduledValues(now);
+        gain.gain.setTargetAtTime(0, now, .02);
+    }
+
+    function createAudio() {
+        if (audioContext) return;
+
+        const AudioContextClass =
+            window.AudioContext || window.webkitAudioContext;
+
+        if (!AudioContextClass) {
+            throw new Error("Web Audio unavailable");
+        }
+
+        audioContext = new AudioContextClass();
+
+        oscillator = audioContext.createOscillator();
+        gain = audioContext.createGain();
+
+        oscillator.type = "sine";
+        oscillator.frequency.value = 850;
+        gain.gain.value = 0;
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+    }
+
+    function playBeep(frequency, duration, level) {
+        const now = audioContext.currentTime;
+
+        oscillator.frequency.setTargetAtTime(
+            frequency,
+            now,
+            .025
+        );
+
+        gain.gain.cancelScheduledValues(now);
+        gain.gain.setValueAtTime(0, now);
+
+        gain.gain.linearRampToValueAtTime(
+            level,
+            now + .012
+        );
+
+        gain.gain.setValueAtTime(
+            level,
+            now + Math.max(.015, duration - .025)
+        );
+
+        gain.gain.linearRampToValueAtTime(
+            0,
+            now + duration
+        );
+    }
+
+    function heroIsVisible() {
+        const box = hero.getBoundingClientRect();
+
+        return (
+            box.bottom > 0 &&
+            box.top < window.innerHeight &&
+            !document.hidden
+        );
+    }
+
+    function sampleMovement(timestamp) {
+        const elapsed = lastSampleTime
+            ? (timestamp - lastSampleTime) / 1000
+            : 0;
+
+        lastSampleTime = timestamp;
+
+        const heroBox = hero.getBoundingClientRect();
+        const candidates = [];
+
+        for (const wing of yellowWings) {
+            const box = wing.getBoundingClientRect();
+
+            /*
+             * გვერდის სქროლი ფრენად არ ითვლება:
+             * პოზიცია იზომება თვითონ hero-ს მიმართ.
+             */
+            const y =
+                box.top + box.height / 2 - heroBox.top;
+
+            const previousY = previousPositions.get(wing);
+            previousPositions.set(wing, y);
+
+            if (
+                previousY === undefined ||
+                elapsed <= 0 ||
+                elapsed > .25
+            ) {
+                smoothedSpeeds.set(wing, 0);
+                continue;
+            }
+
+            /*
+             * დადებითი სიჩქარე = ეკრანზე მაღლა ფრენა.
+             * უარყოფითი სიჩქარე = დაშვება.
+             */
+            const speed = (previousY - y) / elapsed;
+
+            const previousSpeed =
+                smoothedSpeeds.get(wing) || 0;
+
+            const smoothing = 1 - Math.exp(-elapsed * 7);
+
+            const smoothSpeed =
+                previousSpeed +
+                (speed - previousSpeed) * smoothing;
+
+            smoothedSpeeds.set(wing, smoothSpeed);
+
+            const visible =
+                box.right > heroBox.left &&
+                box.left < heroBox.right &&
+                box.bottom > heroBox.top &&
+                box.top < heroBox.bottom;
+
+            if (visible) {
+                candidates.push({
+                    wing,
+                    speed: smoothSpeed
+                });
+            }
+        }
+
+        candidates.sort(
+            (a, b) => Math.abs(b.speed) - Math.abs(a.speed)
+        );
+
+        const strongest = candidates[0];
+
+        if (!strongest) {
+            activeWing = null;
+            return 0;
+        }
+
+        const current = candidates.find(
+            item => item.wing === activeWing
+        );
+
+        /*
+         * ხმა ძალიან ხშირად არ გადაერთოს
+         * ერთი ყვითელი პარაპლანიდან მეორეზე.
+         */
+        if (
+            !current ||
+            (
+                timestamp - activeSince > 1200 &&
+                Math.abs(strongest.speed) >
+                    Math.abs(current.speed) * 1.35 + 2
+            )
+        ) {
+            activeWing = strongest.wing;
+            activeSince = timestamp;
+
+            silence();
+
+            nextBeepTime = audioContext
+                ? audioContext.currentTime
+                : 0;
+
+            return strongest.speed;
+        }
+
+        return current ? current.speed : strongest.speed;
+    }
+
+    function animate(timestamp) {
+        if (!enabled) return;
+
+        frameId = requestAnimationFrame(animate);
+
+        if (timestamp - lastSampleTime < 33) return;
+
+        if (
+            !heroIsVisible() ||
+            audioContext.state !== "running"
+        ) {
+            silence();
+            previousPositions.clear();
+            smoothedSpeeds.clear();
+            lastSampleTime = timestamp;
+            return;
+        }
+
+        const speed = sampleMovement(timestamp);
+
+        const level =
+            Number(volume.value) / 100 * .12;
+
+        const now = audioContext.currentTime;
+
+        if (level === 0 || Math.abs(speed) < 2) {
+            silence();
+            nextBeepTime = now;
+            return;
+        }
+
+        if (speed > 0) {
+            /*
+             * მაღლა:
+             * უფრო სწრაფი მატება = უფრო მაღალი
+             * და გახშირებული წყვეტილი სიგნალი.
+             */
+            const intensity = Math.min(speed / 55, 1);
+
+            const frequency = 700 + intensity * 1100;
+            const interval = .7 - intensity * .5;
+            const duration = Math.min(.11, interval * .45);
+
+            if (now >= nextBeepTime) {
+                playBeep(frequency, duration, level);
+                nextBeepTime = now + interval;
+            }
+        } else {
+            /*
+             * დაბლა:
+             * დაბალი, გაწელილი სიგნალი.
+             */
+            const intensity = Math.min(-speed / 55, 1);
+
+            const frequency = 420 - intensity * 190;
+
+            oscillator.frequency.setTargetAtTime(
+                frequency,
+                now,
+                .08
+            );
+
+            gain.gain.cancelScheduledValues(now);
+
+            gain.gain.setTargetAtTime(
+                level * .55,
+                now,
+                .05
+            );
+
+            nextBeepTime = now;
+        }
+    }
+
+    button.addEventListener("click", async () => {
+        if (enabled) {
+            enabled = false;
+
+            cancelAnimationFrame(frameId);
+            silence();
+
+            previousPositions.clear();
+            smoothedSpeeds.clear();
+
+            if (audioContext?.state === "running") {
+                await audioContext.suspend();
+            }
+
+            updateLabels();
+            return;
+        }
+
+        try {
+            createAudio();
+            await audioContext.resume();
+
+            enabled = true;
+            failed = false;
+            activeWing = null;
+
+            lastSampleTime = 0;
+            nextBeepTime = audioContext.currentTime;
+
+            previousPositions.clear();
+            smoothedSpeeds.clear();
+
+            updateLabels();
+
+            frameId = requestAnimationFrame(animate);
+        } catch (error) {
+            enabled = false;
+            failed = true;
+            silence();
+            updateLabels();
+        }
+    });
+
+    volume.addEventListener("input", () => {
+        if (Number(volume.value) === 0) {
+            silence();
+        }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            silence();
+        }
+
+        previousPositions.clear();
+        smoothedSpeeds.clear();
+        lastSampleTime = 0;
+    });
+
+    window.addEventListener("pagehide", () => {
+        enabled = false;
+        cancelAnimationFrame(frameId);
+        silence();
+        updateLabels();
+    });
+
+    new MutationObserver(updateLabels).observe(
+        document.documentElement,
+        {
+            attributes: true,
+            attributeFilter: ["lang"]
+        }
+    );
+
+    updateLabels();
+})();
+</script>
 </body>
 </html>
