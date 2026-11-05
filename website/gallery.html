@@ -1,134 +1,819 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Gallery | Georgian Paragliding Federation</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <title>გალერეა | საქართველოს პარაგლაიდინგის ფედერაცია</title>
+
+    <meta
+        name="description"
+        content="საქართველოს პარაგლაიდინგის ფედერაციის გალერეა — პარაპლანები საქართველოს მთების თავზე."
+    >
+
+    <link
+        rel="canonical"
+        href="https://paraglidingfederation.ge/gallery.html"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="/favicon.png"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: grid;
+            min-height: 100vh;
+            margin: 0;
+            padding: 24px;
+            place-items: center;
+            background: #fafaf6;
+            font-family: Arial, sans-serif;
+        }
+
+        .flight-scene {
+            width: min(900px, 100%);
+            margin: 0;
+        }
+
+        .flight-frame {
+            overflow: hidden;
+            border-radius: 20px;
+            background: #123b38;
+            box-shadow: 0 18px 50px rgb(0 0 0 / 15%);
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .flight-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .flight-controls button {
+            padding: 12px 24px;
+            border: 0;
+            border-radius: 24px;
+            background: #123b38;
+            color: white;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .flight-controls button:focus-visible {
+            outline: 3px solid #edba65;
+            outline-offset: 4px;
+        }
+
+        .error {
+            color: #963c28;
+            text-align: center;
+        }
+
+        /* Language selector */
+
+        .gpf-language-bar.flight-language {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            left: auto;
+            z-index: 30;
+
+            width: auto;
+            margin: 0;
+            padding: 0;
+
+            border: 0;
+            background: transparent;
+            direction: ltr;
+        }
+
+        @media (max-width: 600px) {
+            .gpf-language-bar.flight-language {
+                top: 8px;
+                right: 8px;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="/languages.css">
+    <script src="/languages.js"></script>
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header">
-        <div class="container header-content">
-            <a class="brand" href="index.html">
-                <img class="brand-symbol" 
-                    src="images/logo.jpg"
-                    alt="Georgian paragliding federation logo"
-                    width="43"
-                    height="43"
-                    >
-                <span class="brand-name">
-                    Georgian
-                    <small>Paragliding Federation</small>
-                </span>
-            </a>
+    <!-- LANGUAGE SELECTOR -->
 
-            <button
-                class="menu-toggle"
-                id="menu-toggle"
-                type="button"
-                aria-controls="main-menu"
-                aria-expanded="false"
-            >
-                Menu ☰
-            </button>
+    <div class="gpf-language-bar flight-language">
+        <select
+            id="gpf-language"
+            aria-label="აირჩიეთ ენა"
+        >
+            <option value="ka">🇬🇪 ქართული</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="ar">🇦🇪 العربية</option>
+            <option value="zh">🇨🇳 中文</option>
+        </select>
+    </div>
 
-            <nav class="main-menu" id="main-menu" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="gallery.html" aria-current="page">Gallery</a>
-                <a href="document.html">Documents</a>
-                <a href="news.html">News</a>
-                <a href="Needtoknow.html">Need to know</a>
-                <a href="contact.html">Contact</a>
-                <a class="nav-book" href="BookYourFlight.html">
-                    Plan Your Adventure ↗
-                </a>
-            </nav>
+    <!-- ANIMATION -->
+
+    <figure class="flight-scene">
+        <div class="flight-frame">
+            <canvas
+                id="flight-canvas"
+                width="600"
+                height="402"
+                role="img"
+                aria-label="ორი პარაპლანი თოვლიანი მთების თავზე"
+            ></canvas>
         </div>
-    </header>
 
-    <main id="main">
-        <section class="section">
-            <div class="container">
-                <div class="section-heading">
-                    
-                    <h1>Gallery</h1>
-
-                    <p class="section-intro">
-Explore the world of paragliding in Georgia through our gallery from breathtaking mountain landscapes and moments in flight to competitions, shared adventures, and the people behind them. Each photograph captures a part of our community’s story and the passion that brings us together.
-                    </p>
-                </div>
-
-                <div class="gallery-grid" id="gallery-grid"></div>
-
-                <noscript>
-                    <p>Enable JavaScript to view the full gallery.</p>
-                    <a href="images/para1.jpg">Open photograph</a>
-                </noscript>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container">
-            <strong>Georgian Paragliding Federation</strong>
-
-            <div class="footer-bottom">
-                <p>© <span id="year">2026</span> All rights reserved.</p>
-                <a href="contact.html">Contact us ↗</a>
-            </div>
-        </div>
-    </footer>
-
-    <dialog
-        class="lightbox"
-        id="lightbox"
-        aria-label="Photograph viewer"
-    >
-        <div class="lightbox-toolbar">
-            <span id="lightbox-counter"></span>
-
+        <div class="flight-controls">
             <button
-                class="lightbox-close"
-                id="lightbox-close"
+                id="motion-button"
                 type="button"
-                aria-label="Close photograph"
+                disabled
             >
-                Close ×
+                შეჩერება
             </button>
         </div>
 
-        <div class="lightbox-body">
-            <button
-                class="lightbox-arrow"
-                id="lightbox-prev"
-                type="button"
-                aria-label="Previous photograph"
-            >
-                ‹
-            </button>
+        <p
+            id="error"
+            class="error"
+            role="status"
+            hidden
+        ></p>
+    </figure>
 
-            <img id="lightbox-image" alt="">
+    <script>
+        (() => {
+            "use strict";
 
-            <button
-                class="lightbox-arrow"
-                id="lightbox-next"
-                type="button"
-                aria-label="Next photograph"
-            >
-                ›
-            </button>
-        </div>
+            const canvas = document.getElementById(
+                "flight-canvas"
+            );
 
-        <p class="lightbox-help">
-            Use the arrow keys to browse. Press Escape to close.
-        </p>
-    </dialog>
+            const context = canvas.getContext("2d");
+
+            const button = document.getElementById(
+                "motion-button"
+            );
+
+            const error = document.getElementById(
+                "error"
+            );
+
+            const reducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            );
+
+            const photo = new Image();
+
+            let background;
+            let gliders = [];
+            let running = !reducedMotion.matches;
+            let animationId = null;
+            let elapsed = 0;
+            let previousTime = null;
+            let errorKey = null;
+
+            /* ANIMATION CONTROL TRANSLATIONS */
+
+            const translations = {
+                ka: {
+                    pause: "შეჩერება",
+                    play: "გაშვება",
+                    description:
+                        "ორი პარაპლანი თოვლიანი მთების თავზე",
+                    serverError:
+                        "გახსენით ეს გვერდი თქვენი ვებგვერდიდან ან ადგილობრივი ვებსერვერის მეშვეობით.",
+                    photoError:
+                        "ფოტო ვერ მოიძებნა. გადაამოწმეთ images/para10.jpg."
+                },
+
+                en: {
+                    pause: "Pause",
+                    play: "Play",
+                    description:
+                        "Two paragliders flying above snowy mountains",
+                    serverError:
+                        "Open this page through your website or a local web server.",
+                    photoError:
+                        "Photo not found. Check images/para10.jpg."
+                },
+
+                fr: {
+                    pause: "Pause",
+                    play: "Lancer",
+                    description:
+                        "Deux parapentes au-dessus de montagnes enneigées",
+                    serverError:
+                        "Ouvrez cette page depuis votre site ou un serveur web local.",
+                    photoError:
+                        "Photo introuvable. Vérifiez images/para10.jpg."
+                },
+
+                ar: {
+                    pause: "إيقاف مؤقت",
+                    play: "تشغيل",
+                    description:
+                        "مظلتان شراعيتان تحلقان فوق جبال مغطاة بالثلوج",
+                    serverError:
+                        "افتح هذه الصفحة عبر موقعك الإلكتروني أو خادم ويب محلي.",
+                    photoError:
+                        "لم يتم العثور على الصورة. تحقّق من images/para10.jpg."
+                },
+
+                zh: {
+                    pause: "暂停",
+                    play: "播放",
+                    description:
+                        "两架滑翔伞飞越白雪覆盖的群山",
+                    serverError:
+                        "请通过你的网站或本地网页服务器打开此页面。",
+                    photoError:
+                        "未找到照片，请检查 images/para10.jpg。"
+                }
+            };
+
+            function currentTranslation() {
+                const language =
+                    document.documentElement.lang
+                        .split("-")[0];
+
+                return (
+                    translations[language] ||
+                    translations.ka
+                );
+            }
+
+            function updateLabels() {
+                const text = currentTranslation();
+
+                button.textContent = running
+                    ? text.pause
+                    : text.play;
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(running)
+                );
+
+                canvas.setAttribute(
+                    "aria-label",
+                    text.description
+                );
+
+                if (errorKey) {
+                    error.textContent = text[errorKey];
+                    error.hidden = false;
+                }
+            }
+
+            const languageObserver = new MutationObserver(
+                updateLabels
+            );
+
+            languageObserver.observe(
+                document.documentElement,
+                {
+                    attributes: true,
+                    attributeFilter: ["lang"]
+                }
+            );
+
+            function showError(key) {
+                errorKey = key;
+                updateLabels();
+            }
+
+            function makeCanvas(width, height) {
+                const element = document.createElement(
+                    "canvas"
+                );
+
+                element.width = width;
+                element.height = height;
+
+                return element;
+            }
+
+            /*
+             * Coordinates match the supplied 600 × 402
+             * photograph. Each polygon includes a canopy,
+             * lines and its pilot.
+             */
+
+            const shapes = [
+                {
+                    points: [
+                        [244, 114],
+                        [247, 99],
+                        [269, 86],
+                        [295, 83],
+                        [324, 90],
+                        [350, 106],
+                        [374, 129],
+                        [391, 152],
+                        [389, 171],
+                        [376, 170],
+                        [296, 222],
+                        [306, 239],
+                        [298, 253],
+                        [280, 253],
+                        [278, 237],
+                        [287, 220],
+                        [257, 123]
+                    ],
+
+                    centerX: 306,
+                    centerY: 165,
+                    phase: 0,
+                    speed: 0.7,
+                    distanceX: 12,
+                    distanceY: 7,
+                    rotation: 0.018
+                },
+
+                {
+                    points: [
+                        [117, 208],
+                        [118, 195],
+                        [133, 181],
+                        [154, 173],
+                        [179, 172],
+                        [201, 180],
+                        [220, 193],
+                        [226, 207],
+                        [177, 260],
+                        [180, 277],
+                        [165, 281],
+                        [160, 270],
+                        [166, 256],
+                        [124, 210]
+                    ],
+
+                    centerX: 171,
+                    centerY: 225,
+                    phase: 2,
+                    speed: 0.55,
+                    distanceX: 9,
+                    distanceY: 5,
+                    rotation: 0.022
+                }
+            ];
+
+            function polygonPath(points) {
+                const path = new Path2D();
+
+                points.forEach(([x, y], index) => {
+                    if (index === 0) {
+                        path.moveTo(x, y);
+                    } else {
+                        path.lineTo(x, y);
+                    }
+                });
+
+                path.closePath();
+
+                return path;
+            }
+
+            function buildScene() {
+                const width = 600;
+                const height = 402;
+
+                const original = makeCanvas(
+                    width,
+                    height
+                );
+
+                const originalContext =
+                    original.getContext("2d");
+
+                originalContext.drawImage(
+                    photo,
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+                background = makeCanvas(
+                    width,
+                    height
+                );
+
+                const backgroundContext =
+                    background.getContext("2d");
+
+                backgroundContext.drawImage(
+                    original,
+                    0,
+                    0
+                );
+
+                const pixels =
+                    originalContext.getImageData(
+                        0,
+                        0,
+                        width,
+                        height
+                    );
+
+                const cleaned =
+                    backgroundContext.getImageData(
+                        0,
+                        0,
+                        width,
+                        height
+                    );
+
+                const maskCanvas = makeCanvas(
+                    width,
+                    height
+                );
+
+                const maskContext =
+                    maskCanvas.getContext("2d");
+
+                shapes.forEach((shape) => {
+                    maskContext.fill(
+                        polygonPath(shape.points)
+                    );
+                });
+
+                const mask =
+                    maskContext.getImageData(
+                        0,
+                        0,
+                        width,
+                        height
+                    ).data;
+
+                /*
+                 * Reconstruct the background using
+                 * neighbouring pixels on each row.
+                 */
+
+                for (let y = 0; y < height; y++) {
+                    let x = 0;
+
+                    while (x < width) {
+                        const index =
+                            (y * width + x) * 4;
+
+                        if (mask[index + 3] === 0) {
+                            x++;
+                            continue;
+                        }
+
+                        const start = x;
+
+                        while (
+                            x < width &&
+                            mask[
+                                (y * width + x) * 4 + 3
+                            ] > 0
+                        ) {
+                            x++;
+                        }
+
+                        const end = x - 1;
+
+                        const left = Math.max(
+                            0,
+                            start - 2
+                        );
+
+                        const right = Math.min(
+                            width - 1,
+                            end + 2
+                        );
+
+                        const leftIndex =
+                            (y * width + left) * 4;
+
+                        const rightIndex =
+                            (y * width + right) * 4;
+
+                        for (
+                            let fillX = start;
+                            fillX <= end;
+                            fillX++
+                        ) {
+                            const amount =
+                                (fillX - left) /
+                                (right - left || 1);
+
+                            const target =
+                                (y * width + fillX) * 4;
+
+                            for (
+                                let channel = 0;
+                                channel < 3;
+                                channel++
+                            ) {
+                                cleaned.data[
+                                    target + channel
+                                ] =
+                                    pixels.data[
+                                        leftIndex + channel
+                                    ] *
+                                    (1 - amount) +
+                                    pixels.data[
+                                        rightIndex + channel
+                                    ] *
+                                    amount;
+                            }
+
+                            cleaned.data[
+                                target + 3
+                            ] = 255;
+                        }
+                    }
+                }
+
+                backgroundContext.putImageData(
+                    cleaned,
+                    0,
+                    0
+                );
+
+                /*
+                 * Create separate transparent
+                 * layers for the paragliders.
+                 */
+
+                gliders = shapes.map((shape) => {
+                    const layer = makeCanvas(
+                        width,
+                        height
+                    );
+
+                    const layerContext =
+                        layer.getContext("2d");
+
+                    const individualMask = makeCanvas(
+                        width,
+                        height
+                    );
+
+                    const individualContext =
+                        individualMask.getContext("2d");
+
+                    individualContext.fill(
+                        polygonPath(shape.points)
+                    );
+
+                    const selection =
+                        individualContext.getImageData(
+                            0,
+                            0,
+                            width,
+                            height
+                        ).data;
+
+                    const output =
+                        layerContext.createImageData(
+                            width,
+                            height
+                        );
+
+                    for (
+                        let i = 0;
+                        i < pixels.data.length;
+                        i += 4
+                    ) {
+                        if (selection[i + 3] === 0) {
+                            continue;
+                        }
+
+                        const difference = Math.max(
+                            Math.abs(
+                                pixels.data[i] -
+                                cleaned.data[i]
+                            ),
+
+                            Math.abs(
+                                pixels.data[i + 1] -
+                                cleaned.data[i + 1]
+                            ),
+
+                            Math.abs(
+                                pixels.data[i + 2] -
+                                cleaned.data[i + 2]
+                            )
+                        );
+
+                        const opacity = Math.min(
+                            1,
+                            Math.max(
+                                0,
+                                (difference - 10) / 24
+                            )
+                        );
+
+                        output.data[i] =
+                            pixels.data[i];
+
+                        output.data[i + 1] =
+                            pixels.data[i + 1];
+
+                        output.data[i + 2] =
+                            pixels.data[i + 2];
+
+                        output.data[i + 3] =
+                            Math.round(opacity * 255);
+                    }
+
+                    layerContext.putImageData(
+                        output,
+                        0,
+                        0
+                    );
+
+                    return {
+                        ...shape,
+                        layer
+                    };
+                });
+            }
+
+            function drawScene(seconds) {
+                context.clearRect(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+                context.drawImage(
+                    background,
+                    0,
+                    0
+                );
+
+                gliders.forEach((glider) => {
+                    const time =
+                        seconds * glider.speed +
+                        glider.phase;
+
+                    const x =
+                        Math.sin(time) *
+                        glider.distanceX;
+
+                    const y =
+                        Math.sin(time * 1.3) *
+                        glider.distanceY;
+
+                    const angle =
+                        Math.sin(time * 0.8) *
+                        glider.rotation;
+
+                    context.save();
+
+                    context.translate(
+                        glider.centerX + x,
+                        glider.centerY + y
+                    );
+
+                    context.rotate(angle);
+
+                    context.drawImage(
+                        glider.layer,
+                        -glider.centerX,
+                        -glider.centerY
+                    );
+
+                    context.restore();
+                });
+            }
+
+            function frame(timestamp) {
+                if (!running) {
+                    animationId = null;
+                    return;
+                }
+
+                if (previousTime !== null) {
+                    elapsed += Math.min(
+                        (timestamp - previousTime) / 1000,
+                        0.05
+                    );
+                }
+
+                previousTime = timestamp;
+
+                drawScene(elapsed);
+
+                animationId =
+                    requestAnimationFrame(frame);
+            }
+
+            function updatePlayback() {
+                updateLabels();
+
+                if (animationId !== null) {
+                    cancelAnimationFrame(
+                        animationId
+                    );
+
+                    animationId = null;
+                }
+
+                previousTime = null;
+
+                if (
+                    running &&
+                    !document.hidden
+                ) {
+                    animationId =
+                        requestAnimationFrame(frame);
+                }
+            }
+
+            button.addEventListener("click", () => {
+                running = !running;
+                updatePlayback();
+            });
+
+            document.addEventListener(
+                "visibilitychange",
+                () => {
+                    if (background) {
+                        updatePlayback();
+                    }
+                }
+            );
+
+            reducedMotion.addEventListener(
+                "change",
+                (event) => {
+                    if (event.matches) {
+                        running = false;
+
+                        if (background) {
+                            updatePlayback();
+                        }
+                    }
+                }
+            );
+
+            photo.onload = () => {
+                try {
+                    buildScene();
+                    drawScene(0);
+
+                    button.disabled = false;
+
+                    updatePlayback();
+                } catch (problem) {
+                    context.drawImage(
+                        photo,
+                        0,
+                        0,
+                        600,
+                        402
+                    );
+
+                    showError("serverError");
+                }
+            };
+
+            photo.onerror = () => {
+                showError("photoError");
+            };
+
+            updateLabels();
+
+            photo.src = "/images/para10.jpg";
+        })();
+    </script>
 </body>
 </html>
