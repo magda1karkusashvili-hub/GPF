@@ -1,30 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>News | Georgian Paragliding Federation</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <title>სიახლეები | საქართველოს პარაგლაიდინგის ფედერაცია</title>
+
+    <meta
+        name="description"
+        content="საქართველოს პარაგლაიდინგის ფედერაცია — სიახლეები, სწავლება, უსაფრთხოება და საერთაშორისო რესურსები."
+    >
+
+    <link
+        rel="canonical"
+        href="https://paraglidingfederation.ge/news.html"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="/favicon.png"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+    >
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/languages.css">
+
+    <script src="/languages.js"></script>
+    <script src="/script.js" defer></script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "საქართველოს პარაგლაიდინგის ფედერაცია",
+        "alternateName": "Georgian Paragliding Federation",
+        "url": "https://paraglidingfederation.ge/",
+        "logo": "https://paraglidingfederation.ge/images/logo.jpg",
+        "sameAs": [
+            "https://www.facebook.com/GeorgianParaglidingFederation/",
+            "https://www.instagram.com/georgian_paragliding_fed/"
+        ]
+    }
+    </script>
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">
+        შიგთავსზე გადასვლა
+    </a>
+
+    <!-- HEADER -->
 
     <header class="site-header">
         <div class="container header-content">
             <a class="brand" href="index.html">
-                <img class="brand-symbol" 
-                    src="images/logo.jpg"
-                    alt="Georgian paragliding federation logo"
+                <img
+                    class="brand-symbol"
+                    src="/images/logo.jpg"
+                    alt="საქართველოს პარაგლაიდინგის ფედერაციის ლოგო"
                     width="43"
                     height="43"
-                    >
+                >
+
                 <span class="brand-name">
-                    Georgian
-                    <small>Paragliding Federation</small>
+                    საქართველოს
+                    <small>პარაგლაიდინგის ფედერაცია</small>
                 </span>
             </a>
 
@@ -35,21 +86,71 @@
                 aria-controls="main-menu"
                 aria-expanded="false"
             >
-                Menu ☰
+                მენიუ ☰
             </button>
 
-            <nav class="main-menu" id="main-menu" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="document.html">Documents</a>
-                <a href="news.html" aria-current="page">News</a>
-                <a href="Needtoknow.html">Need to know</a>
-                <a href="contact.html">Contact</a>
-                <a class="nav-book" href="BookYourFlight.html">
-                    Plan Your Adventure ↗
+            <nav
+                class="main-menu"
+                id="main-menu"
+                aria-label="მთავარი მენიუ"
+            >
+                <a href="index.html">
+                    მთავარი
+                </a>
+
+                <a href="about.html">
+                    ჩვენ შესახებ
+                </a>
+
+                <a href="gallery.html">
+                    გალერეა
+                </a>
+
+                <a href="document.html">
+                    დოკუმენტები
+                </a>
+
+                <a
+                    href="news.html"
+                    aria-current="page"
+                >
+                    სიახლეები
+                </a>
+
+                <a href="Needtoknow.html">
+                    საჭირო ინფორმაცია
+                </a>
+
+                <a href="airspaces.html">
+                    საჰაერო სივრცეები
+                </a>
+
+                <a href="contact.html">
+                    კონტაქტი
+                </a>
+
+                <a
+                    class="nav-book"
+                    href="BookYourFlight.html"
+                >
+                    დაგეგმე ფრენა ↗
                 </a>
             </nav>
+        </div>
+
+        <!-- LANGUAGE SELECTOR -->
+
+        <div class="gpf-language-bar">
+            <select
+                id="gpf-language"
+                aria-label="აირჩიეთ ენა"
+            >
+                <option value="ka">🇬🇪 ქართული</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="ar">🇦🇪 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
         </div>
     </header>
 
@@ -57,16 +158,15 @@
         <section class="section">
             <div class="container">
                 <div class="section-heading">
-                    
-                    <h1>News & Resources</h1>
-
-
+                    <h1>სიახლეები და რესურსები</h1>
                 </div>
+
+                <!-- FILTERS -->
 
                 <div
                     class="news-filters"
                     role="group"
-                    aria-label="Filter news"
+                    aria-label="სიახლეების გაფილტვრა"
                 >
                     <button
                         class="news-filter is-active"
@@ -74,7 +174,7 @@
                         data-news-filter="all"
                         aria-pressed="true"
                     >
-                        All
+                        ყველა
                     </button>
 
                     <button
@@ -83,7 +183,7 @@
                         data-news-filter="events"
                         aria-pressed="false"
                     >
-                        Events
+                        ღონისძიებები
                     </button>
 
                     <button
@@ -92,7 +192,7 @@
                         data-news-filter="training"
                         aria-pressed="false"
                     >
-                        Training
+                        სწავლება
                     </button>
 
                     <button
@@ -101,30 +201,38 @@
                         data-news-filter="safety"
                         aria-pressed="false"
                     >
-                        Safety
+                        უსაფრთხოება
                     </button>
                 </div>
 
+                <!-- RESOURCE CARDS -->
+
                 <div class="locations-grid">
+
+                    <!-- INTERNATIONAL RESOURCES -->
+
                     <article
                         class="location-card"
                         data-news-category="events"
                     >
                         <div class="location-image">
                             <img
-                                src="images/para22.jpg"
-                                alt="Paragliding photograph"
+                                src="/images/para22.jpg"
+                                alt="პარაგლაიდინგის ფოტო"
                                 loading="lazy"
                             >
                         </div>
 
                         <div class="location-content">
-                            <p class="eyebrow">International resources</p>
-                            <h3>FAI information</h3>
+                            <p class="eyebrow">
+                                საერთაშორისო რესურსები
+                            </p>
+
+                            <h3>FAI-ის ინფორმაცია</h3>
 
                             <p>
-                                Explore information from the
-                                Fédération Aéronautique Internationale.
+                                გაეცანით საერთაშორისო საავიაციო
+                                ფედერაციის ინფორმაციას.
                             </p>
 
                             <a
@@ -133,10 +241,12 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Visit FAI ↗
+                                FAI-ის ვებგვერდი ↗
                             </a>
                         </div>
                     </article>
+
+                    <!-- TRAINING -->
 
                     <article
                         class="location-card"
@@ -144,26 +254,35 @@
                     >
                         <div class="location-image">
                             <img
-                                src="images/para15.jpg"
-                                alt="Paragliding photograph"
+                                src="/images/para15.jpg"
+                                alt="პარაგლაიდინგის ფოტო"
                                 loading="lazy"
                             >
                         </div>
 
                         <div class="location-content">
-                            <p class="eyebrow">Learning & development</p>
-                            <h3>Pilot training</h3>
-
-                            <p>
-                                Contact our team for current training
-                                opportunities, dates and requirements.
+                            <p class="eyebrow">
+                                სწავლა და განვითარება
                             </p>
 
-                            <a class="text-link" href="contact.html">
-                                Ask about training ↗
+                            <h3>პილოტების სწავლება</h3>
+
+                            <p>
+                                სწავლის მიმდინარე შესაძლებლობების,
+                                თარიღებისა და მოთხოვნების შესახებ
+                                დაუკავშირდით ჩვენს გუნდს.
+                            </p>
+
+                            <a
+                                class="text-link"
+                                href="contact.html"
+                            >
+                                სწავლების შესახებ ↗
                             </a>
                         </div>
                     </article>
+
+                    <!-- SAFETY -->
 
                     <article
                         class="location-card"
@@ -171,19 +290,22 @@
                     >
                         <div class="location-image">
                             <img
-                                src="images/para19.jpg"
-                                alt="Paragliding photograph"
+                                src="/images/para19.jpg"
+                                alt="პარაგლაიდინგის ფოტო"
                                 loading="lazy"
                             >
                         </div>
 
                         <div class="location-content">
-                            <p class="eyebrow">Flight preparation</p>
-                            <h3>Weather & NOTAM</h3>
+                            <p class="eyebrow">
+                                ფრენისთვის მომზადება
+                            </p>
+
+                            <h3>ამინდი და NOTAM</h3>
 
                             <p>
-                                Review current information
-                                with your flight team.
+                                მიმდინარე ინფორმაცია საფრენ
+                                გუნდთან ერთად გადაამოწმეთ.
                             </p>
 
                             <div class="resource-links">
@@ -200,7 +322,7 @@
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Weather ↗
+                                    ამინდი ↗
                                 </a>
                             </div>
                         </div>
@@ -210,13 +332,23 @@
         </section>
     </main>
 
+    <!-- FOOTER -->
+
     <footer class="site-footer">
         <div class="container">
-            <strong>Georgian Paragliding Federation</strong>
+            <strong>
+                საქართველოს პარაგლაიდინგის ფედერაცია
+            </strong>
 
             <div class="footer-bottom">
-                <p>© <span id="year">2026</span> All rights reserved.</p>
-                <a href="contact.html">Contact us ↗</a>
+                <p>
+                    © <span id="year">2026</span>
+                    ყველა უფლება დაცულია.
+                </p>
+
+                <a href="contact.html">
+                    დაგვიკავშირდით ↗
+                </a>
             </div>
         </div>
     </footer>
