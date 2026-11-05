@@ -1,32 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>About Us | Georgian Paragliding Federation</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <title>ჩვენ შესახებ | საქართველოს პარაგლაიდინგის ფედერაცია</title>
+
+    <meta
+        name="description"
+        content="საქართველოს პარაგლაიდინგის ფედერაცია — ჩვენ შესახებ. პარაგლაიდინგი საქართველოში."
+    >
+
+    <link
+        rel="canonical"
+        href="https://paraglidingfederation.ge/about.html"
+    >
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="/favicon.png"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+    >
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/languages.css">
+
+    <script src="/languages.js"></script>
+    <script src="/script.js" defer></script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "საქართველოს პარაგლაიდინგის ფედერაცია",
+        "alternateName": [
+            "საქართველოს პარაგლაიდინგის ფედერაცია",
+            "Georgian Paragliding Federation"
+        ],
+        "url": "https://paraglidingfederation.ge/",
+        "logo": "https://paraglidingfederation.ge/images/logo.jpg",
+        "sameAs": [
+            "https://www.facebook.com/GeorgianParaglidingFederation/",
+            "https://www.instagram.com/georgian_paragliding_fed/"
+        ]
+    }
+    </script>
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">
+        შიგთავსზე გადასვლა
+    </a>
+
+    <!-- HEADER -->
 
     <header class="site-header">
         <div class="container header-content">
             <a class="brand" href="index.html">
                 <img
                     class="brand-symbol"
-                    src="images/logo.jpg"
-                    alt="Georgian paragliding federation logo"
+                    src="/images/logo.jpg"
+                    alt="საქართველოს პარაგლაიდინგის ფედერაციის ლოგო"
                     width="43"
                     height="43"
                 >
 
                 <span class="brand-name">
-                    Georgian
-                    <small>Paragliding Federation</small>
+                    საქართველოს
+                    <small>პარაგლაიდინგის ფედერაცია</small>
                 </span>
             </a>
 
@@ -37,199 +89,280 @@
                 aria-controls="main-menu"
                 aria-expanded="false"
             >
-                Menu ☰
+                მენიუ ☰
             </button>
 
             <nav
                 class="main-menu"
                 id="main-menu"
-                aria-label="Main navigation"
+                aria-label="მთავარი მენიუ"
             >
-                <a href="index.html">Home</a>
-                <a href="about.html" aria-current="page">About Us</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="document.html">Documents</a>
-                <a href="news.html">News</a>
-                <a href="Needtoknow.html">Need to know</a>
-                <a href="contact.html">Contact</a>
+                <a href="index.html">
+                    მთავარი
+                </a>
 
-                <a class="nav-book" href="BookYourFlight.html">
-                    Book Your Flight 🪂
+                <a
+                    href="about.html"
+                    aria-current="page"
+                >
+                    ჩვენ შესახებ
+                </a>
+
+                <a href="gallery.html">
+                    გალერეა
+                </a>
+
+                <a href="document.html">
+                    დოკუმენტები
+                </a>
+
+                <a href="news.html">
+                    სიახლეები
+                </a>
+
+                <a href="Needtoknow.html">
+                    საჭირო ინფორმაცია
+                </a>
+
+                <a href="airspaces.html">
+                    საჰაერო სივრცეები
+                </a>
+
+                <a href="contact.html">
+                    კონტაქტი
+                </a>
+
+                <a
+                    class="nav-book"
+                    href="BookYourFlight.html"
+                >
+                    დაგეგმე ფრენა 🪂
                 </a>
             </nav>
+        </div>
+
+        <!-- LANGUAGE SELECTOR -->
+
+        <div class="gpf-language-bar">
+            <select
+                id="gpf-language"
+                aria-label="აირჩიეთ ენა"
+            >
+                <option value="ka">🇬🇪 ქართული</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="ar">🇦🇪 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
         </div>
     </header>
 
     <main id="main">
+
+        <!-- ABOUT -->
+
         <section class="section">
             <div class="container">
                 <div class="section-heading">
-                    <h1>About Us</h1>
+                    <h1>ჩვენ შესახებ</h1>
                 </div>
 
                 <div class="about-layout">
                     <div class="about-image">
                         <img
-                            src="images/para10.jpg"
-                            alt="Paragliding in Georgia"
+                            src="/images/para10.jpg"
+                            alt="პარაგლაიდინგი საქართველოში"
                         >
                     </div>
 
                     <div class="about-copy">
                         <p>
-                            At the Georgian Paragliding Federation,
-                            we believe the future of our sport begins
-                            with the people who make it possible —
-                            pilots, instructors, clubs and everyone
-                            inspired by the sky.
+                            საქართველოს პარაგლაიდინგის ფედერაციაში
+                            გვჯერა, რომ სპორტის მომავალი იწყება
+                            ადამიანებით — პილოტებით, ინსტრუქტორებით,
+                            კლუბებით და ყველასგან, ვისაც ცა
+                            შთააგონებს.
                         </p>
 
                         <p>
-                            We work to strengthen Georgia’s paragliding
-                            community by promoting safety, supporting
-                            pilot development and bringing people
-                            together through training, events and
-                            shared experience.
-
-                            With Georgia’s remarkable mountains as
-                            our backdrop, our ambition is to build
-                            a lasting culture of responsible flying —
-                            where knowledge is shared, skills grow
-                            and every generation inspires the next.
+                            ჩვენ ვაძლიერებთ საქართველოს
+                            პარაგლაიდინგის საზოგადოებას
+                            უსაფრთხოების ხელშეწყობით, პილოტების
+                            განვითარებით, სწავლებით, ღონისძიებებითა
+                            და გამოცდილების გაზიარებით.
+                            საქართველოს მთების გარემოში ვქმნით
+                            პასუხისმგებლიანი ფრენის მდგრად
+                            კულტურას, სადაც ცოდნა ვრცელდება,
+                            უნარები ვითარდება და ყოველი თაობა
+                            შემდეგს შთააგონებს.
                         </p>
 
                         <p>
-                            Our interests include flight experiences,
-                            pilot development, aviation events and
-                            building a strong paragliding community.
+                            ჩვენი ინტერესებია ფრენა, პილოტების
+                            განვითარება, საავიაციო ღონისძიებები
+                            და ძლიერი პარაგლაიდინგის
+                            საზოგადოების შექმნა.
                         </p>
 
                         <p>
-                            We bring together people who share a passion
-                            for flight, learning and Georgia’s landscapes.
+                            ვაერთიანებთ ადამიანებს, რომლებსაც
+                            ფრენის, სწავლისა და საქართველოს
+                            ბუნების სიყვარული აერთიანებთ.
                         </p>
                     </div>
                 </div>
 
+                <!-- MISSION, VISION, SAFETY, DEVELOPMENT -->
+
                 <div class="values-grid">
                     <article class="value-card">
-                        <h3>Mission</h3>
+                        <h3>მისია</h3>
 
                         <p>
-                            Promote the safe, organised and sustainable
-                            development of paragliding in Georgia.
-                            Strengthen pilots’ knowledge and practical
-                            skills, foster a culture of responsible
-                            flying, and encourage collaboration among
-                            pilots, operators and relevant organisations.
+                            ხელი შევუწყოთ საქართველოში
+                            პარაგლაიდინგის უსაფრთხო, ორგანიზებულ
+                            და მდგრად განვითარებას. გავაძლიეროთ
+                            პილოტების ცოდნა და პრაქტიკული უნარები,
+                            პასუხისმგებლიანი ფრენის კულტურა და
+                            თანამშრომლობა პილოტებს, ოპერატორებსა
+                            და შესაბამის ორგანიზაციებს შორის.
                         </p>
                     </article>
 
                     <article class="value-card">
-                        <h3>Vision</h3>
+                        <h3>ხედვა</h3>
 
                         <p>
-                            Establish Georgia as an internationally
-                            recognised paragliding destination,
-                            distinguished by skilled pilots, a strong
-                            safety culture and diverse flying locations.
-                            Create an environment where sporting
-                            achievement and adventure tourism go hand
-                            in hand with respect for nature and local
-                            communities.
+                            საქართველო ჩამოყალიბდეს საერთაშორისო
+                            დონეზე აღიარებულ პარაგლაიდინგის
+                            მიმართულებად, კვალიფიციური პილოტებით,
+                            უსაფრთხოების ძლიერი კულტურითა და
+                            მრავალფეროვანი საფრენი ადგილებით.
+                            სპორტული მიღწევები და სათავგადასავლო
+                            ტურიზმი განვითარდეს ბუნებისა და
+                            ადგილობრივი საზოგადოების პატივისცემით.
                         </p>
                     </article>
 
                     <article class="value-card">
-                        <h3>Safety</h3>
+                        <h3>უსაფრთხოება</h3>
 
                         <p>
-                            Strengthen safety culture through education,
-                            shared experience and responsible flight
-                            planning. Place particular emphasis on
-                            assessing weather conditions, ensuring
-                            equipment is in good working order,
-                            evaluating pilot readiness and complying
-                            with local requirements. Encourage risk
-                            awareness and timely decision-making before
-                            and throughout every flight.
+                            გავაძლიეროთ უსაფრთხოების კულტურა
+                            სწავლებით, გამოცდილების გაზიარებითა
+                            და პასუხისმგებლიანი დაგეგმვით.
+                            განსაკუთრებული ყურადღება მივაქციოთ
+                            ამინდის შეფასებას, აღჭურვილობის
+                            გამართულობას, პილოტის მზადყოფნასა და
+                            ადგილობრივი მოთხოვნების დაცვას.
+                            წავახალისოთ რისკების გააზრება და
+                            დროული გადაწყვეტილებები ფრენამდე
+                            და ფრენისას.
                         </p>
                     </article>
 
                     <article class="value-card">
-                        <h3>Development</h3>
+                        <h3>განვითარება</h3>
 
                         <p>
-                            Support pilots’ professional and sporting
-                            development by expanding opportunities for
-                            education, practical training and the
-                            exchange of experience. Encourage
-                            participation in competitions, inspire the
-                            next generation and strengthen international
-                            cooperation. Build a united, informed and
-                            active paragliding community that contributes
-                            to the sport’s growth and proudly represents
-                            Georgia internationally.
+                            გავაფართოოთ განათლების, პრაქტიკული
+                            სწავლებისა და გამოცდილების გაცვლის
+                            შესაძლებლობები პილოტების პროფესიული
+                            და სპორტული განვითარებისთვის.
+                            წავახალისოთ შეჯიბრებებში მონაწილეობა,
+                            ახალი თაობა და საერთაშორისო
+                            თანამშრომლობა. შევქმნათ ერთიანი,
+                            ინფორმირებული და აქტიური საზოგადოება,
+                            რომელიც სპორტის ზრდასა და საქართველოს
+                            საერთაშორისო წარმომადგენლობას
+                            შეუწყობს ხელს.
                         </p>
                     </article>
                 </div>
             </div>
         </section>
 
+        <!-- DISCOVER MORE -->
+
         <section class="section section-tinted">
             <div class="container">
                 <div class="section-heading">
-                    <h2>Discover a different side of Georgia</h2>
+                    <h2>
+                        აღმოაჩინე საქართველოს განსხვავებული მხარე
+                    </h2>
                 </div>
 
                 <div class="locations-grid">
+
+                    <!-- MOUNTAIN ADVENTURES -->
+
                     <article class="location-card">
                         <div class="location-image">
                             <img
-                                src="images/para11.jpg"
-                                alt="Paragliding photograph"
+                                src="/images/para11.jpg"
+                                alt="პარაგლაიდინგის ფოტო"
                                 loading="lazy"
                             >
                         </div>
 
                         <div class="location-content">
-                            <h3>Mountain adventures</h3>
-                            <p>Explore Georgia from the sky.</p>
-                            <a href="gallery.html">View gallery ↗</a>
+                            <h3>მთის თავგადასავლები</h3>
+
+                            <p>
+                                აღმოაჩინე საქართველო ციდან.
+                            </p>
+
+                            <a href="gallery.html">
+                                გალერეის ნახვა ↗
+                            </a>
                         </div>
                     </article>
 
+                    <!-- LEARNING -->
+
                     <article class="location-card">
                         <div class="location-image">
                             <img
-                                src="images/para16.jpg"
-                                alt="Paragliding photograph"
+                                src="/images/para16.jpg"
+                                alt="პარაგლაიდინგის ფოტო"
                                 loading="lazy"
                             >
                         </div>
 
                         <div class="location-content">
-                            <h3>Learning opportunities</h3>
-                            <p>Ask about current training options.</p>
-                            <a href="contact.html">Contact us ↗</a>
+                            <h3>სწავლის შესაძლებლობები</h3>
+
+                            <p>
+                                გაიგეთ მიმდინარე სასწავლო
+                                შესაძლებლობების შესახებ.
+                            </p>
+
+                            <a href="contact.html">
+                                დაგვიკავშირდით ↗
+                            </a>
                         </div>
                     </article>
 
+                    <!-- FLIGHT -->
+
                     <article class="location-card">
                         <div class="location-image">
                             <img
-                                src="images/para20.jpg"
-                                alt="Paragliding photograph"
+                                src="/images/para20.jpg"
+                                alt="პარაგლაიდინგის ფოტო"
                                 loading="lazy"
                             >
                         </div>
 
                         <div class="location-content">
-                            <h3>Your flight</h3>
-                            <p>Start planning your experience.</p>
+                            <h3>შენი ფრენა</h3>
+
+                            <p>
+                                დაიწყე შენი თავგადასავლის დაგეგმვა.
+                            </p>
 
                             <a href="BookYourFlight.html">
-                                Request a flight ↗
+                                ფრენის მოთხოვნა ↗
                             </a>
                         </div>
                     </article>
@@ -238,13 +371,18 @@
         </section>
     </main>
 
+    <!-- FOOTER -->
+
     <footer class="site-footer">
         <div class="container">
-            <strong>Georgian Paragliding Federation</strong>
+            <strong>
+                საქართველოს პარაგლაიდინგის ფედერაცია
+            </strong>
 
             <div class="footer-bottom">
                 <p>
-                    © <span id="year">2026</span> All rights reserved.
+                    © <span id="year">2026</span>
+                    ყველა უფლება დაცულია.
                 </p>
 
                 <a href="mailto:info@paragliding.ge">
