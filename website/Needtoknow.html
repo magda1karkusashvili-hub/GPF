@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Need to Know | Georgian Paragliding Federation</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>საჭირო ინფორმაცია | საქართველოს პარაგლაიდინგის ფედერაცია</title>
 
     <meta
         name="description"
-        content="Before your paragliding flight in Georgia: understand the risks, your responsibilities, safety instructions and preparation requirements."
+        content="საქართველოს პარაგლაიდინგის ფედერაცია — საჭირო ინფორმაცია. პარაგლაიდინგი საქართველოში."
     >
 
     <meta name="theme-color" content="#123b38">
@@ -18,7 +22,20 @@
         href="https://paraglidingfederation.ge/Needtoknow.html"
     >
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="/favicon.png"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+    >
+
+    <link rel="stylesheet" href="/style.css">
 
     <style>
         :root {
@@ -62,6 +79,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 24px;
+
             max-width: 1240px;
             margin: auto;
             padding: 20px 24px;
@@ -71,14 +89,17 @@
             display: flex;
             align-items: center;
             gap: 12px;
+
             color: var(--nk-green);
             text-decoration: none;
         }
 
         .nk-brand-logo {
             flex-shrink: 0;
+
             width: 43px;
             height: 43px;
+
             border-radius: 50%;
             object-fit: contain;
         }
@@ -91,6 +112,7 @@
         .nk-brand-name small {
             display: block;
             margin-top: 4px;
+
             font-size: 11px;
             font-weight: 400;
         }
@@ -117,19 +139,23 @@
         .nk-nav .nk-book {
             padding: 12px 15px;
             border-radius: 5px;
+
             color: white;
             background: var(--nk-green);
         }
 
-        /* HERO IMAGE */
+        /* HERO */
 
         .nk-hero {
             position: relative;
             isolation: isolate;
+
             display: flex;
             align-items: flex-end;
+
             min-height: 470px;
             overflow: hidden;
+
             background: var(--nk-green);
         }
 
@@ -137,8 +163,10 @@
             position: absolute;
             inset: 0;
             z-index: -2;
+
             width: 100%;
             height: 100%;
+
             object-fit: cover;
         }
 
@@ -146,19 +174,23 @@
             position: absolute;
             inset: 0;
             z-index: -1;
+
             background: linear-gradient(
                 90deg,
                 rgba(8, 31, 28, 0.85),
                 rgba(8, 31, 28, 0.25)
             );
+
             content: "";
         }
 
         .nk-hero-content {
             width: 1150px;
             max-width: 100%;
+
             margin: auto;
             padding: 75px 28px;
+
             color: white;
         }
 
@@ -172,6 +204,7 @@
         .nk-hero h1 {
             margin: 20px 0;
             color: white;
+
             font-size: clamp(44px, 7vw, 82px);
             line-height: 1.04;
             letter-spacing: -2px;
@@ -179,6 +212,7 @@
 
         .nk-hero p {
             max-width: 550px;
+
             color: white;
             font-size: 17px;
             line-height: 1.75;
@@ -188,35 +222,44 @@
 
         .nk-wrap {
             max-width: 1150px;
+
             margin: auto;
             padding: 44px 28px 65px;
         }
 
-        /* YOUR SAFETY STARTS — UPDATED DESIGN */
+        /* SAFETY INTRODUCTION */
 
         .nk-intro {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 18px;
+
             margin-bottom: 35px;
             padding: 32px 36px;
+
             border: 1px solid #d5dfd7;
             border-left: 5px solid var(--nk-green);
             border-radius: 16px;
+
             color: var(--nk-green);
+
             background: linear-gradient(
                 120deg,
                 #ffffff,
                 #eaf0e7
             );
-            box-shadow: 0 10px 28px rgba(18, 59, 56, 0.06);
+
+            box-shadow:
+                0 10px 28px rgba(18, 59, 56, 0.06);
         }
 
         .nk-intro strong {
             display: block;
             min-width: 0;
+
             color: var(--nk-green);
+
             font-size: clamp(24px, 3vw, 34px);
             font-weight: 700;
             line-height: 1.2;
@@ -225,9 +268,11 @@
 
         .nk-intro p {
             max-width: 850px;
+
             margin: 0;
             padding: 0;
             border: 0;
+
             color: #42594f;
             font-size: 16px;
             line-height: 1.85;
@@ -243,13 +288,16 @@
 
         .nk-card {
             padding: 28px;
+
             border: 1px solid var(--nk-line);
             border-radius: 12px;
+
             background: white;
         }
 
         .nk-number {
             color: #557c67;
+
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 2px;
@@ -257,6 +305,7 @@
 
         .nk-card h2 {
             margin: 13px 0 16px;
+
             color: #18332f;
             font-size: 23px;
             line-height: 1.25;
@@ -264,6 +313,7 @@
 
         .nk-card p {
             margin: 0 0 12px;
+
             color: #495c55;
             font-size: 15px;
             line-height: 1.85;
@@ -279,25 +329,30 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+
             margin: 30px 0;
         }
 
         .nk-photos figure {
             margin: 0;
             overflow: hidden;
+
             border-radius: 12px;
             background: #dbe3dc;
         }
 
         .nk-photos img {
             display: block;
+
             width: 100%;
             height: 280px;
+
             object-fit: cover;
         }
 
         .nk-photos figcaption {
             padding: 14px 20px;
+
             color: #18332f;
             font-size: 13px;
             line-height: 1.5;
@@ -310,23 +365,29 @@
             align-items: center;
             justify-content: space-between;
             gap: 20px;
+
             margin-top: 30px;
             padding-top: 25px;
+
             border-top: 1px solid #cbd6cc;
         }
 
         .nk-bottom p {
             max-width: 660px;
+
             font-size: 14px;
             line-height: 1.75;
         }
 
         .nk-button {
             display: inline-block;
+
             padding: 15px 20px;
             border-radius: 6px;
+
             color: white;
             background: var(--nk-green);
+
             text-decoration: none;
             white-space: nowrap;
         }
@@ -337,8 +398,10 @@
 
         .nk-footer {
             padding: 26px;
+
             color: white;
             background: var(--nk-green);
+
             font-size: 13px;
             text-align: center;
         }
@@ -421,323 +484,410 @@
             }
         }
     </style>
+
+    <link rel="stylesheet" href="/languages.css">
+
+    <script src="/languages.js"></script>
+    <script src="/script.js" defer></script>
 </head>
 
 <body>
-    <a class="nk-skip" href="#main">Skip to content</a>
+    <a class="nk-skip" href="#main">
+        შიგთავსზე გადასვლა
+    </a>
+
+    <!-- HEADER -->
 
     <header class="nk-header">
         <div class="nk-header-content">
-            <a class="nk-brand" href="index.html" aria-label="Home">
+            <a
+                class="nk-brand"
+                href="index.html"
+                aria-label="მთავარი"
+            >
                 <img
                     class="nk-brand-logo"
-                    src="images/logo.jpg"
-                    alt="Georgian Paragliding Federation logo"
+                    src="/images/logo.jpg"
+                    alt="საქართველოს პარაგლაიდინგის ფედერაციის ლოგო"
                     width="43"
                     height="43"
                 >
 
                 <span class="nk-brand-name">
-                    Georgian
-                    <small>Paragliding Federation</small>
+                    საქართველოს
+                    <small>პარაგლაიდინგის ფედერაცია</small>
                 </span>
             </a>
 
-            <nav class="nk-nav" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="document.html">Documents</a>
-
-                <a href="Needtoknow.html" aria-current="page">
-                    Need to know
+            <nav
+                class="nk-nav"
+                aria-label="მთავარი მენიუ"
+            >
+                <a href="index.html">
+                    მთავარი
                 </a>
 
-                <a href="news.html">News</a>
-                <a href="contact.html">Contact</a>
+                <a href="about.html">
+                    ჩვენ შესახებ
+                </a>
 
-                <a class="nk-book" href="BookYourFlight.html">
-                    Plan Your Adventure ↗
+                <a href="gallery.html">
+                    გალერეა
+                </a>
+
+                <a href="document.html">
+                    დოკუმენტები
+                </a>
+
+                <a
+                    href="Needtoknow.html"
+                    aria-current="page"
+                >
+                    საჭირო ინფორმაცია
+                </a>
+
+                <a href="news.html">
+                    სიახლეები
+                </a>
+
+                <a href="airspaces.html">
+                    საჰაერო სივრცეები
+                </a>
+
+                <a href="contact.html">
+                    კონტაქტი
+                </a>
+
+                <a
+                    class="nk-book"
+                    href="BookYourFlight.html"
+                >
+                    დაგეგმე ფრენა ↗
                 </a>
             </nav>
+        </div>
+
+        <!-- LANGUAGE SELECTOR -->
+
+        <div class="gpf-language-bar">
+            <select
+                id="gpf-language"
+                aria-label="აირჩიეთ ენა"
+            >
+                <option value="ka">🇬🇪 ქართული</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="ar">🇦🇪 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
         </div>
     </header>
 
     <main id="main">
-        <section class="nk-hero" aria-labelledby="page-title">
+
+        <!-- HERO -->
+
+        <section
+            class="nk-hero"
+            aria-labelledby="page-title"
+        >
             <img
-                src="images/para1.jpg"
-                alt="Paragliding in Georgia"
+                src="/images/para1.jpg"
+                alt="პარაგლაიდინგი საქართველოში"
                 fetchpriority="high"
             >
 
             <div class="nk-hero-content">
-                <span class="nk-kicker">Before you fly</span>
+                <span class="nk-kicker">
+                    ფრენამდე
+                </span>
 
-                <h1 id="page-title">Need to know.</h1>
+                <h1 id="page-title">
+                    საჭირო ინფორმაცია.
+                </h1>
 
                 <p>
-                    Understand the risks. Know your responsibilities.
+                    გაიაზრეთ რისკები.
+                    იცოდეთ თქვენი პასუხისმგებლობა.
                     <br>
-                    Prepare for your flight with safety in mind.
+                    მოემზადეთ ფრენისთვის
+                    უსაფრთხოების გათვალისწინებით.
                 </p>
             </div>
         </section>
 
         <div class="nk-wrap">
 
-            <!-- UPDATED SAFETY BLOCK -->
+            <!-- SAFETY INTRODUCTION -->
 
             <aside class="nk-intro">
                 <strong>
-                    Your safety starts before take-off.
+                    თქვენი უსაფრთხოება აფრენამდე იწყება.
                 </strong>
 
                 <p>
-                    Read the information below before participating.
-                    Ask questions, share relevant information with your
-                    operator and follow your pilot’s instructions
-                    throughout the experience.
+                    მონაწილეობამდე გაეცანით ქვემოთ მოცემულ
+                    ინფორმაციას. დასვით შეკითხვები, მიაწოდეთ
+                    ოპერატორს მნიშვნელოვანი ცნობები და მთელი
+                    ფრენის განმავლობაში შეასრულეთ პილოტის
+                    მითითებები.
                 </p>
             </aside>
+
+            <!-- CARDS 01–06 -->
 
             <div class="nk-grid">
                 <article class="nk-card">
                     <span class="nk-number">01</span>
 
-                    <h2>Understanding the Risks</h2>
+                    <h2>რისკების გააზრება</h2>
 
                     <p>
-                        Paragliding is an activity that involves risks.
-                        Proper preparation, equipment and adherence to
-                        safety procedures reduce these risks but cannot
-                        completely eliminate the possibility of injury
-                        or other serious consequences.
-                        Before participating, make sure you understand
-                        these risks and make your decision voluntarily.
+                        პარაგლაიდინგი რისკებთან დაკავშირებული
+                        აქტივობაა. სათანადო მომზადება,
+                        აღჭურვილობა და უსაფრთხოების წესების
+                        დაცვა ამცირებს რისკებს, თუმცა ვერ
+                        გამორიცხავს ტრავმის ან სხვა მძიმე
+                        შედეგების შესაძლებლობას. მონაწილეობამდე
+                        დარწმუნდით, რომ რისკები გესმით და
+                        გადაწყვეტილებას ნებაყოფლობით იღებთ.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">02</span>
 
-                    <h2>Making an Informed Decision</h2>
+                    <h2>ინფორმირებული გადაწყვეტილება</h2>
 
                     <p>
-                        Before flying, familiarise yourself with the
-                        participation conditions and safety instructions.
-                        If anything is unclear, ask your pilot to explain.
-                        Do not begin the flight until you understand what
-                        you will need to do during take-off, flight
-                        and landing.
+                        ფრენამდე გაეცანით მონაწილეობის
+                        პირობებსა და უსაფრთხოების ინსტრუქციებს.
+                        გაურკვევლობის შემთხვევაში სთხოვეთ
+                        პილოტს განმარტება. არ დაიწყოთ ფრენა,
+                        სანამ არ გაიგებთ, რა უნდა გააკეთოთ
+                        აფრენისას, ფრენისას და დაშვებისას.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">03</span>
 
-                    <h2>Your Responsibility</h2>
+                    <h2>თქვენი პასუხისმგებლობა</h2>
 
                     <p>
-                        Participants are responsible for providing
-                        accurate information about their health, weight,
-                        age and any other relevant circumstances,
-                        paying attention during the safety briefing
-                        and following the pilot’s instructions.
-                        Withholding important information or disregarding
-                        instructions may put both the passenger
-                        and the pilot at risk.
+                        მონაწილე ვალდებულია ზუსტად მიუთითოს
+                        ჯანმრთელობის მდგომარეობა, წონა, ასაკი
+                        და სხვა მნიშვნელოვანი გარემოებები,
+                        ყურადღებით მოისმინოს ინსტრუქტაჟი და
+                        შეასრულოს პილოტის მითითებები.
+                        მნიშვნელოვანი ინფორმაციის დამალვა ან
+                        მითითებების უგულებელყოფა საფრთხეს
+                        უქმნის მგზავრსა და პილოტს.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">04</span>
 
-                    <h2>Health and Readiness</h2>
+                    <h2>ჯანმრთელობა და მზადყოფნა</h2>
 
                     <p>
-                        Inform your operator in advance about any medical
-                        condition, pregnancy, injury, surgery, mobility
-                        limitation or medication that may affect your
-                        attention, balance or physical ability.
-                        If in doubt, consult a healthcare professional
-                        before participating and share the relevant
-                        information with your operator.
+                        წინასწარ აცნობეთ ოპერატორს დაავადების,
+                        ორსულობის, ტრავმის, ოპერაციის,
+                        მოძრაობის შეზღუდვის ან მედიკამენტის
+                        შესახებ, რომელმაც შესაძლოა ყურადღებაზე,
+                        წონასწორობასა თუ ფიზიკურ შესაძლებლობაზე
+                        იმოქმედოს. ეჭვის შემთხვევაში მონაწილეობამდე
+                        გაიარეთ კონსულტაცია ექიმთან და შესაბამისი
+                        ინფორმაცია ოპერატორს გაუზიარეთ.
                     </p>
 
                     <p>
-                        If you feel unwell, dizzy, extremely tired or
-                        anxious before your flight, tell your pilot
-                        immediately.
+                        თუ ფრენამდე თავს ცუდად გრძნობთ,
+                        გაქვთ თავბრუსხვევა, ძლიერი დაღლილობა
+                        ან შფოთვა, დაუყოვნებლივ აცნობეთ პილოტს.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">05</span>
 
-                    <h2>Alcohol and Other Substances</h2>
+                    <h2>ალკოჰოლი და სხვა ნივთიერებები</h2>
 
                     <p>
-                        Do not participate in a flight while under the
-                        influence of alcohol, drugs or any other substance
-                        that impairs your reactions, attention
-                        or coordination.
+                        არ მიიღოთ მონაწილეობა ალკოჰოლის,
+                        ნარკოტიკის ან სხვა ნივთიერების
+                        ზემოქმედების ქვეშ, რომელიც რეაქციას,
+                        ყურადღებას ან კოორდინაციას აქვეითებს.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">06</span>
 
-                    <h2>Safety Briefing</h2>
+                    <h2>უსაფრთხოების ინსტრუქტაჟი</h2>
 
                     <p>
-                        Listen carefully to the safety briefing.
-                        During take-off and landing, act only as
-                        instructed by your pilot.
-                        If you do not understand an instruction or believe
-                        you may be unable to follow it, say so before
-                        take-off.
+                        ყურადღებით მოისმინეთ ინსტრუქტაჟი.
+                        აფრენისა და დაშვებისას იმოქმედეთ მხოლოდ
+                        პილოტის მითითებით. თუ მითითება არ გესმით
+                        ან ფიქრობთ, რომ ვერ შეასრულებთ,
+                        ამის შესახებ აფრენამდე თქვით.
                     </p>
                 </article>
             </div>
 
+            <!-- PHOTOS -->
+
             <div class="nk-photos">
                 <figure>
                     <img
-                        src="images/para2.jpg"
-                        alt="A view of paragliding in Georgia"
+                        src="/images/para2.jpg"
+                        alt="პარაგლაიდინგის ხედი საქართველოში"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        Prepare carefully. Listen to your pilot.
+                        მოემზადეთ ყურადღებით.
+                        მოუსმინეთ პილოტს.
                     </figcaption>
                 </figure>
 
                 <figure>
                     <img
-                        src="images/para3.jpg"
-                        alt="Paragliding scenery in Georgia"
+                        src="/images/para3.jpg"
+                        alt="პარაგლაიდინგის ხედები საქართველოში"
                         loading="lazy"
                     >
 
                     <figcaption>
-                        Conditions matter. Respect the decision to postpone.
+                        პირობებს მნიშვნელობა აქვს.
+                        პატივი ეცით გადადების გადაწყვეტილებას.
                     </figcaption>
                 </figure>
             </div>
+
+            <!-- CARDS 07–12 -->
 
             <div class="nk-grid">
                 <article class="nk-card">
                     <span class="nk-number">07</span>
 
-                    <h2>Equipment and Personal Belongings</h2>
+                    <h2>აღჭურვილობა და პირადი ნივთები</h2>
 
                     <p>
-                        Do not open, loosen or adjust the fastenings on
-                        your helmet, harness or any other equipment.
-                        If you feel discomfort or notice anything unusual,
-                        inform your pilot immediately.
-                        Use phones, cameras and other personal items only
-                        with the pilot’s agreement and after they have
-                        been securely attached.
+                        არ გახსნათ, არ მოუშვათ და არ შეცვალოთ
+                        ჩაფხუტის, საკიდი სისტემის ან სხვა
+                        აღჭურვილობის სამაგრები. დისკომფორტის
+                        ან უჩვეულო გარემოების შემთხვევაში
+                        დაუყოვნებლივ აცნობეთ პილოტს. ტელეფონი,
+                        კამერა და სხვა ნივთები გამოიყენეთ
+                        მხოლოდ პილოტის თანხმობითა და
+                        საიმედოდ დამაგრების შემდეგ.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">08</span>
 
-                    <h2>Behaviour During the Flight</h2>
+                    <h2>ქცევა ფრენისას</h2>
 
                     <p>
-                        Do not touch the controls or equipment mechanisms
-                        unless instructed by your pilot.
-                        Avoid sudden movements and promptly tell your
-                        pilot about any discomfort, nausea or fear.
+                        არ შეეხოთ მართვის საშუალებებს ან
+                        აღჭურვილობის მექანიზმებს პილოტის
+                        მითითების გარეშე. მოერიდეთ უეცარ
+                        მოძრაობებს და დროულად აცნობეთ პილოტს
+                        დისკომფორტის, გულისრევის ან შიშის შესახებ.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">09</span>
 
-                    <h2>Weather and the Pilot’s Decision</h2>
+                    <h2>ამინდი და პილოტის გადაწყვეტილება</h2>
 
                     <p>
-                        Your pilot assesses whether the flight can take
-                        place based on the conditions.
-                        For safety reasons, a flight may be delayed,
-                        changed or cancelled.
-                        Do not pressure the pilot to fly if they consider
-                        the conditions unsuitable.
+                        პილოტი პირობების მიხედვით აფასებს
+                        ფრენის შესაძლებლობას. უსაფრთხოების
+                        მიზნით ფრენა შეიძლება გადაიდოს,
+                        შეიცვალოს ან გაუქმდეს. არ მოახდინოთ
+                        ზეწოლა პილოტზე, თუ მას პირობები
+                        შეუსაბამოდ მიაჩნია.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">10</span>
 
-                    <h2>What to Wear</h2>
+                    <h2>რა ჩავიცვათ</h2>
 
                     <p>
-                        Wear comfortable, season-appropriate clothing
-                        and closed-toe footwear with a good grip.
-                        Mountain locations can be cold even in summer,
-                        so bring a warm layer.
-                        Avoid flip-flops and loose items that could fall
-                        during the flight.
+                        ჩაიცვით კომფორტული, სეზონის შესაბამისი
+                        ტანსაცმელი და დახურული, კარგი მოჭიდების
+                        მქონე ფეხსაცმელი. მთაში ზაფხულშიც
+                        შეიძლება ციოდეს — იქონიეთ თბილი ზედა.
+                        მოერიდეთ ღია ჩუსტებსა და დაუმაგრებელ
+                        ნივთებს, რომლებიც შეიძლება ჩამოვარდეს.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">11</span>
 
-                    <h2>Age and Weight Restrictions</h2>
+                    <h2>ასაკისა და წონის შეზღუდვები</h2>
 
                     <p>
-                        Age and weight limits depend on the operator,
-                        equipment, location and flight conditions.
-                        Provide accurate details when booking and confirm
-                        your eligibility with the operator.
-                        For passengers under 18, check the parent or legal
-                        guardian consent requirements in advance.
+                        ასაკისა და წონის ზღვარი დამოკიდებულია
+                        ოპერატორზე, აღჭურვილობაზე, ადგილსა და
+                        ფრენის პირობებზე. დაჯავშნისას მიუთითეთ
+                        ზუსტი მონაცემები და ოპერატორთან
+                        გადაამოწმეთ მონაწილეობის შესაძლებლობა.
+                        18 წლამდე მგზავრებისთვის წინასწარ
+                        დააზუსტეთ მშობლის ან კანონიერი
+                        წარმომადგენლის თანხმობის მოთხოვნები.
                     </p>
                 </article>
 
                 <article class="nk-card">
                     <span class="nk-number">12</span>
 
-                    <h2>Weather and Flight Conditions</h2>
+                    <h2>ამინდი და ფრენის პირობები</h2>
 
                     <p>
-                        Paragliding depends on suitable weather conditions.
-                        Wind, limited visibility, precipitation or other
-                        circumstances may cause a flight to be delayed,
-                        rescheduled or cancelled.
-                        The pilot makes the final decision on whether
-                        to fly.
-                        Before booking, review the operator’s cancellation
-                        and refund policy.
+                        პარაგლაიდინგს შესაბამისი ამინდი
+                        სჭირდება. ქარმა, შეზღუდულმა
+                        ხილვადობამ, ნალექმა ან სხვა გარემოებამ
+                        შესაძლოა ფრენის გადადება, თარიღის
+                        შეცვლა ან გაუქმება გამოიწვიოს.
+                        საბოლოო გადაწყვეტილებას პილოტი იღებს.
+                        დაჯავშნამდე გაეცანით ოპერატორის
+                        გაუქმებისა და თანხის დაბრუნების პირობებს.
                     </p>
                 </article>
             </div>
 
+            <!-- CONTACT -->
+
             <div class="nk-bottom">
                 <p>
-                    This page provides general information.
-                    Confirm the requirements and participation conditions
-                    for your chosen flight directly with your operator.
+                    გვერდი შეიცავს ზოგად ინფორმაციას.
+                    არჩეული ფრენის მოთხოვნები და მონაწილეობის
+                    პირობები უშუალოდ ოპერატორთან დააზუსტეთ.
                 </p>
 
                 <a class="nk-button" href="contact.html">
-                    Have a question? Contact us ↗
+                    გაქვთ შეკითხვა? დაგვიკავშირდით ↗
                 </a>
             </div>
         </div>
     </main>
 
     <footer class="nk-footer">
-        Georgian Paragliding Federation
-        · <a href="index.html">Home</a>
-        · <a href="contact.html">Contact</a>
+        საქართველოს პარაგლაიდინგის ფედერაცია
+        ·
+        <a href="index.html">მთავარი</a>
+        ·
+        <a href="contact.html">კონტაქტი</a>
     </footer>
 </body>
 </html>
