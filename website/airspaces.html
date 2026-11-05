@@ -2,11 +2,7 @@
 <html lang="ka" dir="ltr">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>საჰაერო სივრცეები | საქართველოს პარაგლაიდინგის ფედერაცია</title>
 
@@ -17,34 +13,22 @@
 
     <meta name="theme-color" content="#123351">
 
-    <link
-        rel="canonical"
-        href="https://paraglidingfederation.ge/airspaces.html"
-    >
-
+    <link rel="canonical" href="https://paraglidingfederation.ge/airspaces.html">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="stylesheet" href="/style.css">
-
-    <link
-        rel="icon"
-        type="image/png"
-        sizes="96x96"
-        href="/favicon.png"
-    >
-
-    <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/apple-touch-icon.png"
-    >
 
     <script src="/languages.js" defer></script>
     <script src="/script.js" defer></script>
 
     <style>
-        /* საერთო სათაური და მენიუ */
+        /* საერთო სათაური */
 
         .site-header {
-            padding-top: 44px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding-top: 48px;
         }
 
         .site-header .brand {
@@ -65,17 +49,26 @@
             line-height: 1.4;
         }
 
-        .site-header > .gpf-language-bar {
+        /* ენა და სოციალური ქსელები */
+
+        .header-tools {
             position: absolute;
             top: 7px;
-            right: 12px;
+            right: 18px;
             left: auto;
-            bottom: auto;
-            z-index: 30;
-
+            z-index: 60;
             display: flex;
             align-items: center;
+            gap: 15px;
+            direction: ltr;
+        }
 
+        .site-header .header-tools .gpf-language-bar {
+            position: static !important;
+            inset: auto !important;
+            display: flex;
+            align-items: center;
+            gap: 7px;
             width: auto;
             margin: 0;
             padding: 0;
@@ -84,25 +77,74 @@
             direction: ltr;
         }
 
-        .gpf-language-bar select {
-            min-width: 145px;
-            min-height: 32px;
-            max-width: calc(100vw - 24px);
-            padding: 5px 10px;
+        .language-flag {
+            display: block;
+            width: 25px;
+            height: 17px;
+            flex: 0 0 25px;
+            overflow: hidden;
+            border-radius: 2px;
+            box-shadow: 0 0 0 1px rgba(255,255,255,.25);
+        }
 
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
+        .gpf-language-bar select {
+            width: auto;
+            min-width: 100px;
+            min-height: 32px;
+            padding: 4px 7px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 7px;
             background: #102c46;
             color: #ffffff;
-
             font: inherit;
-            font-size: 13px;
-            line-height: 1.4;
+            font-size: 12px;
             direction: ltr;
         }
 
+        .header-social {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-social a,
+        .header-social button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            padding: 5px;
+            border: 0;
+            border-radius: 6px;
+            background: transparent;
+            color: #ffffff;
+            text-decoration: none;
+            transition:
+                background 180ms ease,
+                transform 180ms ease;
+        }
+
+        .header-social a:hover {
+            background: rgba(255,255,255,.12);
+            transform: translateY(-2px);
+        }
+
+        .header-social svg {
+            display: block;
+            width: 19px;
+            height: 19px;
+        }
+
+        .header-social button:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+        }
+
+        .header-social a:focus-visible,
         .gpf-language-bar select:focus-visible {
-            outline: 2px solid #8ccfff;
+            outline: 2px solid #9dd7ff;
             outline-offset: 3px;
         }
 
@@ -127,27 +169,23 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-
             min-height: 38px;
             padding: 8px 13px;
-
-            border: 1px solid rgba(74, 144, 226, 0.22);
+            border: 1px solid rgba(74,144,226,.22);
             border-radius: 999px;
-            background: rgba(74, 144, 226, 0.08);
+            background: rgba(74,144,226,.08);
             color: inherit;
-
             font-size: 13px;
             font-weight: 700;
             text-decoration: none;
             direction: ltr;
-
             transition:
                 background 180ms ease,
                 transform 180ms ease;
         }
 
         .airspace-jump a:hover {
-            background: rgba(74, 144, 226, 0.17);
+            background: rgba(74,144,226,.17);
             transform: translateY(-2px);
         }
 
@@ -161,13 +199,11 @@
         .airspace-card {
             min-width: 0;
             padding: 25px;
-
-            border: 1px solid rgba(74, 144, 226, 0.18);
+            border: 1px solid rgba(74,144,226,.18);
             border-radius: 20px;
-            background: rgba(74, 144, 226, 0.045);
-
-            box-shadow: 0 12px 32px rgba(11, 29, 51, 0.045);
-            scroll-margin-top: 160px;
+            background: rgba(74,144,226,.045);
+            box-shadow: 0 12px 32px rgba(11,29,51,.045);
+            scroll-margin-top: 180px;
         }
 
         .airspace-top {
@@ -188,13 +224,11 @@
             align-items: center;
             padding: 7px 11px;
             border-radius: 9px;
-
             background: #123351;
             color: #ffffff;
-
             font-size: 12px;
             font-weight: 800;
-            letter-spacing: 0.04em;
+            letter-spacing: .04em;
             white-space: nowrap;
         }
 
@@ -222,7 +256,7 @@
         .airspace-card details {
             margin-top: 20px;
             padding-top: 16px;
-            border-top: 1px solid rgba(74, 144, 226, 0.18);
+            border-top: 1px solid rgba(74,144,226,.18);
         }
 
         .airspace-card summary {
@@ -244,9 +278,9 @@
         .airspace-common {
             margin-top: 32px;
             padding: clamp(22px, 4vw, 38px);
-            border: 1px solid rgba(74, 144, 226, 0.18);
+            border: 1px solid rgba(74,144,226,.18);
             border-radius: 20px;
-            background: rgba(74, 144, 226, 0.06);
+            background: rgba(74,144,226,.06);
         }
 
         .airspace-common h2 {
@@ -264,13 +298,9 @@
                 --paraglider-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2 12C4 1 28 1 30 12L25 14L20 12L16 14L12 12L7 14Z' fill='%232b93d1' stroke='%230d304d' stroke-width='1.2'/%3E%3Cpath d='M7 6L7 14M12 4L12 12M20 4L20 12M25 6L25 14' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Cpath d='M3 12L15 24M29 12L17 24M9 13L15 24M23 13L17 24' fill='none' stroke='%230d304d' stroke-width='1'/%3E%3Ccircle cx='16' cy='23' r='2' fill='%23f4a340' stroke='%230d304d' stroke-width='1'/%3E%3Cpath d='M16 25L14 29L19 29' fill='none' stroke='%230d304d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 16 3;
             }
 
-            html,
-            body,
-            body a,
-            body button,
-            body select,
-            body summary,
-            body label,
+            html, body,
+            body a, body button, body select,
+            body summary, body label,
             body input[type="checkbox"],
             body input[type="radio"] {
                 cursor: var(--paraglider-cursor), auto;
@@ -303,8 +333,13 @@
                 font-size: 11px;
             }
 
-            .site-header > .gpf-language-bar {
-                right: 8px;
+            .header-tools {
+                right: 10px;
+                gap: 9px;
+            }
+
+            .header-social {
+                gap: 6px;
             }
 
             .airspace-grid {
@@ -329,31 +364,101 @@
 </head>
 
 <body>
-    <a class="skip-link" href="#main">
-        შიგთავსზე გადასვლა
-    </a>
+    <a class="skip-link" href="#main">შიგთავსზე გადასვლა</a>
 
     <header class="site-header">
-        <div class="gpf-language-bar">
-            <select
-                id="gpf-language"
-                aria-label="აირჩიეთ ენა"
-                dir="ltr"
-            >
-                <option value="ka">🇬🇪 ქართული</option>
-                <option value="en">🇬🇧 English</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="ar">🇸🇦 العربية</option>
-                <option value="zh">🇨🇳 中文</option>
-            </select>
+
+        <!-- ენა და სოციალური ქსელები -->
+
+        <div class="header-tools">
+            <div class="gpf-language-bar">
+                <svg
+                    class="language-flag"
+                    id="language-flag"
+                    viewBox="0 0 30 20"
+                    aria-hidden="true"
+                    focusable="false"
+                >
+                    <rect width="30" height="20" fill="#ffffff"/>
+                    <path
+                        d="M0 10H30 M15 0V20"
+                        stroke="#e52332"
+                        stroke-width="4"
+                    />
+                    <path
+                        d="M5 5H9 M7 3V7 M21 5H25 M23 3V7 M5 15H9 M7 13V17 M21 15H25 M23 13V17"
+                        stroke="#e52332"
+                        stroke-width="1.5"
+                    />
+                </svg>
+
+                <select id="gpf-language" aria-label="აირჩიეთ ენა" dir="ltr">
+                    <option value="ka">ქართული</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="ar">العربية</option>
+                    <option value="zh">中文</option>
+                </select>
+            </div>
+
+            <div class="header-social" aria-label="სოციალური ქსელები">
+                <a
+                    href="https://www.facebook.com/GeorgianParaglidingFederation/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    title="Facebook"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            fill="currentColor"
+                            d="M14 21v-8h2.7l.4-3H14V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H8v3h2.6v8H14z"
+                        />
+                    </svg>
+                </a>
+
+                <a
+                    href="https://www.instagram.com/georgian_paragliding_fed/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    title="Instagram"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        aria-hidden="true"
+                    >
+                        <rect x="3" y="3" width="18" height="18" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle
+                            cx="17.5" cy="6.5" r="1"
+                            fill="currentColor"
+                            stroke="none"
+                        />
+                    </svg>
+                </a>
+
+                <button
+                    type="button"
+                    disabled
+                    aria-label="TikTok — ბმული დასამატებელია"
+                    title="TikTok — ბმული დასამატებელია"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            fill="currentColor"
+                            d="M15.6 2h-3.1v13.3a2.7 2.7 0 1 1-2.3-2.7V9.4a5.9 5.9 0 1 0 5.4 5.9V8.5a8 8 0 0 0 4.7 1.5V6.8c-2.5-.2-4.4-2.2-4.7-4.8z"
+                        />
+                    </svg>
+                </button>
+            </div>
         </div>
 
         <div class="container header-content">
-            <a
-                class="brand"
-                href="index.html"
-                aria-label="მთავარი"
-            >
+            <a class="brand" href="index.html" aria-label="მთავარი">
                 <img
                     class="brand-symbol"
                     src="/images/logo.jpg"
@@ -361,7 +466,6 @@
                     width="43"
                     height="43"
                 >
-
                 <span class="brand-name">საქართველოს პარაგლაიდინგის ფედერაცია</span>
             </a>
 
@@ -375,13 +479,703 @@
                 მენიუ ☰
             </button>
 
-            <nav
-                class="main-menu"
-                id="main-menu"
-                aria-label="მთავარი მენიუ"
-            >
+            <nav class="main-menu" id="main-menu" aria-label="მთავარი მენიუ">
                 <a href="index.html">მთავარი</a>
                 <a href="about.html">ჩვენ შესახებ</a>
                 <a href="gallery.html">გალერეა</a>
                 <a href="document.html">დოკუმენტები</a>
-                <a href="news.html">სიახლ
+                <a href="news.html">სიახლეები</a>
+                <a href="Needtoknow.html">საჭირო ინფორმაცია</a>
+
+                <a href="airspaces.html" aria-current="page">
+                    საჰაერო სივრცეები
+                </a>
+
+                <a href="pilots.html" id="pilots-nav-link">
+                    გაიცანი ჩვენი პილოტები
+                </a>
+
+                <a href="contact.html">კონტაქტი</a>
+
+                <a href="BookYourFlight.html" id="adventure-nav-link">
+                    დაგეგმე შენი თავგადასავალი ↗
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="section">
+            <div class="container">
+                <div class="section-heading airspace-intro">
+                    <p class="eyebrow">13 საჰაერო სივრცე</p>
+
+                    <h1>საჰაერო სივრცეები</h1>
+
+                    <p class="section-intro">
+                        სახელმწიფოებრივი ინტერესების გათვალისწინებით პარაგლაიდინგისთვის დადგენილი საჰაერო სივრცეები.
+                    </p>
+
+                    <p>
+                        AMSL — ზღვის საშუალო დონიდან. GND — მიწის ზედაპირი. კოორდინატები და საზღვრები გადმოტანილია მოწოდებული ცხრილიდან.
+                    </p>
+
+                    <p>
+                        ჩამონათვალი აღწერს დადგენილ საჰაერო სივრცეებს; ის კონკრეტულ ადგილზე კომერციული ფრენის მიმდინარე ხელმისაწვდომობას არ ადასტურებს.
+                    </p>
+                </div>
+
+                <div class="airspace-jump">
+                    <a href="#uga-1">UGA-1</a>
+                    <a href="#uga-2">UGA-2</a>
+                    <a href="#uga-3">UGA-3</a>
+                    <a href="#uga-4">UGA-4</a>
+                    <a href="#uga-5">UGA-5</a>
+                    <a href="#uga-6">UGA-6</a>
+                    <a href="#uga-7">UGA-7</a>
+                    <a href="#uga-8">UGA-8</a>
+                    <a href="#uga-9">UGA-9</a>
+                    <a href="#uga-10">UGA-10</a>
+                    <a href="#uga-11">UGA-11</a>
+                    <a href="#uga-12">UGA-12</a>
+                    <a href="#uga-13">UGA-13</a>
+                </div>
+
+                <div class="airspace-grid">
+
+                    <!-- 01 -->
+
+                    <article class="airspace-card" id="uga-1">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-1</span>
+                            <h2>ყაზანიანი</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">4200 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                414133N 0451410E -
+                                413928N 0451553E -
+                                414034N 0452259E -
+                                414145N 0451922E -
+                                414133N 0451410E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                აისიდან დაისამდე (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 02 -->
+
+                    <article class="airspace-card" id="uga-2">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-2</span>
+                            <h2>სიღნაღი</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">3000 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                413741N 0455511E -
+                                413744N 0455643E -
+                                413706N 0455714E -
+                                413704N 0455548E -
+                                413741N 0455511E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                აისიდან დაისამდე (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 03 -->
+
+                    <article class="airspace-card" id="uga-3">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-3</span>
+                            <h2>თბილისის ზღვა</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">3500 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                414546N 0445441E -
+                                414546N 0445546E -
+                                414458N 0445546E -
+                                414458N 0445441E -
+                                414546N 0445441E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                აისიდან დაისამდე (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 04 -->
+
+                    <article class="airspace-card" id="uga-4">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-4</span>
+                            <h2>ანანური</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">7500 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                421129N 0444026E -
+                                420923N 0444211E -
+                                420916N 0444720E -
+                                421352N 0445040E -
+                                421129N 0444026E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                აისიდან დაისამდე (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 05 -->
+
+                    <article class="airspace-card" id="uga-5">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-5</span>
+                            <h2>ბაკურიანი</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">8200 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                414141N 0433005E -
+                                414254N 0432832E -
+                                414435N 0432810E -
+                                414618N 0433105E -
+                                414553N 0433258E -
+                                414253N 0433439E -
+                                414148N 0433318E -
+                                414141N 0433005E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                აისიდან დაისამდე (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 06 -->
+
+                    <article class="airspace-card" id="uga-6">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-6</span>
+                            <h2>ბახმარო</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">8119 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                414951N 0421746E -
+                                415159N 0421909E -
+                                415107N 0422211E -
+                                414853N 0422059E -
+                                414951N 0421746E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                აისიდან დაისამდე (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 07 -->
+
+                    <article class="airspace-card" id="uga-7">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-7</span>
+                            <h2>გოდერძი</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">7200 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                414235N 0422935E -
+                                414000N 0423122E -
+                                413803N 0423112E -
+                                413602N 0423118E -
+                                413557N 0423002E -
+                                414115N 0422739E -
+                                414235N 0422935E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                მზის ამოსვლიდან +3 საათი მზის ჩასვლამდე – ნახ. საათი (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 08 -->
+
+                    <article class="airspace-card" id="uga-8">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-8</span>
+                            <h2>გუდაური</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">10500 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                423049N 0443033E -
+                                422531N 0443412E -
+                                422528N 0443104E -
+                                422628N 0442847E -
+                                423037N 0442500E -
+                                423117N 0442532E -
+                                423049N 0443033E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                მზის ამოსვლიდან +3 საათი მზის ჩასვლამდე – ნახ. საათი (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 09 -->
+
+                    <article class="airspace-card" id="uga-9">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-9</span>
+                            <h2>თეთნულდი</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">10200 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                430203N 0424909E -
+                                430258N 0425020E -
+                                430207N 0425539E -
+                                430112N 0425428E -
+                                430203N 0424909E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                მზის ამოსვლიდან +3 საათი მზის ჩასვლამდე – ნახ. საათი (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 10 -->
+
+                    <article class="airspace-card" id="uga-10">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-10</span>
+                            <h2>ჰაწვალი</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">7900 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                430100N 0424348E -
+                                430152N 0424346E -
+                                430153N 0424437E -
+                                430101N 0424439E -
+                                430100N 0424348E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                მზის ამოსვლიდან +3 საათი მზის ჩასვლამდე – ნახ. საათი (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე, ზამთარში: 12:00-დან 16:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 11 -->
+
+                    <article class="airspace-card" id="uga-11">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-11</span>
+                            <h2>ბეჩო</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">9200 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                430446N 0423555E -
+                                430542N 0423607E -
+                                430545N 0423851E -
+                                430449N 0423839E -
+                                430446N 0423555E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                ზაფხულის სეზონზე მზის ამოსვლიდან +3 საათი მზის ჩასვლამდე – ნახ. საათი (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 12 -->
+
+                    <article class="airspace-card" id="uga-12">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-12</span>
+                            <h2>ლატალი</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">5900 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                430048N 0423626E -
+                                430130N 0423624E -
+                                430131N 0423716E -
+                                430049N 0423717E -
+                                430048N 0423626E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                ზაფხულის სეზონზე მზის ამოსვლიდან +3 საათი მზის ჩასვლამდე – ნახ. საათი (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <!-- 13 -->
+
+                    <article class="airspace-card" id="uga-13">
+                        <div class="airspace-top">
+                            <span class="airspace-code" dir="ltr">UGA-13</span>
+                            <h2>ქორულდი</h2>
+                        </div>
+
+                        <dl>
+                            <dt>ზედა საზღვარი</dt>
+                            <dd dir="ltr">7900 ft AMSL</dd>
+                            <dt>ქვედა საზღვარი</dt>
+                            <dd dir="ltr">GND</dd>
+                        </dl>
+
+                        <details>
+                            <summary>კოორდინატები</summary>
+                            <p class="airspace-coordinates" dir="ltr">
+                                430216N 0424219E -
+                                430358N 0424250E -
+                                430355N 0424341E -
+                                430216N 0424235E -
+                                430216N 0424219E
+                            </p>
+                        </details>
+
+                        <dl>
+                            <dt>შეზღუდვის პერიოდი / დრო</dt>
+                            <dd>
+                                ზაფხულის სეზონზე მზის ამოსვლიდან +3 საათი მზის ჩასვლამდე – ნახ. საათი (ზაფხულის პერიოდში: 10:00 სთ-დან 20:00-მდე).
+                            </dd>
+                        </dl>
+                    </article>
+                </div>
+
+                <!-- საერთო პირობები -->
+
+                <section class="airspace-common">
+                    <h2>შეზღუდვის პირობები</h2>
+
+                    <dl>
+                        <dt>პასუხისმგებელი ორგანო</dt>
+                        <dd>
+                            ა(ა)იპ — საქართველოს პარაგლაიდინგის ფედერაცია.
+                        </dd>
+
+                        <dt>დანიშნულება</dt>
+                        <dd>
+                            პარაგლაირების საწვრთნელ-სავარჯიშო და კომერციული ფრენები.
+                        </dd>
+
+                        <dt>შეზღუდვის პირობები</dt>
+                        <dd>
+                            საჰაერო ხომალდების ფრენა ნებადართულია ვიზუალური ფრენის წესების დაცვით.
+                        </dd>
+
+                        <dt>შეზღუდვის პირობებიდან გათავისუფლება</dt>
+                        <dd>ასეთი არ არსებობს.</dd>
+                    </dl>
+
+                    <div class="document-actions airspace-document">
+                        <a
+                            href="/docs/para3.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            გახსნა ↗
+                        </a>
+
+                        <a href="/docs/para3.pdf" download>
+                            ჩამოტვირთვა ↓
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <strong>
+                საქართველოს პარაგლაიდინგის ფედერაცია
+            </strong>
+
+            <div class="footer-bottom">
+                <p>
+                    © <span id="year">2026</span>
+                    <span>ყველა უფლება დაცულია.</span>
+                </p>
+
+                <a href="contact.html">
+                    გაქვთ შეკითხვა? დაგვიკავშირდით ↗
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (() => {
+        "use strict";
+
+        const flags = {
+            ka: `
+                <rect width="30" height="20" fill="#fff"/>
+                <path d="M0 10H30 M15 0V20"
+                    stroke="#e52332" stroke-width="4"/>
+                <path d="M5 5H9 M7 3V7 M21 5H25 M23 3V7
+                         M5 15H9 M7 13V17 M21 15H25 M23 13V17"
+                    stroke="#e52332" stroke-width="1.5"/>
+            `,
+            en: `
+                <rect width="30" height="20" fill="#16316d"/>
+                <path d="M0 0L30 20 M30 0L0 20"
+                    stroke="#fff" stroke-width="5"/>
+                <path d="M0 0L30 20 M30 0L0 20"
+                    stroke="#c8102e" stroke-width="2"/>
+                <path d="M15 0V20 M0 10H30"
+                    stroke="#fff" stroke-width="7"/>
+                <path d="M15 0V20 M0 10H30"
+                    stroke="#c8102e" stroke-width="4"/>
+            `,
+            fr: `
+                <rect width="10" height="20" fill="#002654"/>
+                <rect x="10" width="10" height="20" fill="#fff"/>
+                <rect x="20" width="10" height="20" fill="#ed2939"/>
+            `,
+            ar: `
+                <rect width="30" height="20" fill="#fff"/>
+                <rect width="30" height="6.67" fill="#009739"/>
+                <rect y="13.33" width="30" height="6.67" fill="#000"/>
+                <rect width="8" height="20" fill="#ef3340"/>
+            `,
+            zh: `
+                <rect width="30" height="20" fill="#de2910"/>
+                <g fill="#ffde00">
+                    <path d="M6 2L6.9 4.7L9.8 4.7L7.5 6.4
+                             L8.4 9.1L6 7.4L3.6 9.1L4.5 6.4
+                             L2.2 4.7L5.1 4.7Z"/>
+                    <path d="M12 2L12.3 2.7L13 2.7L12.4 3.2
+                             L12.6 4L12 3.5L11.4 4L11.6 3.2
+                             L11 2.7L11.7 2.7Z"/>
+                    <path d="M14 5L14.3 5.7L15 5.7L14.4 6.2
+                             L14.6 7L14 6.5L13.4 7L13.6 6.2
+                             L13 5.7L13.7 5.7Z"/>
+                    <path d="M14 8L14.3 8.7L15 8.7L14.4 9.2
+                             L14.6 10L14 9.5L13.4 10L13.6 9.2
+                             L13 8.7L13.7 8.7Z"/>
+                    <path d="M12 11L12.3 11.7L13 11.7L12.4 12.2
+                             L12.6 13L12 12.5L11.4 13L11.6 12.2
+                             L11 11.7L11.7 11.7Z"/>
+                </g>
+            `
+        };
+
+        const headerTexts = {
+            ka: [
+                "დაგეგმე შენი თავგადასავალი ↗",
+                "გაიცანი ჩვენი პილოტები"
+            ],
+            en: [
+                "Plan Your Adventure ↗",
+                "Meet Our Pilots"
+            ],
+            fr: [
+                "Préparez votre aventure ↗",
+                "Rencontrez nos pilotes"
+            ],
+            ar: [
+                "خطط لمغامرتك ↗",
+                "تعرّف على طيارينا"
+            ],
+            zh: [
+                "规划你的冒险 ↗",
+                "认识我们的飞行员"
+            ]
+        };
+
+        function updateHeader() {
+            const language =
+                document.documentElement.lang.split("-")[0];
+
+            const text = headerTexts[language] || headerTexts.ka;
+            const flag = document.getElementById("language-flag");
+
+            if (flag) {
+                flag.innerHTML = flags[language] || flags.ka;
+            }
+
+            const bookingLink =
+                document.getElementById("adventure-nav-link");
+
+            const pilotsLink =
+                document.getElementById("pilots-nav-link");
+
+            if (bookingLink) {
+                bookingLink.textContent = text[0];
+            }
+
+            if (pilotsLink) {
+                pilotsLink.textContent = text[1];
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            updateHeader
+        );
+
+        new MutationObserver(updateHeader).observe(
+            document.documentElement,
+            {
+                attributes: true,
+                attributeFilter: ["lang"]
+            }
+        );
+
+        updateHeader();
+    })();
+    </script>
+</body>
+</html>
