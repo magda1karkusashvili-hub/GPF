@@ -12,10 +12,10 @@
 
     <meta
         name="description"
-        content="საქართველოს პარაგლაიდინგის ფედერაცია — მთავარი. პარაგლაიდინგი საქართველოში."
+        content="საქართველოს პარაგლაიდინგის ფედერაცია. პარაგლაიდინგი საქართველოში, საფრენი ადგილები, პილოტების განვითარება და ფრენის დაგეგმვა."
     >
 
-    <meta name="theme-color" content="#123b38">
+    <meta name="theme-color" content="#123351">
 
     <link
         rel="canonical"
@@ -36,9 +36,135 @@
     >
 
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/languages.css">
 
-    <script src="/languages.js"></script>
+    <style>
+        /*
+         * საერთო დიზაინი იტვირთება style.css-დან.
+         * აქ მხოლოდ მოთხოვნილი ცვლილებებია.
+         */
+
+        .site-header {
+            padding-top: 44px;
+        }
+
+        .site-header .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .site-header .brand-symbol {
+            flex: 0 0 43px;
+        }
+
+        .site-header .brand-name {
+            display: block;
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .site-header > .gpf-language-bar {
+            position: absolute;
+            top: 7px;
+            right: 12px;
+            left: auto;
+            bottom: auto;
+            z-index: 30;
+
+            display: flex;
+            align-items: center;
+
+            width: auto;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            direction: ltr;
+        }
+
+        .gpf-language-bar select {
+            min-width: 145px;
+            min-height: 32px;
+            max-width: calc(100vw - 24px);
+            padding: 5px 10px;
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: #102c46;
+            color: #ffffff;
+
+            font: inherit;
+            font-size: 13px;
+            line-height: 1.4;
+            direction: ltr;
+        }
+
+        .gpf-language-bar select:focus-visible {
+            outline: 2px solid #8ccfff;
+            outline-offset: 3px;
+        }
+
+        /*
+         * დამალულია ფოტოების მოძრაობის მართვის ღილაკი.
+         * საერთო script.js-დანაც ამოვიღებთ მის შექმნას.
+         */
+
+        .motion-control {
+            display: none !important;
+        }
+
+        /*
+         * პარაპლანის ფორმის კურსორი.
+         * მხოლოდ მაუსის მქონე მოწყობილობებისთვის.
+         */
+
+        @media (hover: hover) and (pointer: fine) {
+            :root {
+                --paraglider-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2 12C4 1 28 1 30 12L25 14L20 12L16 14L12 12L7 14Z' fill='%232b93d1' stroke='%230d304d' stroke-width='1.2'/%3E%3Cpath d='M7 6L7 14M12 4L12 12M20 4L20 12M25 6L25 14' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Cpath d='M3 12L15 24M29 12L17 24M9 13L15 24M23 13L17 24' fill='none' stroke='%230d304d' stroke-width='1'/%3E%3Ccircle cx='16' cy='23' r='2' fill='%23f4a340' stroke='%230d304d' stroke-width='1'/%3E%3Cpath d='M16 25L14 29L19 29' fill='none' stroke='%230d304d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 16 3;
+            }
+
+            html,
+            body,
+            body a,
+            body button,
+            body select,
+            body summary,
+            body label,
+            body input[type="checkbox"],
+            body input[type="radio"] {
+                cursor: var(--paraglider-cursor), auto;
+            }
+
+            body input:not([type="checkbox"]):not([type="radio"]),
+            body textarea,
+            body [contenteditable="true"] {
+                cursor: text;
+            }
+
+            body button:disabled,
+            body select:disabled {
+                cursor: not-allowed;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-header .brand {
+                gap: 7px;
+            }
+
+            .site-header .brand-name {
+                font-size: 11px;
+            }
+
+            .site-header > .gpf-language-bar {
+                right: 8px;
+            }
+        }
+    </style>
+
+    <script src="/languages.js" defer></script>
     <script src="/script.js" defer></script>
 
     <script type="application/ld+json">
@@ -46,10 +172,7 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "საქართველოს პარაგლაიდინგის ფედერაცია",
-        "alternateName": [
-            "საქართველოს პარაგლაიდინგის ფედერაცია",
-            "Georgian Paragliding Federation"
-        ],
+        "alternateName": "Georgian Paragliding Federation",
         "url": "https://paraglidingfederation.ge/",
         "logo": "https://paraglidingfederation.ge/images/logo.jpg",
         "sameAs": [
@@ -65,9 +188,21 @@
         შიგთავსზე გადასვლა
     </a>
 
-    <!-- HEADER -->
-
     <header class="site-header">
+        <div class="gpf-language-bar">
+            <select
+                id="gpf-language"
+                aria-label="აირჩიეთ ენა"
+                dir="ltr"
+            >
+                <option value="ka">🇬🇪 ქართული</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="ar">🇸🇦 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
+        </div>
+
         <div class="container header-content">
             <a
                 class="brand"
@@ -82,10 +217,7 @@
                     height="43"
                 >
 
-                <span class="brand-name">
-                    საქართველოს
-                    <small>პარაგლაიდინგის ფედერაცია</small>
-                </span>
+                <span class="brand-name">საქართველოს პარაგლაიდინგის ფედერაცია</span>
             </a>
 
             <button
@@ -95,8 +227,7 @@
                 aria-controls="main-menu"
                 aria-expanded="false"
             >
-                მენიუ
-                <span aria-hidden="true">☰</span>
+                მენიუ ☰
             </button>
 
             <nav
@@ -137,34 +268,15 @@
                 </a>
 
                 <a class="nav-book" href="BookYourFlight.html">
-                    დაგეგმე ფრენა ↗
+                    დაგეგმე შენი თავგადასავალი ↗
                 </a>
             </nav>
-        </div>
-
-        <!-- LANGUAGE SELECTOR -->
-
-        <div class="gpf-language-bar">
-            <label for="gpf-language">
-                ენა / Language
-            </label>
-
-            <select
-                id="gpf-language"
-                aria-label="ენა / Language"
-            >
-                <option value="ka">ქართული</option>
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="ar">العربية</option>
-                <option value="zh">中文</option>
-            </select>
         </div>
     </header>
 
     <main id="main">
 
-        <!-- HOME -->
+        <!-- მთავარი სექცია -->
 
         <section class="hero" id="home">
             <img
@@ -177,32 +289,20 @@
             <div class="hero-shade"></div>
 
             <div class="container hero-content">
-                <p class="eyebrow light"></p>
-
                 <h1>
                     აღმოაჩინე საქართველო განსხვავებული ხედით
                 </h1>
 
                 <p class="hero-description">
-                    ჩვენი გუნდი გამოცდილი პილოტებისგან შედგება,
-                    რომლებიც თქვენს უსაფრთხოებასა და კომფორტს
-                    პირველ ადგილზე აყენებენ. აფრენამდე პილოტი
-                    აგიხსნით ფრენის დეტალებს, მოამზადებს
-                    აღჭურვილობას და გაგაცნობთ აფრენისა და
-                    დაშვებისას მოქმედების წესებს.
+                    ჩვენი გუნდი გამოცდილი პილოტებისგან შედგება, რომლებიც თქვენს უსაფრთხოებასა და კომფორტს პირველ ადგილზე აყენებენ. აფრენამდე პილოტი აგიხსნით ფრენის დეტალებს, მოამზადებს აღჭურვილობას და გაგაცნობთ აფრენისა და დაშვებისას მოქმედების წესებს.
                 </p>
 
                 <p class="hero-description">
-                    ჩვენი პილოტები კარგად იცნობენ ადგილობრივ
-                    საფრენ პირობებს. იფრინეთ მათთან ერთად და
-                    დატკბით საქართველოს მთებისა და ხეობების
-                    ხედებით. პარაგლაიდინგის წინასწარი
-                    გამოცდილება საჭირო არ არის.
+                    ჩვენი პილოტები კარგად იცნობენ ადგილობრივ საფრენ პირობებს. იფრინეთ მათთან ერთად და დატკბით საქართველოს მთებისა და ხეობების ხედებით. პარაგლაიდინგის წინასწარი გამოცდილება საჭირო არ არის.
                 </p>
 
                 <p class="hero-description">
-                    აირჩიეთ სასურველი ადგილი და დაგეგმეთ
-                    ფრენა ჩვენს გუნდთან ერთად.
+                    აირჩიეთ სასურველი ადგილი და დაგეგმეთ ფრენა ჩვენს გუნდთან ერთად.
                 </p>
 
                 <div class="hero-actions">
@@ -222,7 +322,7 @@
             </div>
         </section>
 
-        <!-- ABOUT -->
+        <!-- ჩვენ შესახებ -->
 
         <section class="section" id="about">
             <div class="container">
@@ -247,23 +347,15 @@
                         <h3>ჩვენ შესახებ</h3>
 
                         <p>
-                            საქართველოს პარაგლაიდინგის ფედერაცია
-                            ხელს უწყობს პარაგლაიდინგის, როგორც
-                            სპორტისა და საჰაერო თავგადასავლის,
-                            განვითარებას საქართველოში.
+                            საქართველოს პარაგლაიდინგის ფედერაცია ხელს უწყობს პარაგლაიდინგის, როგორც სპორტისა და საჰაერო თავგადასავლის, განვითარებას საქართველოში.
                         </p>
 
                         <p>
-                            ჩვენი ინტერესებია ფრენის გამოცდილება,
-                            პილოტების განვითარება, საავიაციო
-                            ღონისძიებები და ძლიერი
-                            პარაგლაიდინგის საზოგადოება.
+                            ჩვენი ინტერესებია ფრენის გამოცდილება, პილოტების განვითარება, საავიაციო ღონისძიებები და ძლიერი პარაგლაიდინგის საზოგადოება.
                         </p>
 
                         <p>
-                            მიმდინარე შესაძლებლობების, ადგილებისა
-                            და ფრენის დაგეგმვის შესახებ
-                            დაუკავშირდით ჩვენს გუნდს.
+                            მიმდინარე შესაძლებლობების, ადგილებისა და ფრენის დაგეგმვის შესახებ დაუკავშირდით ჩვენს გუნდს.
                         </p>
 
                         <a class="text-link" href="contact.html">
@@ -277,13 +369,7 @@
                         <h3>მისია</h3>
 
                         <p>
-                            ხელი შევუწყოთ საქართველოში
-                            პარაგლაიდინგის უსაფრთხო, ორგანიზებულ
-                            და მდგრად განვითარებას. გავაძლიეროთ
-                            პილოტების ცოდნა და პრაქტიკული უნარები,
-                            პასუხისმგებლიანი ფრენის კულტურა და
-                            თანამშრომლობა პილოტებს, ოპერატორებსა
-                            და შესაბამის ორგანიზაციებს შორის.
+                            ხელი შევუწყოთ საქართველოში პარაგლაიდინგის უსაფრთხო, ორგანიზებულ და მდგრად განვითარებას. გავაძლიეროთ პილოტების ცოდნა და პრაქტიკული უნარები, პასუხისმგებლიანი ფრენის კულტურა და თანამშრომლობა პილოტებს, ოპერატორებსა და შესაბამის ორგანიზაციებს შორის.
                         </p>
                     </article>
 
@@ -291,14 +377,7 @@
                         <h3>ხედვა</h3>
 
                         <p>
-                            საქართველო ჩამოყალიბდეს საერთაშორისო
-                            დონეზე აღიარებულ პარაგლაიდინგის
-                            მიმართულებად, კვალიფიციური პილოტებით,
-                            უსაფრთხოების ძლიერი კულტურითა და
-                            მრავალფეროვანი საფრენი ადგილებით.
-                            სპორტული მიღწევები და სათავგადასავლო
-                            ტურიზმი განვითარდეს ბუნებისა და
-                            ადგილობრივი საზოგადოების პატივისცემით.
+                            საქართველო ჩამოყალიბდეს საერთაშორისო დონეზე აღიარებულ პარაგლაიდინგის მიმართულებად, კვალიფიციური პილოტებით, უსაფრთხოების ძლიერი კულტურითა და მრავალფეროვანი საფრენი ადგილებით. სპორტული მიღწევები და სათავგადასავლო ტურიზმი განვითარდეს ბუნებისა და ადგილობრივი საზოგადოების პატივისცემით.
                         </p>
                     </article>
 
@@ -306,16 +385,7 @@
                         <h3>უსაფრთხოება</h3>
 
                         <p>
-                            გავაძლიეროთ უსაფრთხოების კულტურა
-                            სწავლებით, გამოცდილების გაზიარებითა
-                            და პასუხისმგებლიანი დაგეგმვით.
-                            განსაკუთრებული ყურადღება მივაქციოთ
-                            ამინდის შეფასებას, აღჭურვილობის
-                            გამართულობას, პილოტის მზადყოფნასა და
-                            ადგილობრივი მოთხოვნების დაცვას.
-                            წავახალისოთ რისკების გააზრება და
-                            დროული გადაწყვეტილებები ფრენამდე
-                            და ფრენისას.
+                            გავაძლიეროთ უსაფრთხოების კულტურა სწავლებით, გამოცდილების გაზიარებითა და პასუხისმგებლიანი დაგეგმვით. განსაკუთრებული ყურადღება მივაქციოთ ამინდის შეფასებას, აღჭურვილობის გამართულობას, პილოტის მზადყოფნასა და ადგილობრივი მოთხოვნების დაცვას. წავახალისოთ რისკების გააზრება და დროული გადაწყვეტილებები ფრენამდე და ფრენისას.
                         </p>
                     </article>
 
@@ -323,24 +393,14 @@
                         <h3>განვითარება</h3>
 
                         <p>
-                            გავაფართოოთ განათლების, პრაქტიკული
-                            სწავლებისა და გამოცდილების გაცვლის
-                            შესაძლებლობები პილოტების პროფესიული
-                            და სპორტული განვითარებისთვის.
-                            წავახალისოთ შეჯიბრებებში მონაწილეობა,
-                            ახალი თაობა და საერთაშორისო
-                            თანამშრომლობა. შევქმნათ ერთიანი,
-                            ინფორმირებული და აქტიური საზოგადოება,
-                            რომელიც სპორტის ზრდასა და საქართველოს
-                            საერთაშორისო წარმომადგენლობას
-                            შეუწყობს ხელს.
+                            გავაფართოოთ განათლების, პრაქტიკული სწავლებისა და გამოცდილების გაცვლის შესაძლებლობები პილოტების პროფესიული და სპორტული განვითარებისთვის. წავახალისოთ შეჯიბრებებში მონაწილეობა, ახალი თაობა და საერთაშორისო თანამშრომლობა. შევქმნათ ერთიანი, ინფორმირებული და აქტიური საზოგადოება, რომელიც სპორტის ზრდასა და საქართველოს საერთაშორისო წარმომადგენლობას შეუწყობს ხელს.
                         </p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- LOCATIONS -->
+        <!-- საფრენი ადგილები -->
 
         <section
             class="section section-tinted"
@@ -367,9 +427,6 @@
                 </div>
 
                 <div class="locations-grid">
-
-                    <!-- GUDAURI -->
-
                     <article class="location-card">
                         <div class="location-image">
                             <img
@@ -387,8 +444,7 @@
                             <h3>გუდაური</h3>
 
                             <p>
-                                დაგეგმე მთის თავგადასავალი
-                                დიდ კავკასიონზე.
+                                დაგეგმე მთის თავგადასავალი დიდ კავკასიონზე.
                             </p>
 
                             <a
@@ -400,8 +456,6 @@
                             </a>
                         </div>
                     </article>
-
-                    <!-- MESTIA -->
 
                     <article class="location-card">
                         <div class="location-image">
@@ -420,8 +474,7 @@
                             <h3>მესტია</h3>
 
                             <p>
-                                გაიგე ფრენის შესაძლებლობები
-                                საქართველოს მთიან რეგიონში.
+                                გაიგე ფრენის შესაძლებლობები საქართველოს მთიან რეგიონში.
                             </p>
 
                             <a
@@ -433,8 +486,6 @@
                             </a>
                         </div>
                     </article>
-
-                    <!-- ANANURI -->
 
                     <article class="location-card">
                         <div class="location-image">
@@ -453,8 +504,7 @@
                             <h3>ანანური</h3>
 
                             <p>
-                                გაიგე ფრენის შესაძლებლობები
-                                ანანურის მიდამოებში.
+                                გაიგე ფრენის შესაძლებლობები ანანურის მიდამოებში.
                             </p>
 
                             <a
@@ -470,9 +520,10 @@
 
                 <div class="location-strip">
                     <p>
-                        ასევე გაინტერესებთ
+                        <span>ასევე გაინტერესებთ</span>
                         <strong>თბილისის ზღვა</strong>
-                        ან <strong>ბაკურიანი</strong>?
+                        <span>ან</span>
+                        <strong>ბაკურიანი</strong>?
                     </p>
 
                     <a href="BookYourFlight.html">
@@ -482,7 +533,7 @@
             </div>
         </section>
 
-        <!-- GALLERY -->
+        <!-- გალერეა -->
 
         <section class="section" id="gallery">
             <div class="container">
@@ -497,22 +548,103 @@
                 <div
                     class="gallery-grid"
                     id="gallery-grid"
-                ></div>
-
-                <noscript>
-                    <p>
-                        სრული გალერეის სანახავად
-                        ჩართეთ JavaScript.
-                    </p>
-
-                    <a href="/images/para1.jpg">
-                        პარაგლაიდინგის ფოტოს გახსნა
+                >
+                    <a class="gallery-item" href="/images/para1.jpg">
+                        <img src="/images/para1.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
                     </a>
-                </noscript>
+
+                    <a class="gallery-item" href="/images/para2.jpg">
+                        <img src="/images/para2.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para3.jpg">
+                        <img src="/images/para3.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para4.jpg">
+                        <img src="/images/para4.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para5.jpg">
+                        <img src="/images/para5.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para6.jpg">
+                        <img src="/images/para6.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para7.jpg">
+                        <img src="/images/para7.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para8.jpg">
+                        <img src="/images/para8.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para9.jpg">
+                        <img src="/images/para9.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para10.jpg">
+                        <img src="/images/para10.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para11.jpg">
+                        <img src="/images/para11.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para12.jpg">
+                        <img src="/images/para12.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para13.jpg">
+                        <img src="/images/para13.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para14.jpg">
+                        <img src="/images/para14.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para15.jpg">
+                        <img src="/images/para15.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para16.jpg">
+                        <img src="/images/para16.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para17.jpg">
+                        <img src="/images/para17.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para18.jpg">
+                        <img src="/images/para18.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para19.jpg">
+                        <img src="/images/para19.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para20.jpg">
+                        <img src="/images/para20.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para21.jpg">
+                        <img src="/images/para21.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
+                    </a>
+
+                    <a class="gallery-item" href="/images/para22.jpg">
+                        <img
+                            src="/images/para22.jpg"
+                            alt="საქართველოს პარაგლაიდინგის ფედერაციის ოფიციალური განცხადება"
+                            loading="lazy"
+                        >
+                    </a>
+                </div>
             </div>
         </section>
 
-        <!-- DOCUMENTS -->
+        <!-- დოკუმენტები -->
 
         <section
             class="section section-tinted"
@@ -523,24 +655,14 @@
                     <h2>დოკუმენტები</h2>
 
                     <p class="section-intro">
-                        გაეცანით და ჩამოტვირთეთ
-                        პარაგლაიდინგის წესები და რეგულაციები
+                        გაეცანით და ჩამოტვირთეთ პარაგლაიდინგის წესები და რეგულაციები
                     </p>
                 </div>
 
                 <div class="documents-grid">
                     <article class="document-card">
                         <h4>
-                            პარაპლანით ფრენის რეგულირების
-                            განმახორციელებელი იურიდიული პირის
-                            ზედამხედველობის, პარაპლანით ფრენის
-                            უსაფრთხოების, საფრენი ადგილისა და
-                            საფრენი ადგილის ოპერატორის
-                            სერტიფიცირების, პარაპლანის მფრინავის
-                            მოწმობის გაცემის, პარაპლანისა და
-                            მისი აღჭურვილობის ვარგისობის
-                            შეფასებისა და პარაპლანის მფრინავის
-                            დაზღვევის წესების დამტკიცების შესახებ.
+                            პარაპლანით ფრენის რეგულირების განმახორციელებელი იურიდიული პირის ზედამხედველობის, პარაპლანით ფრენის უსაფრთხოების, საფრენი ადგილისა და საფრენი ადგილის ოპერატორის სერტიფიცირების, პარაპლანის მფრინავის მოწმობის გაცემის, პარაპლანისა და მისი აღჭურვილობის ვარგისობის შეფასებისა და პარაპლანის მფრინავის დაზღვევის წესების დამტკიცების შესახებ.
                         </h4>
 
                         <div class="document-actions">
@@ -552,10 +674,7 @@
                                 გახსნა ↗
                             </a>
 
-                            <a
-                                href="/docs/para1.pdf"
-                                download
-                            >
+                            <a href="/docs/para1.pdf" download>
                                 ჩამოტვირთვა ↓
                             </a>
                         </div>
@@ -575,10 +694,7 @@
                                 გახსნა ↗
                             </a>
 
-                            <a
-                                href="/docs/para2.pdf"
-                                download
-                            >
+                            <a href="/docs/para2.pdf" download>
                                 ჩამოტვირთვა ↓
                             </a>
                         </div>
@@ -586,13 +702,11 @@
 
                     <article class="document-card">
                         <h4>
-                            საქართველოში პარაგლაიდინგისთვის
-                            დადგენილი საჰაერო სივრცეები
+                            საქართველოში პარაგლაიდინგისთვის დადგენილი საჰაერო სივრცეები
                         </h4>
 
                         <h6>
-                            (რუკაზე პარაგლაიდინგისთვის დადგენილი
-                            საჰაერო სივრცეები მწვანედაა მონიშნული.)
+                            (რუკაზე პარაგლაიდინგისთვის დადგენილი საჰაერო სივრცეები მწვანედაა მონიშნული.)
                         </h6>
 
                         <div class="document-actions">
@@ -604,10 +718,7 @@
                                 გახსნა ↗
                             </a>
 
-                            <a
-                                href="/docs/para3.pdf"
-                                download
-                            >
+                            <a href="/docs/para3.pdf" download>
                                 ჩამოტვირთვა ↓
                             </a>
                         </div>
@@ -616,7 +727,7 @@
             </div>
         </section>
 
-        <!-- CONTACT -->
+        <!-- კონტაქტი -->
 
         <section class="section" id="contact">
             <div class="container">
@@ -624,15 +735,14 @@
                     <h2>დაგვიკავშირდით</h2>
 
                     <p class="section-intro">
-                        გაქვთ შეკითხვები ფრენაზე, სწავლებაზე
-                        ან ფედერაციაზე? დაგვიკავშირდით.
+                        გაქვთ შეკითხვები ფრენაზე, სწავლებაზე ან ფედერაციაზე? დაგვიკავშირდით.
                     </p>
                 </div>
 
                 <div class="contact-grid">
                     <a
                         class="contact-card"
-                        href="https://www.google.com/maps/search/?api=1&query=David+Agmashenebeli+Alley+172g+Tbilisi+Georgia"
+                        href="https://www.google.com/maps/search/?api=1&amp;query=David+Agmashenebeli+Alley+172g+Tbilisi+Georgia"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -658,7 +768,7 @@
 
                         <h3>ტელეფონი</h3>
 
-                        <p>+995 593 46 67 44</p>
+                        <p dir="ltr">+995 593 46 67 44</p>
                     </a>
 
                     <a
@@ -671,21 +781,19 @@
 
                         <h3>ელფოსტა</h3>
 
-                        <p>info@paragliding.ge</p>
+                        <p dir="ltr">info@paragliding.ge</p>
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
-
     <footer class="site-footer">
         <div class="container">
             <div class="footer-bottom">
                 <p>
                     © <span id="year">2026</span>
-                    საქართველოს პარაგლაიდინგის ფედერაცია
+                    <span>საქართველოს პარაგლაიდინგის ფედერაცია</span>
                 </p>
 
                 <a href="mailto:info@paragliding.ge">
@@ -695,7 +803,7 @@
         </div>
     </footer>
 
-    <!-- GALLERY VIEWER -->
+    <!-- ფოტოს გადიდებული ნახვა -->
 
     <dialog
         class="lightbox"
@@ -738,23 +846,8 @@
         </div>
 
         <p class="lightbox-help">
-            ფოტოების გადასართავად გამოიყენეთ ისრები.
-            დასახურად დააჭირეთ Escape-ს.
+            ფოტოების გადასართავად გამოიყენეთ ისრები. დასახურად დააჭირეთ Escape-ს.
         </p>
     </dialog>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const receipt = document.getElementById(
-                "booking-receipt"
-            );
-
-            if (receipt && !receipt.hidden) {
-                receipt.scrollIntoView({
-                    block: "start"
-                });
-            }
-        });
-    </script>
 </body>
 </html>
