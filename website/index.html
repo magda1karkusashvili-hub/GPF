@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="საქართველოს პარაგლაიდინგის ფედერაცია. პარაგლაიდინგი საქართველოში, საფრენი ადგილები, პილოტების განვითარება და ფრენის დაგეგმვა."
+        content="საქართველოს პარაგლაიდინგის ფედერაცია. პარაგლაიდინგი საქართველოში, საფრენი ადგილები, ჩვენი პილოტები და ფრენის დაგეგმვა."
     >
 
     <meta name="theme-color" content="#123351">
@@ -19,8 +19,11 @@
 
     <link rel="stylesheet" href="/style.css">
 
+    <script src="/languages.js" defer></script>
+    <script src="/script.js" defer></script>
+
     <style>
-        /* სათაური და ენის გადამრთველი */
+        /* სათაური და მენიუ */
 
         .site-header {
             padding-top: 44px;
@@ -44,6 +47,8 @@
             line-height: 1.4;
         }
 
+        /* ენის გადამრთველი — ზედა მარჯვენა კუთხეში */
+
         .site-header > .gpf-language-bar {
             position: absolute;
             top: 7px;
@@ -51,8 +56,10 @@
             left: auto;
             bottom: auto;
             z-index: 30;
+
             display: flex;
             align-items: center;
+
             width: auto;
             margin: 0;
             padding: 0;
@@ -66,10 +73,12 @@
             min-height: 32px;
             max-width: calc(100vw - 24px);
             padding: 5px 10px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+
+            border: 1px solid rgba(255, 255, 255, .3);
             border-radius: 8px;
             background: #102c46;
             color: #ffffff;
+
             font: inherit;
             font-size: 13px;
             line-height: 1.4;
@@ -85,7 +94,7 @@
             display: none !important;
         }
 
-        /* მოძრავი მთავარი ფონი */
+        /* მთავარი ფონი */
 
         #home.hero {
             position: relative;
@@ -98,6 +107,7 @@
             position: absolute;
             inset: 0;
             z-index: 0;
+
             width: 100%;
             height: 100%;
             overflow: hidden;
@@ -115,11 +125,12 @@
             inset: 0;
             z-index: 1;
             pointer-events: none;
+
             background: linear-gradient(
                 90deg,
-                rgba(7, 25, 44, 0.82) 0%,
-                rgba(7, 25, 44, 0.54) 45%,
-                rgba(7, 25, 44, 0.12) 100%
+                rgba(7, 25, 44, .82) 0%,
+                rgba(7, 25, 44, .54) 45%,
+                rgba(7, 25, 44, .12) 100%
             );
         }
 
@@ -129,43 +140,295 @@
             z-index: 2;
         }
 
+        /* დამოუკიდებელი მოძრაობა თითოეული პარაპლანისთვის */
+
         #home .flying-wing {
             transform-box: fill-box;
             transform-origin: center;
-            animation:
-                paraglider-flight
-                var(--duration, 20s)
-                ease-in-out
-                var(--delay, 0s)
-                infinite
-                alternate;
+
+            animation-name: var(--flight, flight-glide);
+            animation-duration: var(--duration, 18s);
+            animation-delay: var(--delay, 0s);
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: var(--direction, normal);
         }
 
-        @keyframes paraglider-flight {
-            0% {
-                transform: translate(-90px, 25px) rotate(-5deg);
+        /* სწრაფი დაშვება და სიმაღლის აღდგენა */
+
+        @keyframes flight-dive {
+            0%, 100% {
+                transform:
+                    translate(-90px, -85px)
+                    rotate(-12deg)
+                    scale(.88);
             }
 
-            35% {
-                transform: translate(10px, -45px) rotate(4deg);
+            20% {
+                transform:
+                    translate(-20px, -110px)
+                    rotate(8deg)
+                    scale(.94);
             }
 
-            70% {
-                transform: translate(110px, -15px) rotate(-3deg);
+            38% {
+                transform:
+                    translate(100px, 150px)
+                    rotate(32deg)
+                    scale(1.12);
             }
 
-            100% {
-                transform: translate(190px, -75px) rotate(6deg);
+            48% {
+                transform:
+                    translate(175px, 235px)
+                    rotate(12deg)
+                    scale(1.18);
+            }
+
+            65% {
+                transform:
+                    translate(230px, 100px)
+                    rotate(-25deg)
+                    scale(1.05);
+            }
+
+            82% {
+                transform:
+                    translate(60px, -55px)
+                    rotate(-18deg)
+                    scale(.92);
+            }
+        }
+
+        /* ფართო წრე */
+
+        @keyframes flight-circle {
+            0%, 100% {
+                transform:
+                    translate(-150px, 0)
+                    rotate(-18deg)
+                    scale(.95);
+            }
+
+            12.5% {
+                transform:
+                    translate(-105px, -95px)
+                    rotate(-10deg)
+                    scale(.85);
+            }
+
+            25% {
+                transform:
+                    translate(0, -135px)
+                    rotate(0deg)
+                    scale(.78);
+            }
+
+            37.5% {
+                transform:
+                    translate(110px, -95px)
+                    rotate(15deg)
+                    scale(.86);
+            }
+
+            50% {
+                transform:
+                    translate(160px, 0)
+                    rotate(25deg)
+                    scale(1);
+            }
+
+            62.5% {
+                transform:
+                    translate(110px, 100px)
+                    rotate(12deg)
+                    scale(1.12);
+            }
+
+            75% {
+                transform:
+                    translate(0, 140px)
+                    rotate(-3deg)
+                    scale(1.18);
+            }
+
+            87.5% {
+                transform:
+                    translate(-110px, 95px)
+                    rotate(-20deg)
+                    scale(1.08);
+            }
+        }
+
+        /* რვიანზე ფრენა */
+
+        @keyframes flight-eight {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            12.5% {
+                transform:
+                    translate(145px, -95px)
+                    rotate(24deg)
+                    scale(.88);
+            }
+
+            25% {
+                transform:
+                    translate(215px, 0)
+                    rotate(12deg);
+            }
+
+            37.5% {
+                transform:
+                    translate(145px, 100px)
+                    rotate(-23deg)
+                    scale(1.1);
+            }
+
+            50% {
+                transform: translate(0, 0) rotate(-8deg);
+            }
+
+            62.5% {
+                transform:
+                    translate(-145px, -95px)
+                    rotate(-24deg)
+                    scale(.88);
+            }
+
+            75% {
+                transform:
+                    translate(-215px, 0)
+                    rotate(-12deg);
+            }
+
+            87.5% {
+                transform:
+                    translate(-145px, 100px)
+                    rotate(23deg)
+                    scale(1.1);
+            }
+        }
+
+        /* სწრაფი გვერდითი გაფრენა */
+
+        @keyframes flight-pass {
+            0%, 100% {
+                transform:
+                    translate(-260px, 35px)
+                    rotate(-14deg)
+                    scale(.8);
+            }
+
+            25% {
+                transform:
+                    translate(-110px, -30px)
+                    rotate(-5deg)
+                    scale(.95);
+            }
+
+            50% {
+                transform:
+                    translate(310px, -100px)
+                    rotate(14deg)
+                    scale(1.12);
+            }
+
+            65% {
+                transform:
+                    translate(370px, -50px)
+                    rotate(26deg)
+                    scale(1.04);
+            }
+
+            82% {
+                transform:
+                    translate(70px, 80px)
+                    rotate(-22deg)
+                    scale(.9);
+            }
+        }
+
+        /* ზიგზაგი */
+
+        @keyframes flight-zigzag {
+            0%, 100% {
+                transform:
+                    translate(-120px, -35px)
+                    rotate(-18deg);
+            }
+
+            18% {
+                transform:
+                    translate(100px, 15px)
+                    rotate(25deg);
+            }
+
+            36% {
+                transform:
+                    translate(-65px, 90px)
+                    rotate(-24deg);
+            }
+
+            54% {
+                transform:
+                    translate(170px, 145px)
+                    rotate(28deg)
+                    scale(1.08);
+            }
+
+            72% {
+                transform:
+                    translate(-20px, 35px)
+                    rotate(-20deg);
+            }
+
+            88% {
+                transform:
+                    translate(60px, -85px)
+                    rotate(12deg);
+            }
+        }
+
+        /* მშვიდი ლივლივი */
+
+        @keyframes flight-glide {
+            0%, 100% {
+                transform:
+                    translate(-90px, 25px)
+                    rotate(-5deg)
+                    scale(.95);
+            }
+
+            25% {
+                transform:
+                    translate(30px, -50px)
+                    rotate(6deg);
+            }
+
+            50% {
+                transform:
+                    translate(175px, -15px)
+                    rotate(10deg)
+                    scale(1.05);
+            }
+
+            75% {
+                transform:
+                    translate(55px, 65px)
+                    rotate(-8deg);
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
             #home .flying-wing {
-                animation: none;
+                animation: none !important;
             }
         }
 
-        /* პარაპლანის ფორმის კურსორი */
+        /* პარაპლანის კურსორი */
 
         @media (hover: hover) and (pointer: fine) {
             :root {
@@ -212,15 +475,12 @@
             #home > .hero-shade {
                 background: linear-gradient(
                     90deg,
-                    rgba(7, 25, 44, 0.8),
-                    rgba(7, 25, 44, 0.48)
+                    rgba(7, 25, 44, .8),
+                    rgba(7, 25, 44, .48)
                 );
             }
         }
     </style>
-
-    <script src="/languages.js" defer></script>
-    <script src="/script.js" defer></script>
 
     <script type="application/ld+json">
     {
@@ -293,6 +553,7 @@
                 <a href="news.html">სიახლეები</a>
                 <a href="Needtoknow.html">საჭირო ინფორმაცია</a>
                 <a href="airspaces.html">საჰაერო სივრცეები</a>
+                <a href="pilots.html">გაიცანი ჩვენი პილოტები</a>
                 <a href="contact.html">კონტაქტი</a>
 
                 <a class="nav-book" href="BookYourFlight.html">
@@ -307,9 +568,6 @@
         <!-- მთავარი სექცია -->
 
         <section class="hero" id="home">
-
-            <!-- მოძრავი პარაპლანების ფონი -->
-
             <div class="flying-background" aria-hidden="true">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -359,7 +617,7 @@
                             />
                         </radialGradient>
 
-                        <!-- პარაპლანის ფრთა, სტროპები და პილოტი -->
+                        <!-- პარაპლანის ფორმა -->
 
                         <g id="flight-paraglider">
                             <path
@@ -407,6 +665,8 @@
                         </g>
                     </defs>
 
+                    <!-- ცა და მთები -->
+
                     <rect
                         width="1600"
                         height="1000"
@@ -451,111 +711,133 @@
                         fill="url(#flight-valley)"
                     />
 
-                    <!-- 12 დამოუკიდებლად მოძრავი პარაპლანი -->
+                    <!-- 01: სწრაფი დაშვება -->
 
                     <g transform="translate(180 190) scale(.30)">
                         <g
                             class="flying-wing"
-                            style="--duration:22s; --delay:-8s; color:#f6b648"
+                            style="--flight:flight-dive; --duration:11s; --delay:-3s; color:#f6b648"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 02: წრეზე ფრენა -->
 
                     <g transform="translate(410 300) scale(.42)">
                         <g
                             class="flying-wing"
-                            style="--duration:19s; --delay:-13s; color:#ed775e"
+                            style="--flight:flight-circle; --duration:16s; --delay:-9s; color:#ed775e"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 03: რვიანი -->
 
                     <g transform="translate(630 165) scale(.25)">
                         <g
                             class="flying-wing"
-                            style="--duration:27s; --delay:-5s; color:#f1eee5"
+                            style="--flight:flight-eight; --duration:19s; --delay:-12s; color:#f1eee5"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 04: სწრაფი გაფრენა -->
 
                     <g transform="translate(820 320) scale(.60)">
                         <g
                             class="flying-wing"
-                            style="--duration:20s; --delay:-11s; color:#f5b83f"
+                            style="--flight:flight-pass; --duration:10s; --delay:-5s; color:#f5b83f"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 05: ზიგზაგი -->
 
                     <g transform="translate(1080 195) scale(.40)">
                         <g
                             class="flying-wing"
-                            style="--duration:25s; --delay:-17s; color:#78cbdc"
+                            style="--flight:flight-zigzag; --duration:13s; --delay:-7s; color:#78cbdc"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 06: ლივლივი -->
 
                     <g transform="translate(1360 300) scale(.68)">
                         <g
                             class="flying-wing"
-                            style="--duration:18s; --delay:-6s; color:#ef8067"
+                            style="--flight:flight-glide; --duration:23s; --delay:-16s; --direction:reverse; color:#ef8067"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 07: სიმაღლის სწრაფი ცვლილება -->
 
                     <g transform="translate(260 460) scale(.28)">
                         <g
                             class="flying-wing"
-                            style="--duration:29s; --delay:-19s; color:#b6d677"
+                            style="--flight:flight-dive; --duration:17s; --delay:-11s; --direction:reverse; color:#b6d677"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 08: საპირისპირო წრე -->
 
                     <g transform="translate(570 450) scale(.33)">
                         <g
                             class="flying-wing"
-                            style="--duration:23s; --delay:-10s; color:#c4a3df"
+                            style="--flight:flight-circle; --duration:21s; --delay:-15s; --direction:reverse; color:#c4a3df"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 09: სწრაფი რვიანი -->
 
                     <g transform="translate(940 535) scale(.46)">
                         <g
                             class="flying-wing"
-                            style="--duration:21s; --delay:-15s; color:#f0eee6"
+                            style="--flight:flight-eight; --duration:14s; --delay:-6s; color:#f0eee6"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 10: გაფრენა მარცხნივ -->
 
                     <g transform="translate(1230 490) scale(.90)">
                         <g
                             class="flying-wing"
-                            style="--duration:17s; --delay:-7s; color:#f7bc42"
+                            style="--flight:flight-pass; --duration:18s; --delay:-13s; --direction:reverse; color:#f7bc42"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
+
+                    <!-- 11: ნელი ზიგზაგი -->
 
                     <g transform="translate(1480 170) scale(.24)">
                         <g
                             class="flying-wing"
-                            style="--duration:30s; --delay:-21s; color:#f1eee5"
+                            style="--flight:flight-zigzag; --duration:22s; --delay:-18s; --direction:reverse; color:#f1eee5"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
                     </g>
 
+                    <!-- 12: ახლო ლივლივი -->
+
                     <g transform="translate(1450 640) scale(.52)">
                         <g
                             class="flying-wing"
-                            style="--duration:24s; --delay:-12s; color:#6ac7d9"
+                            style="--flight:flight-glide; --duration:12s; --delay:-8s; color:#6ac7d9"
                         >
                             <use href="#flight-paraglider"/>
                         </g>
@@ -566,9 +848,7 @@
             <div class="hero-shade"></div>
 
             <div class="container hero-content">
-                <h1>
-                    აღმოაჩინე საქართველო
-                </h1>
+                <h1>აღმოაჩინე საქართველო</h1>
 
                 <p class="hero-description">
                     ჩვენი გუნდი შედგება გამოცდილი პილოტებისგან, ისინი თქვენს უსაფრთხოებასა და კომფორტს პირველ ადგილზე აყენებენ. აფრენამდე პილოტი აგიხსნით ფრენის დეტალებს, მოამზადებს აღჭურვილობას და გაგაცნობთ აფრენისა და დაშვებისას მოქმედების წესებს.
@@ -593,44 +873,14 @@
             </div>
 
             <div class="container hero-bottom">
-                <a href="about.html">
-                    გაიგეთ მეტი ↓
-                </a>
+                <a href="about.html">გაიგეთ მეტი ↓</a>
             </div>
         </section>
 
-        <!-- ჩვენ შესახებ -->
+        <!-- მისია, ხედვა, უსაფრთხოება და განვითარება -->
 
         <section class="section" id="about">
             <div class="container">
-                <div class="section-heading split-heading">
-                    <div>
-                        <h2>ახალი თავგადასავალი🪂 ☁️ ☀️</h2>
-                    </div>
-                </div>
-
-                <div class="about-layout">
-                    <div class="about-image">
-                        <img
-                            src="/images/para10.jpg"
-                            alt="პარაგლაიდინგის თავგადასავლის ხედი"
-                            loading="lazy"
-                        >
-                    </div>
-
-                    <div class="about-copy">
-                        <h3>ჩვენ შესახებ</h3>
-
-                        <p>
-                            საქართველოს პარაგლაიდინგის ფედერაცია ხელს უწყობს პარაგლაიდინგის განვითარებას საქართველოში.
-                        </p>
-
-                        <a class="text-link" href="contact.html">
-                            დაგვიკავშირდით ↗
-                        </a>
-                    </div>
-                </div>
-
                 <div class="values-grid">
                     <article class="value-card">
                         <h3>მისია</h3>
@@ -784,190 +1034,6 @@
             </div>
         </section>
 
-        <!-- გალერეა -->
-
-        <section class="section" id="gallery">
-            <div class="container">
-                <div class="section-heading split-heading">
-                    <div>
-                        <h2>სხვა სივრციდან დანახული საქართველო</h2>
-                    </div>
-                </div>
-
-                <div class="gallery-grid" id="gallery-grid">
-                    <a class="gallery-item" href="/images/para1.jpg">
-                        <img src="/images/para1.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para2.jpg">
-                        <img src="/images/para2.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para3.jpg">
-                        <img src="/images/para3.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para4.jpg">
-                        <img src="/images/para4.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para5.jpg">
-                        <img src="/images/para5.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para6.jpg">
-                        <img src="/images/para6.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para7.jpg">
-                        <img src="/images/para7.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para8.jpg">
-                        <img src="/images/para8.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para9.jpg">
-                        <img src="/images/para9.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para10.jpg">
-                        <img src="/images/para10.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para11.jpg">
-                        <img src="/images/para11.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para12.jpg">
-                        <img src="/images/para12.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para13.jpg">
-                        <img src="/images/para13.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para14.jpg">
-                        <img src="/images/para14.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para15.jpg">
-                        <img src="/images/para15.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para16.jpg">
-                        <img src="/images/para16.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para17.jpg">
-                        <img src="/images/para17.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para18.jpg">
-                        <img src="/images/para18.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para19.jpg">
-                        <img src="/images/para19.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para20.jpg">
-                        <img src="/images/para20.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para21.jpg">
-                        <img src="/images/para21.jpg" alt="პარაგლაიდინგის ფოტო" loading="lazy">
-                    </a>
-
-                    <a class="gallery-item" href="/images/para22.jpg">
-                        <img
-                            src="/images/para22.jpg"
-                            alt="საქართველოს პარაგლაიდინგის ფედერაციის ოფიციალური განცხადება"
-                            loading="lazy"
-                        >
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- დოკუმენტები -->
-
-        <section class="section section-tinted" id="documents">
-            <div class="container">
-                <div class="section-heading">
-                    <h2>დოკუმენტები</h2>
-
-                    <p class="section-intro">
-                        გაეცანით და ჩამოტვირთეთ პარაგლაიდინგის წესები და რეგულაციები
-                    </p>
-                </div>
-
-                <div class="documents-grid">
-                    <article class="document-card">
-                        <h4>
-                            პარაპლანით ფრენის რეგულირების განმახორციელებელი იურიდიული პირის ზედამხედველობის, პარაპლანით ფრენის უსაფრთხოების, საფრენი ადგილისა და საფრენი ადგილის ოპერატორის სერტიფიცირების, პარაპლანის მფრინავის მოწმობის გაცემის, პარაპლანისა და მისი აღჭურვილობის ვარგისობის შეფასებისა და პარაპლანის მფრინავის დაზღვევის წესების დამტკიცების შესახებ.
-                        </h4>
-
-                        <div class="document-actions">
-                            <a
-                                href="/docs/para1.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                გახსნა ↗
-                            </a>
-
-                            <a href="/docs/para1.pdf" download>
-                                ჩამოტვირთვა ↓
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="document-card">
-                        <h4>ფრენის შესრულების ზოგადი წესები</h4>
-
-                        <div class="document-actions">
-                            <a
-                                href="/docs/para2.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                გახსნა ↗
-                            </a>
-
-                            <a href="/docs/para2.pdf" download>
-                                ჩამოტვირთვა ↓
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="document-card">
-                        <h4>
-                            საქართველოში პარაგლაიდინგისთვის დადგენილი საჰაერო სივრცეები
-                        </h4>
-
-                        <h6>
-                            (რუკაზე პარაგლაიდინგისთვის დადგენილი საჰაერო სივრცეები მწვანედაა მონიშნული.)
-                        </h6>
-
-                        <div class="document-actions">
-                            <a
-                                href="/docs/para3.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                გახსნა ↗
-                            </a>
-
-                            <a href="/docs/para3.pdf" download>
-                                ჩამოტვირთვა ↓
-                            </a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <!-- კონტაქტი -->
 
         <section class="section" id="contact">
@@ -1005,10 +1071,7 @@
                         <p dir="ltr">+995 593 46 67 44</p>
                     </a>
 
-                    <a
-                        class="contact-card"
-                        href="mailto:info@paragliding.ge"
-                    >
+                    <a class="contact-card" href="mailto:info@paragliding.ge">
                         <span class="eyebrow">მოგვწერეთ</span>
 
                         <h3>ელფოსტა</h3>
@@ -1034,52 +1097,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- ფოტოს გადიდებული ნახვა -->
-
-    <dialog
-        class="lightbox"
-        id="lightbox"
-        aria-label="ფოტოს ნახვა"
-    >
-        <div class="lightbox-toolbar">
-            <span id="lightbox-counter"></span>
-
-            <button
-                class="lightbox-close"
-                id="lightbox-close"
-                type="button"
-                aria-label="ფოტოს დახურვა"
-            >
-                დახურვა ×
-            </button>
-        </div>
-
-        <div class="lightbox-body">
-            <button
-                class="lightbox-arrow"
-                id="lightbox-prev"
-                type="button"
-                aria-label="წინა ფოტო"
-            >
-                ‹
-            </button>
-
-            <img id="lightbox-image" alt="">
-
-            <button
-                class="lightbox-arrow"
-                id="lightbox-next"
-                type="button"
-                aria-label="შემდეგი ფოტო"
-            >
-                ›
-            </button>
-        </div>
-
-        <p class="lightbox-help">
-            ფოტოების გადასართავად გამოიყენეთ ისრები. დასახურად დააჭირეთ Escape-ს.
-        </p>
-    </dialog>
 </body>
 </html>
