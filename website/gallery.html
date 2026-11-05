@@ -12,8 +12,10 @@
 
     <meta
         name="description"
-        content="საქართველოს პარაგლაიდინგის ფედერაციის გალერეა — პარაპლანები საქართველოს მთების თავზე."
+        content="საქართველოს პარაგლაიდინგის ფედერაცია — გალერეა. პარაგლაიდინგი საქართველოში."
     >
+
+    <meta name="theme-color" content="#101f34">
 
     <link
         rel="canonical"
@@ -33,787 +35,513 @@
         href="/apple-touch-icon.png"
     >
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            display: grid;
-            min-height: 100vh;
-            margin: 0;
-            padding: 24px;
-            place-items: center;
-            background: #fafaf6;
-            font-family: Arial, sans-serif;
-        }
-
-        .flight-scene {
-            width: min(900px, 100%);
-            margin: 0;
-        }
-
-        .flight-frame {
-            overflow: hidden;
-            border-radius: 20px;
-            background: #123b38;
-            box-shadow: 0 18px 50px rgb(0 0 0 / 15%);
-        }
-
-        canvas {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        .flight-controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .flight-controls button {
-            padding: 12px 24px;
-            border: 0;
-            border-radius: 24px;
-            background: #123b38;
-            color: white;
-            font: inherit;
-            cursor: pointer;
-        }
-
-        .flight-controls button:focus-visible {
-            outline: 3px solid #edba65;
-            outline-offset: 4px;
-        }
-
-        .error {
-            color: #963c28;
-            text-align: center;
-        }
-
-        /* Language selector */
-
-        .gpf-language-bar.flight-language {
-            position: fixed;
-            top: 12px;
-            right: 12px;
-            left: auto;
-            z-index: 30;
-
-            width: auto;
-            margin: 0;
-            padding: 0;
-
-            border: 0;
-            background: transparent;
-            direction: ltr;
-        }
-
-        @media (max-width: 600px) {
-            .gpf-language-bar.flight-language {
-                top: 8px;
-                right: 8px;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/languages.css">
+
     <script src="/languages.js"></script>
+    <script src="/script.js" defer></script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "საქართველოს პარაგლაიდინგის ფედერაცია",
+        "alternateName": "Georgian Paragliding Federation",
+        "url": "https://paraglidingfederation.ge/",
+        "logo": "https://paraglidingfederation.ge/images/logo.jpg",
+        "sameAs": [
+            "https://www.facebook.com/GeorgianParaglidingFederation/",
+            "https://www.instagram.com/georgian_paragliding_fed/"
+        ]
+    }
+    </script>
 </head>
 
 <body>
+    <a class="skip-link" href="#main">
+        შიგთავსზე გადასვლა
+    </a>
 
-    <!-- LANGUAGE SELECTOR -->
+    <!-- HEADER -->
 
-    <div class="gpf-language-bar flight-language">
-        <select
-            id="gpf-language"
-            aria-label="აირჩიეთ ენა"
-        >
-            <option value="ka">🇬🇪 ქართული</option>
-            <option value="en">🇬🇧 English</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="ar">🇦🇪 العربية</option>
-            <option value="zh">🇨🇳 中文</option>
-        </select>
-    </div>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" href="index.html">
+                <img
+                    class="brand-symbol"
+                    src="/images/logo.jpg"
+                    alt="საქართველოს პარაგლაიდინგის ფედერაციის ლოგო"
+                    width="43"
+                    height="43"
+                >
 
-    <!-- ANIMATION -->
+                <span class="brand-name">
+                    საქართველოს
+                    <small>პარაგლაიდინგის ფედერაცია</small>
+                </span>
+            </a>
 
-    <figure class="flight-scene">
-        <div class="flight-frame">
-            <canvas
-                id="flight-canvas"
-                width="600"
-                height="402"
-                role="img"
-                aria-label="ორი პარაპლანი თოვლიანი მთების თავზე"
-            ></canvas>
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-controls="main-menu"
+                aria-expanded="false"
+            >
+                მენიუ ☰
+            </button>
+
+            <nav
+                class="main-menu"
+                id="main-menu"
+                aria-label="მთავარი მენიუ"
+            >
+                <a href="index.html">მთავარი</a>
+                <a href="about.html">ჩვენ შესახებ</a>
+
+                <a
+                    href="gallery.html"
+                    aria-current="page"
+                >
+                    გალერეა
+                </a>
+
+                <a href="document.html">დოკუმენტები</a>
+                <a href="news.html">სიახლეები</a>
+                <a href="Needtoknow.html">საჭირო ინფორმაცია</a>
+                <a href="airspaces.html">საჰაერო სივრცეები</a>
+                <a href="contact.html">კონტაქტი</a>
+
+                <a
+                    class="nav-book"
+                    href="BookYourFlight.html"
+                >
+                    დაგეგმე ფრენა ↗
+                </a>
+            </nav>
         </div>
 
-        <div class="flight-controls">
-            <button
-                id="motion-button"
-                type="button"
-                disabled
+        <!-- LANGUAGE SELECTOR -->
+
+        <div class="gpf-language-bar">
+            <select
+                id="gpf-language"
+                aria-label="აირჩიეთ ენა"
             >
-                შეჩერება
+                <option value="ka">🇬🇪 ქართული</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="ar">🇦🇪 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <h1>გალერეა</h1>
+
+                    <p class="section-intro">
+                        გალერეაში აღმოაჩინეთ საქართველოს
+                        პარაგლაიდინგის სამყარო — მთის პეიზაჟები,
+                        ფრენის მომენტები, შეჯიბრებები, ერთობლივი
+                        თავგადასავლები და ადამიანები, რომლებიც
+                        ჩვენს საზოგადოებას ქმნიან. თითოეული ფოტო
+                        ჩვენი საერთო ისტორიისა და ფრენისადმი
+                        სიყვარულის ნაწილია.
+                    </p>
+                </div>
+
+                <!-- ALL 22 PHOTOGRAPHS -->
+
+                <div
+                    class="gallery-grid"
+                    id="gallery-grid"
+                >
+                    <a
+                        class="gallery-item"
+                        href="/images/para1.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para1.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para2.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para2.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para3.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para3.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para4.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para4.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para5.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para5.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para6.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para6.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para7.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para7.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para8.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para8.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para9.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para9.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para10.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para10.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para11.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para11.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para12.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para12.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para13.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para13.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para14.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para14.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para15.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para15.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para16.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para16.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para17.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para17.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para18.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para18.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para19.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para19.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para20.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para20.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para21.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para21.jpg"
+                            alt="პარაგლაიდინგის ფოტო"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <a
+                        class="gallery-item"
+                        href="/images/para22.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="/images/para22.jpg"
+                            alt="საქართველოს პარაგლაიდინგის ფედერაციის ოფიციალური განცხადება"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+        <div class="container">
+            <strong>
+                საქართველოს პარაგლაიდინგის ფედერაცია
+            </strong>
+
+            <div class="footer-bottom">
+                <p>
+                    © <span id="year">2026</span>
+                    ყველა უფლება დაცულია.
+                </p>
+
+                <a href="contact.html">
+                    დაგვიკავშირდით ↗
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PHOTO VIEWER -->
+
+    <dialog
+        class="lightbox"
+        id="lightbox"
+        aria-label="ფოტოს ნახვა"
+    >
+        <div class="lightbox-toolbar">
+            <span id="lightbox-counter"></span>
+
+            <button
+                class="lightbox-close"
+                id="lightbox-close"
+                type="button"
+                aria-label="ფოტოს დახურვა"
+            >
+                დახურვა ×
             </button>
         </div>
 
-        <p
-            id="error"
-            class="error"
-            role="status"
-            hidden
-        ></p>
-    </figure>
-
-    <script>
-        (() => {
-            "use strict";
-
-            const canvas = document.getElementById(
-                "flight-canvas"
-            );
-
-            const context = canvas.getContext("2d");
-
-            const button = document.getElementById(
-                "motion-button"
-            );
-
-            const error = document.getElementById(
-                "error"
-            );
-
-            const reducedMotion = window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            );
-
-            const photo = new Image();
-
-            let background;
-            let gliders = [];
-            let running = !reducedMotion.matches;
-            let animationId = null;
-            let elapsed = 0;
-            let previousTime = null;
-            let errorKey = null;
-
-            /* ANIMATION CONTROL TRANSLATIONS */
-
-            const translations = {
-                ka: {
-                    pause: "შეჩერება",
-                    play: "გაშვება",
-                    description:
-                        "ორი პარაპლანი თოვლიანი მთების თავზე",
-                    serverError:
-                        "გახსენით ეს გვერდი თქვენი ვებგვერდიდან ან ადგილობრივი ვებსერვერის მეშვეობით.",
-                    photoError:
-                        "ფოტო ვერ მოიძებნა. გადაამოწმეთ images/para10.jpg."
-                },
-
-                en: {
-                    pause: "Pause",
-                    play: "Play",
-                    description:
-                        "Two paragliders flying above snowy mountains",
-                    serverError:
-                        "Open this page through your website or a local web server.",
-                    photoError:
-                        "Photo not found. Check images/para10.jpg."
-                },
-
-                fr: {
-                    pause: "Pause",
-                    play: "Lancer",
-                    description:
-                        "Deux parapentes au-dessus de montagnes enneigées",
-                    serverError:
-                        "Ouvrez cette page depuis votre site ou un serveur web local.",
-                    photoError:
-                        "Photo introuvable. Vérifiez images/para10.jpg."
-                },
-
-                ar: {
-                    pause: "إيقاف مؤقت",
-                    play: "تشغيل",
-                    description:
-                        "مظلتان شراعيتان تحلقان فوق جبال مغطاة بالثلوج",
-                    serverError:
-                        "افتح هذه الصفحة عبر موقعك الإلكتروني أو خادم ويب محلي.",
-                    photoError:
-                        "لم يتم العثور على الصورة. تحقّق من images/para10.jpg."
-                },
-
-                zh: {
-                    pause: "暂停",
-                    play: "播放",
-                    description:
-                        "两架滑翔伞飞越白雪覆盖的群山",
-                    serverError:
-                        "请通过你的网站或本地网页服务器打开此页面。",
-                    photoError:
-                        "未找到照片，请检查 images/para10.jpg。"
-                }
-            };
-
-            function currentTranslation() {
-                const language =
-                    document.documentElement.lang
-                        .split("-")[0];
-
-                return (
-                    translations[language] ||
-                    translations.ka
-                );
-            }
-
-            function updateLabels() {
-                const text = currentTranslation();
-
-                button.textContent = running
-                    ? text.pause
-                    : text.play;
-
-                button.setAttribute(
-                    "aria-pressed",
-                    String(running)
-                );
-
-                canvas.setAttribute(
-                    "aria-label",
-                    text.description
-                );
-
-                if (errorKey) {
-                    error.textContent = text[errorKey];
-                    error.hidden = false;
-                }
-            }
-
-            const languageObserver = new MutationObserver(
-                updateLabels
-            );
-
-            languageObserver.observe(
-                document.documentElement,
-                {
-                    attributes: true,
-                    attributeFilter: ["lang"]
-                }
-            );
-
-            function showError(key) {
-                errorKey = key;
-                updateLabels();
-            }
-
-            function makeCanvas(width, height) {
-                const element = document.createElement(
-                    "canvas"
-                );
-
-                element.width = width;
-                element.height = height;
-
-                return element;
-            }
-
-            /*
-             * Coordinates match the supplied 600 × 402
-             * photograph. Each polygon includes a canopy,
-             * lines and its pilot.
-             */
-
-            const shapes = [
-                {
-                    points: [
-                        [244, 114],
-                        [247, 99],
-                        [269, 86],
-                        [295, 83],
-                        [324, 90],
-                        [350, 106],
-                        [374, 129],
-                        [391, 152],
-                        [389, 171],
-                        [376, 170],
-                        [296, 222],
-                        [306, 239],
-                        [298, 253],
-                        [280, 253],
-                        [278, 237],
-                        [287, 220],
-                        [257, 123]
-                    ],
-
-                    centerX: 306,
-                    centerY: 165,
-                    phase: 0,
-                    speed: 0.7,
-                    distanceX: 12,
-                    distanceY: 7,
-                    rotation: 0.018
-                },
-
-                {
-                    points: [
-                        [117, 208],
-                        [118, 195],
-                        [133, 181],
-                        [154, 173],
-                        [179, 172],
-                        [201, 180],
-                        [220, 193],
-                        [226, 207],
-                        [177, 260],
-                        [180, 277],
-                        [165, 281],
-                        [160, 270],
-                        [166, 256],
-                        [124, 210]
-                    ],
-
-                    centerX: 171,
-                    centerY: 225,
-                    phase: 2,
-                    speed: 0.55,
-                    distanceX: 9,
-                    distanceY: 5,
-                    rotation: 0.022
-                }
-            ];
-
-            function polygonPath(points) {
-                const path = new Path2D();
-
-                points.forEach(([x, y], index) => {
-                    if (index === 0) {
-                        path.moveTo(x, y);
-                    } else {
-                        path.lineTo(x, y);
-                    }
-                });
-
-                path.closePath();
-
-                return path;
-            }
-
-            function buildScene() {
-                const width = 600;
-                const height = 402;
-
-                const original = makeCanvas(
-                    width,
-                    height
-                );
-
-                const originalContext =
-                    original.getContext("2d");
-
-                originalContext.drawImage(
-                    photo,
-                    0,
-                    0,
-                    width,
-                    height
-                );
-
-                background = makeCanvas(
-                    width,
-                    height
-                );
-
-                const backgroundContext =
-                    background.getContext("2d");
-
-                backgroundContext.drawImage(
-                    original,
-                    0,
-                    0
-                );
-
-                const pixels =
-                    originalContext.getImageData(
-                        0,
-                        0,
-                        width,
-                        height
-                    );
-
-                const cleaned =
-                    backgroundContext.getImageData(
-                        0,
-                        0,
-                        width,
-                        height
-                    );
-
-                const maskCanvas = makeCanvas(
-                    width,
-                    height
-                );
-
-                const maskContext =
-                    maskCanvas.getContext("2d");
-
-                shapes.forEach((shape) => {
-                    maskContext.fill(
-                        polygonPath(shape.points)
-                    );
-                });
-
-                const mask =
-                    maskContext.getImageData(
-                        0,
-                        0,
-                        width,
-                        height
-                    ).data;
-
-                /*
-                 * Reconstruct the background using
-                 * neighbouring pixels on each row.
-                 */
-
-                for (let y = 0; y < height; y++) {
-                    let x = 0;
-
-                    while (x < width) {
-                        const index =
-                            (y * width + x) * 4;
-
-                        if (mask[index + 3] === 0) {
-                            x++;
-                            continue;
-                        }
-
-                        const start = x;
-
-                        while (
-                            x < width &&
-                            mask[
-                                (y * width + x) * 4 + 3
-                            ] > 0
-                        ) {
-                            x++;
-                        }
-
-                        const end = x - 1;
-
-                        const left = Math.max(
-                            0,
-                            start - 2
-                        );
-
-                        const right = Math.min(
-                            width - 1,
-                            end + 2
-                        );
-
-                        const leftIndex =
-                            (y * width + left) * 4;
-
-                        const rightIndex =
-                            (y * width + right) * 4;
-
-                        for (
-                            let fillX = start;
-                            fillX <= end;
-                            fillX++
-                        ) {
-                            const amount =
-                                (fillX - left) /
-                                (right - left || 1);
-
-                            const target =
-                                (y * width + fillX) * 4;
-
-                            for (
-                                let channel = 0;
-                                channel < 3;
-                                channel++
-                            ) {
-                                cleaned.data[
-                                    target + channel
-                                ] =
-                                    pixels.data[
-                                        leftIndex + channel
-                                    ] *
-                                    (1 - amount) +
-                                    pixels.data[
-                                        rightIndex + channel
-                                    ] *
-                                    amount;
-                            }
-
-                            cleaned.data[
-                                target + 3
-                            ] = 255;
-                        }
-                    }
-                }
-
-                backgroundContext.putImageData(
-                    cleaned,
-                    0,
-                    0
-                );
-
-                /*
-                 * Create separate transparent
-                 * layers for the paragliders.
-                 */
-
-                gliders = shapes.map((shape) => {
-                    const layer = makeCanvas(
-                        width,
-                        height
-                    );
-
-                    const layerContext =
-                        layer.getContext("2d");
-
-                    const individualMask = makeCanvas(
-                        width,
-                        height
-                    );
-
-                    const individualContext =
-                        individualMask.getContext("2d");
-
-                    individualContext.fill(
-                        polygonPath(shape.points)
-                    );
-
-                    const selection =
-                        individualContext.getImageData(
-                            0,
-                            0,
-                            width,
-                            height
-                        ).data;
-
-                    const output =
-                        layerContext.createImageData(
-                            width,
-                            height
-                        );
-
-                    for (
-                        let i = 0;
-                        i < pixels.data.length;
-                        i += 4
-                    ) {
-                        if (selection[i + 3] === 0) {
-                            continue;
-                        }
-
-                        const difference = Math.max(
-                            Math.abs(
-                                pixels.data[i] -
-                                cleaned.data[i]
-                            ),
-
-                            Math.abs(
-                                pixels.data[i + 1] -
-                                cleaned.data[i + 1]
-                            ),
-
-                            Math.abs(
-                                pixels.data[i + 2] -
-                                cleaned.data[i + 2]
-                            )
-                        );
-
-                        const opacity = Math.min(
-                            1,
-                            Math.max(
-                                0,
-                                (difference - 10) / 24
-                            )
-                        );
-
-                        output.data[i] =
-                            pixels.data[i];
-
-                        output.data[i + 1] =
-                            pixels.data[i + 1];
-
-                        output.data[i + 2] =
-                            pixels.data[i + 2];
-
-                        output.data[i + 3] =
-                            Math.round(opacity * 255);
-                    }
-
-                    layerContext.putImageData(
-                        output,
-                        0,
-                        0
-                    );
-
-                    return {
-                        ...shape,
-                        layer
-                    };
-                });
-            }
-
-            function drawScene(seconds) {
-                context.clearRect(
-                    0,
-                    0,
-                    canvas.width,
-                    canvas.height
-                );
-
-                context.drawImage(
-                    background,
-                    0,
-                    0
-                );
-
-                gliders.forEach((glider) => {
-                    const time =
-                        seconds * glider.speed +
-                        glider.phase;
-
-                    const x =
-                        Math.sin(time) *
-                        glider.distanceX;
-
-                    const y =
-                        Math.sin(time * 1.3) *
-                        glider.distanceY;
-
-                    const angle =
-                        Math.sin(time * 0.8) *
-                        glider.rotation;
-
-                    context.save();
-
-                    context.translate(
-                        glider.centerX + x,
-                        glider.centerY + y
-                    );
-
-                    context.rotate(angle);
-
-                    context.drawImage(
-                        glider.layer,
-                        -glider.centerX,
-                        -glider.centerY
-                    );
-
-                    context.restore();
-                });
-            }
-
-            function frame(timestamp) {
-                if (!running) {
-                    animationId = null;
-                    return;
-                }
-
-                if (previousTime !== null) {
-                    elapsed += Math.min(
-                        (timestamp - previousTime) / 1000,
-                        0.05
-                    );
-                }
-
-                previousTime = timestamp;
-
-                drawScene(elapsed);
-
-                animationId =
-                    requestAnimationFrame(frame);
-            }
-
-            function updatePlayback() {
-                updateLabels();
-
-                if (animationId !== null) {
-                    cancelAnimationFrame(
-                        animationId
-                    );
-
-                    animationId = null;
-                }
-
-                previousTime = null;
-
-                if (
-                    running &&
-                    !document.hidden
-                ) {
-                    animationId =
-                        requestAnimationFrame(frame);
-                }
-            }
-
-            button.addEventListener("click", () => {
-                running = !running;
-                updatePlayback();
-            });
-
-            document.addEventListener(
-                "visibilitychange",
-                () => {
-                    if (background) {
-                        updatePlayback();
-                    }
-                }
-            );
-
-            reducedMotion.addEventListener(
-                "change",
-                (event) => {
-                    if (event.matches) {
-                        running = false;
-
-                        if (background) {
-                            updatePlayback();
-                        }
-                    }
-                }
-            );
-
-            photo.onload = () => {
-                try {
-                    buildScene();
-                    drawScene(0);
-
-                    button.disabled = false;
-
-                    updatePlayback();
-                } catch (problem) {
-                    context.drawImage(
-                        photo,
-                        0,
-                        0,
-                        600,
-                        402
-                    );
-
-                    showError("serverError");
-                }
-            };
-
-            photo.onerror = () => {
-                showError("photoError");
-            };
-
-            updateLabels();
-
-            photo.src = "/images/para10.jpg";
-        })();
-    </script>
+        <div class="lightbox-body">
+            <button
+                class="lightbox-arrow"
+                id="lightbox-prev"
+                type="button"
+                aria-label="წინა ფოტო"
+            >
+                ‹
+            </button>
+
+            <img
+                id="lightbox-image"
+                alt=""
+            >
+
+            <button
+                class="lightbox-arrow"
+                id="lightbox-next"
+                type="button"
+                aria-label="შემდეგი ფოტო"
+            >
+                ›
+            </button>
+        </div>
+
+        <p class="lightbox-help">
+            ფოტოების გადასართავად გამოიყენეთ ისრები.
+            დასახურად დააჭირეთ Escape-ს.
+        </p>
+    </dialog>
 </body>
 </html>
