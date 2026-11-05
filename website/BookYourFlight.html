@@ -8,12 +8,14 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>დაგეგმე ფრენა | საქართველოს პარაგლაიდინგის ფედერაცია</title>
+    <title>დაგეგმე შენი თავგადასავალი | საქართველოს პარაგლაიდინგის ფედერაცია</title>
 
     <meta
         name="description"
-        content="საქართველოს პარაგლაიდინგის ფედერაცია — დაგეგმე ფრენა. პარაგლაიდინგი საქართველოში."
+        content="დაგეგმე შენი თავგადასავალი საქართველოში. აირჩიე პარაგლაიდინგის ადგილი და დაუკავშირდი ადგილობრივ ოპერატორს."
     >
+
+    <meta name="theme-color" content="#123351">
 
     <link
         rel="canonical"
@@ -36,6 +38,73 @@
     <link rel="stylesheet" href="/style.css">
 
     <style>
+        .site-header {
+            padding-top: 44px;
+        }
+
+        .site-header .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .site-header .brand-symbol {
+            flex: 0 0 43px;
+        }
+
+        .site-header .brand-name {
+            display: block;
+            white-space: nowrap;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .site-header > .gpf-language-bar {
+            position: absolute;
+            top: 7px;
+            right: 12px;
+            left: auto;
+            bottom: auto;
+            z-index: 30;
+
+            display: flex;
+            align-items: center;
+
+            width: auto;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            direction: ltr;
+        }
+
+        .gpf-language-bar select {
+            min-width: 145px;
+            min-height: 32px;
+            max-width: calc(100vw - 24px);
+            padding: 5px 10px;
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: #102c46;
+            color: #ffffff;
+
+            font: inherit;
+            font-size: 13px;
+            line-height: 1.4;
+            direction: ltr;
+        }
+
+        .gpf-language-bar select:focus-visible {
+            outline: 2px solid #8ccfff;
+            outline-offset: 3px;
+        }
+
+        .motion-control {
+            display: none !important;
+        }
+
         .adventure-actions {
             display: grid;
             gap: 12px;
@@ -96,11 +165,52 @@
             border: 0;
             border-top: 1px solid rgba(18, 59, 56, 0.18);
         }
+
+        @media (hover: hover) and (pointer: fine) {
+            :root {
+                --paraglider-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2 12C4 1 28 1 30 12L25 14L20 12L16 14L12 12L7 14Z' fill='%232b93d1' stroke='%230d304d' stroke-width='1.2'/%3E%3Cpath d='M7 6L7 14M12 4L12 12M20 4L20 12M25 6L25 14' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Cpath d='M3 12L15 24M29 12L17 24M9 13L15 24M23 13L17 24' fill='none' stroke='%230d304d' stroke-width='1'/%3E%3Ccircle cx='16' cy='23' r='2' fill='%23f4a340' stroke='%230d304d' stroke-width='1'/%3E%3Cpath d='M16 25L14 29L19 29' fill='none' stroke='%230d304d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 16 3;
+            }
+
+            html,
+            body,
+            body a,
+            body button,
+            body select,
+            body summary,
+            body label,
+            body input[type="checkbox"],
+            body input[type="radio"] {
+                cursor: var(--paraglider-cursor), auto;
+            }
+
+            body input:not([type="checkbox"]):not([type="radio"]),
+            body textarea,
+            body [contenteditable="true"] {
+                cursor: text;
+            }
+
+            body button:disabled,
+            body select:disabled {
+                cursor: not-allowed;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-header .brand {
+                gap: 7px;
+            }
+
+            .site-header .brand-name {
+                font-size: 11px;
+            }
+
+            .site-header > .gpf-language-bar {
+                right: 8px;
+            }
+        }
     </style>
 
-    <link rel="stylesheet" href="/languages.css">
-
-    <script src="/languages.js"></script>
+    <script src="/languages.js" defer></script>
     <script src="/script.js" defer></script>
 
     <script type="application/ld+json">
@@ -108,10 +218,7 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "საქართველოს პარაგლაიდინგის ფედერაცია",
-        "alternateName": [
-            "საქართველოს პარაგლაიდინგის ფედერაცია",
-            "Georgian Paragliding Federation"
-        ],
+        "alternateName": "Georgian Paragliding Federation",
         "url": "https://paraglidingfederation.ge/",
         "logo": "https://paraglidingfederation.ge/images/logo.jpg",
         "sameAs": [
@@ -127,11 +234,27 @@
         შიგთავსზე გადასვლა
     </a>
 
-    <!-- HEADER -->
-
     <header class="site-header">
+        <div class="gpf-language-bar">
+            <select
+                id="gpf-language"
+                aria-label="აირჩიეთ ენა"
+                dir="ltr"
+            >
+                <option value="ka">🇬🇪 ქართული</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="ar">🇸🇦 العربية</option>
+                <option value="zh">🇨🇳 中文</option>
+            </select>
+        </div>
+
         <div class="container header-content">
-            <a class="brand" href="index.html">
+            <a
+                class="brand"
+                href="index.html"
+                aria-label="მთავარი"
+            >
                 <img
                     class="brand-symbol"
                     src="/images/logo.jpg"
@@ -140,10 +263,7 @@
                     height="43"
                 >
 
-                <span class="brand-name">
-                    საქართველოს
-                    <small>პარაგლაიდინგის ფედერაცია</small>
-                </span>
+                <span class="brand-name">საქართველოს პარაგლაიდინგის ფედერაცია</span>
             </a>
 
             <button
@@ -198,28 +318,9 @@
                     href="BookYourFlight.html"
                     aria-current="page"
                 >
-                    დაგეგმე ფრენა ↗
+                    დაგეგმე შენი თავგადასავალი ↗
                 </a>
             </nav>
-        </div>
-
-        <!-- LANGUAGE SELECTOR -->
-
-        <div class="gpf-language-bar">
-            <label for="gpf-language">
-                ენა / Language
-            </label>
-
-            <select
-                id="gpf-language"
-                aria-label="ენა / Language"
-            >
-                <option value="ka">ქართული</option>
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-                <option value="ar">العربية</option>
-                <option value="zh">中文</option>
-            </select>
         </div>
     </header>
 
@@ -227,20 +328,15 @@
         <section class="section booking-section">
             <div class="container booking-layout">
 
-                <!-- INTRODUCTION -->
-
                 <div class="booking-intro">
                     <p class="eyebrow light">
                         შენი თავგადასავალი აქ იწყება
                     </p>
 
-                    <h1>დაგეგმე ფრენა</h1>
+                    <h1>დაგეგმე შენი თავგადასავალი</h1>
 
                     <p>
-                        აირჩიეთ სასურველი ადგილი და დაუკავშირდით
-                        ადგილობრივ ოპერატორს აქტივობების,
-                        თარიღების, ფასებისა და პირობების
-                        შესათანხმებლად.
+                        აირჩიეთ სასურველი ადგილი და დაუკავშირდით ადგილობრივ ოპერატორს აქტივობების, თარიღების, ფასებისა და პირობების შესათანხმებლად.
                     </p>
 
                     <div class="booking-explanation">
@@ -252,47 +348,33 @@
                             </li>
 
                             <li>
-                                დაურეკეთ ოპერატორს ან შეავსეთ
-                                მონაცემები WhatsApp-მოთხოვნის
-                                მოსამზადებლად.
+                                დაურეკეთ ოპერატორს ან შეავსეთ მონაცემები WhatsApp-მოთხოვნის მოსამზადებლად.
                             </li>
 
                             <li>
-                                მიუთითეთ სასურველი თარიღი
-                                და მონაწილეთა რაოდენობა.
+                                მიუთითეთ სასურველი თარიღი და მონაწილეთა რაოდენობა.
                             </li>
 
                             <li>
-                                WhatsApp გაიხსნება შევსებული
-                                ტექსტით. გასაგზავნად ჩატში
-                                დააჭირეთ გაგზავნას.
+                                WhatsApp გაიხსნება შევსებული ტექსტით. გასაგზავნად ჩატში დააჭირეთ გაგზავნას.
                             </li>
 
                             <li>
-                                აქტივობები, ფასები და პირობები
-                                უშუალოდ ოპერატორთან შეათანხმეთ.
+                                აქტივობები, ფასები და პირობები უშუალოდ ოპერატორთან შეათანხმეთ.
                             </li>
                         </ol>
                     </div>
 
                     <p class="booking-disclaimer">
-                        აქტივობები დამოკიდებულია ადგილმდებარეობაზე,
-                        ამინდსა და ოპერატორის შესაძლებლობებზე.
-                        მოთხოვნის გაგზავნა ჯავშნის დადასტურებას
-                        არ ნიშნავს. შეთანხმება დასტურდება მხოლოდ
-                        ოპერატორთან შეთანხმების შემდეგ.
+                        აქტივობები დამოკიდებულია ადგილმდებარეობაზე, ამინდსა და ოპერატორის შესაძლებლობებზე. მოთხოვნის გაგზავნა ჯავშნის დადასტურებას არ ნიშნავს. შეთანხმება დასტურდება მხოლოდ ოპერატორთან შეთანხმების შემდეგ.
                     </p>
                 </div>
-
-                <!-- BOOKING FORM -->
 
                 <form
                     class="booking-form"
                     id="adventure-form"
                 >
                     <h3>დაუკავშირდით ოპერატორს</h3>
-
-                    <!-- LOCATION -->
 
                     <div class="form-field">
                         <label for="adventure-location">
@@ -325,8 +407,6 @@
                         </select>
                     </div>
 
-                    <!-- CALL OPERATOR -->
-
                     <div class="adventure-actions">
                         <button
                             class="adventure-action adventure-call"
@@ -338,14 +418,10 @@
                     </div>
 
                     <p class="adventure-note">
-                        დასარეკად მხოლოდ ადგილი აირჩიეთ.
-                        WhatsApp-მოთხოვნის გასაგზავნად
-                        შეავსეთ ქვემოთ მოცემული ველები.
+                        დასარეკად მხოლოდ ადგილი აირჩიეთ. WhatsApp-მოთხოვნის გასაგზავნად შეავსეთ ქვემოთ მოცემული ველები.
                     </p>
 
                     <hr class="adventure-divider">
-
-                    <!-- DATE AND PARTICIPANTS -->
 
                     <div class="form-row">
                         <div class="form-field">
@@ -377,8 +453,6 @@
                         </div>
                     </div>
 
-                    <!-- NAME -->
-
                     <div class="form-field">
                         <label for="adventure-name">
                             სახელი და გვარი
@@ -395,8 +469,6 @@
                         >
                     </div>
 
-                    <!-- PHONE -->
-
                     <div class="form-field">
                         <label for="adventure-phone">
                             ტელეფონის ნომერი
@@ -405,6 +477,7 @@
                         <input
                             id="adventure-phone"
                             type="tel"
+                            dir="ltr"
                             autocomplete="tel"
                             minlength="9"
                             maxlength="16"
@@ -416,13 +489,9 @@
                         >
 
                         <small id="adventure-phone-help">
-                            მიუთითეთ + და ქვეყნის კოდი.
-                            არ გამოიყენოთ გამოტოვებები,
-                            ფრჩხილები ან დეფისები.
+                            მიუთითეთ + და ქვეყნის კოდი. არ გამოიყენოთ გამოტოვებები, ფრჩხილები ან დეფისები.
                         </small>
                     </div>
-
-                    <!-- OPTIONAL MESSAGE -->
 
                     <div class="form-field">
                         <label for="adventure-message">
@@ -437,8 +506,6 @@
                         ></textarea>
                     </div>
 
-                    <!-- CONSENT -->
-
                     <label class="consent">
                         <input
                             id="adventure-consent"
@@ -447,14 +514,9 @@
                         >
 
                         <span>
-                            ვეთანხმები, რომ ეს მონაცემები
-                            WhatsApp-ის მეშვეობით გაეგზავნოს
-                            არჩეული ადგილის ოპერატორს, რათა
-                            მან უპასუხოს ჩემს მოთხოვნას.
+                            ვეთანხმები, რომ ეს მონაცემები WhatsApp-ის მეშვეობით გაეგზავნოს არჩეული ადგილის ოპერატორს, რათა მან უპასუხოს ჩემს მოთხოვნას.
                         </span>
                     </label>
-
-                    <!-- WHATSAPP -->
 
                     <div class="adventure-actions">
                         <button
@@ -471,25 +533,18 @@
                         class="adventure-note"
                         id="adventure-whatsapp-note"
                     >
-                        WhatsApp გაიხსნება შევსებული მოთხოვნით
-                        შესაბამის ოპერატორთან. გასაგზავნად
-                        დააჭირეთ გაგზავნას WhatsApp-ში.
-                        ჩატის გახსნა მოთხოვნას არ აგზავნის
-                        და ჯავშანს არ ადასტურებს.
+                        WhatsApp გაიხსნება შევსებული მოთხოვნით შესაბამის ოპერატორთან. გასაგზავნად დააჭირეთ გაგზავნას WhatsApp-ში. ჩატის გახსნა მოთხოვნას არ აგზავნის და ჯავშანს არ ადასტურებს.
                     </p>
 
                     <noscript>
                         <p class="adventure-note">
-                            ოპერატორთან დაკავშირების
-                            ღილაკებისთვის ჩართეთ JavaScript.
+                            ოპერატორთან დაკავშირების ღილაკებისთვის ჩართეთ JavaScript.
                         </p>
                     </noscript>
                 </form>
             </div>
         </section>
     </main>
-
-    <!-- FOOTER -->
 
     <footer class="site-footer">
         <div class="container">
@@ -500,7 +555,7 @@
             <div class="footer-bottom">
                 <p>
                     © <span id="year">2026</span>
-                    ყველა უფლება დაცულია.
+                    <span>ყველა უფლება დაცულია.</span>
                 </p>
 
                 <a href="contact.html">
