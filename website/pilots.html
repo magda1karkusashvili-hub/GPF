@@ -13,21 +13,22 @@
 
     <meta name="theme-color" content="#123351">
 
-    <link
-        rel="canonical"
-        href="https://paraglidingfederation.ge/pilots.html"
-    >
-
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="canonical" href="https://paraglidingfederation.ge/pilots.html">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="stylesheet" href="/style.css">
 
     <script src="/languages.js" defer></script>
     <script src="/script.js" defer></script>
 
     <style>
+        /* საერთო სათაური */
+
         .site-header {
-            padding-top: 44px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding-top: 48px;
         }
 
         .site-header .brand {
@@ -48,14 +49,26 @@
             line-height: 1.4;
         }
 
-        .site-header > .gpf-language-bar {
+        /* ენა და სოციალური ქსელები */
+
+        .header-tools {
             position: absolute;
             top: 7px;
-            right: 12px;
+            right: 18px;
             left: auto;
-            bottom: auto;
-            z-index: 30;
+            z-index: 60;
             display: flex;
+            align-items: center;
+            gap: 15px;
+            direction: ltr;
+        }
+
+        .site-header .header-tools .gpf-language-bar {
+            position: static !important;
+            inset: auto !important;
+            display: flex;
+            align-items: center;
+            gap: 7px;
             width: auto;
             margin: 0;
             padding: 0;
@@ -64,21 +77,82 @@
             direction: ltr;
         }
 
+        .language-flag {
+            display: block;
+            width: 25px;
+            height: 17px;
+            flex: 0 0 25px;
+            overflow: hidden;
+            border-radius: 2px;
+            box-shadow: 0 0 0 1px rgba(255,255,255,.25);
+        }
+
         .gpf-language-bar select {
-            min-width: 145px;
+            width: auto;
+            min-width: 100px;
             min-height: 32px;
-            padding: 5px 10px;
-            border: 1px solid rgba(255, 255, 255, .3);
-            border-radius: 8px;
+            padding: 4px 7px;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 7px;
             background: #102c46;
-            color: #fff;
+            color: #ffffff;
             font: inherit;
-            font-size: 13px;
+            font-size: 12px;
+            direction: ltr;
+        }
+
+        .header-social {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-social a,
+        .header-social button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            padding: 5px;
+            border: 0;
+            border-radius: 6px;
+            background: transparent;
+            color: #ffffff;
+            text-decoration: none;
+            transition:
+                background 180ms ease,
+                transform 180ms ease;
+        }
+
+        .header-social a:hover {
+            background: rgba(255,255,255,.12);
+            transform: translateY(-2px);
+        }
+
+        .header-social svg {
+            display: block;
+            width: 19px;
+            height: 19px;
+        }
+
+        .header-social button:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+        }
+
+        .header-social a:focus-visible,
+        .gpf-language-bar select:focus-visible {
+            outline: 2px solid #9dd7ff;
+            outline-offset: 3px;
         }
 
         .motion-control {
             display: none !important;
         }
+
+        /* პილოტების ფილტრები */
 
         .pilots-heading {
             max-width: 820px;
@@ -114,7 +188,7 @@
             padding: 11px 14px;
             border: 1px solid #c6d6e4;
             border-radius: 9px;
-            background: #fff;
+            background: #ffffff;
             color: #183951;
             font: inherit;
             font-size: 14px;
@@ -131,7 +205,7 @@
             padding: 11px 20px;
             border: 1px solid #c6d6e4;
             border-radius: 9px;
-            background: #fff;
+            background: #ffffff;
             color: #183951;
             font: inherit;
             font-size: 14px;
@@ -145,9 +219,10 @@
 
         .pilots-count {
             margin: 0 0 24px;
-            color: #536c80;
             font-size: 14px;
         }
+
+        /* პილოტების ბარათები */
 
         .pilots-grid {
             display: grid;
@@ -160,28 +235,42 @@
             overflow: hidden;
             border: 1px solid #dbe5ef;
             border-radius: 18px;
-            background: #fff;
-            box-shadow: 0 12px 32px rgba(18, 51, 81, .05);
+            background: #ffffff;
+            box-shadow: 0 12px 32px rgba(18,51,81,.05);
         }
 
         .pilot-photo-wrap {
-            display: grid;
-            place-items: center;
+            position: relative;
             aspect-ratio: 4 / 3;
             overflow: hidden;
-            background: linear-gradient(140deg, #dceaf5, #b8d0e3);
+            background: linear-gradient(
+                140deg,
+                #dceaf5,
+                #b8d0e3
+            );
         }
 
         .pilot-photo-wrap img {
+            position: absolute;
+            inset: 0;
+            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
         .pilot-initials {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
             color: #244d70;
             font-size: 54px;
             font-weight: 700;
+        }
+
+        .pilot-initials[hidden] {
+            display: none !important;
         }
 
         .pilot-content {
@@ -238,7 +327,34 @@
         }
 
         .pilots-empty[hidden] {
-            display: none;
+            display: none !important;
+        }
+
+        /* პარაპლანის კურსორი */
+
+        @media (hover: hover) and (pointer: fine) {
+            :root {
+                --paraglider-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2 12C4 1 28 1 30 12L25 14L20 12L16 14L12 12L7 14Z' fill='%232b93d1' stroke='%230d304d' stroke-width='1.2'/%3E%3Cpath d='M7 6L7 14M12 4L12 12M20 4L20 12M25 6L25 14' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Cpath d='M3 12L15 24M29 12L17 24M9 13L15 24M23 13L17 24' fill='none' stroke='%230d304d' stroke-width='1'/%3E%3Ccircle cx='16' cy='23' r='2' fill='%23f4a340' stroke='%230d304d' stroke-width='1'/%3E%3Cpath d='M16 25L14 29L19 29' fill='none' stroke='%230d304d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 16 3;
+            }
+
+            html, body,
+            body a, body button, body select,
+            body summary, body label,
+            body input[type="checkbox"],
+            body input[type="radio"] {
+                cursor: var(--paraglider-cursor), auto;
+            }
+
+            body input:not([type="checkbox"]):not([type="radio"]),
+            body textarea,
+            body [contenteditable="true"] {
+                cursor: text;
+            }
+
+            body button:disabled,
+            body select:disabled {
+                cursor: not-allowed;
+            }
         }
 
         @media (max-width: 1000px) {
@@ -256,8 +372,13 @@
                 font-size: 11px;
             }
 
-            .site-header > .gpf-language-bar {
-                right: 8px;
+            .header-tools {
+                right: 10px;
+                gap: 9px;
+            }
+
+            .header-social {
+                gap: 6px;
             }
 
             .pilots-filters,
@@ -276,14 +397,93 @@
     <a class="skip-link" href="#main">შიგთავსზე გადასვლა</a>
 
     <header class="site-header">
-        <div class="gpf-language-bar">
-            <select id="gpf-language" aria-label="აირჩიეთ ენა" dir="ltr">
-                <option value="ka">🇬🇪 ქართული</option>
-                <option value="en">🇬🇧 English</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="ar">🇸🇦 العربية</option>
-                <option value="zh">🇨🇳 中文</option>
-            </select>
+        <div class="header-tools">
+            <div class="gpf-language-bar">
+                <svg
+                    class="language-flag"
+                    id="language-flag"
+                    viewBox="0 0 30 20"
+                    aria-hidden="true"
+                    focusable="false"
+                >
+                    <rect width="30" height="20" fill="#ffffff"/>
+                    <path
+                        d="M0 10H30 M15 0V20"
+                        stroke="#e52332"
+                        stroke-width="4"
+                    />
+                    <path
+                        d="M5 5H9 M7 3V7 M21 5H25 M23 3V7 M5 15H9 M7 13V17 M21 15H25 M23 13V17"
+                        stroke="#e52332"
+                        stroke-width="1.5"
+                    />
+                </svg>
+
+                <select id="gpf-language" aria-label="აირჩიეთ ენა" dir="ltr">
+                    <option value="ka">ქართული</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="ar">العربية</option>
+                    <option value="zh">中文</option>
+                </select>
+            </div>
+
+            <div class="header-social" aria-label="სოციალური ქსელები">
+                <a
+                    href="https://www.facebook.com/GeorgianParaglidingFederation/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    title="Facebook"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            fill="currentColor"
+                            d="M14 21v-8h2.7l.4-3H14V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H8v3h2.6v8H14z"
+                        />
+                    </svg>
+                </a>
+
+                <a
+                    href="https://www.instagram.com/georgian_paragliding_fed/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    title="Instagram"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        aria-hidden="true"
+                    >
+                        <rect x="3" y="3" width="18" height="18" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle
+                            cx="17.5" cy="6.5" r="1"
+                            fill="currentColor"
+                            stroke="none"
+                        />
+                    </svg>
+                </a>
+
+                <!-- TikTok-ის ბმული დასამატებელია -->
+
+                <button
+                    type="button"
+                    disabled
+                    aria-label="TikTok — ბმული დასამატებელია"
+                    title="TikTok — ბმული დასამატებელია"
+                >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            fill="currentColor"
+                            d="M15.6 2h-3.1v13.3a2.7 2.7 0 1 1-2.3-2.7V9.4a5.9 5.9 0 1 0 5.4 5.9V8.5a8 8 0 0 0 4.7 1.5V6.8c-2.5-.2-4.4-2.2-4.7-4.8z"
+                        />
+                    </svg>
+                </button>
+            </div>
         </div>
 
         <div class="container header-content">
@@ -318,13 +518,17 @@
                 <a href="Needtoknow.html">საჭირო ინფორმაცია</a>
                 <a href="airspaces.html">საჰაერო სივრცეები</a>
 
-                <a href="pilots.html" aria-current="page" data-pilot-text="title">
+                <a
+                    href="pilots.html"
+                    id="pilots-nav-link"
+                    aria-current="page"
+                >
                     გაიცანი ჩვენი პილოტები
                 </a>
 
                 <a href="contact.html">კონტაქტი</a>
 
-                <a class="nav-book" href="BookYourFlight.html">
+                <a href="BookYourFlight.html" id="adventure-nav-link">
                     დაგეგმე შენი თავგადასავალი ↗
                 </a>
             </nav>
@@ -367,12 +571,21 @@
                         </select>
                     </div>
 
-                    <button class="pilots-reset" type="reset" data-pilot-text="reset">
+                    <button
+                        class="pilots-reset"
+                        type="reset"
+                        data-pilot-text="reset"
+                    >
                         ფილტრების გასუფთავება
                     </button>
                 </form>
 
-                <p class="pilots-count" id="pilots-count" role="status" aria-live="polite"></p>
+                <p
+                    class="pilots-count"
+                    id="pilots-count"
+                    role="status"
+                    aria-live="polite"
+                ></p>
 
                 <div class="pilots-grid" id="pilots-grid"></div>
 
@@ -381,7 +594,9 @@
                 </div>
 
                 <noscript>
-                    <p>პილოტების პროფილებისა და ფილტრების სანახავად ჩართეთ JavaScript.</p>
+                    <p>
+                        პილოტების პროფილებისა და ფილტრების სანახავად ჩართეთ JavaScript.
+                    </p>
                 </noscript>
             </div>
         </section>
@@ -403,344 +618,484 @@
     </footer>
 
     <script>
-        (() => {
-            "use strict";
+    (() => {
+        "use strict";
 
-            /*
-             * პილოტების მონაცემები აქ დაემატება.
-             *
-             * თითოეული პროფილის ფორმატი:
-             *
-             * {
-             *     id: "pilot-1",
-             *     name: {
-             *         ka: "სახელი და გვარი",
-             *         en: "Name Surname"
-             *     },
-             *     photo: "/images/pilots/pilot-1.jpg",
-             *     locations: ["gudauri", "ananuri"],
-             *     types: ["tandem", "solo"],
-             *     bio: {
-             *         ka: "პილოტის მოკლე აღწერა.",
-             *         en: "Short pilot biography."
-             *     }
-             * }
-             *
-             * მხოლოდ ტანდემი: types: ["tandem"]
-             * მხოლოდ სოლო: types: ["solo"]
-             * ორივე: types: ["tandem", "solo"]
-             */
+        /*
+         * პილოტების რეალური მონაცემები აქ ჩაემატება.
+         *
+         * ერთი პროფილის ფორმატი:
+         *
+         * {
+         *     id: "pilot-1",
+         *     name: {
+         *         ka: "სახელი და გვარი",
+         *         en: "Name Surname"
+         *     },
+         *     photo: "/images/pilots/pilot-1.jpg",
+         *     locations: ["gudauri", "ananuri"],
+         *     types: ["tandem", "solo"],
+         *     bio: {
+         *         ka: "პილოტის მოკლე აღწერა.",
+         *         en: "Short pilot biography."
+         *     }
+         * }
+         *
+         * types: ["tandem"] — მხოლოდ ტანდემი
+         * types: ["solo"] — მხოლოდ სოლო
+         * types: ["tandem", "solo"] — ორივე
+         */
 
-            const pilots = [];
+        const pilots = [];
 
-            /*
-             * ლოკაციების რიგითობა:
-             * ქართული, ინგლისური, ფრანგული, არაბული, ჩინური.
-             */
+        const languages = ["ka", "en", "fr", "ar", "zh"];
 
-            const locations = {
-                gudauri: ["გუდაური", "Gudauri", "Goudaouri", "غوداوري", "古道里"],
-                ananuri: ["ანანური", "Ananuri", "Ananouri", "أنانوري", "阿纳努里"],
-                "tbilisi-sea": ["თბილისის ზღვა", "Tbilisi Sea", "Mer de Tbilissi", "بحر تبليسي", "第比利斯海"],
-                mestia: ["მესტია", "Mestia", "Mestia", "ميستيا", "梅斯蒂亚"],
-                bakuriani: ["ბაკურიანი", "Bakuriani", "Bakouriani", "باكورياني", "巴库里阿尼"],
-                kazaniani: ["ყაზანიანი", "Kazaniani", "Kazaniani", "كازانياني", "卡扎尼阿尼"],
-                sighnaghi: ["სიღნაღი", "Sighnaghi", "Sighnaghi", "سيغناغي", "西格纳吉"],
-                bakhmaro: ["ბახმარო", "Bakhmaro", "Bakhmaro", "باخمارو", "巴赫马罗"],
-                goderdzi: ["გოდერძი", "Goderdzi", "Goderdzi", "غوديردزي", "戈代尔齐"],
-                tetnuldi: ["თეთნულდი", "Tetnuldi", "Tetnuldi", "تيتنولدي", "泰特努尔迪"],
-                hatsvali: ["ჰაწვალი", "Hatsvali", "Hatsvali", "هاتسفالي", "哈茨瓦利"],
-                becho: ["ბეჩო", "Becho", "Becho", "بيتشو", "贝乔"],
-                latali: ["ლატალი", "Latali", "Latali", "لاتالي", "拉塔利"],
-                koruldi: ["ქორულდი", "Koruldi", "Koruldi", "كورولدي", "科鲁尔迪"]
-            };
+        const locations = {
+            gudauri: ["გუდაური", "Gudauri", "Goudaouri", "غوداوري", "古道里"],
+            ananuri: ["ანანური", "Ananuri", "Ananouri", "أنانوري", "阿纳努里"],
+            "tbilisi-sea": ["თბილისის ზღვა", "Tbilisi Sea", "Mer de Tbilissi", "بحر تبليسي", "第比利斯海"],
+            mestia: ["მესტია", "Mestia", "Mestia", "ميستيا", "梅斯蒂亚"],
+            bakuriani: ["ბაკურიანი", "Bakuriani", "Bakouriani", "باكورياني", "巴库里阿尼"],
+            kazaniani: ["ყაზანიანი", "Kazaniani", "Kazaniani", "كازانياني", "卡扎尼阿尼"],
+            sighnaghi: ["სიღნაღი", "Sighnaghi", "Sighnaghi", "سيغناغي", "西格纳吉"],
+            bakhmaro: ["ბახმარო", "Bakhmaro", "Bakhmaro", "باخمارو", "巴赫马罗"],
+            goderdzi: ["გოდერძი", "Goderdzi", "Goderdzi", "غوديردزي", "戈代尔齐"],
+            tetnuldi: ["თეთნულდი", "Tetnuldi", "Tetnuldi", "تيتنولدي", "泰特努尔迪"],
+            hatsvali: ["ჰაწვალი", "Hatsvali", "Hatsvali", "هاتسفالي", "哈茨瓦利"],
+            becho: ["ბეჩო", "Becho", "Becho", "بيتشو", "贝乔"],
+            latali: ["ლატალი", "Latali", "Latali", "لاتالي", "拉塔利"],
+            koruldi: ["ქორულდი", "Koruldi", "Koruldi", "كورولدي", "科鲁尔迪"]
+        };
 
-            const languages = ["ka", "en", "fr", "ar", "zh"];
+        const texts = {
+            title: [
+                "გაიცანი ჩვენი პილოტები",
+                "Meet Our Pilots",
+                "Rencontrez nos pilotes",
+                "تعرّف على طيارينا",
+                "认识我们的飞行员"
+            ],
+            intro: [
+                "მოძებნე პილოტი სასურველი ლოკაციისა და ფრენის ტიპის მიხედვით.",
+                "Find a pilot by location and flight type.",
+                "Trouvez un pilote selon le lieu et le type de vol.",
+                "ابحث عن طيار حسب الموقع ونوع الطيران.",
+                "按地点和飞行类型查找飞行员。"
+            ],
+            location: [
+                "ლოკაცია", "Location", "Lieu", "الموقع", "地点"
+            ],
+            type: [
+                "ფრენის ტიპი", "Flight type", "Type de vol", "نوع الطيران", "飞行类型"
+            ],
+            allLocations: [
+                "ყველა ლოკაცია", "All locations", "Tous les lieux", "جميع المواقع", "所有地点"
+            ],
+            allTypes: [
+                "ყველა ტიპი", "All types", "Tous les types", "جميع الأنواع", "所有类型"
+            ],
+            tandem: [
+                "ტანდემი", "Tandem", "Biplace", "طيران ثنائي", "双人飞行"
+            ],
+            solo: [
+                "სოლო", "Solo", "Solo", "طيران فردي", "单人飞行"
+            ],
+            reset: [
+                "ფილტრების გასუფთავება",
+                "Clear filters",
+                "Effacer les filtres",
+                "مسح عوامل التصفية",
+                "清除筛选"
+            ],
+            count: [
+                "ნაპოვნი პილოტები",
+                "Pilots found",
+                "Pilotes trouvés",
+                "الطيارون المطابقون",
+                "找到的飞行员"
+            ],
+            empty: [
+                "ამ ფილტრებით პილოტი ვერ მოიძებნა. სცადეთ სხვა ლოკაცია ან ფრენის ტიპი.",
+                "No pilots match these filters. Try another location or flight type.",
+                "Aucun pilote ne correspond. Essayez un autre lieu ou type de vol.",
+                "لا يوجد طيار مطابق. جرّب موقعًا أو نوع طيران آخر.",
+                "没有符合条件的飞行员。请尝试其他地点或飞行类型。"
+            ],
+            pending: [
+                "პილოტების პროფილები მალე დაემატება.",
+                "Pilot profiles will be added soon.",
+                "Les profils des pilotes seront bientôt disponibles.",
+                "ستُضاف ملفات الطيارين قريبًا.",
+                "飞行员资料即将上线。"
+            ],
+            federation: [
+                "საქართველოს პარაგლაიდინგის ფედერაცია",
+                "Georgian Paragliding Federation",
+                "Fédération géorgienne de parapente",
+                "الاتحاد الجورجي للطيران الشراعي",
+                "格鲁吉亚滑翔伞联合会"
+            ],
+            adventure: [
+                "დაგეგმე შენი თავგადასავალი ↗",
+                "Plan Your Adventure ↗",
+                "Préparez votre aventure ↗",
+                "خطط لمغامرتك ↗",
+                "规划你的冒险 ↗"
+            ]
+        };
 
-            const texts = {
-                title: [
-                    "გაიცანი ჩვენი პილოტები",
-                    "Meet Our Pilots",
-                    "Rencontrez nos pilotes",
-                    "تعرّف على طيارينا",
-                    "认识我们的飞行员"
-                ],
-                intro: [
-                    "მოძებნე პილოტი სასურველი ლოკაციისა და ფრენის ტიპის მიხედვით.",
-                    "Find a pilot by location and flight type.",
-                    "Trouvez un pilote selon le lieu et le type de vol.",
-                    "ابحث عن طيار حسب الموقع ونوع الطيران.",
-                    "按地点和飞行类型查找飞行员。"
-                ],
-                location: [
-                    "ლოკაცია", "Location", "Lieu", "الموقع", "地点"
-                ],
-                type: [
-                    "ფრენის ტიპი", "Flight type", "Type de vol", "نوع الطيران", "飞行类型"
-                ],
-                allLocations: [
-                    "ყველა ლოკაცია", "All locations", "Tous les lieux", "جميع المواقع", "所有地点"
-                ],
-                allTypes: [
-                    "ყველა ტიპი", "All types", "Tous les types", "جميع الأنواع", "所有类型"
-                ],
-                tandem: [
-                    "ტანდემი", "Tandem", "Biplace", "طيران ثنائي", "双人飞行"
-                ],
-                solo: [
-                    "სოლო", "Solo", "Solo", "طيران فردي", "单人飞行"
-                ],
-                reset: [
-                    "ფილტრების გასუფთავება",
-                    "Clear filters",
-                    "Effacer les filtres",
-                    "مسح عوامل التصفية",
-                    "清除筛选"
-                ],
-                count: [
-                    "ნაპოვნი პილოტები",
-                    "Pilots found",
-                    "Pilotes trouvés",
-                    "الطيارون المطابقون",
-                    "找到的飞行员"
-                ],
-                empty: [
-                    "ამ ფილტრებით პილოტი ვერ მოიძებნა. სცადეთ სხვა ლოკაცია ან ფრენის ტიპი.",
-                    "No pilots match these filters. Try another location or flight type.",
-                    "Aucun pilote ne correspond. Essayez un autre lieu ou type de vol.",
-                    "لا يوجد طيار مطابق. جرّب موقعًا أو نوع طيران آخر.",
-                    "没有符合条件的飞行员。请尝试其他地点或飞行类型。"
-                ],
-                pending: [
-                    "პილოტების პროფილები მალე დაემატება.",
-                    "Pilot profiles will be added soon.",
-                    "Les profils des pilotes seront bientôt disponibles.",
-                    "ستُضاف ملفات الطيارين قريبًا.",
-                    "飞行员资料即将上线。"
-                ],
-                federation: [
-                    "საქართველოს პარაგლაიდინგის ფედერაცია",
-                    "Georgian Paragliding Federation",
-                    "Fédération géorgienne de parapente",
-                    "الاتحاد الجورجي للطيران الشراعي",
-                    "格鲁吉亚滑翔伞联合会"
-                ]
-            };
+        const flags = {
+            ka: `
+                <rect width="30" height="20" fill="#fff"/>
+                <path d="M0 10H30 M15 0V20"
+                    stroke="#e52332" stroke-width="4"/>
+                <path d="M5 5H9 M7 3V7 M21 5H25 M23 3V7
+                         M5 15H9 M7 13V17 M21 15H25 M23 13V17"
+                    stroke="#e52332" stroke-width="1.5"/>
+            `,
+            en: `
+                <rect width="30" height="20" fill="#16316d"/>
+                <path d="M0 0L30 20 M30 0L0 20"
+                    stroke="#fff" stroke-width="5"/>
+                <path d="M0 0L30 20 M30 0L0 20"
+                    stroke="#c8102e" stroke-width="2"/>
+                <path d="M15 0V20 M0 10H30"
+                    stroke="#fff" stroke-width="7"/>
+                <path d="M15 0V20 M0 10H30"
+                    stroke="#c8102e" stroke-width="4"/>
+            `,
+            fr: `
+                <rect width="10" height="20" fill="#002654"/>
+                <rect x="10" width="10" height="20" fill="#fff"/>
+                <rect x="20" width="10" height="20" fill="#ed2939"/>
+            `,
+            ar: `
+                <rect width="30" height="20" fill="#fff"/>
+                <rect width="30" height="6.67" fill="#009739"/>
+                <rect y="13.33" width="30" height="6.67" fill="#000"/>
+                <rect width="8" height="20" fill="#ef3340"/>
+            `,
+            zh: `
+                <rect width="30" height="20" fill="#de2910"/>
+                <g fill="#ffde00">
+                    <path d="M6 2L6.9 4.7L9.8 4.7L7.5 6.4
+                             L8.4 9.1L6 7.4L3.6 9.1L4.5 6.4
+                             L2.2 4.7L5.1 4.7Z"/>
+                    <path d="M12 2L12.3 2.7L13 2.7L12.4 3.2
+                             L12.6 4L12 3.5L11.4 4L11.6 3.2
+                             L11 2.7L11.7 2.7Z"/>
+                    <path d="M14 5L14.3 5.7L15 5.7L14.4 6.2
+                             L14.6 7L14 6.5L13.4 7L13.6 6.2
+                             L13 5.7L13.7 5.7Z"/>
+                    <path d="M14 8L14.3 8.7L15 8.7L14.4 9.2
+                             L14.6 10L14 9.5L13.4 10L13.6 9.2
+                             L13 8.7L13.7 8.7Z"/>
+                    <path d="M12 11L12.3 11.7L13 11.7L12.4 12.2
+                             L12.6 13L12 12.5L11.4 13L11.6 12.2
+                             L11 11.7L11.7 11.7Z"/>
+                </g>
+            `
+        };
 
-            const locationSelect = document.getElementById("pilot-location");
-            const typeSelect = document.getElementById("pilot-type");
-            const form = document.getElementById("pilots-filters");
-            const grid = document.getElementById("pilots-grid");
-            const count = document.getElementById("pilots-count");
-            const empty = document.getElementById("pilots-empty");
-            const emptyText = document.getElementById("pilots-empty-text");
+        const locationSelect =
+            document.getElementById("pilot-location");
 
-            function getLanguage() {
-                const language = document.documentElement.lang.split("-")[0];
-                return languages.includes(language) ? language : "ka";
-            }
+        const typeSelect =
+            document.getElementById("pilot-type");
 
-            function languageIndex() {
-                return languages.indexOf(getLanguage());
-            }
+        const form =
+            document.getElementById("pilots-filters");
 
-            function text(key) {
-                return texts[key][languageIndex()];
-            }
+        const grid =
+            document.getElementById("pilots-grid");
 
-            function localized(value) {
-                if (typeof value === "string") return value;
-                return value?.[getLanguage()] || value?.ka || value?.en || "";
-            }
+        const count =
+            document.getElementById("pilots-count");
 
-            function locationName(key) {
-                return locations[key]?.[languageIndex()] || key;
-            }
+        const empty =
+            document.getElementById("pilots-empty");
 
-            function makeTag(value) {
-                const tag = document.createElement("span");
-                tag.className = "pilot-tag";
-                tag.textContent = value;
-                return tag;
-            }
+        const emptyText =
+            document.getElementById("pilots-empty-text");
 
-            function makeCard(pilot) {
-                const card = document.createElement("article");
-                card.className = "pilot-card";
+        function getLanguage() {
+            const language =
+                document.documentElement.lang.split("-")[0];
 
-                const photoWrap = document.createElement("div");
-                photoWrap.className = "pilot-photo-wrap";
+            return languages.includes(language)
+                ? language
+                : "ka";
+        }
 
-                const initials = document.createElement("span");
-                initials.className = "pilot-initials";
-                initials.setAttribute("aria-hidden", "true");
+        function languageIndex() {
+            return languages.indexOf(getLanguage());
+        }
 
-                initials.textContent = localized(pilot.name)
-                    .trim()
-                    .split(/\s+/)
-                    .slice(0, 2)
-                    .map(part => Array.from(part)[0] || "")
-                    .join("");
+        function text(key) {
+            return texts[key][languageIndex()];
+        }
 
-                photoWrap.appendChild(initials);
+        function localized(value) {
+            if (typeof value === "string") return value;
 
-                if (pilot.photo) {
-                    const image = document.createElement("img");
-                    image.src = pilot.photo;
-                    image.alt = localized(pilot.name);
-                    image.loading = "lazy";
-                    image.width = 600;
-                    image.height = 450;
+            return (
+                value?.[getLanguage()] ||
+                value?.ka ||
+                value?.en ||
+                ""
+            );
+        }
 
-                    image.addEventListener("load", () => {
-                        initials.hidden = true;
-                    });
+        function locationName(key) {
+            return locations[key]?.[languageIndex()] || key;
+        }
 
-                    image.addEventListener("error", () => {
-                        image.remove();
-                        initials.hidden = false;
-                    });
+        function makeTag(value) {
+            const tag = document.createElement("span");
 
-                    photoWrap.appendChild(image);
-                }
+            tag.className = "pilot-tag";
+            tag.textContent = value;
 
-                const content = document.createElement("div");
-                content.className = "pilot-content";
+            return tag;
+        }
 
-                const heading = document.createElement("h2");
-                heading.textContent = localized(pilot.name);
+        function makeCard(pilot) {
+            const card = document.createElement("article");
+            card.className = "pilot-card";
 
-                const tags = document.createElement("div");
-                tags.className = "pilot-tags";
+            const photoWrap = document.createElement("div");
+            photoWrap.className = "pilot-photo-wrap";
 
-                for (const type of pilot.types || []) {
-                    if (type === "tandem" || type === "solo") {
-                        tags.appendChild(makeTag(text(type)));
-                    }
-                }
+            const initials = document.createElement("span");
+            initials.className = "pilot-initials";
+            initials.setAttribute("aria-hidden", "true");
 
-                const places = document.createElement("p");
-                places.className = "pilot-locations";
-                places.textContent = (pilot.locations || [])
-                    .map(locationName)
-                    .join(" · ");
+            initials.textContent = localized(pilot.name)
+                .trim()
+                .split(/\s+/)
+                .slice(0, 2)
+                .map(part => Array.from(part)[0] || "")
+                .join("");
 
-                content.append(heading, tags, places);
+            photoWrap.appendChild(initials);
 
-                const biography = localized(pilot.bio);
+            if (pilot.photo) {
+                const image = document.createElement("img");
 
-                if (biography) {
-                    const paragraph = document.createElement("p");
-                    paragraph.className = "pilot-bio";
-                    paragraph.textContent = biography;
-                    content.appendChild(paragraph);
-                }
+                image.alt = localized(pilot.name);
+                image.loading = "lazy";
+                image.decoding = "async";
+                image.width = 600;
+                image.height = 450;
 
-                card.append(photoWrap, content);
-                return card;
-            }
-
-            function renderPilots() {
-                const selectedLocation = locationSelect.value;
-                const selectedType = typeSelect.value;
-
-                const filtered = pilots.filter(pilot => {
-                    const matchesLocation =
-                        selectedLocation === "all" ||
-                        (pilot.locations || []).includes(selectedLocation);
-
-                    const matchesType =
-                        selectedType === "all" ||
-                        (pilot.types || []).includes(selectedType);
-
-                    return matchesLocation && matchesType;
+                image.addEventListener("load", () => {
+                    initials.hidden = true;
                 });
 
-                const fragment = document.createDocumentFragment();
-
-                for (const pilot of filtered) {
-                    fragment.appendChild(makeCard(pilot));
-                }
-
-                grid.replaceChildren(fragment);
-
-                count.textContent = `${text("count")}: ${filtered.length}`;
-                empty.hidden = filtered.length > 0;
-                emptyText.textContent = pilots.length
-                    ? text("empty")
-                    : text("pending");
-            }
-
-            function updateLanguage() {
-                const previousLocation = locationSelect.value || "all";
-                const previousType = typeSelect.value || "all";
-
-                document.querySelectorAll("[data-pilot-text]").forEach(element => {
-                    const key = element.dataset.pilotText;
-
-                    if (texts[key]) {
-                        element.textContent = text(key);
-                    }
+                image.addEventListener("error", () => {
+                    image.remove();
+                    initials.hidden = false;
                 });
 
-                locationSelect.replaceChildren();
+                image.src = pilot.photo;
+                photoWrap.appendChild(image);
+            }
 
-                locationSelect.appendChild(
-                    new Option(text("allLocations"), "all")
-                );
+            const content = document.createElement("div");
+            content.className = "pilot-content";
 
-                for (const key of Object.keys(locations)) {
-                    locationSelect.appendChild(
-                        new Option(locationName(key), key)
+            const heading = document.createElement("h2");
+            heading.textContent = localized(pilot.name);
+
+            const tags = document.createElement("div");
+            tags.className = "pilot-tags";
+
+            for (const type of pilot.types || []) {
+                if (type === "tandem" || type === "solo") {
+                    tags.appendChild(makeTag(text(type)));
+                }
+            }
+
+            const places = document.createElement("p");
+            places.className = "pilot-locations";
+
+            places.textContent = (pilot.locations || [])
+                .map(locationName)
+                .join(" · ");
+
+            content.append(heading, tags, places);
+
+            const biography = localized(pilot.bio);
+
+            if (biography) {
+                const paragraph = document.createElement("p");
+
+                paragraph.className = "pilot-bio";
+                paragraph.textContent = biography;
+
+                content.appendChild(paragraph);
+            }
+
+            card.append(photoWrap, content);
+
+            return card;
+        }
+
+        function renderPilots() {
+            const selectedLocation = locationSelect.value;
+            const selectedType = typeSelect.value;
+
+            const filtered = pilots.filter(pilot => {
+                const matchesLocation =
+                    selectedLocation === "all" ||
+                    (pilot.locations || []).includes(
+                        selectedLocation
                     );
-                }
 
-                typeSelect.replaceChildren(
-                    new Option(text("allTypes"), "all"),
-                    new Option(text("tandem"), "tandem"),
-                    new Option(text("solo"), "solo")
-                );
+                const matchesType =
+                    selectedType === "all" ||
+                    (pilot.types || []).includes(
+                        selectedType
+                    );
 
-                locationSelect.value = previousLocation;
-                typeSelect.value = previousType;
+                return matchesLocation && matchesType;
+            });
 
-                document.title =
-                    text("title") + " | " + text("federation");
+            const fragment = document.createDocumentFragment();
 
-                renderPilots();
+            for (const pilot of filtered) {
+                fragment.appendChild(makeCard(pilot));
             }
 
-            locationSelect.addEventListener("change", renderPilots);
-            typeSelect.addEventListener("change", renderPilots);
+            grid.replaceChildren(fragment);
 
-            form.addEventListener("submit", event => {
-                event.preventDefault();
-            });
+            count.textContent =
+                `${text("count")}: ${filtered.length}`;
 
-            form.addEventListener("reset", event => {
-                event.preventDefault();
-                locationSelect.value = "all";
-                typeSelect.value = "all";
-                renderPilots();
-            });
+            empty.hidden = filtered.length > 0;
 
-            /*
-             * საერთო languages.js ენის შეცვლისას
-             * განაახლებს html-ის lang ატრიბუტს.
-             */
+            emptyText.textContent = pilots.length
+                ? text("empty")
+                : text("pending");
+        }
 
-            new MutationObserver(updateLanguage).observe(
-                document.documentElement,
-                {
-                    attributes: true,
-                    attributeFilter: ["lang"]
+        function updateHeader() {
+            const language = getLanguage();
+            const flag = document.getElementById("language-flag");
+
+            if (flag) {
+                flag.innerHTML = flags[language] || flags.ka;
+            }
+
+            const pilotsLink =
+                document.getElementById("pilots-nav-link");
+
+            const adventureLink =
+                document.getElementById("adventure-nav-link");
+
+            if (pilotsLink) {
+                pilotsLink.textContent = text("title");
+            }
+
+            if (adventureLink) {
+                adventureLink.textContent = text("adventure");
+            }
+        }
+
+        function updateLanguage() {
+            const previousLocation =
+                locationSelect.value || "all";
+
+            const previousType =
+                typeSelect.value || "all";
+
+            document.querySelectorAll(
+                "[data-pilot-text]"
+            ).forEach(element => {
+                const key = element.dataset.pilotText;
+
+                if (texts[key]) {
+                    element.textContent = text(key);
                 }
+            });
+
+            locationSelect.replaceChildren(
+                new Option(text("allLocations"), "all")
             );
 
-            window.addEventListener("load", updateLanguage);
+            for (const key of Object.keys(locations)) {
+                locationSelect.appendChild(
+                    new Option(locationName(key), key)
+                );
+            }
 
-            updateLanguage();
-        })();
+            typeSelect.replaceChildren(
+                new Option(text("allTypes"), "all"),
+                new Option(text("tandem"), "tandem"),
+                new Option(text("solo"), "solo")
+            );
+
+            locationSelect.value =
+                previousLocation === "all" ||
+                Object.prototype.hasOwnProperty.call(
+                    locations,
+                    previousLocation
+                )
+                    ? previousLocation
+                    : "all";
+
+            typeSelect.value =
+                ["all", "tandem", "solo"].includes(previousType)
+                    ? previousType
+                    : "all";
+
+            document.title =
+                text("title") + " | " + text("federation");
+
+            updateHeader();
+            renderPilots();
+        }
+
+        locationSelect.addEventListener(
+            "change",
+            renderPilots
+        );
+
+        typeSelect.addEventListener(
+            "change",
+            renderPilots
+        );
+
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+        });
+
+        form.addEventListener("reset", event => {
+            event.preventDefault();
+
+            locationSelect.value = "all";
+            typeSelect.value = "all";
+
+            renderPilots();
+        });
+
+        new MutationObserver(updateLanguage).observe(
+            document.documentElement,
+            {
+                attributes: true,
+                attributeFilter: ["lang"]
+            }
+        );
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            updateLanguage
+        );
+
+        window.addEventListener("load", updateLanguage);
+
+        updateLanguage();
+    })();
     </script>
 </body>
 </html>
