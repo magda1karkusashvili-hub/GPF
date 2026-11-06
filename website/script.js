@@ -1,460 +1,845 @@
+(() => {
+    "use strict";
 
-/* ვარიოს ხმა — მობილურის მხარდაჭერით */
+    function initializeSite() {
+        if (window.GPFSiteInitialized) return;
+        window.GPFSiteInitialized = true;
 
-const hero = document.getElementById("home");
-const controls = document.getElementById("vario-controls");
-const button = document.getElementById("vario-toggle");
-const volume = document.getElementById("vario-volume");
-const volumeText = document.getElementById("vario-volume-text");
-const status = document.getElementById("vario-status");
+        const translate = text =>
+            typeof window.GPFTranslate === "function"
+                ? window.GPFTranslate(text)
+                : text;
 
-if (!hero || !controls || !button || !volume) return;
+        /* =========================
+           წელი
+        ========================= */
 
-const yellowWings = Array.from(
-    hero.querySelectorAll('[data-vario="true"]')
-);
+        const year = document.getElementById("year");
 
-if (!yellowWings.length) {
-    controls.hidden = true;
-    return;
-}
-
-controls.hidden = false;
-
-const audioLabels = {
-    ka: {
-        on: "🔊 ვარიოს ჩართვა",
-        off: "🔇 ვარიოს გამორთვა",
-        volume: "ხმა",
-        ready: "ხმა მიბმულია ყვითელ პარაპლანებზე.",
-        active: "ვარიო ჩართულია.",
-        error: "ხმა ვერ ჩაირთო. სცადეთ ხელახლა."
-    },
-    en: {
-        on: "🔊 Enable vario",
-        off: "🔇 Disable vario",
-        volume: "Volume",
-        ready: "Sound follows the yellow paragliders.",
-        active: "Vario enabled.",
-        error: "Audio could not start. Try again."
-    },
-    fr: {
-        on: "🔊 Activer le vario",
-        off: "🔇 Couper le vario",
-        volume: "Volume",
-        ready: "Le son suit les parapentes jaunes.",
-        active: "Vario activé.",
-        error: "Impossible d’activer le son. Réessayez."
-    },
-    ar: {
-        on: "🔊 تشغيل الفاريو",
-        off: "🔇 إيقاف الفاريو",
-        volume: "الصوت",
-        ready: "يتبع الصوت المظلات الصفراء.",
-        active: "الفاريو يعمل.",
-        error: "تعذر تشغيل الصوت. حاول مجددًا."
-    },
-    zh: {
-        on: "🔊 开启升降仪声音",
-        off: "🔇 关闭升降仪声音",
-        volume: "音量",
-        ready: "声音跟随黄色滑翔伞。",
-        active: "升降仪声音已开启。",
-        error: "无法开启声音，请重试。"
-    }
-};
-
-let enabled = false;
-let busy = false;
-let failed = false;
-
-let context;
-let oscillator;
-let output;
-
-let animationFrame = 0;
-let lastSample = 0;
-let nextTone = 0;
-let startupUntil = 0;
-
-let selectedWing = null;
-let selectedAt = 0;
-let toneMode = "silent";
-
-const positions = new Map();
-const speeds = new Map();
-
-function updateAudioLabels() {
-    const language =
-        document.documentElement.lang.split("-")[0];
-
-    const text = audioLabels[language] || audioLabels.ka;
-
-    button.textContent = enabled ? text.off : text.on;
-    button.setAttribute("aria-pressed", String(enabled));
-    volumeText.textContent = text.volume;
-
-    status.textContent = failed
-        ? text.error
-        : enabled
-            ? text.active
-            : text.ready;
-}
-
-function resetMovement() {
-    positions.clear();
-    speeds.clear();
-    lastSample = 0;
-    selectedWing = null;
-}
-
-function muteAudio() {
-    if (!context || !output) return;
-
-    const now = context.currentTime;
-
-    output.gain.cancelScheduledValues(now);
-    output.gain.setTargetAtTime(0, now, 0.015);
-
-    toneMode = "silent";
-}
-
-function prepareAudio() {
-    if (context) return;
-
-    const AudioEngine =
-        window.AudioContext || window.webkitAudioContext;
-
-    if (!AudioEngine) {
-        throw new Error("Audio unavailable");
-    }
-
-    context = new AudioEngine();
-
-    oscillator = context.createOscillator();
-    output = context.createGain();
-
-    /*
-     * Triangle უფრო მკვეთრია, ვიდრე წინა sine,
-     * მაგრამ ხმა ზედმეტად მაღალი არ ხდება.
-     */
-    oscillator.type = "triangle";
-    oscillator.frequency.value = 1600;
-    output.gain.value = 0;
-
-    oscillator.connect(output);
-    output.connect(context.destination);
-
-    oscillator.start();
-}
-
-function beep(frequency, duration, level, rising = false) {
-    const now = context.currentTime;
-
-    oscillator.frequency.cancelScheduledValues(now);
-    oscillator.frequency.setValueAtTime(frequency, now);
-
-    /*
-     * აწევისას თითოეული სიგნალიც მაღლა იწევს.
-     */
-    if (rising) {
-        oscillator.frequency.linearRampToValueAtTime(
-            frequency + 180,
-            now + duration
-        );
-    }
-
-    output.gain.cancelScheduledValues(now);
-    output.gain.setValueAtTime(0, now);
-    output.gain.linearRampToValueAtTime(level, now + 0.008);
-
-    output.gain.setValueAtTime(
-        level,
-        now + Math.max(0.012, duration - 0.018)
-    );
-
-    output.gain.linearRampToValueAtTime(
-        0,
-        now + duration
-    );
-}
-
-function visibleHero() {
-    const box = hero.getBoundingClientRect();
-
-    return (
-        !document.hidden &&
-        box.bottom > 0 &&
-        box.top < window.innerHeight
-    );
-}
-
-function measureSpeed(timestamp) {
-    const elapsed = lastSample
-        ? (timestamp - lastSample) / 1000
-        : 0;
-
-    lastSample = timestamp;
-
-    const heroBox = hero.getBoundingClientRect();
-    const candidates = [];
-
-    for (const wing of yellowWings) {
-        const box = wing.getBoundingClientRect();
-
-        const y =
-            box.top + box.height / 2 - heroBox.top;
-
-        const previous = positions.get(wing);
-        positions.set(wing, y);
-
-        if (
-            previous === undefined ||
-            elapsed <= 0 ||
-            elapsed > 0.3
-        ) {
-            speeds.set(wing, 0);
-            continue;
+        if (year) {
+            year.textContent = new Date().getFullYear();
         }
 
-        /*
-         * ეკრანის მასშტაბის გათვალისწინება:
-         * მობილურზე პატარა მოძრაობაც სწორად იზომება.
-         */
-        const matrix = wing.getScreenCTM();
+        document.querySelectorAll(".motion-control").forEach(element => {
+            element.remove();
+        });
 
-        const scale = matrix
-            ? Math.max(Math.hypot(matrix.c, matrix.d), 0.01)
-            : 1;
+        /* =========================
+           მობილური მენიუ
+        ========================= */
 
-        const rawSpeed =
-            (previous - y) / elapsed / scale;
+        const menuButton = document.getElementById("menu-toggle");
+        const menu = document.getElementById("main-menu");
+        const mobileQuery = window.matchMedia("(max-width: 850px)");
 
-        const oldSpeed = speeds.get(wing) || 0;
-        const smoothing = 1 - Math.exp(-elapsed * 8);
+        function setMenuOpen(open) {
+            if (!menuButton || !menu) return;
 
-        const speed =
-            oldSpeed + (rawSpeed - oldSpeed) * smoothing;
+            const expanded = mobileQuery.matches && open;
 
-        speeds.set(wing, speed);
-
-        const visible =
-            box.right > heroBox.left &&
-            box.left < heroBox.right &&
-            box.bottom > heroBox.top &&
-            box.top < heroBox.bottom;
-
-        if (visible) {
-            candidates.push({ wing, speed });
-        }
-    }
-
-    candidates.sort(
-        (a, b) => Math.abs(b.speed) - Math.abs(a.speed)
-    );
-
-    const strongest = candidates[0];
-
-    if (!strongest) {
-        selectedWing = null;
-        return 0;
-    }
-
-    const current = candidates.find(
-        item => item.wing === selectedWing
-    );
-
-    if (
-        !current ||
-        (
-            timestamp - selectedAt > 1200 &&
-            Math.abs(strongest.speed) >
-                Math.abs(current.speed) * 1.4 + 1
-        )
-    ) {
-        selectedWing = strongest.wing;
-        selectedAt = timestamp;
-
-        muteAudio();
-        nextTone = context.currentTime;
-
-        return strongest.speed;
-    }
-
-    return current.speed;
-}
-
-function audioLoop(timestamp) {
-    if (!enabled) return;
-
-    animationFrame = requestAnimationFrame(audioLoop);
-
-    if (!visibleHero()) {
-        muteAudio();
-        resetMovement();
-        return;
-    }
-
-    if (context.state !== "running") {
-        resetMovement();
-        return;
-    }
-
-    const now = context.currentTime;
-
-    if (now < startupUntil) return;
-    if (lastSample && timestamp - lastSample < 33) return;
-
-    const speed = measureSpeed(timestamp);
-    const level = Number(volume.value) / 100 * 0.10;
-
-    if (level === 0 || Math.abs(speed) < 0.8) {
-        muteAudio();
-        nextTone = now;
-        return;
-    }
-
-    if (speed > 0) {
-        if (toneMode !== "climb") {
-            muteAudio();
-            toneMode = "climb";
-            nextTone = now;
-        }
-
-        /*
-         * უფრო მკვეთრი აფრენის ხმა:
-         * 1400–2800 Hz და გახშირებული სიგნალები.
-         */
-        const intensity = Math.min(speed / 65, 1);
-
-        const frequency = 1400 + intensity * 1400;
-        const interval = 0.48 - intensity * 0.35;
-        const duration = Math.min(0.075, interval * 0.45);
-
-        if (now >= nextTone) {
-            beep(frequency, duration, level, true);
-            nextTone = now + interval;
-        }
-    } else {
-        const intensity = Math.min(-speed / 65, 1);
-
-        if (toneMode !== "sink") {
-            muteAudio();
-            toneMode = "sink";
-        }
-
-        oscillator.frequency.cancelScheduledValues(now);
-
-        oscillator.frequency.setTargetAtTime(
-            380 - intensity * 150,
-            now,
-            0.06
-        );
-
-        output.gain.cancelScheduledValues(now);
-
-        output.gain.setTargetAtTime(
-            level * 0.45,
-            now,
-            0.04
-        );
-
-        nextTone = now;
-    }
-}
-
-button.addEventListener("click", async () => {
-    if (busy) return;
-
-    busy = true;
-    button.disabled = true;
-
-    try {
-        if (enabled) {
-            enabled = false;
-
-            cancelAnimationFrame(animationFrame);
-            muteAudio();
-            resetMovement();
-
-            if (context?.state === "running") {
-                await context.suspend();
-            }
-        } else {
-            /*
-             * AudioContext იქმნება და resume იძახება
-             * უშუალოდ მომხმარებლის დაჭერისას.
-             */
-            prepareAudio();
-
-            const resumeRequest = context.resume();
-            await resumeRequest;
-
-            if (context.state !== "running") {
-                throw new Error("Audio suspended");
-            }
-
-            enabled = true;
-            failed = false;
-
-            resetMovement();
-
-            /*
-             * ჩართვისას მოკლე, მკვეთრი საცდელი ხმა.
-             */
-            beep(
-                1600,
-                0.12,
-                Number(volume.value) / 100 * 0.10,
-                true
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(expanded)
             );
 
-            startupUntil = context.currentTime + 0.17;
-            nextTone = startupUntil;
+            menu.classList.toggle("is-open", expanded);
+            menu.classList.remove("open", "active");
 
-            animationFrame = requestAnimationFrame(audioLoop);
+            if (mobileQuery.matches) {
+                menu.style.display = expanded ? "flex" : "none";
+            } else {
+                menu.style.removeProperty("display");
+            }
         }
-    } catch (error) {
-        enabled = false;
-        failed = true;
 
-        cancelAnimationFrame(animationFrame);
-        muteAudio();
+        if (menuButton && menu) {
+            menuButton.addEventListener("click", event => {
+                event.preventDefault();
 
-        console.error("Vario audio:", error);
-    } finally {
-        busy = false;
-        button.disabled = false;
-        updateAudioLabels();
+                const isOpen =
+                    menuButton.getAttribute("aria-expanded") === "true";
+
+                setMenuOpen(!isOpen);
+            });
+
+            menu.addEventListener("click", event => {
+                if (
+                    event.target instanceof Element &&
+                    event.target.closest("a")
+                ) {
+                    setMenuOpen(false);
+                }
+            });
+
+            document.addEventListener("click", event => {
+                if (
+                    !menu.contains(event.target) &&
+                    !menuButton.contains(event.target)
+                ) {
+                    setMenuOpen(false);
+                }
+            });
+
+            document.addEventListener("keydown", event => {
+                if (
+                    event.key === "Escape" &&
+                    menuButton.getAttribute("aria-expanded") === "true"
+                ) {
+                    setMenuOpen(false);
+                    menuButton.focus();
+                }
+            });
+
+            mobileQuery.addEventListener("change", () => {
+                setMenuOpen(false);
+            });
+
+            setMenuOpen(false);
+        }
+
+        /* =========================
+           სიახლეების ფილტრები
+        ========================= */
+
+        const newsButtons = Array.from(
+            document.querySelectorAll("[data-news-filter]")
+        );
+
+        const newsCards = Array.from(
+            document.querySelectorAll("[data-news-category]")
+        );
+
+        newsButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const category = button.dataset.newsFilter;
+
+                newsButtons.forEach(item => {
+                    const active = item === button;
+
+                    item.classList.toggle("is-active", active);
+                    item.setAttribute("aria-pressed", String(active));
+                });
+
+                newsCards.forEach(card => {
+                    const visible =
+                        category === "all" ||
+                        card.dataset.newsCategory === category;
+
+                    card.hidden = !visible;
+
+                    if (visible) {
+                        card.style.removeProperty("display");
+                    } else {
+                        card.style.setProperty("display", "none");
+                    }
+                });
+            });
+        });
+
+        /* =========================
+           ოპერატორთან დაკავშირება
+        ========================= */
+
+        const operators = {
+            "Gudauri": "995558338989",
+            "Ananuri": "995599045777",
+            "Tbilisi Sea": "995555004993",
+            "Mestia": "995593988811",
+            "Bakuriani": "995599334486"
+        };
+
+        const locationAliases = {
+            gudauri: "Gudauri",
+            ananuri: "Ananuri",
+            "tbilisi-sea": "Tbilisi Sea",
+            tbilisi_sea: "Tbilisi Sea",
+            "tbilisi sea": "Tbilisi Sea",
+            mestia: "Mestia",
+            bakuriani: "Bakuriani"
+        };
+
+        const form = document.getElementById("adventure-form");
+        const locationField =
+            document.getElementById("adventure-location");
+
+        const dateField = document.getElementById("adventure-date");
+        const peopleField = document.getElementById("adventure-people");
+        const nameField = document.getElementById("adventure-name");
+        const phoneField = document.getElementById("adventure-phone");
+        const messageField = document.getElementById("adventure-message");
+
+        const callButton =
+            document.getElementById("adventure-call-button");
+
+        function getTodayInGeorgia() {
+            const parts = new Intl.DateTimeFormat("en-US", {
+                timeZone: "Asia/Tbilisi",
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }).formatToParts(new Date());
+
+            const values = Object.fromEntries(
+                parts.map(part => [part.type, part.value])
+            );
+
+            return `${values.year}-${values.month}-${values.day}`;
+        }
+
+        function getOperator() {
+            if (!locationField) return "";
+
+            locationField.setCustomValidity("");
+
+            if (!locationField.value) {
+                locationField.reportValidity();
+                locationField.focus();
+                return "";
+            }
+
+            const number = operators[locationField.value];
+
+            if (!number) {
+                locationField.setCustomValidity(
+                    "ამ ადგილის ოპერატორის ნომერი ჯერ არ არის დამატებული."
+                );
+
+                locationField.reportValidity();
+                return "";
+            }
+
+            return number;
+        }
+
+        if (locationField) {
+            locationField.addEventListener("change", () => {
+                locationField.setCustomValidity("");
+            });
+
+            const requested = new URLSearchParams(
+                window.location.search
+            ).get("location");
+
+            if (requested) {
+                const location =
+                    locationAliases[requested.toLowerCase()] || requested;
+
+                const available = Array.from(locationField.options).some(
+                    option => option.value === location
+                );
+
+                if (available) locationField.value = location;
+            }
+        }
+
+        if (dateField) {
+            dateField.min = getTodayInGeorgia();
+
+            dateField.addEventListener("input", () => {
+                dateField.setCustomValidity("");
+            });
+        }
+
+        if (phoneField) {
+            phoneField.addEventListener("input", () => {
+                phoneField.setCustomValidity("");
+            });
+        }
+
+        if (nameField) {
+            nameField.addEventListener("input", () => {
+                nameField.setCustomValidity("");
+            });
+        }
+
+        if (callButton) {
+            callButton.addEventListener("click", event => {
+                event.preventDefault();
+
+                const number = getOperator();
+                if (!number) return;
+
+                window.location.href = "tel:+" + number;
+            });
+        }
+
+        if (form) {
+            form.addEventListener("submit", event => {
+                event.preventDefault();
+
+                const number = getOperator();
+                if (!number) return;
+
+                if (dateField) {
+                    const today = getTodayInGeorgia();
+                    dateField.min = today;
+
+                    dateField.setCustomValidity(
+                        dateField.value && dateField.value < today
+                            ? "აირჩიეთ მიმდინარე ან მომავალი თარიღი."
+                            : ""
+                    );
+                }
+
+                if (nameField) {
+                    nameField.setCustomValidity(
+                        nameField.value.trim().length < 2
+                            ? "მიუთითეთ სახელი და გვარი."
+                            : ""
+                    );
+                }
+
+                if (phoneField) {
+                    const normalized = phoneField.value
+                        .trim()
+                        .replace(/[\s()-]/g, "");
+
+                    phoneField.value = normalized;
+
+                    phoneField.setCustomValidity(
+                        /^\+[1-9][0-9]{7,14}$/.test(normalized)
+                            ? ""
+                            : "მიუთითეთ ტელეფონის ნომერი + ნიშნითა და ქვეყნის კოდით."
+                    );
+                }
+
+                if (!form.reportValidity()) return;
+
+                const lines = [
+                    "NEW ADVENTURE REQUEST",
+                    "",
+                    "Hello, I am interested in your company’s services and would like to go paragliding.",
+                    "Please confirm receipt of this message.",
+                    "",
+                    "Location: " + locationField.value,
+                    "Preferred date: " + (dateField?.value || ""),
+                    "Participants: " + (peopleField?.value || "1"),
+                    "Name: " + (nameField?.value.trim() || ""),
+                    "Phone: " + (phoneField?.value || "")
+                ];
+
+                const additional = messageField?.value.trim();
+
+                if (additional) {
+                    lines.push(
+                        "",
+                        "Additional information:",
+                        additional
+                    );
+                }
+
+                const localized =
+                    typeof window.GPFMessage === "function"
+                        ? window.GPFMessage(lines)
+                        : lines;
+
+                const url =
+                    "https://wa.me/" +
+                    number +
+                    "?text=" +
+                    encodeURIComponent(localized.join("\n"));
+
+                /*
+                 * იმავე ჩანართიდან გადასვლა მობილურში
+                 * ამცირებს ახალი ფანჯრის დაბლოკვის პრობლემას.
+                 */
+                window.location.assign(url);
+            });
+        }
+
+        /* =========================
+           ძველი გალერეის გაფართოება
+
+           ახალი ალბომების HTML-ს საკუთარი
+           გაფართოების კოდი აქვს.
+        ========================= */
+
+        const gallery = document.getElementById("gallery-grid");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage =
+            document.getElementById("lightbox-image");
+
+        if (gallery && lightbox && lightboxImage) {
+            const items = Array.from(
+                gallery.querySelectorAll(".gallery-item")
+            );
+
+            const counter =
+                document.getElementById("lightbox-counter");
+
+            const close =
+                document.getElementById("lightbox-close");
+
+            const previous =
+                document.getElementById("lightbox-prev");
+
+            const next =
+                document.getElementById("lightbox-next");
+
+            let index = 0;
+            let opener = null;
+            let oldOverflow = "";
+
+            function showPhoto(nextIndex) {
+                if (!items.length) return;
+
+                index = (nextIndex + items.length) % items.length;
+
+                const source = items[index].querySelector("img");
+                if (!source) return;
+
+                lightboxImage.src = source.getAttribute("src");
+                lightboxImage.alt = source.alt;
+
+                if (counter) {
+                    counter.textContent = `${index + 1} / ${items.length}`;
+                }
+            }
+
+            items.forEach((item, itemIndex) => {
+                item.removeAttribute("target");
+
+                item.addEventListener("click", event => {
+                    event.preventDefault();
+
+                    opener = item;
+                    showPhoto(itemIndex);
+
+                    if (!lightbox.open) {
+                        oldOverflow =
+                            document.documentElement.style.overflow;
+
+                        lightbox.showModal();
+                        document.documentElement.style.overflow = "hidden";
+                    }
+                });
+            });
+
+            close?.addEventListener("click", () => {
+                lightbox.close();
+            });
+
+            previous?.addEventListener("click", () => {
+                showPhoto(index - 1);
+            });
+
+            next?.addEventListener("click", () => {
+                showPhoto(index + 1);
+            });
+
+            lightbox.addEventListener("keydown", event => {
+                if (event.key === "ArrowLeft") {
+                    event.preventDefault();
+                    showPhoto(index - 1);
+                }
+
+                if (event.key === "ArrowRight") {
+                    event.preventDefault();
+                    showPhoto(index + 1);
+                }
+            });
+
+            lightbox.addEventListener("click", event => {
+                if (event.target === lightbox) lightbox.close();
+            });
+
+            lightbox.addEventListener("close", () => {
+                document.documentElement.style.overflow = oldOverflow;
+                opener?.focus({ preventScroll: true });
+            });
+        }
+
+        /* =========================
+           ვარიოს ხმა
+
+           ფუნქციის გარეთ return აღარ არის.
+           სხვა გვერდებზე ეს ნაწილი უბრალოდ გამოტოვდება.
+        ========================= */
+
+        initializeVario();
+
+        function initializeVario() {
+            const hero = document.getElementById("home");
+            const controls = document.getElementById("vario-controls");
+            const button = document.getElementById("vario-toggle");
+            const volume = document.getElementById("vario-volume");
+            const volumeText =
+                document.getElementById("vario-volume-text");
+            const status = document.getElementById("vario-status");
+
+            if (!hero || !controls || !button || !volume) return;
+
+            /*
+             * თუ მთავარ გვერდზე ვარიო უკვე ინიციალიზებულია,
+             * მეორე ხმის დამმუშავებელი არ დაემატება.
+             */
+            if (button.dataset.gpfVarioInitialized === "true") return;
+            button.dataset.gpfVarioInitialized = "true";
+
+            const wings = Array.from(
+                hero.querySelectorAll('[data-vario="true"]')
+            );
+
+            if (!wings.length) {
+                controls.hidden = true;
+                return;
+            }
+
+            controls.hidden = false;
+
+            let context = null;
+            let oscillator = null;
+            let gain = null;
+            let enabled = false;
+            let busy = false;
+            let frame = 0;
+            let lastTime = 0;
+            let nextBeep = 0;
+            let smoothedClimb = 0;
+
+            const positions = new WeakMap();
+
+            const audioText = {
+                ka: [
+                    "🔊 ვარიოს ჩართვა",
+                    "🔇 ვარიოს გამორთვა",
+                    "ხმა მიბმულია ყვითელ პარაპლანებზე.",
+                    "ვარიო ჩართულია.",
+                    "ხმა ვერ ჩაირთო. სცადეთ ხელახლა."
+                ],
+                en: [
+                    "🔊 Enable vario",
+                    "🔇 Disable vario",
+                    "Sound follows the yellow paragliders.",
+                    "Vario enabled.",
+                    "Audio could not start. Try again."
+                ],
+                fr: [
+                    "🔊 Activer le vario",
+                    "🔇 Couper le vario",
+                    "Le son suit les parapentes jaunes.",
+                    "Vario activé.",
+                    "Impossible d’activer le son. Réessayez."
+                ],
+                ar: [
+                    "🔊 تشغيل الفاريو",
+                    "🔇 إيقاف الفاريو",
+                    "يتبع الصوت المظلات الصفراء.",
+                    "الفاريو يعمل.",
+                    "تعذر تشغيل الصوت. حاول مجددًا."
+                ],
+                zh: [
+                    "🔊 开启升降仪声音",
+                    "🔇 关闭升降仪声音",
+                    "声音随黄色滑翔伞变化。",
+                    "升降仪声音已开启。",
+                    "声音无法启动，请重试。"
+                ]
+            };
+
+            function getAudioText() {
+                const language =
+                    document.documentElement.lang.split("-")[0];
+
+                return audioText[language] || audioText.ka;
+            }
+
+            function getVolume() {
+                const maximum = Number(volume.max) || 100;
+                const value = Number(volume.value) || 0;
+
+                return Math.max(0, Math.min(1, value / maximum));
+            }
+
+            function updateAudioLabels() {
+                const text = getAudioText();
+
+                button.textContent = enabled ? text[1] : text[0];
+                button.setAttribute("aria-pressed", String(enabled));
+
+                if (volumeText) {
+                    volumeText.textContent =
+                        Math.round(getVolume() * 100) + "%";
+                }
+
+                if (status) {
+                    status.textContent = enabled ? text[3] : text[2];
+                }
+            }
+
+            function mute() {
+                if (!context || !gain) return;
+
+                const now = context.currentTime;
+                gain.gain.cancelScheduledValues(now);
+                gain.gain.setValueAtTime(0, now);
+            }
+
+            function beep(frequency, duration, loudness) {
+                if (!context || !oscillator || !gain) return;
+
+                const now = context.currentTime;
+
+                oscillator.frequency.cancelScheduledValues(now);
+                oscillator.frequency.setValueAtTime(frequency, now);
+                oscillator.frequency.linearRampToValueAtTime(
+                    frequency + 180,
+                    now + duration
+                );
+
+                gain.gain.cancelScheduledValues(now);
+                gain.gain.setValueAtTime(0, now);
+                gain.gain.linearRampToValueAtTime(
+                    loudness,
+                    now + 0.008
+                );
+                gain.gain.setValueAtTime(
+                    loudness,
+                    now + Math.max(0.009, duration - 0.015)
+                );
+                gain.gain.linearRampToValueAtTime(
+                    0,
+                    now + duration
+                );
+            }
+
+            function resetMovement() {
+                lastTime = 0;
+                smoothedClimb = 0;
+                wings.forEach(wing => positions.delete(wing));
+            }
+
+            function tick(timestamp) {
+                if (!enabled) return;
+
+                frame = requestAnimationFrame(tick);
+
+                const bounds = hero.getBoundingClientRect();
+
+                const visible =
+                    !document.hidden &&
+                    bounds.bottom > 0 &&
+                    bounds.top < window.innerHeight;
+
+                if (!visible || context?.state !== "running") {
+                    mute();
+                    resetMovement();
+                    return;
+                }
+
+                if (!lastTime) {
+                    lastTime = timestamp;
+
+                    wings.forEach(wing => {
+                        positions.set(
+                            wing,
+                            wing.getBoundingClientRect().top - bounds.top
+                        );
+                    });
+
+                    return;
+                }
+
+                const elapsed = (timestamp - lastTime) / 1000;
+                if (elapsed < 0.05) return;
+
+                lastTime = timestamp;
+
+                if (elapsed > 0.5) {
+                    resetMovement();
+                    return;
+                }
+
+                let strongest = 0;
+
+                wings.forEach(wing => {
+                    const rect = wing.getBoundingClientRect();
+                    const y = rect.top - bounds.top;
+                    const previousY = positions.get(wing);
+
+                    positions.set(wing, y);
+
+                    if (
+                        previousY === undefined ||
+                        rect.right < bounds.left ||
+                        rect.left > bounds.right ||
+                        rect.bottom < Math.max(0, bounds.top) ||
+                        rect.top > Math.min(window.innerHeight, bounds.bottom)
+                    ) {
+                        return;
+                    }
+
+                    /*
+                     * ეკრანის ზომისგან შედარებით დამოუკიდებელი
+                     * ვერტიკალური გადაადგილება.
+                     */
+                    const speed =
+                        ((previousY - y) / Math.max(bounds.height, 1)) /
+                        elapsed;
+
+                    /* ანიმაციის ციკლის გადახტომის გამოტოვება */
+                    if (Math.abs(speed) > 1.5) return;
+
+                    if (Math.abs(speed) > Math.abs(strongest)) {
+                        strongest = speed;
+                    }
+                });
+
+                smoothedClimb +=
+                    (strongest - smoothedClimb) * 0.25;
+
+                const now = context.currentTime;
+                const loudness = getVolume();
+
+                if (now < nextBeep) return;
+
+                if (loudness === 0) {
+                    mute();
+                    return;
+                }
+
+                if (smoothedClimb > 0.003) {
+                    const intensity = Math.min(
+                        1,
+                        smoothedClimb / 0.18
+                    );
+
+                    const interval = 0.48 - intensity * 0.34;
+
+                    beep(
+                        1400 + intensity * 1400,
+                        Math.min(0.11, interval * 0.55),
+                        loudness * 0.12
+                    );
+
+                    nextBeep = now + interval;
+                } else if (smoothedClimb < -0.003) {
+                    const intensity = Math.min(
+                        1,
+                        Math.abs(smoothedClimb) / 0.18
+                    );
+
+                    beep(
+                        380 - intensity * 150,
+                        0.22,
+                        loudness * 0.055
+                    );
+
+                    nextBeep = now + 0.3;
+                } else {
+                    mute();
+                }
+            }
+
+            button.addEventListener("click", async () => {
+                if (busy) return;
+
+                if (enabled) {
+                    enabled = false;
+                    cancelAnimationFrame(frame);
+                    mute();
+                    resetMovement();
+                    updateAudioLabels();
+                    return;
+                }
+
+                busy = true;
+                button.disabled = true;
+
+                try {
+                    const AudioContextClass =
+                        window.AudioContext || window.webkitAudioContext;
+
+                    if (!AudioContextClass) {
+                        throw new Error("Audio unavailable");
+                    }
+
+                    if (!context) {
+                        context = new AudioContextClass();
+
+                        oscillator = context.createOscillator();
+                        gain = context.createGain();
+
+                        oscillator.type = "triangle";
+                        gain.gain.value = 0;
+
+                        oscillator.connect(gain);
+                        gain.connect(context.destination);
+                        oscillator.start();
+                    }
+
+                    /*
+                     * resume უშუალოდ მომხმარებლის დაჭერის
+                     * დამმუშავებელში სრულდება.
+                     */
+                    await context.resume();
+
+                    if (context.state !== "running") {
+                        throw new Error("Audio suspended");
+                    }
+
+                    enabled = true;
+                    resetMovement();
+
+                    beep(1600, 0.12, getVolume() * 0.1);
+                    nextBeep = context.currentTime + 0.18;
+
+                    frame = requestAnimationFrame(tick);
+                    updateAudioLabels();
+                } catch (error) {
+                    enabled = false;
+                    mute();
+                    updateAudioLabels();
+
+                    if (status) {
+                        status.textContent = getAudioText()[4];
+                    }
+
+                    console.error("Vario:", error);
+                } finally {
+                    busy = false;
+                    button.disabled = false;
+                }
+            });
+
+            volume.addEventListener("input", () => {
+                updateAudioLabels();
+
+                if (getVolume() === 0) mute();
+            });
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden) mute();
+                resetMovement();
+            });
+
+            window.addEventListener("pagehide", () => {
+                enabled = false;
+                cancelAnimationFrame(frame);
+                mute();
+                resetMovement();
+                updateAudioLabels();
+            });
+
+            new MutationObserver(updateAudioLabels).observe(
+                document.documentElement,
+                {
+                    attributes: true,
+                    attributeFilter: ["lang"]
+                }
+            );
+
+            updateAudioLabels();
+        }
     }
-});
 
-volume.addEventListener("input", () => {
-    if (Number(volume.value) === 0) {
-        muteAudio();
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeSite,
+            { once: true }
+        );
+    } else {
+        initializeSite();
     }
-});
-
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) muteAudio();
-    resetMovement();
-});
-
-window.addEventListener("pagehide", () => {
-    enabled = false;
-
-    cancelAnimationFrame(animationFrame);
-    muteAudio();
-    resetMovement();
-    updateAudioLabels();
-});
-
-new MutationObserver(updateAudioLabels).observe(
-    document.documentElement,
-    {
-        attributes: true,
-        attributeFilter: ["lang"]
-    }
-);
-
-updateAudioLabels();
+})();
