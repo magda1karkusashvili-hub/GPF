@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="დაგეგმე შენი თავგადასავალი საქართველოში. აირჩიე პარაგლაიდინგის ადგილი და დაუკავშირდი ადგილობრივ ოპერატორს."
+        content="დაგეგმე შენი თავგადასავალი საქართველოში. აირჩიე პარაგლაიდინგის ადგილი, მოემზადე ფრენისთვის და დაუკავშირდი ადგილობრივ ოპერატორს."
     >
 
     <meta name="theme-color" content="#123351">
@@ -26,8 +26,6 @@
     <script src="/script.js" defer></script>
 
     <style>
-        /* საერთო სათაური */
-
         .site-header {
             position: sticky;
             top: 0;
@@ -52,8 +50,6 @@
             font-weight: 700;
             line-height: 1.4;
         }
-
-        /* ენა და სოციალური ქსელები */
 
         .header-tools {
             position: absolute;
@@ -88,7 +84,7 @@
             flex: 0 0 25px;
             overflow: hidden;
             border-radius: 2px;
-            box-shadow: 0 0 0 1px rgba(255,255,255,.25);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .25);
         }
 
         .gpf-language-bar select {
@@ -96,10 +92,10 @@
             min-width: 100px;
             min-height: 32px;
             padding: 4px 7px;
-            border: 1px solid rgba(255,255,255,.25);
+            border: 1px solid rgba(255, 255, 255, .25);
             border-radius: 7px;
             background: #102c46;
-            color: #ffffff;
+            color: #fff;
             font: inherit;
             font-size: 12px;
             direction: ltr;
@@ -123,15 +119,13 @@
             border: 0;
             border-radius: 6px;
             background: transparent;
-            color: #ffffff;
+            color: #fff;
             text-decoration: none;
-            transition:
-                background 180ms ease,
-                transform 180ms ease;
+            transition: background 180ms ease, transform 180ms ease;
         }
 
         .header-social a:hover {
-            background: rgba(255,255,255,.12);
+            background: rgba(255, 255, 255, .12);
             transform: translateY(-2px);
         }
 
@@ -156,8 +150,6 @@
             display: none !important;
         }
 
-        /* ფორმის ღილაკები */
-
         .adventure-actions {
             display: grid;
             gap: 12px;
@@ -169,15 +161,13 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-
+            box-sizing: border-box;
             width: 100%;
             min-height: 52px;
             padding: 14px 20px;
-
             border: 0;
             border-radius: 8px;
-
-            color: #ffffff;
+            color: #fff;
             font: inherit;
             font-weight: 700;
             line-height: 1.4;
@@ -216,7 +206,170 @@
         .adventure-divider {
             margin: 26px 0;
             border: 0;
-            border-top: 1px solid rgba(18,59,56,.18);
+            border-top: 1px solid rgba(18, 59, 56, .18);
+        }
+
+        /* ფრენისთვის მომზადების ბლოკი */
+
+        .flight-guide {
+            padding: 76px 0;
+            background:
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(71, 166, 201, .13),
+                    transparent 45%
+                ),
+                linear-gradient(145deg, #0b1d30, #143b56);
+            color: #f2f8fc;
+            scroll-margin-top: 150px;
+        }
+
+        .flight-guide-inner {
+            display: grid;
+            grid-template-columns:
+                minmax(0, .85fr)
+                minmax(0, 1.15fr);
+            align-items: start;
+            gap: 48px;
+            box-sizing: border-box;
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .flight-guide-kicker {
+            margin: 0 0 14px;
+            color: #88d7ef;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.7;
+        }
+
+        .flight-guide h2 {
+            margin: 0 0 20px;
+            color: #fff;
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.35;
+        }
+
+        .flight-guide-intro {
+            margin: 0 0 30px;
+            color: #c5d7e5;
+            line-height: 1.9;
+        }
+
+        .flight-guide-steps {
+            display: grid;
+            gap: 23px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: flight;
+        }
+
+        .flight-guide-steps li {
+            position: relative;
+            margin: 0;
+            padding-inline-start: 48px;
+            color: #c5d7e5;
+            line-height: 1.85;
+            counter-increment: flight;
+        }
+
+        .flight-guide-steps li::before {
+            content: counter(flight, decimal-leading-zero);
+            position: absolute;
+            inset-inline-start: 0;
+            top: 2px;
+            display: grid;
+            place-items: center;
+            width: 33px;
+            height: 33px;
+            border: 1px solid rgba(136, 215, 239, .25);
+            border-radius: 10px;
+            background: rgba(136, 215, 239, .07);
+            color: #87daf0;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .flight-guide-steps strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .flight-guide-note {
+            margin: 30px 0 0;
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .035);
+            color: #c5d7e5;
+            font-size: 13px;
+            line-height: 1.85;
+        }
+
+        .flight-guide-figure {
+            margin: 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: 20px;
+            background: #0b192a;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .25);
+        }
+
+        .flight-guide-image-link {
+            display: block;
+            overflow: hidden;
+        }
+
+        .flight-guide-image-link:focus-visible {
+            outline: 3px solid #9dd7ff;
+            outline-offset: -4px;
+        }
+
+        .flight-guide-image {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            transition: filter 180ms ease;
+        }
+
+        .flight-guide-image-link:hover .flight-guide-image {
+            filter: brightness(1.06);
+        }
+
+        .flight-guide-figure figcaption {
+            padding: 16px 20px;
+            color: #bcd4e4;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .flight-guide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+            padding: 12px 16px;
+            border: 1px solid rgba(162, 230, 245, .3);
+            border-radius: 10px;
+            background: rgba(162, 230, 245, .06);
+            color: #a2e6f5;
+            line-height: 1.6;
+            text-decoration: none;
+        }
+
+        .flight-guide-link:hover {
+            background: rgba(162, 230, 245, .12);
+        }
+
+        .flight-guide-link:focus-visible {
+            outline: 2px solid #9dd7ff;
+            outline-offset: 4px;
         }
 
         /* პარაპლანის კურსორი */
@@ -226,9 +379,13 @@
                 --paraglider-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M2 12C4 1 28 1 30 12L25 14L20 12L16 14L12 12L7 14Z' fill='%232b93d1' stroke='%230d304d' stroke-width='1.2'/%3E%3Cpath d='M7 6L7 14M12 4L12 12M20 4L20 12M25 6L25 14' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3Cpath d='M3 12L15 24M29 12L17 24M9 13L15 24M23 13L17 24' fill='none' stroke='%230d304d' stroke-width='1'/%3E%3Ccircle cx='16' cy='23' r='2' fill='%23f4a340' stroke='%230d304d' stroke-width='1'/%3E%3Cpath d='M16 25L14 29L19 29' fill='none' stroke='%230d304d' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 16 3;
             }
 
-            html, body,
-            body a, body button, body select,
-            body summary, body label,
+            html,
+            body,
+            body a,
+            body button,
+            body select,
+            body summary,
+            body label,
             body input[type="checkbox"],
             body input[type="radio"] {
                 cursor: var(--paraglider-cursor), auto;
@@ -243,6 +400,22 @@
             body button:disabled,
             body select:disabled {
                 cursor: not-allowed;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .flight-guide {
+                padding: 46px 0;
+            }
+
+            .flight-guide-inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 0 18px;
+            }
+
+            .flight-guide-steps {
+                gap: 20px;
             }
         }
 
@@ -262,6 +435,13 @@
 
             .header-social {
                 gap: 6px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .header-social a,
+            .flight-guide-image {
+                transition: none;
             }
         }
     </style>
@@ -288,9 +468,6 @@
     </a>
 
     <header class="site-header">
-
-        <!-- ზედა მარჯვენა რიგი -->
-
         <div class="header-tools">
             <div class="gpf-language-bar">
                 <svg
@@ -300,7 +477,7 @@
                     aria-hidden="true"
                     focusable="false"
                 >
-                    <rect width="30" height="20" fill="#ffffff"/>
+                    <rect width="30" height="20" fill="#fff"/>
                     <path
                         d="M0 10H30 M15 0V20"
                         stroke="#e52332"
@@ -359,14 +536,14 @@
                         <rect x="3" y="3" width="18" height="18" rx="5"/>
                         <circle cx="12" cy="12" r="4"/>
                         <circle
-                            cx="17.5" cy="6.5" r="1"
+                            cx="17.5"
+                            cy="6.5"
+                            r="1"
                             fill="currentColor"
                             stroke="none"
                         />
                     </svg>
                 </a>
-
-                <!-- TikTok-ის ბმული ჯერ დასამატებელია -->
 
                 <button
                     type="button"
@@ -384,8 +561,6 @@
             </div>
         </div>
 
-        <!-- ლოგო და მენიუ -->
-
         <div class="container header-content">
             <a class="brand" href="index.html" aria-label="მთავარი">
                 <img
@@ -396,7 +571,9 @@
                     height="43"
                 >
 
-                <span class="brand-name">საქართველოს პარაგლაიდინგის ფედერაცია</span>
+                <span class="brand-name">
+                    საქართველოს პარაგლაიდინგის ფედერაცია
+                </span>
             </a>
 
             <button
@@ -409,7 +586,11 @@
                 მენიუ ☰
             </button>
 
-            <nav class="main-menu" id="main-menu" aria-label="მთავარი მენიუ">
+            <nav
+                class="main-menu"
+                id="main-menu"
+                aria-label="მთავარი მენიუ"
+            >
                 <a href="index.html">მთავარი</a>
                 <a href="about.html">ჩვენ შესახებ</a>
                 <a href="gallery.html">გალერეა</a>
@@ -429,30 +610,31 @@
                     id="adventure-nav-link"
                     aria-current="page"
                 >
-                     თავგადასავალი ↗
+                    დაგეგმე შენი თავგადასავალი ↗
                 </a>
             </nav>
         </div>
     </header>
 
     <main id="main">
+        <!-- დაჯავშნა და ოპერატორთან დაკავშირება -->
+
         <section class="section booking-section">
             <div class="container booking-layout">
-
-                <!-- შესავალი -->
-
                 <div class="booking-intro">
-                    <p class="eyebrow light">
-                        
-                    </p>
-
-                    <h2>დაგეგმე </h2>
-                    <h2> ახალი </h2>
+                    <h2>დაგეგმე</h2>
+                    <h2>ახალი</h2>
                     <h2>თავგადასავალი</h2>
 
                     <p>
-                        აირჩიეთ სასურველი ადგილი და დაუკავშირდით ადგილობრივ ოპერატორს აქტივობების, თარიღების, ფასებისა და პირობების შესათანხმებლად.
+                        აირჩიეთ სასურველი ადგილი და დაუკავშირდით
+                        ადგილობრივ ოპერატორს აქტივობების, თარიღების,
+                        ფასებისა და პირობების შესათანხმებლად.
                     </p>
+
+                    <a class="flight-guide-link" href="#flight-guide">
+                        ფრენამდე: ჩაცმულობა და მომზადება ↓
+                    </a>
 
                     <div class="booking-explanation">
                         <h3>როგორ მუშაობს</h3>
@@ -463,29 +645,34 @@
                             </li>
 
                             <li>
-                                დაურეკეთ ოპერატორს ან შეავსეთ მონაცემები WhatsApp-მოთხოვნის მოსამზადებლად.
+                                დაურეკეთ ოპერატორს ან შეავსეთ მონაცემები
+                                WhatsApp-მოთხოვნის მოსამზადებლად.
                             </li>
 
                             <li>
-                                მიუთითეთ სასურველი თარიღი და მონაწილეთა რაოდენობა.
+                                მიუთითეთ სასურველი თარიღი და
+                                მონაწილეთა რაოდენობა.
                             </li>
 
                             <li>
-                                WhatsApp გაიხსნება შევსებული ტექსტით. გასაგზავნად ჩატში დააჭირეთ გაგზავნას.
+                                WhatsApp გაიხსნება შევსებული ტექსტით.
+                                გასაგზავნად ჩატში დააჭირეთ გაგზავნას.
                             </li>
 
                             <li>
-                                აქტივობები, ფასები და პირობები უშუალოდ ოპერატორთან შეათანხმეთ.
+                                აქტივობები, ფასები და პირობები
+                                უშუალოდ ოპერატორთან შეათანხმეთ.
                             </li>
                         </ol>
                     </div>
 
                     <p class="booking-disclaimer">
-                        აქტივობები დამოკიდებულია ადგილმდებარეობაზე, ამინდსა და ოპერატორის შესაძლებლობებზე. მოთხოვნის გაგზავნა ჯავშნის დადასტურებას არ ნიშნავს. შეთანხმება დასტურდება მხოლოდ ოპერატორთან შეთანხმების შემდეგ.
+                        აქტივობები დამოკიდებულია ადგილმდებარეობაზე,
+                        ამინდსა და ოპერატორის შესაძლებლობებზე.
+                        მოთხოვნის გაგზავნა ჯავშნის დადასტურებას არ ნიშნავს.
+                        ჯავშანი დასტურდება მხოლოდ ოპერატორთან შეთანხმების შემდეგ.
                     </p>
                 </div>
-
-                <!-- მოთხოვნის ფორმა -->
 
                 <form class="booking-form" id="adventure-form">
                     <h3>დაუკავშირდით ოპერატორს</h3>
@@ -515,7 +702,9 @@
                     </div>
 
                     <p class="adventure-note">
-                        დასარეკად მხოლოდ ადგილი აირჩიეთ. WhatsApp-მოთხოვნის გასაგზავნად შეავსეთ ქვემოთ მოცემული ველები.
+                        დასარეკად მხოლოდ ადგილი აირჩიეთ.
+                        WhatsApp-მოთხოვნის გასაგზავნად შეავსეთ
+                        ქვემოთ მოცემული ველები.
                     </p>
 
                     <hr class="adventure-divider">
@@ -586,13 +775,16 @@
                         >
 
                         <small id="adventure-phone-help">
-                            მიუთითეთ + და ქვეყნის კოდი. არ გამოიყენოთ გამოტოვებები, ფრჩხილები ან დეფისები.
+                            მიუთითეთ + და ქვეყნის კოდი.
+                            არ გამოიყენოთ გამოტოვებები,
+                            ფრჩხილები ან დეფისები.
                         </small>
                     </div>
 
                     <div class="form-field">
                         <label for="adventure-message">
-                            აქტივობა ან დამატებითი ინფორმაცია — არასავალდებულო
+                            აქტივობა ან დამატებითი ინფორმაცია —
+                            არასავალდებულო
                         </label>
 
                         <textarea
@@ -611,7 +803,9 @@
                         >
 
                         <span>
-                            ვეთანხმები, რომ ეს მონაცემები WhatsApp-ის მეშვეობით გაეგზავნოს არჩეული ადგილის ოპერატორს, რათა მან უპასუხოს ჩემს მოთხოვნას.
+                            ვეთანხმები, რომ ეს მონაცემები WhatsApp-ის
+                            მეშვეობით გაეგზავნოს არჩეული ადგილის
+                            ოპერატორს, რათა მან უპასუხოს ჩემს მოთხოვნას.
                         </span>
                     </label>
 
@@ -630,15 +824,127 @@
                         class="adventure-note"
                         id="adventure-whatsapp-note"
                     >
-                        WhatsApp გაიხსნება შევსებული მოთხოვნით შესაბამის ოპერატორთან. გასაგზავნად დააჭირეთ გაგზავნას WhatsApp-ში. ჩატის გახსნა მოთხოვნას არ აგზავნის და ჯავშანს არ ადასტურებს.
+                        WhatsApp გაიხსნება შევსებული მოთხოვნით
+                        შესაბამის ოპერატორთან.
+                        გასაგზავნად დააჭირეთ გაგზავნას WhatsApp-ში.
+                        ჩატის გახსნა მოთხოვნას არ აგზავნის
+                        და ჯავშანს არ ადასტურებს.
                     </p>
 
                     <noscript>
                         <p class="adventure-note">
-                            ოპერატორთან დაკავშირების ღილაკებისთვის ჩართეთ JavaScript.
+                            ოპერატორთან დაკავშირების ღილაკებისთვის
+                            ჩართეთ JavaScript.
                         </p>
                     </noscript>
                 </form>
+            </div>
+        </section>
+
+        <!-- ფრენისთვის მომზადება -->
+
+        <section
+            class="flight-guide"
+            id="flight-guide"
+            aria-labelledby="flight-guide-title"
+        >
+            <div class="flight-guide-inner">
+                <div class="flight-guide-content">
+                    <p class="flight-guide-kicker">
+                        შენი პირველი ფრენის წინ
+                    </p>
+
+                    <h2 id="flight-guide-title">
+                        მოემზადე ფრენისთვის
+                    </h2>
+
+                    <p class="flight-guide-intro">
+                        გაეცანი ჩაცმულობასა და ფრენის ძირითად
+                        ეტაპებს, რათა წინასწარ იცოდე, რას უნდა
+                        ელოდო. კონკრეტულ მოქმედებებს პილოტი
+                        აფრენამდე აგიხსნის.
+                    </p>
+
+                    <ol class="flight-guide-steps">
+                        <li>
+                            <strong>
+                                ჩაცმულობა და პირადი ნივთები
+                            </strong>
+
+                            შეარჩიე ამინდის შესაბამისი კომფორტული
+                            ტანსაცმელი და დახურული, მყარად შეკრული
+                            ფეხსაცმელი. ზამთარში იქონიე თბილი
+                            ხელთათმანები და ბაფი.
+                            პირადი ნივთები შეინახე საიმედოდ
+                            დახურულ ჯიბეში ან ჩანთაში.
+                        </li>
+
+                        <li>
+                            <strong>
+                                აღჭურვილობა და ინსტრუქტაჟი
+                            </strong>
+
+                            პილოტი მოგარგებს აღჭურვილობას,
+                            შეამოწმებს სამაგრებს და აგიხსნის
+                            აფრენისა და დაფრენისას მოქმედებებს.
+                            დისკომფორტის შესახებ მაშინვე აცნობე მას.
+                        </li>
+
+                        <li>
+                            <strong>
+                                აფრენა და ფრენა
+                            </strong>
+
+                            იმოქმედე პილოტის მითითებით.
+                            აფრენისას გააგრძელე სირბილი მისი
+                            ბრძანების შესაბამისად; საკიდ სისტემაში
+                            დაჯექი, როცა პილოტი გეტყვის.
+                        </li>
+
+                        <li>
+                            <strong>
+                                დაფრენისთვის მომზადება
+                            </strong>
+
+                            პილოტი შეგატყობინებს, რომელი პოზა
+                            უნდა მიიღო. ფოტოზე ნაჩვენებია
+                            მჯდომარე დაფრენის მაგალითი,
+                            წინ გაშლილი ფეხებით.
+                        </li>
+                    </ol>
+
+                    <p class="flight-guide-note">
+                        ფოტოები ილუსტრაციულია.
+                        დაფრენის მეთოდი დამოკიდებულია პირობებსა
+                        და პილოტის გადაწყვეტილებაზე —
+                        ყოველთვის მიჰყევი მის მითითებებს.
+                    </p>
+                </div>
+
+                <figure class="flight-guide-figure">
+                    <a
+                        class="flight-guide-image-link"
+                        href="/images/safety-guide.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="ფრენის ეტაპების ფოტოკოლაჟის სრული ზომით გახსნა ახალ ჩანართში"
+                    >
+                        <img
+                            class="flight-guide-image"
+                            src="/images/safety-guide.png"
+                            width="1086"
+                            height="1448"
+                            loading="lazy"
+                            decoding="async"
+                            alt="ფრენისთვის ჩაცმულობა, აღჭურვილობის შემოწმება, აფრენა, ზამთრის ფრენა და მჯდომარე დაფრენის ეტაპები"
+                        >
+                    </a>
+
+                    <figcaption>
+                        მომზადებიდან დაფრენამდე ·
+                        სრული ზომით სანახავად დააჭირე ფოტოს ↗
+                    </figcaption>
+                </figure>
             </div>
         </section>
     </main>
@@ -655,7 +961,9 @@
                     <span>ყველა უფლება დაცულია.</span>
                 </p>
 
-                <a href="contact.html">დაგვიკავშირდით ↗</a>
+                <a href="contact.html">
+                    დაგვიკავშირდით ↗
+                </a>
             </div>
         </div>
     </footer>
@@ -667,34 +975,56 @@
         const flags = {
             ka: `
                 <rect width="30" height="20" fill="#fff"/>
-                <path d="M0 10H30 M15 0V20"
-                    stroke="#e52332" stroke-width="4"/>
-                <path d="M5 5H9 M7 3V7 M21 5H25 M23 3V7
-                         M5 15H9 M7 13V17 M21 15H25 M23 13V17"
-                    stroke="#e52332" stroke-width="1.5"/>
+                <path
+                    d="M0 10H30 M15 0V20"
+                    stroke="#e52332"
+                    stroke-width="4"
+                />
+                <path
+                    d="M5 5H9 M7 3V7 M21 5H25 M23 3V7
+                       M5 15H9 M7 13V17 M21 15H25 M23 13V17"
+                    stroke="#e52332"
+                    stroke-width="1.5"
+                />
             `,
+
             en: `
                 <rect width="30" height="20" fill="#16316d"/>
-                <path d="M0 0L30 20 M30 0L0 20"
-                    stroke="#fff" stroke-width="5"/>
-                <path d="M0 0L30 20 M30 0L0 20"
-                    stroke="#c8102e" stroke-width="2"/>
-                <path d="M15 0V20 M0 10H30"
-                    stroke="#fff" stroke-width="7"/>
-                <path d="M15 0V20 M0 10H30"
-                    stroke="#c8102e" stroke-width="4"/>
+                <path
+                    d="M0 0L30 20 M30 0L0 20"
+                    stroke="#fff"
+                    stroke-width="5"
+                />
+                <path
+                    d="M0 0L30 20 M30 0L0 20"
+                    stroke="#c8102e"
+                    stroke-width="2"
+                />
+                <path
+                    d="M15 0V20 M0 10H30"
+                    stroke="#fff"
+                    stroke-width="7"
+                />
+                <path
+                    d="M15 0V20 M0 10H30"
+                    stroke="#c8102e"
+                    stroke-width="4"
+                />
             `,
+
             fr: `
                 <rect width="10" height="20" fill="#002654"/>
                 <rect x="10" width="10" height="20" fill="#fff"/>
                 <rect x="20" width="10" height="20" fill="#ed2939"/>
             `,
+
             ar: `
                 <rect width="30" height="20" fill="#fff"/>
                 <rect width="30" height="6.67" fill="#009739"/>
                 <rect y="13.33" width="30" height="6.67" fill="#000"/>
                 <rect width="8" height="20" fill="#ef3340"/>
             `,
+
             zh: `
                 <rect width="30" height="20" fill="#de2910"/>
                 <g fill="#ffde00">
@@ -745,17 +1075,19 @@
                 document.documentElement.lang.split("-")[0];
 
             const text = headerTexts[language] || headerTexts.ka;
-            const flag = document.getElementById("language-flag");
 
-            if (flag) {
-                flag.innerHTML = flags[language] || flags.ka;
-            }
+            const flag =
+                document.getElementById("language-flag");
 
             const bookingLink =
                 document.getElementById("adventure-nav-link");
 
             const pilotsLink =
                 document.getElementById("pilots-nav-link");
+
+            if (flag) {
+                flag.innerHTML = flags[language] || flags.ka;
+            }
 
             if (bookingLink) {
                 bookingLink.textContent = text[0];
@@ -765,11 +1097,6 @@
                 pilotsLink.textContent = text[1];
             }
         }
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            updateHeader
-        );
 
         new MutationObserver(updateHeader).observe(
             document.documentElement,
