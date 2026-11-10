@@ -51,12 +51,9 @@
         ========================= */
 
         try {
-            const response = await fetch(
-                translationsURL,
-                {
-                    cache: "no-cache"
-                }
-            );
+            const response = await fetch(translationsURL);
+               
+        
 
             if (!response.ok) {
                 throw new Error(
